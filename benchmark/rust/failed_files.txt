@@ -1,0 +1,1865 @@
+文件: /app/benchmark/rust/test/leaks_1.rs
+error: unknown start of token: \u{2019}
+  --> /app/benchmark/rust/test/leaks_1.rs:11:20
+   |
+11 | unsafe fn spawn<T: ’static>(f: unsafe fn(arg: T), arg: T)
+   |                    ^
+   |
+help: Unicode character '’' (Right Single Quotation Mark) looks like ''' (Single Quote), but it is not
+   |
+11 - unsafe fn spawn<T: ’static>(f: unsafe fn(arg: T), arg: T)
+11 + unsafe fn spawn<T: 'static>(f: unsafe fn(arg: T), arg: T)
+   |
+
+error: unknown start of token: \u{2019}
+  --> /app/benchmark/rust/test/leaks_1.rs:23:41
+   |
+23 | type MutexGuard = std::sync::MutexGuard<’static, ()>;
+   |                                         ^
+   |
+help: Unicode character '’' (Right Single Quotation Mark) looks like ''' (Single Quote), but it is not
+   |
+23 - type MutexGuard = std::sync::MutexGuard<’static, ()>;
+23 + type MutexGuard = std::sync::MutexGuard<'static, ()>;
+   |
+
+error: this file contains an unclosed delimiter
+   --> /app/benchmark/rust/test/leaks_1.rs:116:32
+    |
+ 30 | {
+    | - unclosed delimiter
+...
+116 | fn VF_free<T>(_ptr: *mut T) {}
+    |                               ^
+
+error: aborting due to 3 previous errors
+------------------------
+文件: /app/benchmark/rust/test/stack_1.rs
+/app/benchmark/rust/test/stack_1.rs(56,1-2): error: Function leaks heap chunks: Nodes(head0, count), alloc_block_Stack(stack), Stack_head(stack, head0)
+56 | }
+   | ^
+/app/benchmark/rust/test/stack_1.rs(56,1-2): note: Leak check.
+56 | }
+   | ^
+/app/benchmark/rust/test/stack_1.rs(42,1-56,2): note: Verifying function 'Stack::push'
+42 | unsafe fn push(stack: *mut Stack, value: i32)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 | //@ req Stack(stack, ?count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 | //@ ens Stack(stack, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 | {
+   | ^
+46 | //@ open Stack(stack, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 | let n = alloc(Layout::new::<Node>()) as *mut Node;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 | if n.is_null() {
+   | ^^^^^^^^^^^^^^^^
+49 | handle_alloc_error(Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+50 | }
+   | ^
+51 | (*n).next = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 | (*n).value = value;
+   | ^^^^^^^^^^^^^^^^^^^
+53 | (*stack).head = n;
+   | ^^^^^^^^^^^^^^^^^^
+54 | //@ close Nodes(n, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 | //@ close Stack(stack, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/test/fractions_1.rs
+error[E0425]: cannot find function `spawn` in this scope
+  --> /app/benchmark/rust/test/fractions_1.rs:23:23
+   |
+23 | let sum_join_handle = spawn(Tree::compute_sum_fibs, tree);
+   |                       ^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 1 + use std::thread::spawn;
+   |
+
+error[E0425]: cannot find function `spawn` in this scope
+  --> /app/benchmark/rust/test/fractions_1.rs:34:27
+   |
+34 | let product_join_handle = spawn(Tree::compute_product_fibs, tree);
+   |                           ^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 1 + use std::thread::spawn;
+   |
+
+error[E0433]: failed to resolve: use of undeclared type `Tree`
+  --> /app/benchmark/rust/test/fractions_1.rs:12:12
+   |
+12 | let tree = Tree::make(22);
+   |            ^^^^ use of undeclared type `Tree`
+
+error[E0433]: failed to resolve: use of undeclared type `Tree`
+  --> /app/benchmark/rust/test/fractions_1.rs:23:29
+   |
+23 | let sum_join_handle = spawn(Tree::compute_sum_fibs, tree);
+   |                             ^^^^ use of undeclared type `Tree`
+
+error[E0433]: failed to resolve: use of undeclared type `Tree`
+  --> /app/benchmark/rust/test/fractions_1.rs:34:33
+   |
+34 | let product_join_handle = spawn(Tree::compute_product_fibs, tree);
+   |                                 ^^^^ use of undeclared type `Tree`
+
+error[E0425]: cannot find function `join` in this scope
+  --> /app/benchmark/rust/test/fractions_1.rs:35:11
+   |
+35 | let sum = join(sum_join_handle);
+   |           ^^^^ not found in this scope
+
+error[E0425]: cannot find function `join` in this scope
+  --> /app/benchmark/rust/test/fractions_1.rs:38:15
+   |
+38 | let product = join(product_join_handle);
+   |               ^^^^ not found in this scope
+
+error[E0425]: cannot find function `print_u64` in this scope
+  --> /app/benchmark/rust/test/fractions_1.rs:41:1
+   |
+41 | print_u64(sum);
+   | ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `print_u64` in this scope
+  --> /app/benchmark/rust/test/fractions_1.rs:42:1
+   |
+42 | print_u64(product);
+   | ^^^^^^^^^ not found in this scope
+
+warning: function cannot return without recursing
+  --> /app/benchmark/rust/test/fractions_1.rs:47:1
+   |
+47 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 9 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0425, E0433.
+For more information about an error, try `rustc --explain E0425`.
+------------------------
+文件: /app/benchmark/rust/test/popn_1.rs
+error[E0412]: cannot find type `Stack` in this scope
+ --> /app/benchmark/rust/test/popn_1.rs:1:28
+  |
+1 | unsafe fn popn(stack: *mut Stack, n: i32)
+  |                            ^^^^^ not found in this scope
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+  --> /app/benchmark/rust/test/popn_1.rs:11:9
+   |
+11 |         Stack::pop(stack);
+   |         ^^^^^ use of undeclared type `Stack`
+
+warning: function cannot return without recursing
+  --> /app/benchmark/rust/test/popn_1.rs:17:1
+   |
+17 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 2 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0412, E0433.
+For more information about an error, try `rustc --explain E0412`.
+------------------------
+文件: /app/benchmark/rust/test/mutexes_1.rs
+error: unknown start of token: \u{2019}
+  --> /app/benchmark/rust/test/mutexes_1.rs:10:20
+   |
+10 | unsafe fn spawn<T: ’static>(f: unsafe fn(arg: T), arg: T)
+   |                    ^
+   |
+help: Unicode character '’' (Right Single Quotation Mark) looks like ''' (Single Quote), but it is not
+   |
+10 - unsafe fn spawn<T: ’static>(f: unsafe fn(arg: T), arg: T)
+10 + unsafe fn spawn<T: 'static>(f: unsafe fn(arg: T), arg: T)
+   |
+
+error: unknown start of token: \u{2019}
+  --> /app/benchmark/rust/test/mutexes_1.rs:22:41
+   |
+22 | type MutexGuard = std::sync::MutexGuard<’static, ()>;
+   |                                         ^
+   |
+help: Unicode character '’' (Right Single Quotation Mark) looks like ''' (Single Quote), but it is not
+   |
+22 - type MutexGuard = std::sync::MutexGuard<’static, ()>;
+22 + type MutexGuard = std::sync::MutexGuard<'static, ()>;
+   |
+
+error: expected identifier, found keyword `static`
+  --> /app/benchmark/rust/test/mutexes_1.rs:10:21
+   |
+10 | unsafe fn spawn<T: ’static>(f: unsafe fn(arg: T), arg: T)
+   |                     ^^^^^^ expected identifier, found keyword
+
+error: expected one of `>`, a const expression, lifetime, or type, found keyword `static`
+  --> /app/benchmark/rust/test/mutexes_1.rs:22:42
+   |
+22 | type MutexGuard = std::sync::MutexGuard<’static, ()>;
+   |                                          ^^^^^^ expected one of `>`, a const expression, lifetime, or type
+
+error: aborting due to 4 previous errors
+------------------------
+文件: /app/benchmark/rust/test/stack tuerk_1.rs
+Rust frontend failed
+Details:
+error: invalid character ' ' in crate name: `stack tuerk_1`
+  |
+  = help: you can either pass `--crate-name` on the command line or add `#![crate_name = "…"]` to set the crate name
+
+error: aborting due to 1 previous error
+------------------------
+文件: /app/benchmark/rust/test/xor_1.rs
+/app/benchmark/rust/test/xor_1.rs(3,1-11,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+ 3 | unsafe fn read_byte() -> u8
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 4 | //@ req true;
+   | ^^^^^^^^^^^^^
+ 5 | //@ ens true;
+   | ^^^^^^^^^^^^^
+ 6 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+ 7 | {
+   | ^
+ 8 | let mut buf = [0u8];
+   | ^^^^^^^^^^^^^^^^^^^^
+ 9 | stdin().read_exact(&mut buf[..]).unwrap();
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+10 | buf[0]
+   | ^^^^^^
+11 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/test/sum full_1.rs
+Rust frontend failed
+Details:
+error: invalid character ' ' in crate name: `sum full_1`
+  |
+  = help: you can either pass `--crate-name` on the command line or add `#![crate_name = "…"]` to set the crate name
+
+error: aborting due to 1 previous error
+------------------------
+文件: /app/benchmark/rust/test/sum_1.rs
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/benchmark/rust/test/sum_1.rs:1:37
+  |
+1 | unsafe fn get_nodes_sum(nodes: *mut Node) -> i32
+  |                                     ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/benchmark/rust/test/sum_1.rs:14:6
+   |
+14 | impl Stack {
+   |      ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/benchmark/rust/test/sum_1.rs:15:31
+   |
+15 | unsafe fn get_sum(stack: *mut Stack) -> i32
+   |                               ^^^^^ not found in this scope
+
+warning: type annotations needed
+ --> /app/benchmark/rust/test/sum_1.rs:7:11
+  |
+7 | if !nodes.is_null() {
+  |           ^^^^^^^
+  |
+  = warning: this is accepted in the current edition (Rust 2015) but is a hard error in Rust 2018!
+  = note: for more information, see issue #46906 <https://github.com/rust-lang/rust/issues/46906>
+  = note: `#[warn(tyvar_behind_raw_pointer)]` (part of `#[warn(rust_2018_compatibility)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/benchmark/rust/test/sum_1.rs:27:1
+   |
+27 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 3 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0412`.
+------------------------
+文件: /app/benchmark/rust/test/account_1.rs
+/app/benchmark/rust/test/account_1.rs(40,1-2): error: Function leaks heap chunks: alloc_block_Account(result)
+40 | }
+   | ^
+/app/benchmark/rust/test/account_1.rs(40,1-2): note: Leak check.
+40 | }
+   | ^
+/app/benchmark/rust/test/account_1.rs(31,1-40,2): note: Verifying function 'main'
+31 | fn main()
+   | ^^^^^^^^^
+32 |     //@ req true;
+   | ^^^^^^^^^^^^^^^^^
+33 |     //@ ens true;
+   | ^^^^^^^^^^^^^^^^^
+34 | {
+   | ^
+35 | unsafe {
+   | ^^^^^^^^
+36 |     let my_account = Account::create();
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |     Account::set_balance(my_account, 5);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |     Account::dispose(my_account);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 |     }
+   | ^^^^^
+40 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/test/dispose_1.rs
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/benchmark/rust/test/dispose_1.rs:1:33
+  |
+1 | unsafe fn dispose_nodes(n: *mut Node)
+  |                                 ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/benchmark/rust/test/dispose_1.rs:8:37
+  |
+8 | VF_free(n as *mut u8 as *mut        Node   );
+  |                                     ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/benchmark/rust/test/dispose_1.rs:11:6
+   |
+11 | impl Stack {
+   |      ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/benchmark/rust/test/dispose_1.rs:12:31
+   |
+12 | unsafe fn dispose(stack: *mut Stack)
+   |                               ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/benchmark/rust/test/dispose_1.rs:18:41
+   |
+18 | VF_free(stack as *mut u8 as *mut        Stack   );
+   |                                         ^^^^^ not found in this scope
+
+warning: type annotations needed
+ --> /app/benchmark/rust/test/dispose_1.rs:6:7
+  |
+6 | if !n.is_null() {
+  |       ^^^^^^^
+  |
+  = warning: this is accepted in the current edition (Rust 2015) but is a hard error in Rust 2018!
+  = note: for more information, see issue #46906 <https://github.com/rust-lang/rust/issues/46906>
+  = note: `#[warn(tyvar_behind_raw_pointer)]` (part of `#[warn(rust_2018_compatibility)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/benchmark/rust/test/dispose_1.rs:23:1
+   |
+23 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 5 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0412`.
+------------------------
+文件: /app/benchmark/rust/test/map_1.rs
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/benchmark/rust/test/map_1.rs:7:29
+  |
+7 | unsafe fn map_nodes(n: *mut Node, f: I32Func, data: *mut u8)
+  |                             ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/benchmark/rust/test/map_1.rs:19:6
+   |
+19 | impl Stack {
+   |      ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/benchmark/rust/test/map_1.rs:20:27
+   |
+20 | unsafe fn map(stack: *mut Stack, f: I32Func, data: *mut u8)
+   |                           ^^^^^ not found in this scope
+
+warning: type annotations needed
+  --> /app/benchmark/rust/test/map_1.rs:12:7
+   |
+12 | if !n.is_null() {
+   |       ^^^^^^^
+   |
+   = warning: this is accepted in the current edition (Rust 2015) but is a hard error in Rust 2018!
+   = note: for more information, see issue #46906 <https://github.com/rust-lang/rust/issues/46906>
+   = note: `#[warn(tyvar_behind_raw_pointer)]` (part of `#[warn(rust_2018_compatibility)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/benchmark/rust/test/map_1.rs:31:1
+   |
+31 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 3 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0412`.
+------------------------
+文件: /app/benchmark/rust/test/values_1.rs
+/app/benchmark/rust/test/values_1.rs(52,1-2): error: Function leaks heap chunks: Nodes(head0, values), alloc_block_Stack(stack), Stack_head(stack, head0)
+52 | }
+   | ^
+/app/benchmark/rust/test/values_1.rs(52,1-2): note: Leak check.
+52 | }
+   | ^
+/app/benchmark/rust/test/values_1.rs(38,1-52,2): note: Verifying function 'Stack::push'
+38 | unsafe fn push(stack: *mut Stack, value: i32)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | //@ req Stack(stack, ?values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 | //@ ens Stack(stack, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+41 | {
+   | ^
+42 | //@ open Stack(stack, values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 | let n = alloc(Layout::new::<Node>()) as *mut Node;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 | if n.is_null() {
+   | ^^^^^^^^^^^^^^^^
+45 | handle_alloc_error(Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 | }
+   | ^
+47 | (*n).next = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 | (*n).value = value;
+   | ^^^^^^^^^^^^^^^^^^^
+49 | (*stack).head = n;
+   | ^^^^^^^^^^^^^^^^^^
+50 | //@ close Nodes(n, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 | //@ close Stack(stack, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/test/byref_1.rs
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/benchmark/rust/test/byref_1.rs:1:37
+  |
+1 | unsafe fn filter_nodes(n: *mut *mut Node, p: I32Predicate)
+  |                                     ^^^^ not found in this scope
+
+error[E0412]: cannot find type `I32Predicate` in this scope
+ --> /app/benchmark/rust/test/byref_1.rs:1:46
+  |
+1 | unsafe fn filter_nodes(n: *mut *mut Node, p: I32Predicate)
+  |                                              ^^^^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+  --> /app/benchmark/rust/test/byref_1.rs:17:38
+   |
+17 | VF_free(*n as *mut u8 as *mut        Node   );
+   |                                      ^^^^ not found in this scope
+
+warning: type annotations needed
+ --> /app/benchmark/rust/test/byref_1.rs:5:10
+  |
+5 | if !(*n).is_null() {
+  |          ^^^^^^^
+  |
+  = warning: this is accepted in the current edition (Rust 2015) but is a hard error in Rust 2018!
+  = note: for more information, see issue #46906 <https://github.com/rust-lang/rust/issues/46906>
+  = note: `#[warn(tyvar_behind_raw_pointer)]` (part of `#[warn(rust_2018_compatibility)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/benchmark/rust/test/byref_1.rs:25:1
+   |
+25 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 3 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0412`.
+------------------------
+文件: /app/benchmark/rust/test/push all_1.rs
+Rust frontend failed
+Details:
+error: invalid character ' ' in crate name: `push all_1`
+  |
+  = help: you can either pass `--crate-name` on the command line or add `#![crate_name = "…"]` to set the crate name
+
+error: aborting due to 1 previous error
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/precise_bad_merge.rs
+/app/benchmark/rust/purely_unsafe/solutions/precise_bad_merge.rs(12,5-11): error: Specify -allow_assume on the command line to enable 'assume' statements.
+12 |     assume(false);
+   |     ^^^^^^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/limit.rs
+/app/benchmark/rust/purely_unsafe/solutions/limit.rs(36,9-40): error: Potential arithmetic underflow. (Cannot prove -2147483648 <= (theBalance + amount).)
+36 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/limit.rs(36,9-40): note: Executing statement
+36 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/limit.rs(32,5-37,6): note: Verifying function 'Account::deposit'
+32 |     unsafe fn deposit(my_account: *mut Account, amount: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+33 |     //@ req (*my_account).balance |-> ?theBalance;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+34 |     //@ ens (*my_account).balance |-> theBalance + amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+35 |     {
+   | ^^^^^^
+36 |         (*my_account).balance += amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/leaks.rs
+/app/benchmark/rust/purely_unsafe/solutions/leaks.rs(14,1-24,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+14 | unsafe fn spawn<T: 'static>(f: unsafe fn(arg: T), arg: T)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+15 | //@ req [_]is_Spawnee(f, ?pre) &*& pre(arg);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+16 | //@ ens true;
+   | ^^^^^^^^^^^^^
+17 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+18 | {
+   | ^
+19 |     let package = Sendable { payload: arg };
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+20 |     std::thread::spawn(move || {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21 |         let package_moved = package;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22 |         f(package_moved.payload)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23 |     });
+   | ^^^^^^^
+24 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/reverse.rs
+/app/benchmark/rust/purely_unsafe/solutions/reverse.rs(114,5-6): error: Function leaks heap chunks: Nodes(head0, values), alloc_block_Stack(stack), Stack_head(stack, head0)
+114 |     }
+    |     ^
+/app/benchmark/rust/purely_unsafe/solutions/reverse.rs(114,5-6): note: Leak check.
+114 |     }
+    |     ^
+/app/benchmark/rust/purely_unsafe/solutions/reverse.rs(100,5-114,6): note: Verifying function 'Stack::push'
+100 |     unsafe fn push(stack: *mut Stack, value: i32)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+101 |     //@ req Stack(stack, ?values);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+102 |     //@ ens Stack(stack, i32s_cons(value, values));
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+103 |     {
+    | ^^^^^
+104 |         //@ open Stack(stack, values);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+105 |         let n = alloc(Layout::new::<Node>()) as *mut Node;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+106 |         if n.is_null() {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+107 |             handle_alloc_error(Layout::new::<Node>());
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+108 |         }
+    | ^^^^^^^^^
+109 |         (*n).next = (*stack).head;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+110 |         (*n).value = value;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+111 |         (*stack).head = n;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+112 |         //@ close Nodes(n, i32s_cons(value, values));
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+113 |         //@ close Stack(stack, i32s_cons(value, values));
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+114 |     }
+    |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/copy_nonoverlapping.rs
+/app/benchmark/rust/purely_unsafe/solutions/copy_nonoverlapping.rs(40,1-2): error: No matching heap chunks: [1/2]array_<u8>(buffer1_addr, 3, _)
+40 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/copy_nonoverlapping.rs(40,1-2): note: Freeing locals.
+40 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/copy_nonoverlapping.rs(22,1-40,2): note: Verifying function 'main'
+22 | fn main()
+   | ^^^^^^^^^
+23 | //@ req true;
+   | ^^^^^^^^^^^^^
+24 | //@ ens true;
+   | ^^^^^^^^^^^^^
+25 | {
+   | ^
+26 |     unsafe {
+   | ^^^^^^^^^^^^
+27 |         let buffer1: [u8; _] = [10, 20, 30];
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+28 |         let buffer2 = alloc(Layout::from_size_align_unchecked(3, 1));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+29 |         if buffer2.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+30 |             handle_alloc_error(Layout::from_size_align_unchecked(3, 1));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 |         }
+   | ^^^^^^^^^
+32 |         copy_nonoverlapping(&raw const buffer1 as *const u8, buffer2, 3);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+33 |         //@ open array(buffer2, 3, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+34 |         std::hint::assert_unchecked(*buffer2.add(1) == 20);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+35 |         //@ close array(buffer2, 3, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+36 |         //@ array_to_array_(buffer2);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |         dealloc(buffer2, Layout::from_size_align_unchecked(3, 1));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |         //@ array_to_array_(&buffer1 as *u8);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 |     }
+   | ^^^^^
+40 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/sum_full.rs
+/app/benchmark/rust/purely_unsafe/solutions/sum_full.rs(65,1-2): error: Function leaks heap chunks: alloc_block_Node(node), Node_value(node, value), Node_next(node, next)
+65 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/sum_full.rs(65,1-2): note: Leak check.
+65 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/sum_full.rs(53,1-65,2): note: Verifying function 'get_nodes_sum'
+53 | unsafe fn get_nodes_sum(node: *mut Node) -> i32
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+54 | //@ req Nodes(node, ?values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 | //@ ens Nodes(node, values) &*& result == i32s_sum(values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 | {
+   | ^
+57 |     //@ open Nodes(node, values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+58 |     let mut result = 0;
+   | ^^^^^^^^^^^^^^^^^^^^^^^
+59 |     if !node.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+60 |         let tail_sum = get_nodes_sum((*node).next);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+61 |         result = (*node).value + tail_sum;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+62 |     }
+   | ^^^^^
+63 |     //@ close Nodes(node, values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+64 |     result
+   | ^^^^^^^^^^
+65 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/mutexes_platform/src/main.rs
+error[E0432]: unresolved import `simple_mutex`
+ --> /app/benchmark/rust/purely_unsafe/solutions/mutexes_platform/src/main.rs:4:5
+  |
+4 | use simple_mutex::Mutex;
+  |     ^^^^^^^^^^^^ use of unresolved module or unlinked crate `simple_mutex`
+  |
+help: you might be missing a crate named `simple_mutex`, add it to your project and import it in your code
+  |
+3 + extern crate simple_mutex;
+  |
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `platform`
+  --> /app/benchmark/rust/purely_unsafe/solutions/mutexes_platform/src/main.rs:79:5
+   |
+79 |     platform::threading::fork(count_pulses, data);
+   |     ^^^^^^^^ use of unresolved module or unlinked crate `platform`
+   |
+   = help: you might be missing a crate named `platform`
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/benchmark/rust/purely_unsafe/solutions/mutexes_platform/src/main.rs:3:26
+  |
+3 | use std::alloc::{Layout, alloc, handle_alloc_error, dealloc};
+  |                          ^^^^^                      ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/benchmark/rust/purely_unsafe/solutions/mutexes_platform/src/main.rs:112:1
+    |
+112 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 2 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0432, E0433.
+For more information about an error, try `rustc --explain E0432`.
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/values.rs
+/app/benchmark/rust/purely_unsafe/solutions/values.rs(62,5-6): error: Function leaks heap chunks: Nodes(head0, values0), alloc_block_Stack(stack), Stack_head(stack, head0)
+62 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/values.rs(62,5-6): note: Leak check.
+62 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/values.rs(48,5-62,6): note: Verifying function 'Stack::push'
+48 |     unsafe fn push(stack: *mut Stack, value: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |     //@ req Stack(stack, ?values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+50 |     //@ ens Stack(stack, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 |     {
+   | ^^^^^
+52 |         //@ open Stack(stack, values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+53 |         let n = alloc(Layout::new::<Node>()) as *mut Node;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+54 |         if n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+55 |             handle_alloc_error(Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |         }
+   | ^^^^^^^^^
+57 |         (*n).next = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+58 |         (*n).value = value;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+59 |         (*stack).head = n;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+60 |         //@ close Nodes(n, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+61 |         //@ close Stack(stack, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+62 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/byref.rs
+/app/benchmark/rust/purely_unsafe/solutions/byref.rs(57,1-2): error: Function leaks heap chunks: Nodes(next, (dummy - 1)), alloc_block_Node(node), Node_value(node, value), Node_next(node, next), points_to<*Node>(n, node)
+57 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/byref.rs(57,1-2): note: Leak check.
+57 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/byref.rs(36,1-57,2): note: Verifying function 'filter_nodes'
+36 | unsafe fn filter_nodes(n: *mut *mut Node, p: I32Predicate)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 | //@ req *n |-> ?node &*& Nodes(node, _) &*& [_]is_I32Predicate(p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 | //@ ens *n |-> ?node0 &*& Nodes(node0, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | {
+   | ^
+40 |     if !(*n).is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+41 |         //@ open Nodes(node, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |         let keep = p((**n).value);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 |         if keep {
+   | ^^^^^^^^^^^^^^^^^
+44 |             //@ open Node_next(node, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |             filter_nodes(&raw mut (**n).next, p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 |             //@ close Node_next(node, ?next);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 |             //@ open Nodes(next, ?count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 |             //@ close Nodes(next, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |             //@ close Nodes(node, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+50 |         } else {
+   | ^^^^^^^^^^^^^^^^
+51 |             let next_ = (**n).next;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 |             dealloc(*n as *mut u8, Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+53 |             *n = next_;
+   | ^^^^^^^^^^^^^^^^^^^^^^^
+54 |             filter_nodes(n, p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 |         }
+   | ^^^^^^^^^
+56 |     }
+   | ^^^^^
+57 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/leaks_platform/src/main.rs
+error[E0432]: unresolved import `simple_mutex`
+ --> /app/benchmark/rust/purely_unsafe/solutions/leaks_platform/src/main.rs:4:5
+  |
+4 | use simple_mutex::Mutex;
+  |     ^^^^^^^^^^^^ use of unresolved module or unlinked crate `simple_mutex`
+  |
+help: you might be missing a crate named `simple_mutex`, add it to your project and import it in your code
+  |
+3 + extern crate simple_mutex;
+  |
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `platform`
+  --> /app/benchmark/rust/purely_unsafe/solutions/leaks_platform/src/main.rs:89:5
+   |
+89 |     platform::threading::fork(count_pulses, data);
+   |     ^^^^^^^^ use of unresolved module or unlinked crate `platform`
+   |
+   = help: you might be missing a crate named `platform`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `platform`
+   --> /app/benchmark/rust/purely_unsafe/solutions/leaks_platform/src/main.rs:131:9
+    |
+131 |         platform::threading::fork(print_count, counter);
+    |         ^^^^^^^^ use of unresolved module or unlinked crate `platform`
+    |
+    = help: you might be missing a crate named `platform`
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/benchmark/rust/purely_unsafe/solutions/leaks_platform/src/main.rs:3:26
+  |
+3 | use std::alloc::{Layout, alloc, handle_alloc_error, dealloc};
+  |                          ^^^^^                      ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/benchmark/rust/purely_unsafe/solutions/leaks_platform/src/main.rs:143:1
+    |
+143 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 3 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0432, E0433.
+For more information about an error, try `rustc --explain E0432`.
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/deposit.rs
+/app/benchmark/rust/purely_unsafe/solutions/deposit.rs(41,9-40): error: Potential arithmetic underflow. (Cannot prove -2147483648 <= (theBalance + amount).)
+41 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/deposit.rs(41,9-40): note: Executing statement
+41 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/deposit.rs(37,5-42,6): note: Verifying function 'Account::deposit'
+37 |     unsafe fn deposit(my_account: *mut Account, amount: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |     //@ req Account_balance(my_account, ?theBalance);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 |     //@ ens Account_balance(my_account, theBalance + amount);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 |     {
+   | ^^^^^^
+41 |         (*my_account).balance += amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/push_all.rs
+/app/benchmark/rust/purely_unsafe/solutions/push_all.rs(123,13-19): error: Potential arithmetic overflow. (Cannot prove (i + 1) <= 2147483647.)
+123 |             i += 1;
+    |             ^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/push_all.rs(123,13-19): note: Executing statement
+123 |             i += 1;
+    |             ^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/push_all.rs(106,5-130,6): note: Verifying function 'Stack::get_count'
+106 |     unsafe fn get_count(stack: *mut Stack) -> i32
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+107 |     //@ req Stack(stack, ?count);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+108 |     //@ ens Stack(stack, count) &*& result == count;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+109 |     {
+    | ^^^^^
+110 |         //@ open Stack(stack, count);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+111 |         let head = (*stack).head;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+112 |         //@ Nodes_to_lseg_lemma(head);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+113 |         let mut n = head;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^
+114 |         let mut i = 0;
+    | ^^^^^^^^^^^^^^^^^^^^^^
+115 |         //@ close lseg(head, head, 0);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+116 |         loop {
+    | ^^^^^^^^^^^^^^
+117 |             //@ inv lseg(head, n, i) &*& lseg(n, 0, count - i);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+118 |             if n.is_null() {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+119 |                 break;
+    | ^^^^^^^^^^^^^^^^^^^^^^
+120 |             }
+    | ^^^^^^^^^^^^^
+121 |             //@ open lseg(n, 0, count - i);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+122 |             n = (*n).next;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+123 |             i += 1;
+    | ^^^^^^^^^^^^^^^^^^^
+124 |             //@ lseg_add_lemma(head);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+125 |         }
+    | ^^^^^^^^^
+126 |         //@ open lseg(0, 0, _);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+127 |         //@ lseg_to_Nodes_lemma(head);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+128 |         //@ close Stack(stack, count);
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+129 |         i
+    | ^^^^^^^^^
+130 |     }
+    |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/bytes_loop.rs
+/app/benchmark/rust/purely_unsafe/solutions/bytes_loop.rs(4,1-12,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+ 4 | unsafe fn read_byte() -> u8
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 5 | //@ req true;
+   | ^^^^^^^^^^^^^
+ 6 | //@ ens true;
+   | ^^^^^^^^^^^^^
+ 7 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+ 8 | {
+   | ^
+ 9 |     let mut buf = [0u8];
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+10 |     stdin().read_exact(&mut buf[..]).unwrap();
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 |     buf[0]
+   | ^^^^^^^^^^
+12 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/pred.rs
+/app/benchmark/rust/purely_unsafe/solutions/pred.rs(49,9-40): error: Potential arithmetic overflow. (Cannot prove (balance + amount) <= 2147483647.)
+49 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/pred.rs(49,9-40): note: Executing statement
+49 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/pred.rs(44,5-51,6): note: Verifying function 'Account::deposit'
+44 |     unsafe fn deposit(my_account: *mut Account, amount: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |     //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 |     //@ ens Account_pred(my_account, limit, balance + amount);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 |     {
+   | ^^^^^^
+48 |         //@ open Account_pred(my_account, limit, balance);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |         (*my_account).balance += amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+50 |         //@ close Account_pred(my_account, limit, balance + amount);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/fixpoints.rs
+/app/benchmark/rust/purely_unsafe/solutions/fixpoints.rs(76,5-6): error: Function leaks heap chunks: Nodes(head0, values), alloc_block_Stack(stack), Stack_head(stack, head0)
+76 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/fixpoints.rs(76,5-6): note: Leak check.
+76 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/fixpoints.rs(62,5-76,6): note: Verifying function 'Stack::push'
+62 |     unsafe fn push(stack: *mut Stack, value: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+63 |     //@ req Stack(stack, ?values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+64 |     //@ ens Stack(stack, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+65 |     {
+   | ^^^^^
+66 |         //@ open Stack(stack, values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+67 |         let n = alloc(Layout::new::<Node>()) as *mut Node;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+68 |         if n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+69 |             handle_alloc_error(Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+70 |         }
+   | ^^^^^^^^^
+71 |         (*n).next = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+72 |         (*n).value = value;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+73 |         (*stack).head = n;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+74 |         //@ close Nodes(n, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+75 |         //@ close Stack(stack, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+76 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/generics.rs
+/opt/verifast/bin/rust/std/lib.rsspec(562,13-25): error: No matching heap chunks: thread_token(_)
+562 |     //@ req thread_token(?t) &*& *to_drop |-> ?v &*& <T>.own(t, v);
+    |             ^^^^^^^^^^^^
+/opt/verifast/bin/rust/std/lib.rsspec(562,13-25): note: Consuming assertion
+562 |     //@ req thread_token(?t) &*& *to_drop |-> ?v &*& <T>.own(t, v);
+    |             ^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/generics.rs(60,5-6): note: Verifying call
+60 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/generics.rs(46,5-60,6): note: Verifying function 'Stack::<T>::push'
+46 |     unsafe fn push(stack: *mut Stack<T>, value: T)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 |     //@ req Stack(stack, ?values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 |     //@ ens Stack(stack, cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |     {
+   | ^^^^^
+50 |         //@ open Stack(stack, values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 |         let n = alloc(Layout::new::<Node<T>>()) as *mut Node<T>;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 |         if n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+53 |             handle_alloc_error(Layout::new::<Node<T>>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+54 |         }
+   | ^^^^^^^^^
+55 |         (*n).next = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |         (&raw mut (*n).value).write(value);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+57 |         (*stack).head = n;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+58 |         //@ close Nodes(n, cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+59 |         //@ close Stack(stack, cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+60 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/threads0.rs
+/app/benchmark/rust/purely_unsafe/solutions/threads0.rs(73,5-6): error: Function leaks heap chunks: Tree(result, (depth - 1))
+73 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/threads0.rs(73,5-6): note: Leak check.
+73 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/threads0.rs(52,5-73,6): note: Verifying function 'Tree::make'
+52 |     unsafe fn make(depth: u8) -> *mut Tree
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+53 |     //@ req true;
+   | ^^^^^^^^^^^^^^^^^
+54 |     //@ ens Tree(result, depth);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 |     {
+   | ^^^^^
+56 |         if depth == 0 {
+   | ^^^^^^^^^^^^^^^^^^^^^^^
+57 |             //@ close Tree(0, 0);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+58 |             std::ptr::null_mut()
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+59 |         } else {
+   | ^^^^^^^^^^^^^^^^
+60 |             let left = Self::make(depth - 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+61 |             let right = Self::make(depth - 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+62 |             let value = 5000; // TODO: Use a random number here
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+63 |             let t = alloc(Layout::new::<Tree>()) as *mut Tree;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+64 |             if t.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+65 |                 handle_alloc_error(Layout::new::<Tree>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+66 |             }
+   | ^^^^^^^^^^^^^
+67 |             (*t).left = left;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+68 |             (*t).right = right;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+69 |             (*t).value = value;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+70 |             //@ close Tree(t, depth);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+71 |             t
+   | ^^^^^^^^^^^^^
+72 |         }
+   | ^^^^^^^^^
+73 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/pred_unwind.rs
+/app/benchmark/rust/purely_unsafe/solutions/pred_unwind.rs(49,9-40): error: Potential arithmetic overflow. (Cannot prove (balance + amount) <= 2147483647.)
+49 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/pred_unwind.rs(49,9-40): note: Executing statement
+49 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/pred_unwind.rs(44,5-51,6): note: Verifying function 'Account::deposit'
+44 |     unsafe fn deposit(my_account: *mut Account, amount: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |     //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 |     //@ ens Account_pred(my_account, limit, balance + amount);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 |     {
+   | ^^^^^^
+48 |         //@ open Account_pred(my_account, limit, balance);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |         (*my_account).balance += amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+50 |         //@ close Account_pred(my_account, limit, balance + amount);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/account.rs
+/app/benchmark/rust/purely_unsafe/solutions/account.rs(47,1-2): error: Function leaks heap chunks: alloc_block_Account(result)
+47 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/account.rs(47,1-2): note: Leak check.
+47 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/account.rs(38,1-47,2): note: Verifying function 'main'
+38 | fn main()
+   | ^^^^^^^^^^
+39 | //@ req true;
+   | ^^^^^^^^^^^^^^
+40 | //@ ens true;
+   | ^^^^^^^^^^^^^^
+41 | {
+   | ^^
+42 |     unsafe {
+   | ^^^^^^^^^^^^^
+43 |         let my_account = Account::create();
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 |         Account::set_balance(my_account, 5);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |         Account::dispose(my_account);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 |     }
+   | ^^^^^^
+47 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/sum.rs
+/app/benchmark/rust/purely_unsafe/solutions/sum.rs(42,1-2): error: Function leaks heap chunks: alloc_block_Node(nodes), Node_value(nodes, value), Node_next(nodes, next)
+42 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/sum.rs(42,1-2): note: Leak check.
+42 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/sum.rs(30,1-42,2): note: Verifying function 'get_nodes_sum'
+30 | unsafe fn get_nodes_sum(nodes: *mut Node) -> i32
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 | //@ req Nodes(nodes, ?count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+32 | //@ ens Nodes(nodes, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+33 | {
+   | ^
+34 |     let mut result = 0;
+   | ^^^^^^^^^^^^^^^^^^^^^^^
+35 |     //@ open Nodes(nodes, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+36 |     if !nodes.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |         result = get_nodes_sum((*nodes).next);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |         result += (*nodes).value;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 |     }
+   | ^^^^^
+40 |     //@ close Nodes(nodes, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+41 |     result
+   | ^^^^^^^^^^
+42 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/popn.rs
+/app/benchmark/rust/purely_unsafe/solutions/popn.rs(42,1-2): error: Function leaks heap chunks: alloc_block_Node(nodes), Node_value(nodes, value), Node_next(nodes, next)
+42 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/popn.rs(42,1-2): note: Leak check.
+42 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/popn.rs(30,1-42,2): note: Verifying function 'get_nodes_sum'
+30 | unsafe fn get_nodes_sum(nodes: *mut Node) -> i32
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 | //@ req Nodes(nodes, ?count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+32 | //@ ens Nodes(nodes, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+33 | {
+   | ^
+34 |     let mut result = 0;
+   | ^^^^^^^^^^^^^^^^^^^^^^^
+35 |     //@ open Nodes(nodes, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+36 |     if !nodes.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |         result = get_nodes_sum((*nodes).next);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |         result += (*nodes).value;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 |     }
+   | ^^^^^
+40 |     //@ close Nodes(nodes, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+41 |     result
+   | ^^^^^^^^^^
+42 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/bytes.rs
+/app/benchmark/rust/purely_unsafe/solutions/bytes.rs(4,1-12,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+ 4 | unsafe fn read_byte() -> u8
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 5 | //@ req true;
+   | ^^^^^^^^^^^^^
+ 6 | //@ ens true;
+   | ^^^^^^^^^^^^^
+ 7 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+ 8 | {
+   | ^
+ 9 |     let mut buf = [0u8];
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+10 |     stdin().read_exact(&mut buf[..]).unwrap();
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 |     buf[0]
+   | ^^^^^^^^^^
+12 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/stack_tuerk.rs
+/app/benchmark/rust/purely_unsafe/solutions/stack_tuerk.rs(51,9-15): error: Potential arithmetic overflow. (Cannot prove (i + 1) <= 2147483647.)
+51 |         i += 1;
+   |         ^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/stack_tuerk.rs(51,9-15): note: Executing statement
+51 |         i += 1;
+   |         ^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/stack_tuerk.rs(33,1-57,2): note: Verifying function 'stack_get_count'
+33 | unsafe fn stack_get_count(stack: *mut Stack) -> i32
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+34 | //@ req Stack(stack, ?count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+35 | //@ ens Stack(stack, count) &*& result == count;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+36 | {
+   | ^
+37 |     //@ open Stack(stack, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |     let mut n = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 |     let mut i = 0;
+   | ^^^^^^^^^^^^^^^^^^
+40 |     loop {
+   | ^^^^^^^^^^
+41 |         /*@
+   | ^^^^^^^^^^^
+42 |         req Nodes(n, ?count1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 |         ens Nodes(old_n, count1) &*& i == old_i + count1;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 |         @*/
+   | ^^^^^^^^^^^
+45 |         //@ open Nodes(n, count1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 |         if n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+47 |             //@ close Nodes(n, count1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 |             break;
+   | ^^^^^^^^^^^^^^^^^^
+49 |         }
+   | ^^^^^^^^^
+50 |         n = (*n).next;
+   | ^^^^^^^^^^^^^^^^^^^^^^
+51 |         i += 1;
+   | ^^^^^^^^^^^^^^^
+52 |         //@ recursive_call();
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+53 |         //@ close Nodes(old_n, count1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+54 |     }
+   | ^^^^^
+55 |     //@ close Stack(stack, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |     i
+   | ^^^^^
+57 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/fractions.rs
+/app/benchmark/rust/purely_unsafe/solutions/fractions.rs(22,1-33,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+22 | unsafe fn spawn<A, R>(f: Spawnee<A, R>, arg: A) -> JoinHandle<Sendable<R>>
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23 | where A: 'static, R: 'static
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+24 | //@ req [_]is_Spawnee::<A, R>(f, ?pre) &*& pre(arg, ?post);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+25 | //@ ens JoinHandle(result, post);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+27 | {
+   | ^
+28 |     let package = Sendable { payload: arg };
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+29 |     std::thread::spawn(move || {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+30 |         let package_moved = package;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 |         Sendable { payload: f(package_moved.payload) }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+32 |     })
+   | ^^^^^^
+33 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/precise.rs
+/app/benchmark/rust/purely_unsafe/solutions/precise.rs(22,1-33,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+22 | unsafe fn spawn<A, R>(f: Spawnee<A, R>, arg: A) -> JoinHandle<Sendable<R>>
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23 | where A: 'static, R: 'static
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+24 | //@ req [_]is_Spawnee::<A, R>(f, ?pre) &*& pre(arg, ?post);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+25 | //@ ens JoinHandle(result, post);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+27 | {
+   | ^
+28 |     let package = Sendable { payload: arg };
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+29 |     std::thread::spawn(move || {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+30 |         let package_moved = package;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 |         Sendable { payload: f(package_moved.payload) }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+32 |     })
+   | ^^^^^^
+33 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/stack.rs
+/app/benchmark/rust/purely_unsafe/solutions/stack.rs(65,5-6): error: Function leaks heap chunks: Nodes(head0, count), alloc_block_Stack(stack0), Stack_head(stack0, head0)
+65 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/stack.rs(65,5-6): note: Leak check.
+65 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/stack.rs(51,5-65,6): note: Verifying function 'Stack::push'
+51 |     unsafe fn push(stack: *mut Stack, value: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 |     //@ req Stack(stack, ?count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+53 |     //@ ens Stack(stack, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+54 |     {
+   | ^^^^^
+55 |         //@ open Stack(stack, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |         let n = alloc(Layout::new::<Node>()) as *mut Node;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+57 |         if n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+58 |             handle_alloc_error(Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+59 |         }
+   | ^^^^^^^^^
+60 |         (*n).next = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+61 |         (*n).value = value;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+62 |         (*stack).head = n;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+63 |         //@ close Nodes(n, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+64 |         //@ close Stack(stack, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+65 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/dispose.rs
+/app/benchmark/rust/purely_unsafe/solutions/dispose.rs(39,1-2): error: Function leaks heap chunks: alloc_block_Node(n), Node_value(n, value), Node_next(n, next)
+39 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/dispose.rs(39,1-2): note: Leak check.
+39 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/dispose.rs(30,1-39,2): note: Verifying function 'dispose_nodes'
+30 | unsafe fn dispose_nodes(n: *mut Node)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 | //@ req Nodes(n, _);
+   | ^^^^^^^^^^^^^^^^^^^^
+32 | //@ ens true;
+   | ^^^^^^^^^^^^^
+33 | {
+   | ^
+34 |     //@ open Nodes(n, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^
+35 |     if !n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^
+36 |         dispose_nodes((*n).next);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |         dealloc(n as *mut u8, Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |     }
+   | ^^^^^
+39 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/mutexes.rs
+/app/benchmark/rust/purely_unsafe/solutions/mutexes.rs(15,1-25,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+15 | unsafe fn spawn<T: 'static>(f: unsafe fn(arg: T), arg: T)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+16 | //@ req [_]is_Spawnee(f, ?pre) &*& pre(arg);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+17 | //@ ens true;
+   | ^^^^^^^^^^^^^
+18 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+19 | {
+   | ^
+20 |     let package = Sendable { payload: arg };
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21 |     std::thread::spawn(move || {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22 |         let package_moved = package;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23 |         f(package_moved.payload)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+24 |     });
+   | ^^^^^^^
+25 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/filter.rs
+/app/benchmark/rust/purely_unsafe/solutions/filter.rs(60,1-2): error: Function leaks heap chunks: Node_next(n, next), Node_value(n, value), alloc_block_Node(n), Nodes(next, (dummy - 1))
+60 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/filter.rs(60,1-2): note: Leak check.
+60 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/filter.rs(36,1-60,2): note: Verifying function 'filter_nodes'
+36 | unsafe fn filter_nodes(n: *mut Node, p: I32Predicate) -> *mut Node
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 | //@ req Nodes(n, _) &*& [_]is_I32Predicate(p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 | //@ ens Nodes(result, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | {
+   | ^
+40 |     if n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^
+41 |         std::ptr::null_mut()
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |     } else {
+   | ^^^^^^^^^^^^
+43 |         //@ open Nodes(n, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 |         let keep = p((*n).value);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |         let next;
+   | ^^^^^^^^^^^^^^^^^
+46 |         if keep {
+   | ^^^^^^^^^^^^^^^^^
+47 |             next = filter_nodes((*n).next, p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 |             //@ open Nodes(next, ?count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |             //@ close Nodes(next, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+50 |             (*n).next = next;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 |             //@ close Nodes(n, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 |             n
+   | ^^^^^^^^^^^^^
+53 |         } else {
+   | ^^^^^^^^^^^^^^^^
+54 |             next = (*n).next;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 |             dealloc(n as *mut u8, Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |             let result = filter_nodes(next, p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+57 |             result
+   | ^^^^^^^^^^^^^^^^^^
+58 |         }
+   | ^^^^^^^^^
+59 |     }
+   | ^^^^^
+60 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/xor.rs
+/app/benchmark/rust/purely_unsafe/solutions/xor.rs(4,1-12,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+ 4 | unsafe fn read_byte() -> u8
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 5 | //@ req true;
+   | ^^^^^^^^^^^^^
+ 6 | //@ ens true;
+   | ^^^^^^^^^^^^^
+ 7 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+ 8 | {
+   | ^
+ 9 |     let mut buf = [0u8];
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+10 |     stdin().read_exact(&mut buf[..]).unwrap();
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 |     buf[0]
+   | ^^^^^^^^^^
+12 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/deposit_unwind.rs
+/app/benchmark/rust/purely_unsafe/solutions/deposit_unwind.rs(44,9-40): error: Potential arithmetic underflow. (Cannot prove -2147483648 <= (theBalance + amount).)
+44 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/deposit_unwind.rs(44,9-40): note: Executing statement
+44 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/deposit_unwind.rs(39,5-45,6): note: Verifying function 'Account::deposit'
+39 |     unsafe fn deposit(my_account: *mut Account, amount: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 |     //@ req Account_balance(my_account, ?theBalance);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+41 |     //@ ens Account_balance(my_account, theBalance + amount);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |     //@ on_unwind_ens false;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 |     {
+   | ^^^^^^
+44 |         (*my_account).balance += amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/limit_unwind.rs
+/app/benchmark/rust/purely_unsafe/solutions/limit_unwind.rs(38,9-40): error: Potential arithmetic underflow. (Cannot prove -2147483648 <= (theBalance + amount).)
+38 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/limit_unwind.rs(38,9-40): note: Executing statement
+38 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/limit_unwind.rs(33,5-39,6): note: Verifying function 'Account::deposit'
+33 |     unsafe fn deposit(my_account: *mut Account, amount: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+34 |     //@ req (*my_account).balance |-> ?theBalance;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+35 |     //@ ens (*my_account).balance |-> theBalance + amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+36 |     //@ on_unwind_ens false;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |     {
+   | ^^^^^^
+38 |         (*my_account).balance += amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/tuerk.rs
+/app/benchmark/rust/purely_unsafe/solutions/tuerk.rs(4,1-12,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+ 4 | unsafe fn read_byte() -> u8
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 5 | //@ req true;
+   | ^^^^^^^^^^^^^
+ 6 | //@ ens true;
+   | ^^^^^^^^^^^^^
+ 7 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+ 8 | {
+   | ^
+ 9 |     let mut buf = [0u8];
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+10 |     stdin().read_exact(&mut buf[..]).unwrap();
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 |     buf[0]
+   | ^^^^^^^^^^
+12 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/precise_platform.rs
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `platform`
+   --> /app/benchmark/rust/purely_unsafe/solutions/precise_platform.rs:108:13
+    |
+108 |     thread: platform::threading::Thread,
+    |             ^^^^^^^^ use of unresolved module or unlinked crate `platform`
+    |
+    = help: you might be missing a crate named `platform`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `platform`
+   --> /app/benchmark/rust/purely_unsafe/solutions/precise_platform.rs:155:13
+    |
+155 |     let t = platform::threading::fork_joinable(folder, data);
+    |             ^^^^^^^^ use of unresolved module or unlinked crate `platform`
+    |
+    = help: you might be missing a crate named `platform`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `platform`
+   --> /app/benchmark/rust/purely_unsafe/solutions/precise_platform.rs:164:5
+    |
+164 |     platform::threading::join((*data).thread);
+    |     ^^^^^^^^ use of unresolved module or unlinked crate `platform`
+    |
+    = help: you might be missing a crate named `platform`
+
+warning: unused import: `alloc`
+ --> /app/benchmark/rust/purely_unsafe/solutions/precise_platform.rs:3:26
+  |
+3 | use std::alloc::{Layout, alloc, handle_alloc_error};
+  |                          ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/benchmark/rust/purely_unsafe/solutions/precise_platform.rs:209:1
+    |
+209 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 3 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0433`.
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/map.rs
+/app/benchmark/rust/purely_unsafe/solutions/map.rs(47,1-2): error: Function leaks heap chunks: Nodes(next, (count - 1)), alloc_block_Node(n), Node_value(n, value), Node_next(n, next)
+47 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/map.rs(47,1-2): note: Leak check.
+47 | }
+   | ^
+/app/benchmark/rust/purely_unsafe/solutions/map.rs(36,1-47,2): note: Verifying function 'map_nodes'
+36 | unsafe fn map_nodes(n: *mut Node, f: I32Func, data: *mut u8)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 | //@ req Nodes(n, ?count) &*& [_]is_I32Func(f, ?data_pred) &*& data_pred(data);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 | //@ ens Nodes(n, count) &*& data_pred(data);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | {
+   | ^
+40 |     //@ open Nodes(n, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^
+41 |     if !n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^
+42 |         let y = f(data, (*n).value);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 |         (*n).value = y;
+   | ^^^^^^^^^^^^^^^^^^^^^^^
+44 |         map_nodes((*n).next, f, data);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |     }
+   | ^^^^^
+46 |     //@ close Nodes(n, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/foreach.rs
+/opt/verifast/bin/rust/std/lib.rsspec(562,13-25): error: No matching heap chunks: thread_token(_)
+562 |     //@ req thread_token(?t) &*& *to_drop |-> ?v &*& <T>.own(t, v);
+    |             ^^^^^^^^^^^^
+/opt/verifast/bin/rust/std/lib.rsspec(562,13-25): note: Consuming assertion
+562 |     //@ req thread_token(?t) &*& *to_drop |-> ?v &*& <T>.own(t, v);
+    |             ^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/foreach.rs(60,5-6): note: Verifying call
+60 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/foreach.rs(46,5-60,6): note: Verifying function 'Stack::<T>::push'
+46 |     unsafe fn push(stack: *mut Stack<T>, value: T)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 |     //@ req Stack(stack, ?values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 |     //@ ens Stack(stack, cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |     {
+   | ^^^^^
+50 |         //@ open Stack(stack, values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 |         let n = alloc(Layout::new::<Node<T>>()) as *mut Node<T>;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 |         if n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+53 |             handle_alloc_error(Layout::new::<Node<T>>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+54 |         }
+   | ^^^^^^^^^
+55 |         (*n).next = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |         (&raw mut (*n).value).write(value);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+57 |         (*stack).head = n;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+58 |         //@ close Nodes(n, cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+59 |         //@ close Stack(stack, cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+60 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/mutexes_native.rs
+/app/benchmark/rust/purely_unsafe/solutions/mutexes_native.rs(19,1-30,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+19 | unsafe fn spawn<T>(f: unsafe fn(arg: T), arg: T)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+20 |     where T: 'static
+   | ^^^^^^^^^^^^^^^^^^^^
+21 | //@ req [_]is_Spawnee(f, ?pre) &*& pre(arg);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22 | //@ ens true;
+   | ^^^^^^^^^^^^^
+23 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+24 | {
+   | ^
+25 |     let package = Sendable { payload: arg };
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 |     std::thread::spawn(move || {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+27 |         let package_moved = package;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+28 |         f(package_moved.payload)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+29 |     });
+   | ^^^^^^^
+30 | }
+   |  ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/predctors.rs
+/opt/verifast/bin/rust/std/lib.rsspec(562,13-25): error: No matching heap chunks: thread_token(_)
+562 |     //@ req thread_token(?t) &*& *to_drop |-> ?v &*& <T>.own(t, v);
+    |             ^^^^^^^^^^^^
+/opt/verifast/bin/rust/std/lib.rsspec(562,13-25): note: Consuming assertion
+562 |     //@ req thread_token(?t) &*& *to_drop |-> ?v &*& <T>.own(t, v);
+    |             ^^^^^^^^^^^^
+/app/benchmark/rust/purely_unsafe/solutions/predctors.rs(60,5-6): note: Verifying call
+60 |     }
+   |     ^
+/app/benchmark/rust/purely_unsafe/solutions/predctors.rs(46,5-60,6): note: Verifying function 'Stack::<T>::push'
+46 |     unsafe fn push(stack: *mut Stack<T>, value: T)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 |     //@ req Stack(stack, ?values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 |     //@ ens Stack(stack, cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |     {
+   | ^^^^^
+50 |         //@ open Stack(stack, values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 |         let n = alloc(Layout::new::<Node<T>>()) as *mut Node<T>;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 |         if n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+53 |             handle_alloc_error(Layout::new::<Node<T>>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+54 |         }
+   | ^^^^^^^^^
+55 |         (*n).next = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |         (&raw mut (*n).value).write(value);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+57 |         (*stack).head = n;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+58 |         //@ close Nodes(n, cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+59 |         //@ close Stack(stack, cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+60 |     }
+   |      ^
+------------------------
+文件: /app/benchmark/rust/purely_unsafe/solutions/threads.rs
+/app/benchmark/rust/purely_unsafe/solutions/threads.rs(23,1-34,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+23 | unsafe fn spawn<A, R>(f: Spawnee<A, R>, arg: A) -> JoinHandle<Sendable<R>>
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+24 | where A: 'static, R: 'static
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+25 | //@ req [_]is_Spawnee::<A, R>(f, ?pre) &*& pre(arg, ?post);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 | //@ ens JoinHandle(result, post);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+27 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+28 | {
+   | ^
+29 |     let package = Sendable { payload: arg };
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+30 |     std::thread::spawn(move || {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 |         let package_moved = package;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+32 |         Sendable { payload: f(package_moved.payload) }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+33 |     })
+   | ^^^^^^
+34 | }
+   |  ^
+------------------------

@@ -1,0 +1,21 @@
+You are an expert in verifying Java programs using VeriFast.
+
+Task:
+Generate VeriFast specifications (predicates, contracts, invariants)
+so that the Java program can be verified WITHOUT modifying the code.
+
+Guidelines:
+- Model heap using predicates with |->.
+- For arrays, use array_slice or array_slice_deep.
+- Define explicit object invariants.
+- If a method mutates fields, update the predicate accordingly.
+- Add bounds on integer values to avoid overflow.
+- Avoid ghost variables in non-pure contexts.
+- Do NOT use forall<int>, mem(x,vs), or ==>.
+
+Output ONLY VeriFast annotations and lemmas.
+
+Java code:
+<<<CODE
+{JAVA SOURCE CODE}
+CODE>>>
