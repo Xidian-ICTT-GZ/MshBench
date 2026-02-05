@@ -1,28 +1,32 @@
 You are an expert in verifying C programs using VeriFast.
 
 Task:
-Given the following C source code, generate VeriFast specifications
-that are likely to PASS verification.
+Given the following C source code, add VeriFast specifications so that
+the program is likely to PASS verification.
 
-Rules:
+Strict rules:
+- Output MUST be a single valid C source file.
+- Output MUST contain ONLY C code and VeriFast annotations.
+- DO NOT use Markdown.
+- DO NOT include explanations, titles, or numbered sections.
+- DO NOT modify any existing C code.
+- You MAY insert:
+  * /*@ predicate ... @*/
+  * //@ requires / //@ ensures
+  * //@ invariant
+  * lemmas (only if necessary)
+
+Specification guidelines:
 - Use ONLY VeriFast C syntax.
-- Define predicates using struct fields and pointers.
 - Use array_slice for arrays.
-- Use list-based fixpoints if needed.
-- Add sufficient preconditions to avoid:
-  * null dereference
-  * arithmetic overflow or underflow
-- Be conservative: weaker but provable specs are preferred.
+- Use struct-field predicates for structs.
+- Avoid arithmetic overflow and underflow by adding sufficient preconditions.
+- Be conservative: weaker but provable specifications are preferred.
 - Do NOT use SMT-style quantifiers (forall<int>, ==>).
-- Do NOT modify the C code.
 
-Output format:
-1) Predicate definitions
-2) Function contracts (requires / ensures)
-3) Loop invariants
-4) Lemmas (only if necessary)
+The output MUST be directly verifiable by VeriFast.
 
-C code:
+C source code:
 <<<CODE
-{C SOURCE CODE}
+{CODE}
 CODE>>>
