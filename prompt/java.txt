@@ -1,0 +1,71 @@
+You are an expert in verifying Java programs using VeriFast
+    with separation logic.
+
+    Task:
+    Given the following Java source code, add VeriFast specifications so that
+    the program is likely to PASS verification.
+
+    Strict rules:
+    - Output MUST be a single valid Java source file.
+    - Output MUST contain ONLY Java code and VeriFast annotations.
+    - Do NOT use Markdown or explanations.
+    - Do NOT modify any existing Java code.
+    - You MAY insert:
+      * //@ requires
+      * //@ ensures
+      * //@ invariant
+      * /*@ predicate ... @*/
+      * lemmas (only if necessary)
+
+    Separation logic requirements (MANDATORY):
+    - All specifications must be written in VeriFast-style separation logic
+      following VeriFast Java semantics (NOT JML / OpenJML).
+    - Use `&*&` as the separating conjunction.
+    - Do NOT use `&&` or other first-order logical conjunctions.
+    - Use `||` for disjunction and `==>` for implication.
+    - Specifications MUST be expressed using conjunction, disjunction,
+      and implication only.
+    - Prefer predicates to describe heap ownership, permissions, and object
+      structure when relevant.
+    - It is allowed to combine arithmetic or value properties with separation
+      logic using `&*&`.
+    - Specifications should be as weak as possible while still sufficient
+      for verification.
+
+    GLOBAL SYNTAX RESTRICTIONS (STRICT):
+    - Conditional expressions are STRICTLY FORBIDDEN in ALL specifications,
+      WITHOUT EXCEPTION, including:
+      * method preconditions and postconditions
+      * loop invariants
+      * predicate definitions
+      * lemma preconditions, postconditions, and bodies
+    - The ternary operator `?:` MUST NOT appear anywhere in specifications.
+    - It is FORBIDDEN to encode conditional behavior using Java expression
+      syntax in any form.
+
+    Anti-cheating rules:
+    - Do NOT simulate conditional expressions using vacuous or tautological
+      disjunctions.
+    - Disjunctions MUST correspond to real, meaningful case distinctions
+      justified by program control flow or data values.
+    - Specifications must not rely on Java-only expression features
+      unsupported by VeriFast.
+
+    Semantic rules:
+    - Use `result` to refer to the return value.
+    - Preconditions must rule out undefined behavior
+      (e.g., arithmetic overflow, null dereference).
+    - Loop invariants must be strong enough to prove correctness:
+      * Do NOT use trivially true invariants (e.g., `true`) unless no stronger
+        invariant is required for verification.
+      * Loop invariants must reflect preserved properties or progress
+        of loop variables and heap state.
+    - Specifications must be acceptable to the VeriFast verifier and
+      must not rely on unsupported Java expression constructs.
+
+    The output MUST be directly verifiable by VeriFast.
+
+    Java source code:
+    <<<CODE
+    {CODE}
+    CODE>>>

@@ -1,0 +1,64 @@
+You are an expert in verifying Rust programs using VeriFast
+with separation logic.
+
+Target verifier: VeriFast (Rust frontend).
+
+Task:
+Given the following Rust source code, add formal specifications so that
+the program is likely to PASS verification with VeriFast.
+
+Strict rules:
+- Output MUST be a single valid Rust source file.
+- Output MUST contain ONLY Rust code and VeriFast specification annotations.
+- Do NOT use Markdown or explanations.
+- Do NOT modify any existing Rust code.
+- You MAY insert:
+  * #[requires(...)]
+  * #[ensures(...)]
+  * #[invariant(...)]
+  * predicates and lemmas supported by VeriFast
+
+Separation logic requirements (MANDATORY):
+- All specifications MUST be written in VeriFast separation logic.
+- Heap ownership MUST be described explicitly using predicates.
+- Pure facts MAY be combined with heap facts using separation conjunction.
+
+ANTI-CHEATING RULES (STRICT):
+- Trivial specifications are FORBIDDEN unless unavoidable:
+  * `ens true`
+  * predicates defined as `= true`
+  * invariants equivalent to true
+
+- Predicates MUST describe concrete ownership or structure.
+  Predicate bodies that do not mention heap resources are FORBIDDEN.
+
+- `assume_correct` is STRICTLY FORBIDDEN.
+
+- Type-assertion style specifications are FORBIDDEN:
+  * `*x is T`
+  * `result.is_null()`
+  * Rust boolean expressions in specs
+
+Concurrency rules:
+- Spawned threads MUST consume ownership via predicates.
+- Predicate constructors must encode real obligations, not `true`.
+- Fractional permissions must correspond to shared heap resources.
+- Mutex guards MUST be tied to ownership of protected data.
+
+Loop invariant rules:
+- Loop invariants MUST preserve heap ownership.
+- Invariants MUST mention variables modified in the loop or
+  heap resources accessed in the loop.
+
+Semantic rules:
+- Allocation yields ownership predicates.
+- Deallocation requires full ownership.
+- Raw pointer dereference requires ownership.
+- Unsafe code MUST be justified by preconditions.
+
+The output MUST be directly verifiable by VeriFast.
+
+Rust source code:
+<<<CODE
+{CODE}
+CODE>>>
