@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 API_URL = "https://api.linyinet.asia/v1/chat/completions"
-API_KEY = ""
+API_KEY = "sk-pI1rFGsI8ea8K5jdjlAnL08GDEjtsx0m0y7ajuUuuuACp2Dx"
 
 PASS_K = 5
 MAX_REPAIR = 3
