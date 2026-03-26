@@ -1,62 +1,44 @@
-You are an expert in verifying Rust programs using VeriFast
-with separation logic.
-
-Target verifier: VeriFast (Rust frontend).
+You are an expert VeriFast Rust annotator.
 
 Task:
-Given the following Rust source code, add formal specifications so that
-the program is likely to PASS verification with VeriFast.
+Given one Rust source file, add only VeriFast annotations so verification is as likely as possible to pass.
 
-Strict rules:
-- Output MUST be a single valid Rust source file.
-- Output MUST contain ONLY Rust code and VeriFast specification annotations.
-- Do NOT use Markdown or explanations.
-- Do NOT modify any existing Rust code.
-- You MAY insert:
-  * #[requires(...)]
-  * #[ensures(...)]
-  * #[invariant(...)]
-  * predicates and lemmas supported by VeriFast
+Output format (strict):
+- Output exactly one complete Rust source file.
+- Output only code (no Markdown, no prose).
+- Keep all original Rust code unchanged.
+- Do not rename functions, types, fields, variables, modules, imports, or macros.
+- Do not add/remove runtime Rust code.
+- You may only add/edit VeriFast annotations and ghost declarations.
 
-Separation logic requirements (MANDATORY):
-- All specifications MUST be written in VeriFast separation logic.
-- Heap ownership MUST be described explicitly using predicates.
-- Pure facts MAY be combined with heap facts using separation conjunction.
+Critical preservation rule:
+- If the source contains `// verifast_options{...}`, keep it exactly in output.
 
-ANTI-CHEATING RULES (STRICT):
-- Trivial specifications are FORBIDDEN unless unavoidable:
-  * `ens true`
-  * predicates defined as `= true`
-  * invariants equivalent to true
+VeriFast Rust syntax requirements:
+- Contracts and proof commands:
+  //@ req ...;
+  //@ ens ...;
+  //@ inv ...;
+  //@ open ...;
+  //@ close ...;
+  //@ assert ...;
+- Predicates/fixpoints inside block annotation comments, using `pred` style.
+- Do NOT use attribute syntax like `#[requires(...)]` or `#[ensures(...)]`.
 
-- Predicates MUST describe concrete ownership or structure.
-  Predicate bodies that do not mention heap resources are FORBIDDEN.
+High-priority strategy (conservative and robust):
+1. Prioritize memory-safety and ownership over functional correctness.
+2. Add minimal ownership predicates only where needed for pointer dereference/update/free.
+3. Add req/ens to unsafe functions; if unsure, prefer weak valid contracts (`req true; ens true;`).
+4. Keep invariants small and branch-symmetric (open/close on every path).
+5. Reuse existing predicate names if present; avoid introducing complex new frameworks.
 
-- `assume_correct` is STRICTLY FORBIDDEN.
+Avoid these high-risk patterns:
+- Inventing unsupported constructs or uncertain library-specific predicates.
+- Overly strong arithmetic/semantic postconditions.
+- Dropping source pragmas or existing VeriFast comments.
+- Emitting explanatory text.
 
-- Type-assertion style specifications are FORBIDDEN:
-  * `*x is T`
-  * `result.is_null()`
-  * Rust boolean expressions in specs
-
-Concurrency rules:
-- Spawned threads MUST consume ownership via predicates.
-- Predicate constructors must encode real obligations, not `true`.
-- Fractional permissions must correspond to shared heap resources.
-- Mutex guards MUST be tied to ownership of protected data.
-
-Loop invariant rules:
-- Loop invariants MUST preserve heap ownership.
-- Invariants MUST mention variables modified in the loop or
-  heap resources accessed in the loop.
-
-Semantic rules:
-- Allocation yields ownership predicates.
-- Deallocation requires full ownership.
-- Raw pointer dereference requires ownership.
-- Unsafe code MUST be justified by preconditions.
-
-The output MUST be directly verifiable by VeriFast.
+The output must be directly verifiable by VeriFast.
 
 Rust source code:
 <<<CODE
