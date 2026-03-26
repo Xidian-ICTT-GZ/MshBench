@@ -1,0 +1,227 @@
+error: Rust has no ternary operator
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:23:5
+   |
+23 | /     n.is_null() ? true :
+24 | |     exists(|value: i32, next: *mut Node|
+25 | |         node(n, value, next) * nodes(next))
+   | |___________________________________________^
+   |
+help: use an `if-else` expression instead
+   |
+23 ~     if n.is_null() { true } else {
+24 |     exists(|value: i32, next: *mut Node|
+25 ~         node(n, value, next) * nodes(next)) }
+   |
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:37:5
+   |
+37 |     #[requires(nodes(n))]
+   |     ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:48:5
+   |
+48 |     #[requires(nodes(n))]
+   |     ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:49:5
+   |
+49 |     #[ensures(true)]
+   |     ^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:38:5
+   |
+38 |     #[ensures(nodes(n))]
+   |     ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:115:7
+    |
+115 |     #[ensures(true)]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:107:7
+    |
+107 |     #[requires(struct i32(data as *mut i32))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:108:7
+    |
+108 |     #[ensures(true)]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:99:11
+   |
+99 |         #[requires(stack(stack))]
+   |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:100:11
+    |
+100 |         #[ensures(true)]
+    |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:93:11
+   |
+93 |         #[requires(stack(stack))]
+   |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:94:11
+   |
+94 |         #[ensures(stack(stack))]
+   |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:81:11
+   |
+81 |         #[requires(stack(stack))]
+   |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:82:11
+   |
+82 |         #[ensures(stack(stack))]
+   |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:69:11
+   |
+69 |         #[requires(stack(stack))]
+   |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:70:11
+   |
+70 |         #[ensures(stack(stack))]
+   |           ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:58:11
+   |
+58 |         #[ensures(stack(result))]
+   |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:48:7
+   |
+48 |     #[requires(nodes(n))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:49:7
+   |
+49 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:37:7
+   |
+37 |     #[requires(nodes(n))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:38:7
+   |
+38 |     #[ensures(nodes(n))]
+   |       ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:40:11
+   |
+40 |         #[invariant(nodes((*n).next))]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:28:3
+   |
+28 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:21:3
+   |
+21 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:14:3
+   |
+14 | #[predicate]
+   |   ^^^^^^^^^
+
+error[E0425]: cannot find function `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:31:5
+   |
+31 |     exists(|head: *mut Node|
+   |     ^^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 1 + use std::fs::exists;
+   |
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0308]: mismatched types
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:16:48
+   |
+16 |     struct Node { next: *mut Node, value: i32 }(n) &&
+   |                                                ^^^ expected `bool`, found `*mut Node`
+   |
+   = note:     expected type `bool`
+           found raw pointer `*mut Node`
+
+error[E0308]: mismatched types
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:30:37
+   |
+30 |     struct Stack { head: *mut Node }(s) &&
+   |                                     ^^^ expected `bool`, found `*mut Stack`
+   |
+   = note:     expected type `bool`
+           found raw pointer `*mut Stack`
+
+warning: function cannot return without recursing
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/map.rs:136:1
+    |
+136 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 28 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0308, E0425, E0658.
+For more information about an error, try `rustc --explain E0308`.

@@ -1,0 +1,155 @@
+{
+  "timestamp": "2026-03-23T03:20:42.383655",
+  "root": "/app/ground_true",
+  "data": {
+    "rust": {
+      "Tree": {
+        "files": 6,
+        "total_lines": 984,
+        "code_lines": 647,
+        "spec_lines": 197,
+        "avg_file_lines": 164,
+        "spec_ratio": 20.02
+      },
+      "other": {
+        "files": 3,
+        "total_lines": 248,
+        "code_lines": 162,
+        "spec_lines": 76,
+        "avg_file_lines": 82,
+        "spec_ratio": 30.65
+      },
+      "Struct": {
+        "files": 14,
+        "total_lines": 1232,
+        "code_lines": 764,
+        "spec_lines": 303,
+        "avg_file_lines": 88,
+        "spec_ratio": 24.59
+      },
+      "Arrays": {
+        "files": 4,
+        "total_lines": 340,
+        "code_lines": 209,
+        "spec_lines": 91,
+        "avg_file_lines": 85,
+        "spec_ratio": 26.76
+      },
+      "Stack": {
+        "files": 22,
+        "total_lines": 2642,
+        "code_lines": 1694,
+        "spec_lines": 660,
+        "avg_file_lines": 120,
+        "spec_ratio": 24.98
+      }
+    },
+    "java": {
+      "Tree": {
+        "files": 2,
+        "total_lines": 3375,
+        "code_lines": 2390,
+        "spec_lines": 573,
+        "avg_file_lines": 1687,
+        "spec_ratio": 16.98
+      },
+      "Other": {
+        "files": 28,
+        "total_lines": 1513,
+        "code_lines": 849,
+        "spec_lines": 401,
+        "avg_file_lines": 54,
+        "spec_ratio": 26.5
+      },
+      "Arrays": {
+        "files": 17,
+        "total_lines": 1599,
+        "code_lines": 1104,
+        "spec_lines": 290,
+        "avg_file_lines": 94,
+        "spec_ratio": 18.14
+      },
+      "Arithmetic": {
+        "files": 13,
+        "total_lines": 248,
+        "code_lines": 165,
+        "spec_lines": 63,
+        "avg_file_lines": 19,
+        "spec_ratio": 25.4
+      },
+      "Linklist": {
+        "files": 4,
+        "total_lines": 286,
+        "code_lines": 172,
+        "spec_lines": 68,
+        "avg_file_lines": 71,
+        "spec_ratio": 23.78
+      },
+      "Stack": {
+        "files": 2,
+        "total_lines": 151,
+        "code_lines": 88,
+        "spec_lines": 37,
+        "avg_file_lines": 75,
+        "spec_ratio": 24.5
+      }
+    },
+    "c": {
+      "tree": {
+        "files": 4,
+        "total_lines": 1957,
+        "code_lines": 1616,
+        "spec_lines": 226,
+        "avg_file_lines": 489,
+        "spec_ratio": 11.55
+      },
+      "Struct": {
+        "files": 10,
+        "total_lines": 1047,
+        "code_lines": 695,
+        "spec_lines": 221,
+        "avg_file_lines": 104,
+        "spec_ratio": 21.11
+      },
+      "Arrays": {
+        "files": 4,
+        "total_lines": 434,
+        "code_lines": 269,
+        "spec_lines": 111,
+        "avg_file_lines": 108,
+        "spec_ratio": 25.58
+      },
+      "Arithmetic": {
+        "files": 10,
+        "total_lines": 187,
+        "code_lines": 119,
+        "spec_lines": 50,
+        "avg_file_lines": 18,
+        "spec_ratio": 26.74
+      },
+      "Linklist": {
+        "files": 9,
+        "total_lines": 1966,
+        "code_lines": 1282,
+        "spec_lines": 475,
+        "avg_file_lines": 218,
+        "spec_ratio": 24.16
+      },
+      "Stack": {
+        "files": 2,
+        "total_lines": 233,
+        "code_lines": 151,
+        "spec_lines": 59,
+        "avg_file_lines": 116,
+        "spec_ratio": 25.32
+      }
+    }
+  },
+  "summary": {
+    "total_files": 154,
+    "total_lines": 18442,
+    "total_code_lines": 12376,
+    "total_spec_lines": 3901,
+    "overall_spec_ratio": 21.15
+  }
+}

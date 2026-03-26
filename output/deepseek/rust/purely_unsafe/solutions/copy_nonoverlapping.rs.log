@@ -1,0 +1,530 @@
+error: comparison operators cannot be chained
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:6:39
+  |
+6 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)) &&
+  |                                       ^   ^^
+
+error: expected expression, found `>`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:6:45
+  |
+6 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)) &&
+  |                ----------                   ^ expected expression
+  |                |
+  |                while parsing the body of this closure
+  |
+help: you might have meant to open the body of the closure
+  |
+6 |         forall(|j: usize| { 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)}) &&
+  |                           +                                                 +
+
+error: comparison operators cannot be chained
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:7:39
+  |
+7 |         forall(|j: usize| i <= j && j < len ==> ptr.add(j)@?))
+  |                                       ^     ^^
+
+error: expected expression, found `>`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:7:47
+  |
+7 |         forall(|j: usize| i <= j && j < len ==> ptr.add(j)@?))
+  |                ----------                     ^ expected expression
+  |                |
+  |                while parsing the body of this closure
+  |
+help: you might have meant to open the body of the closure
+  |
+7 |         forall(|j: usize| { i <= j && j < len ==> ptr.add(j)@?}))
+  |                           +                                   +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:13:39
+   |
+13 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)) &&
+   |                                       ^   ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:13:45
+   |
+13 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)) &&
+   |                ----------                   ^ expected expression
+   |                |
+   |                while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+13 |         forall(|j: usize| { 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)}) &&
+   |                           +                                                 +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:14:39
+   |
+14 |         forall(|j: usize| i <= j && j < len ==> ptr.add(j)@?))
+   |                                       ^     ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:14:47
+   |
+14 |         forall(|j: usize| i <= j && j < len ==> ptr.add(j)@?))
+   |                ----------                     ^ expected expression
+   |                |
+   |                while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+14 |         forall(|j: usize| { i <= j && j < len ==> ptr.add(j)@?}))
+   |                           +                                   +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:19:35
+   |
+19 |     forall(|j: usize| 0 <= j && j < len ==> exists(|v: u8| ptr.add(j)@v))
+   |                                   ^     ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:19:43
+   |
+19 |     forall(|j: usize| 0 <= j && j < len ==> exists(|v: u8| ptr.add(j)@v))
+   |            ----------                     ^ expected expression
+   |            |
+   |            while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+19 |     forall(|j: usize| { 0 <= j && j < len ==> exists(|v: u8| ptr.add(j)@v)})
+   |                       +                                                   +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:24:35
+   |
+24 |     forall(|j: usize| 0 <= j && j < len ==> exists(|v: u8| ptr.add(j)@v))
+   |                                   ^     ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:24:43
+   |
+24 |     forall(|j: usize| 0 <= j && j < len ==> exists(|v: u8| ptr.add(j)@v))
+   |            ----------                     ^ expected expression
+   |            |
+   |            while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+24 |     forall(|j: usize| { 0 <= j && j < len ==> exists(|v: u8| ptr.add(j)@v)})
+   |                       +                                                   +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:63:39
+   |
+63 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: T| &arr[j]@v)) &&
+   |                                       ^   ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:63:45
+   |
+63 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: T| &arr[j]@v)) &&
+   |                ----------                   ^ expected expression
+   |                |
+   |                while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+63 |         forall(|j: usize| { 0 <= j && j < i ==> exists(|v: T| &arr[j]@v)}) &&
+   |                           +                                             +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:64:39
+   |
+64 |         forall(|j: usize| i <= j && j < N ==> &arr[j]@?))
+   |                                       ^   ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:64:45
+   |
+64 |         forall(|j: usize| i <= j && j < N ==> &arr[j]@?))
+   |                ----------                   ^ expected expression
+   |                |
+   |                while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+64 |         forall(|j: usize| { i <= j && j < N ==> &arr[j]@?}))
+   |                           +                              +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:69:35
+   |
+69 |     forall(|j: usize| 0 <= j && j < N ==> exists(|v: T| &arr[j]@v))
+   |                                   ^   ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:69:41
+   |
+69 |     forall(|j: usize| 0 <= j && j < N ==> exists(|v: T| &arr[j]@v))
+   |            ----------                   ^ expected expression
+   |            |
+   |            while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+69 |     forall(|j: usize| { 0 <= j && j < N ==> exists(|v: T| &arr[j]@v)})
+   |                       +                                             +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:76:39
+   |
+76 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)) &&
+   |                                       ^   ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:76:45
+   |
+76 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)) &&
+   |                ----------                   ^ expected expression
+   |                |
+   |                while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+76 |         forall(|j: usize| { 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)}) &&
+   |                           +                                                 +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:77:39
+   |
+77 |         forall(|j: usize| i <= j && j < layout.size() ==> ptr.add(j)@?))
+   |                                       ^               ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:77:57
+   |
+77 |         forall(|j: usize| i <= j && j < layout.size() ==> ptr.add(j)@?))
+   |                ----------                               ^ expected expression
+   |                |
+   |                while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+77 |         forall(|j: usize| { i <= j && j < layout.size() ==> ptr.add(j)@?}))
+   |                           +                                             +
+
+error: comparison operators cannot be chained
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:83:35
+   |
+83 |     forall(|j: usize| 0 <= j && j < layout.size() ==> exists(|v: u8| ptr.add(j)@v))
+   |                                   ^               ^^
+
+error: expected expression, found `>`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:83:53
+   |
+83 |     forall(|j: usize| 0 <= j && j < layout.size() ==> exists(|v: u8| ptr.add(j)@v))
+   |            ----------                               ^ expected expression
+   |            |
+   |            while parsing the body of this closure
+   |
+help: you might have meant to open the body of the closure
+   |
+83 |     forall(|j: usize| { 0 <= j && j < layout.size() ==> exists(|v: u8| ptr.add(j)@v)})
+   |                       +                                                             +
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:92:9
+   |
+92 | /         #[invariant(
+93 | |             if buffer2.is_null() {
+94 | |                 true
+95 | |             } else {
+...  |
+98 | |         )]
+   | |__________^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:42:5
+   |
+42 | /     #[invariant(
+43 | |         i <= count &&
+44 | |         full_u8_slice(src, count) &&
+45 | |         u8_slice_mut(dst, count) &&
+...  |
+48 | |         forall(|j: usize| i <= j && j < count ==> dst.add(j)@?)
+49 | |     )]
+   | |______^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:110:11
+    |
+110 |         #[invariant(full_alloc_owned(buffer2, layout))]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:107:11
+    |
+107 |         #[invariant(full_alloc_owned(buffer2, layout))]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:103:11
+    |
+103 |         #[invariant(full_array_owned(&buffer1))]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:104:11
+    |
+104 |         #[invariant(alloc_owned(buffer2, layout))]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:92:11
+   |
+92 |         #[invariant(
+   |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:89:11
+   |
+89 |         #[invariant(full_array_owned(&buffer1))]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:80:3
+   |
+80 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:72:3
+   |
+72 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:67:3
+   |
+67 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:60:3
+   |
+60 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:27:3
+   |
+27 | #[requires(
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:34:3
+   |
+34 | #[ensures(
+   |   ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:42:7
+   |
+42 |     #[invariant(
+   |       ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:22:3
+   |
+22 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:17:3
+   |
+17 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:10:3
+   |
+10 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:3:3
+  |
+3 | #[predicate]
+  |   ^^^^^^^^^
+
+error[E0425]: cannot find function `exists` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:5:5
+  |
+5 |     exists(|i: usize| 0 <= i && i <= len && 
+  |     ^^^^^^ not found in this scope
+  |
+help: consider importing this function
+  |
+1 + use std::fs::exists;
+  |
+
+error[E0425]: cannot find function `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:12:5
+   |
+12 |     exists(|i: usize| 0 <= i && i <= len && 
+   |     ^^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 1 + use std::fs::exists;
+   |
+
+error[E0425]: cannot find value `N` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:61:29
+   |
+61 | fn array_owned<T>(arr: &[T; N]) -> bool {
+   |                             ^ not found in this scope
+   |
+help: you might be missing a const parameter
+   |
+61 | fn array_owned<T, const N: /* Type */>(arr: &[T; N]) -> bool {
+   |                 +++++++++++++++++++++
+
+error[E0425]: cannot find function `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:62:5
+   |
+62 |     exists(|i: usize| 0 <= i && i <= N &&
+   |     ^^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 1 + use std::fs::exists;
+   |
+
+error[E0425]: cannot find value `N` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:62:38
+   |
+62 |     exists(|i: usize| 0 <= i && i <= N &&
+   |                                      ^
+   |
+help: a local variable with a similar name exists
+   |
+62 -     exists(|i: usize| 0 <= i && i <= N &&
+62 +     exists(|i: usize| 0 <= i && i <= i &&
+   |
+help: you might be missing a const parameter
+   |
+61 | fn array_owned<T, const N: /* Type */>(arr: &[T; N]) -> bool {
+   |                 +++++++++++++++++++++
+
+error[E0425]: cannot find value `N` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:68:34
+   |
+68 | fn full_array_owned<T>(arr: &[T; N]) -> bool {
+   |                                  ^ not found in this scope
+   |
+help: you might be missing a const parameter
+   |
+68 | fn full_array_owned<T, const N: /* Type */>(arr: &[T; N]) -> bool {
+   |                      +++++++++++++++++++++
+
+error[E0425]: cannot find function `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:75:5
+   |
+75 |     exists(|i: usize| 0 <= i && i <= layout.size() &&
+   |     ^^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 1 + use std::fs::exists;
+   |
+
+error[E0425]: cannot find function `forall` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:6:9
+  |
+6 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)) &&
+  |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:7:9
+  |
+7 |         forall(|j: usize| i <= j && j < len ==> ptr.add(j)@?))
+  |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:13:9
+   |
+13 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)) &&
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:14:9
+   |
+14 |         forall(|j: usize| i <= j && j < len ==> ptr.add(j)@?))
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:19:5
+   |
+19 |     forall(|j: usize| 0 <= j && j < len ==> exists(|v: u8| ptr.add(j)@v))
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:24:5
+   |
+24 |     forall(|j: usize| 0 <= j && j < len ==> exists(|v: u8| ptr.add(j)@v))
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:63:9
+   |
+63 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: T| &arr[j]@v)) &&
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:64:9
+   |
+64 |         forall(|j: usize| i <= j && j < N ==> &arr[j]@?))
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:69:5
+   |
+69 |     forall(|j: usize| 0 <= j && j < N ==> exists(|v: T| &arr[j]@v))
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:76:9
+   |
+76 |         forall(|j: usize| 0 <= j && j < i ==> exists(|v: u8| ptr.add(j)@v)) &&
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:77:9
+   |
+77 |         forall(|j: usize| i <= j && j < layout.size() ==> ptr.add(j)@?))
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `forall` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:83:5
+   |
+83 |     forall(|j: usize| 0 <= j && j < layout.size() ==> exists(|v: u8| ptr.add(j)@v))
+   |     ^^^^^^ not found in this scope
+
+warning: function cannot return without recursing
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:116:1
+    |
+116 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 62 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0425, E0658.
+For more information about an error, try `rustc --explain E0425`.

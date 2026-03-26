@@ -1,0 +1,47 @@
+#[pred]
+struct StackNode {
+    next: *mut StackNode,
+}
+
+#[pred]
+struct Stack {
+    head: *mut StackNode,
+}
+
+#[pred]
+fn stack_node_list(p: *mut StackNode, len: int) {
+    (p == 0 && len == 0) ||
+    (p != 0 && pts_to(p, StackNode { next: ?q }) &*& stack_node_list(q, ?m) &*& len == m + 1)
+}
+
+unsafe fn stack_get_count(stack: *mut Stack) -> i32 {
+    #[requires(
+        stack != 0 && 
+        pts_to(stack, Stack { head: ?head }) &*&
+        stack_node_list(head, ?len)
+    )]
+    #[ensures(
+        pts_to(stack, Stack { head: ?head }) &*&
+        stack_node_list(head, len) &*&
+        result as int == len
+    )]
+    let mut n = (*stack).head;
+    let mut i = 0;
+    loop {
+        #[invariant(
+            pts_to(stack, Stack { head: ?head }) &*&
+            stack_node_list(head, len) &*&
+
+            // n is current pointer into list starting at head
+            // i counted elements so far, remainder length
+            (n != 0 ? pts_to(n, StackNode { next: ?next }) &*& stack_node_list(next, ?remaining) &*& i + remaining == len : i == len)
+        )]
+        if n.is_null() {
+            break;
+        }
+        n = (*n).next;
+        i += 1;
+    }
+
+    i
+}

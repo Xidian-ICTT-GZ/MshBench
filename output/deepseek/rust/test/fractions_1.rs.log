@@ -1,0 +1,149 @@
+error: expected expression, found `@`
+  --> /app/output/deepseek/rust/test/fractions_1.rs:50:42
+   |
+50 |         let tree_frac1 = Tree::tree_frac(@tree, 22, 1/2);
+   |                                          ^ expected expression
+
+error: expected expression, found `@`
+  --> /app/output/deepseek/rust/test/fractions_1.rs:51:42
+   |
+51 |         let tree_frac2 = Tree::tree_frac(@tree, 22, 1/2);
+   |                                          ^ expected expression
+
+error: cannot find macro `proof_assert` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:48:9
+   |
+48 |         proof_assert! { Tree::tree_own(@tree, 22) };
+   |         ^^^^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:39:3
+   |
+39 | #[requires(true)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:40:3
+   |
+40 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:31:7
+   |
+31 |     #[requires(tree_frac(@tree, v, 1/2))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:32:7
+   |
+32 |     #[ensures(tree_frac(@tree, v, 1/2))]
+   |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:33:7
+   |
+33 |     #[ensures(result == v + 2)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:24:7
+   |
+24 |     #[requires(tree_frac(@tree, v, 1/2))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:25:7
+   |
+25 |     #[ensures(tree_frac(@tree, v, 1/2))]
+   |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:26:7
+   |
+26 |     #[ensures(result == v + 1)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:18:7
+   |
+18 |     #[requires(tree_own(@tree, v))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:19:7
+   |
+19 |     #[ensures(tree_own(@result, v))]
+   |       ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:13:7
+   |
+13 |     #[predicate]
+   |       ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+ --> /app/output/deepseek/rust/test/fractions_1.rs:8:7
+  |
+8 |     #[predicate]
+  |       ^^^^^^^^^
+
+error[E0412]: cannot find type `rational` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:14:46
+   |
+14 |     fn tree_frac(self: *mut Tree, v: u64, f: rational) -> bool {
+   |                                              ^^^^^^^^ not found in this scope
+
+error[E0658]: `*mut Tree` cannot be used as the type of `self` without the `arbitrary_self_types_pointers` feature
+ --> /app/output/deepseek/rust/test/fractions_1.rs:9:23
+  |
+9 |     fn tree_own(self: *mut Tree, v: u64) -> bool {
+  |                       ^^^^^^^^^
+  |
+  = note: see issue #44874 <https://github.com/rust-lang/rust/issues/44874> for more information
+  = help: add `#![feature(arbitrary_self_types_pointers)]` to the crate attributes to enable
+  = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+  = help: consider changing to `self`, `&self`, `&mut self`, or a type implementing `Receiver` such as `self: Box<Self>`, `self: Rc<Self>`, or `self: Arc<Self>`
+
+error[E0658]: `*mut Tree` cannot be used as the type of `self` without the `arbitrary_self_types_pointers` feature
+  --> /app/output/deepseek/rust/test/fractions_1.rs:14:24
+   |
+14 |     fn tree_frac(self: *mut Tree, v: u64, f: rational) -> bool {
+   |                        ^^^^^^^^^
+   |
+   = note: see issue #44874 <https://github.com/rust-lang/rust/issues/44874> for more information
+   = help: add `#![feature(arbitrary_self_types_pointers)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+   = help: consider changing to `self`, `&self`, `&mut self`, or a type implementing `Receiver` such as `self: Box<Self>`, `self: Rc<Self>`, or `self: Arc<Self>`
+
+error[E0425]: cannot find function `points_to` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:10:9
+   |
+10 |         points_to(self, 1, Tree { value: v })
+   |         ^^^^^^^^^----------------------------
+   |         |
+   |         help: try calling `points_to` as a method: `self.points_to(1, Tree { value: v })`
+
+error[E0425]: cannot find function `points_to` in this scope
+  --> /app/output/deepseek/rust/test/fractions_1.rs:15:9
+   |
+15 |         points_to(self, f, Tree { value: v })
+   |         ^^^^^^^^^----------------------------
+   |         |
+   |         help: try calling `points_to` as a method: `self.points_to(f, Tree { value: v })`
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/test/fractions_1.rs:70:1
+   |
+70 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 20 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0412, E0425, E0658.
+For more information about an error, try `rustc --explain E0412`.

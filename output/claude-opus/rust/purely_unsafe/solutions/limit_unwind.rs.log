@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `Account_own`
+ --> /app/output/claude-opus/rust/purely_unsafe/solutions/limit_unwind.rs:8:6
+  |
+8 | pred Account_own(p: *mut Account; limit: i32, balance: i32) =
+  |      ^^^^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Linklist/equalsmap.c(11,59-61): error: Parse error: Parse error.
+11 | /*@ predicate map(struct node *map; list<tuple<void*,void*>> ms) =
+   |                                                           ^^

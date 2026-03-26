@@ -1,0 +1,16 @@
+Command: verifast /app/ground_true/java/java/ArraysManual.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/ArraysManual.java(70,14-16): error: Potential arithmetic overflow. (Cannot prove (n + 1) <= 2147483647.)
+70 |         xs[i]++;
+   |              ^^
+/app/ground_true/java/java/ArraysManual.java(70,14-16): note: Executing statement
+70 |         xs[i]++;
+   |              ^^
+/app/ground_true/java/java/ArraysManual.java(66,17-26): note: Verifying method 'increment'
+66 |     static void increment(int[] xs, int i)
+   |                 ^^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

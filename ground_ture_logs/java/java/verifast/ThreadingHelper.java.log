@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/verifast/ThreadingHelper.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/verifast/ThreadingHelper.java(4,19-35): error: No such type parameter, inductive datatype, class, interface, or function type: JoinableRunnable
+4 |     public static JoinableRunnable createJoinableRunnable(Runnable r) {
+  |                   ^^^^^^^^^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

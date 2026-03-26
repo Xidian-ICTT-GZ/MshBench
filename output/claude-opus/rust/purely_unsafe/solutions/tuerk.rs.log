@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `u8s`
+ --> /app/output/claude-opus/rust/purely_unsafe/solutions/tuerk.rs:3:11
+  |
+3 | predicate u8s(ptr: *mut u8, count: usize; vs: list<u8>) =
+  |           ^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

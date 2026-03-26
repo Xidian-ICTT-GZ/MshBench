@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Struct/counter_with_pred.c(20,7-15): error: Parse error: Parse error.
+20 |   //@ requires true;
+   |       ^^^^^^^^

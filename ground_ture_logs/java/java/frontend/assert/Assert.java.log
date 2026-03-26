@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/frontend/assert/Assert.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/assert/Assert.java(12,25-26): error: Parse error: Parse error.
+12 |     assert c + 4 == 'e' : "foobar";
+   |                         ^
+
+--- STDERR ---
+
+Result: FAIL

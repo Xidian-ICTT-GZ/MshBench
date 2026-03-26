@@ -1,0 +1,11 @@
+error: this file contains an unclosed delimiter
+  --> /app/output/claude-opus/rust/purely_unsafe/solutions/threads.rs:14:32
+   |
+10 | struct Sendable<T> {
+   |                    - unclosed delimiter
+...
+14 | fn VF_free<T>(_ptr: *mut T) {}
+   |                               ^
+
+error: aborting due to 1 previous error
+

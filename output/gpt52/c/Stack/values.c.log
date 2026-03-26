@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Stack/values.c(73,1-2): error: Function leaks heap chunks: node_next(h, next), node_value(h, v), malloc_block_node(h), nodes(next)
+73 | }
+   | ^
+/app/output/gpt52/c/Stack/values.c(73,1-2): note: Leak check.
+73 | }
+   | ^
+/app/output/gpt52/c/Stack/values.c(64,6-19): note: Verifying function 'stack_dispose'
+64 | void stack_dispose(struct stack *stack)
+   |      ^^^^^^^^^^^^^

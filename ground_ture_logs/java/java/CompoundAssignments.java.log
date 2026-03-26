@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/CompoundAssignments.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/CompoundAssignments.java(35,27-30): error: Should fail directives are not allowed; use the -allow_should_fail command-line option to allow them.
+35 |     this.f += consumef(); //~ should_fail
+   |                           ^^^
+
+--- STDERR ---
+
+Result: FAIL

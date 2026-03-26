@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Arrays/cp.c(20,19-21): error: Cannot prove condition. (Cannot prove !(argv0 = null_pointer).)
+20 | //@ requires argv != 0 &*& argc >= 0 &*& argv_strings(argv, argc);
+   |                   ^^
+/app/output/gpt52/c/Arrays/cp.c(20,19-21): note: Consuming expression
+20 | //@ requires argv != 0 &*& argc >= 0 &*& argv_strings(argv, argc);
+   |                   ^^
+/app/output/gpt52/c/Arrays/cp.c(19,5-9): note: Function 'main': Function type implementation check
+19 | int main(int argc, char **argv)
+   |     ^^^^

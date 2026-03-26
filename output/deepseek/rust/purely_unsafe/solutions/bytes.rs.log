@@ -1,0 +1,112 @@
+error: expected expression, found `?`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:15:31
+   |
+15 |         byte_points_to(start, ?val) && bytes_points_to(start.add(1), count - 1)
+   |                               ^ expected expression
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:65:9
+   |
+65 |         #[invariant(bytes_points_to(start, count))]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:52:9
+   |
+52 |         #[invariant(bytes_points_to(start, count))]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:61:3
+   |
+61 | #[requires(bytes_points_to(start, count))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:62:3
+   |
+62 | #[ensures(bytes_points_to(start, count))]
+   |   ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:65:11
+   |
+65 |         #[invariant(bytes_points_to(start, count))]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:47:3
+   |
+47 | #[requires(bytes_points_to(start, count))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:48:3
+   |
+48 | #[ensures(bytes_points_to(start, count))]
+   |   ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:52:11
+   |
+52 |         #[invariant(bytes_points_to(start, count))]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:40:3
+   |
+40 | #[requires(value <= 255)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:32:3
+   |
+32 | #[ensures(result <= 255)]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:20:3
+   |
+20 | #[requires(count > 0)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:21:3
+   |
+21 | #[ensures(bytes_points_to(result, count))]
+   |   ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:10:3
+   |
+10 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:4:3
+  |
+4 | #[predicate]
+  |   ^^^^^^^^^
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/bytes.rs:84:1
+   |
+84 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 15 previous errors; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0658`.

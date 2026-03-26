@@ -1,0 +1,8 @@
+error: expected one of `(`, `::`, `=`, `[`, `]`, or `{`, found `account`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/account.rs:3:8
+  |
+3 | #[pred account(p: *mut Account) = 
+  |        ^^^^^^^ expected one of `(`, `::`, `=`, `[`, `]`, or `{`
+
+error: aborting due to 1 previous error
+

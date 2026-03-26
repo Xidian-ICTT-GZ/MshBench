@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Struct/pred.c(44,24-26): error: Potential arithmetic underflow. (Cannot prove INT_MIN <= (balance + amount).)
+44 |     myAccount->balance += amount;
+   |                        ^^
+/app/output/claude-opus/c/Struct/pred.c(44,24-26): note: Executing statement
+44 |     myAccount->balance += amount;
+   |                        ^^
+/app/output/claude-opus/c/Struct/pred.c(39,6-21): note: Verifying function 'account_deposit'
+39 | void account_deposit(struct account *myAccount, int amount)
+   |      ^^^^^^^^^^^^^^^

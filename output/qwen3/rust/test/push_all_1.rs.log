@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `stack_pred`
+  --> /app/output/qwen3/rust/test/push_all_1.rs:13:11
+   |
+13 | predicate stack_pred(stack: *mut Stack, nodes: list<*mut Node>) =
+   |           ^^^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

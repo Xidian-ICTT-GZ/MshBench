@@ -1,0 +1,167 @@
+error: expected identifier, found `:`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:6:19
+  |
+6 |     exists?(_guard: MutexGuard) {
+  |                   ^ expected identifier
+
+error: expected one of `.`, `;`, `?`, `}`, or an operator, found `{`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:6:33
+  |
+6 |     exists?(_guard: MutexGuard) {
+  |                                 ^ expected one of `.`, `;`, `?`, `}`, or an operator
+
+error: expected expression, found `->`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:14:14
+   |
+14 |     counter |-> val
+   |              ^^ expected expression
+
+error: expected expression, found `->`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:19:19
+   |
+19 |     data.counter |-> cnt_val &*&
+   |                   ^^ expected expression
+
+error: expected expression, found `->`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:25:19
+   |
+25 |     data.counter |-> cnt_val &*&
+   |                   ^^ expected expression
+
+error: expected identifier, found `:`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:31:16
+   |
+31 |     exists?(arg: T) { pre(arg) }
+   |                ^ expected identifier
+
+error: expected one of `.`, `;`, `?`, `}`, or an operator, found `{`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:31:21
+   |
+31 |     exists?(arg: T) { pre(arg) }
+   |                     ^ expected one of `.`, `;`, `?`, `}`, or an operator
+
+error: cannot find attribute `pred_def` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:4:3
+  |
+4 | #[pred_def]
+  |   ^^^^^^^^
+
+error: cannot find attribute `pred_def` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:12:3
+   |
+12 | #[pred_def]
+   |   ^^^^^^^^
+
+error: cannot find attribute `pred_def` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:17:3
+   |
+17 | #[pred_def]
+   |   ^^^^^^^^
+
+error: cannot find attribute `pred_def` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:23:3
+   |
+23 | #[pred_def]
+   |   ^^^^^^^^
+
+error: cannot find attribute `pred_def` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:29:3
+   |
+29 | #[pred_def]
+   |   ^^^^^^^^
+
+error[E0412]: cannot find type `pred` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:5:39
+  |
+5 | fn mutex_pred(mutex: *mut Mutex, inv: pred) -> pred {
+  |                                       ^^^^ not found in this scope
+
+error[E0412]: cannot find type `pred` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:5:48
+  |
+5 | fn mutex_pred(mutex: *mut Mutex, inv: pred) -> pred {
+  |                                                ^^^^ not found in this scope
+
+error[E0412]: cannot find type `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:13:49
+   |
+13 | fn counter_pred(counter: *mut u32, val: i32) -> pred {
+   |                                                 ^^^^ not found in this scope
+
+error[E0412]: cannot find type `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:18:67
+   |
+18 | fn count_pulses_data_pred(data: CountPulsesData, cnt_val: i32) -> pred {
+   |                                                                   ^^^^ not found in this scope
+
+error[E0412]: cannot find type `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:24:65
+   |
+24 | fn print_count_data_pred(data: PrintCountData, cnt_val: i32) -> pred {
+   |                                                                 ^^^^ not found in this scope
+
+error[E0412]: cannot find type `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:30:47
+   |
+30 | fn spawnee_pred<T>(f: unsafe fn(arg: T), pre: pred) -> pred {
+   |                                               ^^^^ not found in this scope
+
+error[E0412]: cannot find type `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:30:56
+   |
+30 | fn spawnee_pred<T>(f: unsafe fn(arg: T), pre: pred) -> pred {
+   |                                                        ^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Sendable` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:38:19
+   |
+38 |     let package = Sendable { payload: arg };
+   |                   ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `counter` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:138:19
+    |
+138 |  PrintCountData { counter, mutex } = data;
+    |                   ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `mutex` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:138:28
+    |
+138 |  PrintCountData { counter, mutex } = data;
+    |                            ^^^^^ not found in this scope
+
+error[E0425]: cannot find value `mutex` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:143:29
+    |
+143 |         let guard = acquire(mutex);
+    |                             ^^^^^ not found in this scope
+
+error[E0425]: cannot find value `counter` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:146:20
+    |
+146 |         print_u32(*counter);
+    |                    ^^^^^^^ not found in this scope
+
+warning: unused import: `alloc`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:2:18
+  |
+2 | use std::alloc::{alloc, handle_alloc_error, Layout};
+  |                  ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/leaks.rs:186:1
+    |
+186 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 24 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0412, E0422, E0425.
+For more information about an error, try `rustc --explain E0412`.

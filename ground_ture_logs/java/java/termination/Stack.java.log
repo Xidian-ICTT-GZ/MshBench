@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/termination/Stack.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/termination/Stack.java(287,7-12): error: Interface JoinableForkee not found
+287 | final class Pusher implements JoinableForkee {
+    |       ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

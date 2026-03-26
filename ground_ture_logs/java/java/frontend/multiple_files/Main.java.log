@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/frontend/multiple_files/Main.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/multiple_files/Main.java(9,5-13): error: No such type parameter, inductive datatype, class, interface, or function type: Multiply
+9 |     Multiply mul = new Multiply();
+  |     ^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

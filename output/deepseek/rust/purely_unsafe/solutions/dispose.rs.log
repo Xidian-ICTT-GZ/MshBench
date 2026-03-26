@@ -1,0 +1,163 @@
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:33:5
+   |
+33 |     #[requires(nodes(n))]
+   |     ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:34:5
+   |
+34 |     #[ensures(true)]
+   |     ^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:88:7
+   |
+88 |     #[requires(stack(stack))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:89:7
+   |
+89 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:76:7
+   |
+76 |     #[requires(stack(stack) && !(*stack).head.is_null())]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:77:7
+   |
+77 |     #[ensures(stack(stack))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:64:7
+   |
+64 |     #[requires(stack(stack))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:65:7
+   |
+65 |     #[ensures(stack(stack))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:54:7
+   |
+54 |     #[requires(stack(stack))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:55:7
+   |
+55 |     #[ensures(result == (*stack).head.is_null())]
+   |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:43:7
+   |
+43 |     #[ensures(result != 0 && stack(result))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:33:7
+   |
+33 |     #[requires(nodes(n))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:34:7
+   |
+34 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:22:3
+   |
+22 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:12:3
+   |
+12 | #[predicate]
+   |   ^^^^^^^^^
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `ptr`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:18:9
+   |
+18 |         ptr::from_ref(node).is_some() && node.next.is_null()
+   |         ^^^ use of unresolved module or unlinked crate `ptr`
+   |
+   = help: you might be missing a crate named `ptr`
+help: a builtin type with a similar name exists
+   |
+18 -         ptr::from_ref(node).is_some() && node.next.is_null()
+18 +         str::from_ref(node).is_some() && node.next.is_null()
+   |
+help: consider importing this module
+   |
+ 1 + use std::ptr;
+   |
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `ptr`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:28:9
+   |
+28 |         ptr::from_ref(stack).is_some() && stack.head.is_null()
+   |         ^^^ use of unresolved module or unlinked crate `ptr`
+   |
+   = help: you might be missing a crate named `ptr`
+help: a builtin type with a similar name exists
+   |
+28 -         ptr::from_ref(stack).is_some() && stack.head.is_null()
+28 +         str::from_ref(stack).is_some() && stack.head.is_null()
+   |
+help: consider importing this module
+   |
+ 1 + use std::ptr;
+   |
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `head`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:57:13
+   |
+57 |         let head = (*stack).head;
+   |             ^^^^ help: if this is intentional, prefix it with an underscore: `_head`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/dispose.rs:108:1
+    |
+108 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 17 previous errors; 3 warnings emitted
+
+Some errors have detailed explanations: E0433, E0658.
+For more information about an error, try `rustc --explain E0433`.

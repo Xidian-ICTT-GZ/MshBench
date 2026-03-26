@@ -1,0 +1,3 @@
+/app/output/claude-opus/java/Arrays/Bank.java(9,9-17): error: Parse error: Parse error.
+9 |     //@ requires true;
+  |         ^^^^^^^^

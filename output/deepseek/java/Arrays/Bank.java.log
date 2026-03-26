@@ -1,0 +1,3 @@
+/app/output/deepseek/java/Arrays/Bank.java(21,205-208): error: Parse error: Parse error.
+21 |     //@ predicate Bank(int cap) = this.store |-> ?s &*& this.nelems |-> ?n &*& this.capacity |-> cap &*& s != null &*& s.length == cap &*& array_slice(s, 0, n, Account.Account) &*& array_slice(s, n, cap, any);
+   |                                                                                                                                                                                                             ^^^

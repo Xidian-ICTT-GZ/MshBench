@@ -1,0 +1,3 @@
+/app/output/gpt52/c/Struct/swap.c(12,16-19): error: The left-hand side of a points-to assertion must be a field dereference, a global variable, a pointer variable dereference or an array element expression.
+12 | //@ requires a |-> ?va &*& b |-> ?vb;
+   |                ^^^

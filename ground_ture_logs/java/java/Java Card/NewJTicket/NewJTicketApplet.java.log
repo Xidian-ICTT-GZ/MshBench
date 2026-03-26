@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/Java Card/NewJTicket/NewJTicketApplet.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Java Card/NewJTicket/NewJTicketApplet.java(175,9-29): error: No such type parameter, inductive datatype, class, interface, or function type: IEPurseServicesDebit
+175 |         IEPurseServicesDebit epurseService = 
+    |         ^^^^^^^^^^^^^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

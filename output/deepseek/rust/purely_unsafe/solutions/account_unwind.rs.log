@@ -1,0 +1,89 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:45:7
+   |
+45 |     #[requires(account_full(my_account, _balance))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:46:7
+   |
+46 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:39:7
+   |
+39 |     #[requires(account_full(my_account, old_balance))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:40:7
+   |
+40 |     #[ensures(account_full(my_account, newBalance))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:27:7
+   |
+27 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:28:7
+   |
+28 |     #[ensures(result != 0 as *mut Account)]
+   |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:29:7
+   |
+29 |     #[ensures(account_full(result, 0))]
+   |       ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:21:3
+   |
+21 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:15:3
+   |
+15 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:8:3
+  |
+8 | #[predicate]
+  |   ^^^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `account`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:22:25
+   |
+22 | fn malloc_block_account(account: *mut Account) -> bool {
+   |                         ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_account`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/account_unwind.rs:61:1
+   |
+61 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 10 previous errors; 3 warnings emitted
+

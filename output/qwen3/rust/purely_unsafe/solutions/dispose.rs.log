@@ -1,0 +1,10 @@
+error: expected one of `->`, `where`, or `{`, found `requires`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/dispose.rs:18:5
+   |
+17 | fn node_pred_dispose(n: *mut Node)
+   |                                   - expected one of `->`, `where`, or `{`
+18 |     requires
+   |     ^^^^^^^^ unexpected token
+
+error: aborting due to 1 previous error
+

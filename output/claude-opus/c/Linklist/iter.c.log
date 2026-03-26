@@ -1,0 +1,14 @@
+/app/output/claude-opus/c/Linklist/iter.c(25,42-45): error: No matching heap chunks: node_next_(n, _)
+25 |   malloc_block_node(last) &*& last->next |-> _ &*& last->value |-> _ &*&
+   |                                          ^^^
+/app/output/claude-opus/c/Linklist/iter.c(25,42-45): note: Consuming assertion
+25 |   malloc_block_node(last) &*& last->next |-> _ &*& last->value |-> _ &*&
+   |                                          ^^^
+/app/output/claude-opus/c/Linklist/iter.c(52,3-53,1): note: Executing statement
+52 |   //@ close llist(l, nil);
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^
+53 |   return l;
+   | ^
+/app/output/claude-opus/c/Linklist/iter.c(39,15-27): note: Verifying function 'create_llist'
+39 | struct llist *create_llist()
+   |               ^^^^^^^^^^^^

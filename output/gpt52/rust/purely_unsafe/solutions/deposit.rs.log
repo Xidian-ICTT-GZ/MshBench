@@ -1,0 +1,81 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:15:7
+   |
+15 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:16:7
+   |
+16 |     #[ensures(result != std::ptr::null_mut() &*& account(result, 0))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:26:7
+   |
+26 |     #[requires(account(my_account, ?bal))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:27:7
+   |
+27 |     #[ensures(account(my_account, bal) &*& result == bal)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:32:7
+   |
+32 |     #[requires(account(my_account, _))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:33:7
+   |
+33 |     #[ensures(account(my_account, new_balance))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:38:7
+   |
+38 |     #[requires(account(my_account, ?bal))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:39:7
+   |
+39 |     #[ensures(account(my_account, bal + amount))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:44:7
+   |
+44 |     #[requires(account(my_account, _))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:45:7
+   |
+45 |     #[ensures(true)]
+   |       ^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/deposit.rs:64:1
+   |
+64 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 10 previous errors; 2 warnings emitted
+

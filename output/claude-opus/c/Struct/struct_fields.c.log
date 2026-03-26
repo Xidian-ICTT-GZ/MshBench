@@ -1,0 +1,3 @@
+/app/output/claude-opus/c/Struct/struct_fields.c(49,14): error: Parse error: Parse error.
+49 |     (*puc)++;
+   |              

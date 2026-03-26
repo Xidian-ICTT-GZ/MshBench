@@ -1,0 +1,9 @@
+/app/output/deepseek/c/Arithmetic/enums.c(27,13-14): error: Potential arithmetic overflow. (Cannot prove (d + 1) <= INT_MAX.)
+27 |   return (d + 1) % 7;
+   |             ^
+/app/output/deepseek/c/Arithmetic/enums.c(27,3-9): note: Executing return statement
+27 |   return (d + 1) % 7;
+   |   ^^^^^^
+/app/output/deepseek/c/Arithmetic/enums.c(23,10-18): note: Verifying function 'next_day'
+23 | enum day next_day(enum day d)
+   |          ^^^^^^^^

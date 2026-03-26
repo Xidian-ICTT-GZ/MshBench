@@ -1,0 +1,10 @@
+error: expected one of `->`, `where`, or `{`, found `#`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/mutexes.rs:27:5
+   |
+26 | unsafe fn spawn<T: 'static>(f: unsafe fn(arg: T), arg: T)
+   |                                                          - expected one of `->`, `where`, or `{`
+27 |     #[requires(sendable_owned(Sendable { payload: arg }))]
+   |     ^ unexpected token
+
+error: aborting due to 1 previous error
+

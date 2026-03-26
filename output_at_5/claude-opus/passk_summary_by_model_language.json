@@ -1,0 +1,35 @@
+[
+  {
+    "model": "claude-opus",
+    "language": "c",
+    "files": 39,
+    "success_files": 5,
+    "pass_rate": 0.1282051282051282,
+    "avg_attempts": 4.666666666666667,
+    "early_stop_files": 5,
+    "avg_pass@1": 0.025641025641025637,
+    "avg_pass@5": 0.1282051282051282
+  },
+  {
+    "model": "claude-opus",
+    "language": "java",
+    "files": 66,
+    "success_files": 0,
+    "pass_rate": 0.0,
+    "avg_attempts": 5.0,
+    "early_stop_files": 0,
+    "avg_pass@1": 0.0,
+    "avg_pass@5": 0.0
+  },
+  {
+    "model": "claude-opus",
+    "language": "rust",
+    "files": 49,
+    "success_files": 0,
+    "pass_rate": 0.0,
+    "avg_attempts": 5.0,
+    "early_stop_files": 0,
+    "avg_pass@1": 0.0,
+    "avg_pass@5": 0.0
+  }
+]

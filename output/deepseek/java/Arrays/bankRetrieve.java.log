@@ -1,0 +1,3 @@
+/app/output/deepseek/java/Arrays/bankRetrieve.java(20,202-205): error: Parse error: Parse error.
+20 |     //@ predicate Bank(int n, int c) = store |-> ?s &*& s != null &*& s.length == c &*& capacity |-> c &*& nelems |-> n &*& 0 <= n &*& n <= c &*& array_slice(s, 0, n, Account) &*& array_slice(s, n, c, any);
+   |                                                                                                                                                                                                          ^^^

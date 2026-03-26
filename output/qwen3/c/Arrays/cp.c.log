@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Arrays/cp.c(7,13-16): error: Parse error: Parse error.
+7 |     is_open ==> f != 0 &*& valid_file_handle(f);
+  |             ^^^

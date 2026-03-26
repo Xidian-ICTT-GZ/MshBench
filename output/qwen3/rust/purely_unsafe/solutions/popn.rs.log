@@ -1,0 +1,18 @@
+error: this file contains an unclosed delimiter
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/popn.rs:69:32
+   |
+59 | fn node_pred(n: *mut Node) -> bool {
+   |                                    - unclosed delimiter
+60 |     n != 0 && exists!(next: *mut Node, value: i32, next_p: Box<NodePred> |
+   |                      - unclosed delimiter
+...
+65 |         (next == 0 ==> next_p == Box::new(NodePred { next: 0 as *mut Node, value: 0, next_p: Box::new(NodePred { next: 0 as *mut Node, value: 0, next_p: Box::n...
+   |         -                                -         - unclosed delimiter                              - another 19 unclosed delimiters begin from here
+   |         |                                |
+   |         unclosed delimiter               unclosed delimiter
+...
+69 | fn VF_free<T>(_ptr: *mut T) {}
+   |                               ^
+
+error: aborting due to 1 previous error
+

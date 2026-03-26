@@ -1,0 +1,7 @@
+# pass@k Summary by Model and Language
+
+| model | language | files | success_files | pass_rate | avg_attempts | early_stop_files | avg_pass@1 | avg_pass@5 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| gpt52 | c | 39 | 12 | 0.3077 | 4.15 | 12 | 0.0615 | 0.3077 |
+| gpt52 | java | 66 | 0 | 0.0000 | 5.00 | 0 | 0.0000 | 0.0000 |
+| gpt52 | rust | 49 | 2 | 0.0408 | 4.94 | 2 | 0.0082 | 0.0408 |

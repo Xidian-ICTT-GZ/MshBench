@@ -1,0 +1,10 @@
+Command: verifast -shared /app/ground_true/c/Arithmetic/enums.c
+Exit code: 0
+--- STDOUT ---
+0 errors found (9 statements verified)
+Linking...
+Program linked successfully.
+
+--- STDERR ---
+
+Result: PASS

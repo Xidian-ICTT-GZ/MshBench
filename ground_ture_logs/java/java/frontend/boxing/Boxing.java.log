@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/frontend/boxing/Boxing.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/boxing/Boxing.java(10,18-19): error: Type mismatch. Actual: int. Expected: class java.lang.Integer.
+10 |     Integer i1 = 5;
+   |                  ^
+
+--- STDERR ---
+
+Result: FAIL

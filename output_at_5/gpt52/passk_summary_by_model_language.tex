@@ -1,0 +1,19 @@
+% Requires: \usepackage{booktabs,graphicx}
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \setlength{\tabcolsep}{3.0pt}
+  \renewcommand{\arraystretch}{0.95}
+  \caption{pass@k Summary by Model and Language}
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{llrrrrrrr}
+    \toprule
+    Model & Lang & Files & Success & PassRate & AvgAttempts & EarlyStop & AvgPass@1 & AvgPass@5 \\
+    \midrule
+    gpt52 & c & 39 & 12 & 0.3077 & 4.15 & 12 & 0.0615 & 0.3077 \\
+     & java & 66 & 0 & 0.0000 & 5.00 & 0 & 0.0000 & 0.0000 \\
+     & rust & 49 & 2 & 0.0408 & 4.94 & 2 & 0.0082 & 0.0408 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

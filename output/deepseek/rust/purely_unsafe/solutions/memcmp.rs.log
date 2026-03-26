@@ -1,0 +1,118 @@
+error[E0658]: attributes on expressions are experimental
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:8:5
+  |
+8 |     #[invariant(i <= count)]
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+  = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+  = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:9:5
+  |
+9 |     #[invariant(ptr::valid_for(p1, count))]
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+  = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+  = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:10:5
+   |
+10 |     #[invariant(ptr::valid_for(p2, count))]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:11:5
+   |
+11 |     #[invariant(result == 0)]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:12:5
+   |
+12 |     #[invariant(forall(|j: usize| 0 <= j && j < i ==> *p1.add(j) == *p2.add(j)))]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:2:7
+  |
+2 |     #[requires(count <= isize::MAX as usize)]
+  |       ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:3:7
+  |
+3 |     #[requires(ptr::valid_for(p1, count))]
+  |       ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:4:7
+  |
+4 |     #[requires(ptr::valid_for(p2, count))]
+  |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:5:7
+  |
+5 |     #[ensures(|result| result == -1 || result == 0 || result == 1)]
+  |       ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:8:7
+  |
+8 |     #[invariant(i <= count)]
+  |       ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:9:7
+  |
+9 |     #[invariant(ptr::valid_for(p1, count))]
+  |       ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:10:7
+   |
+10 |     #[invariant(ptr::valid_for(p2, count))]
+   |       ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:11:7
+   |
+11 |     #[invariant(result == 0)]
+   |       ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:12:7
+   |
+12 |     #[invariant(forall(|j: usize| 0 <= j && j < i ==> *p1.add(j) == *p2.add(j)))]
+   |       ^^^^^^^^^
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/memcmp.rs:37:1
+   |
+37 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 14 previous errors; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0658`.

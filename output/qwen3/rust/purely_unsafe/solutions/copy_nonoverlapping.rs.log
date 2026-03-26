@@ -1,0 +1,8 @@
+error: expected one of `(`, `::`, `=`, `[`, `]`, or `{`, found `ptr_block`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:3:8
+  |
+3 | #[pred ptr_block(p: *mut u8, n: usize) = 
+  |        ^^^^^^^^^ expected one of `(`, `::`, `=`, `[`, `]`, or `{`
+
+error: aborting due to 1 previous error
+

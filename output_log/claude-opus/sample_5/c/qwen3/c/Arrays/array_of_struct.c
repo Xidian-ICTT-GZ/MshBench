@@ -1,0 +1,120 @@
+#include <stdint.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+struct student
+{
+    char name[100];
+    int age;
+};
+
+/*@ predicate student(struct student *p) =
+    p != 0 &*&
+    malloc_block_student(p, sizeof(struct student)) &*&
+    chars(&p->name[0], 100, ?name_chars) &*&
+    chars_len(name_chars) >= 0 &*& chars_len(name_chars) <= 99 &*&
+    integer(&p->age, ?age);
+@*/
+
+/*@ predicate student_array(struct student *p, int n) =
+    n >= 0 &*& p != 0 &*&
+    malloc_block_student_array(p, n * sizeof(struct student)) &*&
+    (n == 0 || (
+        forall(int i; 0 <= i && i < n;
+            student(&p[i])
+        )
+    ));
+@*/
+
+struct student *read_students(int *count)
+
+/*@ requires count != 0 &*& integer(count, 0);
+    ensures student_array(result, *count) &*& integer(count, *count);
+@*/
+{
+    //@ open integer(count, 0);
+    printf("How many students?\n");
+    scanf(" %d", count);
+
+    if (*count < 0 || SIZE_MAX / sizeof(struct student) < (size_t)*count)
+        abort();
+
+    struct student *result = malloc(*count * sizeof(struct student));
+    if (result == 0)
+        abort();
+
+    //@ assume *count >= 0;
+    //@ assume (size_t)*count <= SIZE_MAX / sizeof(struct student);
+    //@ close student_array(result, 0);
+    for (int i = 0; i < *count; i++)
+    /*@ invariant 0 <= i && i <= *count &*&
+                  student_array(result, i) &*&
+                  integer(count, *count) &*&
+                  malloc_block_student_array(result, *count * sizeof(struct student));
+    @*/
+    {
+        printf("Please enter the name of student %d:\n", i);
+        if (scanf(" %99s", &result[i].name) != 1)
+            abort();
+        printf("Please enter the age of student %d:\n", i);
+        scanf(" %d", &result[i].age);
+        //@ open student_array(result, i);
+        //@ assert chars(&result[i].name[0], 100, ?name_chars);
+        //@ assert chars_len(name_chars) >= 0 &*& chars_len(name_chars) <= 99;
+        //@ close student(&result[i]);
+        //@ close student_array(result, i+1);
+    }
+    return result;
+}
+
+struct point
+{
+    int x;
+    int y;
+};
+
+/*@ predicate point(struct point *p) =
+    p != 0 &*&
+    malloc_block_point(p, sizeof(struct point)) &*&
+    integer(&p->x, ?x) &*& integer(&p->y, ?y);
+@*/
+
+/*@ predicate point_array(struct point *p, int n) =
+    n >= 0 &*& p != 0 &*&
+    malloc_block_point_array(p, n * sizeof(struct point)) &*&
+    (n == 0 || (
+        forall(int i; 0 <= i && i < n;
+            point(&p[i])
+        )
+    ));
+@*/
+
+int main()
+/*@ requires true;
+    ensures true;
+@*/
+{
+    if (SIZE_MAX / 2 < sizeof(struct point))
+        abort();
+
+    struct point *points = malloc(2 * sizeof(struct point));
+    if (points == 0)
+        abort();
+
+    //@ close point_array(points, 0);
+    points[0].x = 10;
+    points[0].y = 20;
+    //@ close point(&points[0]);
+    //@ close point_array(points, 1);
+    points[1].x = 30;
+    points[1].y = 40;
+    //@ open point_array(points, 1);
+    //@ close point(&points[1]);
+    //@ close point_array(points, 2);
+    //@ open point_array(points, 2);
+    //@ open point(&points[0]);
+    //@ open point(&points[1]);
+
+    free((void *)points);
+    return 0;
+}

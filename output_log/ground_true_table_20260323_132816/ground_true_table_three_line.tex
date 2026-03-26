@@ -1,0 +1,40 @@
+% Requires: \usepackage{booktabs,graphicx}
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \setlength{\tabcolsep}{3.2pt}
+  \renewcommand{\arraystretch}{0.95}
+  \caption{Table: Statistics of Ground Truth Sources}
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{llrrrrr}
+    \toprule
+    Source & Data-source & Number & Avg-LoC & Avg-Spec-LoC & Max-LoC & Max-Spec-LoC \\
+    \midrule
+    C & Arithmetic & 10 & 18.7 & 6.6 & 28 & 19 \\
+     & Arrays & 4 & 108.5 & 41.2 & 214 & 63 \\
+     & Linklist & 9 & 218.4 & 116.8 & 433 & 234 \\
+     & Stack & 2 & 116.5 & 39.5 & 159 & 51 \\
+     & Struct & 10 & 104.7 & 32.1 & 271 & 106 \\
+     & tree & 4 & 489.2 & 378.2 & 911 & 804 \\
+     & All & 39 & 149.3 & 81.9 & 911 & 804 \\
+    \addlinespace[1pt]
+    Java & Arithmetic & 13 & 19.1 & 5.2 & 39 & 20 \\
+     & Arrays & 17 & 94.1 & 33.5 & 657 & 168 \\
+     & Linklist & 4 & 71.5 & 37.5 & 97 & 44 \\
+     & Other & 28 & 54.0 & 19.9 & 170 & 82 \\
+     & Stack & 2 & 75.5 & 30.0 & 76 & 33 \\
+     & Tree & 2 & 1687.5 & 499.0 & 2888 & 661 \\
+     & All & 66 & 108.7 & 36.4 & 2888 & 661 \\
+    \addlinespace[1pt]
+    Rust & Arrays & 4 & 85.0 & 35.8 & 121 & 62 \\
+     & other & 3 & 82.7 & 30.3 & 120 & 43 \\
+     & Stack & 22 & 120.1 & 49.8 & 223 & 128 \\
+     & Struct & 14 & 88.0 & 24.2 & 180 & 55 \\
+     & Tree & 6 & 164.0 & 57.8 & 210 & 79 \\
+     & All & 49 & 111.1 & 41.1 & 223 & 128 \\
+    \addlinespace[1pt]
+    All & All & 154 & 119.8 & 49.4 & 2888 & 804 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

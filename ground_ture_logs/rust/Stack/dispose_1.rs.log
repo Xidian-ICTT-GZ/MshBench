@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/rust/Stack/dispose_1.rs
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/rust/Stack/dispose_1.rs(13,13-18): error: No such predicate: Nodes
+13 |     //@ req Nodes(n, _);
+   |             ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Struct/struct_assignment.c(6,14-15): error: Parse error: Parse error.
+6 |     foo(&p->p; px.x, px.y) &*& foo(&p->q; py.x, py.y);
+  |              ^

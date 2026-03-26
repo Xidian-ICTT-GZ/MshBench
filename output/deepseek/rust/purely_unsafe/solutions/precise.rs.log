@@ -1,0 +1,396 @@
+error[E0658]: attributes on expressions are experimental
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:150:9
+    |
+150 |         #[invariant(k >= 2)]
+    |         ^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+    = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+    = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:151:9
+    |
+151 |         #[invariant(k <= n)]
+    |         ^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+    = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+    = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:236:3
+    |
+236 | #[requires(true)]
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:237:3
+    |
+237 | #[ensures(true)]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:225:7
+    |
+225 |     #[requires(tree_full(tree))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:226:7
+    |
+226 |     #[ensures(true)]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:211:7
+    |
+211 |     #[requires(tree_full(tree))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:212:7
+    |
+212 |     #[ensures(tree_full(tree))]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:197:7
+    |
+197 |     #[requires(tree_full(tree))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:198:7
+    |
+198 |     #[ensures(tree_full(tree))]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:174:7
+    |
+174 |     #[requires(depth <= 255)]
+    |       ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:175:7
+    |
+175 |     #[requires(tree_full(std::ptr::null_mut()))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:176:7
+    |
+176 |     #[ensures(tree_full(result))]
+    |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:177:7
+    |
+177 |     #[ensures(result.is_null() == (depth == 0))]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:141:3
+    |
+141 | #[requires(n <= 65535)]
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:142:3
+    |
+142 | #[ensures(true)]
+    |   ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:150:11
+    |
+150 |         #[invariant(k >= 2)]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:151:11
+    |
+151 |         #[invariant(k <= n)]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:135:3
+    |
+135 | #[requires(join_handle_points_to(h, result))]
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:136:3
+    |
+136 | #[ensures(sendable_points_to(result_sendable, result))]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:119:3
+    |
+119 | #[requires(tree_full(arg))]
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:120:3
+    |
+120 | #[ensures(join_handle_points_to(result, compute_sum_fibs(arg)))]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:109:3
+    |
+109 | #[requires(tree_full(tree))]
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:110:3
+    |
+110 | #[ensures(true)]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:95:3
+   |
+95 | #[requires(tree_full(tree))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:96:3
+   |
+96 | #[ensures(tree_full(tree))]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:81:3
+   |
+81 | #[requires(tree_full(tree))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:82:3
+   |
+82 | #[ensures(tree_full(tree))]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:59:3
+   |
+59 | #[requires(tree_full(tree))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:60:3
+   |
+60 | #[ensures(tree_full(result))]
+   |   ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:61:3
+   |
+61 | #[ensures(result.is_null() == (depth == 0))]
+   |   ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:54:3
+   |
+54 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:49:3
+   |
+49 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:44:3
+   |
+44 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:31:3
+   |
+31 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:20:3
+   |
+20 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:15:3
+   |
+15 | #[predicate]
+   |   ^^^^^^^^^
+
+error[E0412]: cannot find type `Perm` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:32:35
+   |
+32 | fn tree_fraction(t: *mut Tree, p: Perm) -> bool {
+   |                                   ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Perm` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:45:33
+   |
+45 | fn points_to<T>(ptr: *mut T, p: Perm) -> bool {
+   |                                 ^^^^ not found in this scope
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:4:13
+  |
+4 |     alloc::{alloc, dealloc, handle_alloc_error, Layout},
+  |             ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0308]: mismatched types
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:38:19
+   |
+38 |         points_to((*t).value, p) &&
+   |         --------- ^^^^^^^^^^ expected `*mut _`, found `u16`
+   |         |
+   |         arguments to this function are incorrect
+   |
+   = note: expected raw pointer `*mut _`
+                     found type `u16`
+note: function defined here
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:45:4
+   |
+45 | fn points_to<T>(ptr: *mut T, p: Perm) -> bool {
+   |    ^^^^^^^^^    -----------
+
+error[E0369]: binary operation `==` cannot be applied to type `T`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:56:15
+   |
+56 |     s.payload == val
+   |     --------- ^^ --- T
+   |     |
+   |     T
+   |
+help: consider restricting type parameter `T` with trait `PartialEq`
+   |
+55 | fn sendable_points_to<T: std::cmp::PartialEq>(s: Sendable<T>, val: T) -> bool {
+   |                        +++++++++++++++++++++
+
+error[E0433]: failed to resolve: `Self` is only available in impls, traits, and type definitions
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:66:20
+   |
+66 |         let left = Self::make(depth - 1);
+   |                    ^^^^ `Self` is only available in impls, traits, and type definitions
+
+error[E0433]: failed to resolve: `Self` is only available in impls, traits, and type definitions
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:67:21
+   |
+67 |         let right = Self::make(depth - 1);
+   |                     ^^^^ `Self` is only available in impls, traits, and type definitions
+
+error[E0433]: failed to resolve: `Self` is only available in impls, traits, and type definitions
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:87:24
+   |
+87 |         let left_sum = Self::compute_sum_fibs((*tree).left);
+   |                        ^^^^ `Self` is only available in impls, traits, and type definitions
+
+error[E0433]: failed to resolve: `Self` is only available in impls, traits, and type definitions
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:89:25
+   |
+89 |         let right_sum = Self::compute_sum_fibs((*tree).right);
+   |                         ^^^^ `Self` is only available in impls, traits, and type definitions
+
+error[E0433]: failed to resolve: `Self` is only available in impls, traits, and type definitions
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:101:28
+    |
+101 |         let left_product = Self::compute_product_fibs((*tree).left);
+    |                            ^^^^ `Self` is only available in impls, traits, and type definitions
+
+error[E0433]: failed to resolve: `Self` is only available in impls, traits, and type definitions
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:103:29
+    |
+103 |         let right_product = Self::compute_product_fibs((*tree).right);
+    |                             ^^^^ `Self` is only available in impls, traits, and type definitions
+
+error[E0433]: failed to resolve: `Self` is only available in impls, traits, and type definitions
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:113:9
+    |
+113 |         Self::dispose((*tree).left);
+    |         ^^^^ `Self` is only available in impls, traits, and type definitions
+
+error[E0433]: failed to resolve: `Self` is only available in impls, traits, and type definitions
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:114:9
+    |
+114 |         Self::dispose((*tree).right);
+    |         ^^^^ `Self` is only available in impls, traits, and type definitions
+
+error[E0133]: dereference of raw pointer is unsafe and requires unsafe function or block
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:25:27
+   |
+25 |         tree_points_to(t, (*t).left, (*t).right, (*t).value) &&
+   |                           ^^^^ dereference of raw pointer
+   |
+   = note: raw pointers may be null, dangling or unaligned; they can violate aliasing rules and cause data races: all of these are undefined behavior
+
+error[E0133]: dereference of raw pointer is unsafe and requires unsafe function or block
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:25:38
+   |
+25 |         tree_points_to(t, (*t).left, (*t).right, (*t).value) &&
+   |                                      ^^^^ dereference of raw pointer
+   |
+   = note: raw pointers may be null, dangling or unaligned; they can violate aliasing rules and cause data races: all of these are undefined behavior
+
+error[E0133]: dereference of raw pointer is unsafe and requires unsafe function or block
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:25:50
+   |
+25 |         tree_points_to(t, (*t).left, (*t).right, (*t).value) &&
+   |                                                  ^^^^ dereference of raw pointer
+   |
+   = note: raw pointers may be null, dangling or unaligned; they can violate aliasing rules and cause data races: all of these are undefined behavior
+
+error[E0133]: dereference of raw pointer is unsafe and requires unsafe function or block
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:26:19
+   |
+26 |         tree_full((*t).left) &&
+   |                   ^^^^ dereference of raw pointer
+   |
+   = note: raw pointers may be null, dangling or unaligned; they can violate aliasing rules and cause data races: all of these are undefined behavior
+
+error[E0133]: dereference of raw pointer is unsafe and requires unsafe function or block
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:27:19
+   |
+27 |         tree_full((*t).right)
+   |                   ^^^^ dereference of raw pointer
+   |
+   = note: raw pointers may be null, dangling or unaligned; they can violate aliasing rules and cause data races: all of these are undefined behavior
+
+warning: unused variable: `h`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:50:29
+   |
+50 | fn join_handle_points_to<R>(h: JoinHandle<Sendable<R>>, result: R) -> bool {
+   |                             ^ help: if this is intentional, prefix it with an underscore: `_h`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `result`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:50:57
+   |
+50 | fn join_handle_points_to<R>(h: JoinHandle<Sendable<R>>, result: R) -> bool {
+   |                                                         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_result`
+
+warning: function cannot return without recursing
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/precise.rs:262:1
+    |
+262 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 54 previous errors; 4 warnings emitted
+
+Some errors have detailed explanations: E0133, E0308, E0369, E0412, E0433, E0658.
+For more information about an error, try `rustc --explain E0133`.

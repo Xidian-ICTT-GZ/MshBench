@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Struct/swap.c(12,40-43): error: Parse error: Parse error.
+12 | /*@ predicate swap_post(int *a, int *b int va, int vb) =
+   |                                        ^^^

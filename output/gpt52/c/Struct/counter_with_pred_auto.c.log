@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Struct/counter_with_pred_auto.c(35,18-19): error: Potential arithmetic overflow. (Cannot prove (v + 1) <= INT_MAX.)
+35 |   c->value = tmp + 1;
+   |                  ^
+/app/output/gpt52/c/Struct/counter_with_pred_auto.c(35,12-13): note: Executing statement
+35 |   c->value = tmp + 1;
+   |            ^
+/app/output/gpt52/c/Struct/counter_with_pred_auto.c(29,6-15): note: Verifying function 'increment'
+29 | void increment(struct Counter *c)
+   |      ^^^^^^^^^

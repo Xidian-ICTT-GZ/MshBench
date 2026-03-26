@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Varargs_desugared
+{
+  public static void addAll(List l,  Object[] xs)
+  //@ requires [?f]xs[..] |-> ?es;
+  //@ ensures [?f]xs[..] |-> es;
+    
+    
+  {
+    List temp = Arrays.asList(xs);
+    
+    l.addAll(temp);
+  }
+
+  public static void main(String[] args)
+  //@ requires true;
+  //@ ensures true;
+    
+    
+  {
+    List l = new ArrayList();
+    addAll(l, new Object[]{new Object(), new Object(), new Object()});
+  }
+}

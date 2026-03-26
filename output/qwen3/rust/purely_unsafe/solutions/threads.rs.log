@@ -1,0 +1,259 @@
+error: comparison operators cannot be chained
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:90:7
+   |
+90 |     p != std::ptr::null_mut() ==> {
+   |       ^^                      ^^
+
+error: expected expression, found `>`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:90:33
+   |
+90 |     p != std::ptr::null_mut() ==> {
+   |                                 ^ expected expression
+
+error: comparison operators cannot be chained
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:103:7
+    |
+103 |     p != std::ptr::null_mut() ==> {
+    |       ^^                      ^^
+
+error: expected expression, found `>`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:103:33
+    |
+103 |     p != std::ptr::null_mut() ==> {
+    |                                 ^ expected expression
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:61:5
+   |
+61 |     #[requires(n <= 20)] // Prevent overflow beyond reasonable bounds; actual bound can be adjusted
+   |     ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:123:9
+    |
+123 |         #[requires(depth <= 22)] // Must be bounded to avoid infinite recursion and allocation blowup
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+    = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+    = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:144:9
+    |
+144 |         #[requires(tree != std::ptr::null_mut() ==> tree_node_pred(tree, ?d, ?s))]
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+    = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+    = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:62:5
+   |
+62 |     #[ensures(fib_pred(n, result))]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:69:9
+   |
+69 |         #[invariant(k >= 2 && k <= n)]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:70:9
+   |
+70 |         #[invariant(fib_k == fib_pred_aux(k))]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:71:9
+   |
+71 |         #[invariant(fib_k_minus_1 == fib_pred_aux(k - 1))]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:124:9
+    |
+124 |         #[ensures(result != std::ptr::null_mut() ==> tree_root_pred(result, depth))]
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+    = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+    = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:145:9
+    |
+145 |         #[ensures(result == ?s)]
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+    = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+    = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:15:3
+   |
+15 | #[pred]
+   |   ^^^^
+
+error: cannot find attribute `lemma` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:20:3
+   |
+20 | #[lemma]
+   |   ^^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:40:3
+   |
+40 | #[pred]
+   |   ^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:49:3
+   |
+49 | #[pred]
+   |   ^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:54:3
+   |
+54 | #[pred]
+   |   ^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:61:7
+   |
+61 |     #[requires(n <= 20)] // Prevent overflow beyond reasonable bounds; actual bound can be adjusted
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:62:7
+   |
+62 |     #[ensures(fib_pred(n, result))]
+   |       ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:69:11
+   |
+69 |         #[invariant(k >= 2 && k <= n)]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:70:11
+   |
+70 |         #[invariant(fib_k == fib_pred_aux(k))]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:71:11
+   |
+71 |         #[invariant(fib_k_minus_1 == fib_pred_aux(k - 1))]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:87:3
+   |
+87 | #[pred]
+   |   ^^^^
+
+error: cannot find attribute `pred` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:100:3
+    |
+100 | #[pred]
+    |   ^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:123:11
+    |
+123 |         #[requires(depth <= 22)] // Must be bounded to avoid infinite recursion and allocation blowup
+    |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:124:11
+    |
+124 |         #[ensures(result != std::ptr::null_mut() ==> tree_root_pred(result, depth))]
+    |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:144:11
+    |
+144 |         #[requires(tree != std::ptr::null_mut() ==> tree_node_pred(tree, ?d, ?s))]
+    |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:145:11
+    |
+145 |         #[ensures(result == ?s)]
+    |           ^^^^^^^
+
+warning: unused import: `alloc`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:4:13
+  |
+4 |     alloc::{alloc, handle_alloc_error, Layout},
+  |             ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0425]: cannot find function `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:22:5
+   |
+22 |     requires(sendable_pred(t));
+   |     ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:23:5
+   |
+23 |     ensures(sendable_pred(t));
+   |     ^^^^^^^ not found in this scope
+
+warning: unused variable: `t`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:16:21
+   |
+16 | fn sendable_pred<T>(t: Sendable<T>) -> bool {
+   |                     ^ help: if this is intentional, prefix it with an underscore: `_t`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `h`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:41:24
+   |
+41 | fn join_handle_pred<R>(h: JoinHandle<Sendable<R>>) -> bool {
+   |                        ^ help: if this is intentional, prefix it with an underscore: `_h`
+
+warning: function cannot return without recursing
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/threads.rs:185:1
+    |
+185 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 31 previous errors; 4 warnings emitted
+
+Some errors have detailed explanations: E0425, E0658.
+For more information about an error, try `rustc --explain E0425`.

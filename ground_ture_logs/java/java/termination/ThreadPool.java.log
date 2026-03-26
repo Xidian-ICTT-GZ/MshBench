@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/termination/ThreadPool.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/termination/ThreadPool.java(100,7-12): error: Interface Forkee not found
+100 | final class ThreadPoolWorker implements Forkee {
+    |       ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

@@ -1,0 +1,10 @@
+error: expected one of `->`, `where`, or `{`, found `requires`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/mutexes_native.rs:17:5
+   |
+16 | fn mutex_pred_from_raw<T>(ptr: *mut Mutex<T>, box_val: Box<Mutex<T>>)
+   |                                                                      - expected one of `->`, `where`, or `{`
+17 |     requires
+   |     ^^^^^^^^ unexpected token
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,8 @@
+error: expected one of `!`, `(`, `+`, `::`, `:`, `<`, `==`, or `=`, found `!=`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/sum.rs:19:7
+   |
+19 |     n != 0,
+   |       ^^ expected one of 8 possible tokens
+
+error: aborting due to 1 previous error
+

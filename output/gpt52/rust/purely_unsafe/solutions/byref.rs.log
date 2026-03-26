@@ -1,0 +1,117 @@
+error: cannot find attribute `requires` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:109:3
+    |
+109 | #[requires(true)]
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:110:3
+    |
+110 | #[ensures(true)]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:101:7
+    |
+101 |     #[requires(stack(stack))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:102:7
+    |
+102 |     #[ensures(true)]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:95:7
+   |
+95 |     #[requires(stack(stack) &*& p == p)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:96:7
+   |
+96 |     #[ensures(stack(stack) &*& p == p)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:83:7
+   |
+83 |     #[requires(stack(stack) &*& std::ptr::read(stack).head != std::ptr::null_mut())]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:84:7
+   |
+84 |     #[ensures(stack(stack))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:71:7
+   |
+71 |     #[requires(stack(stack))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:72:7
+   |
+72 |     #[ensures(stack(stack))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:59:7
+   |
+59 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:60:7
+   |
+60 |     #[ensures(stack(result))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:49:3
+   |
+49 | #[requires(nodes(n))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:50:3
+   |
+50 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:33:3
+   |
+33 | #[requires(nodes_ref(n) &*& p == p)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:34:3
+   |
+34 | #[ensures(nodes_ref(n) &*& p == p)]
+   |   ^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/byref.rs:127:1
+    |
+127 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 16 previous errors; 2 warnings emitted
+

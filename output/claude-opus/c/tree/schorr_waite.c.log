@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/tree/schorr_waite.c(75,1-2): error: Function leaks heap chunks: tree(root)
+75 | }
+   | ^
+/app/output/claude-opus/c/tree/schorr_waite.c(75,1-2): note: Leak check.
+75 | }
+   | ^
+/app/output/claude-opus/c/tree/schorr_waite.c(28,6-18): note: Verifying function 'schorr_waite'
+28 | void schorr_waite(struct node *root)
+   |      ^^^^^^^^^^^^

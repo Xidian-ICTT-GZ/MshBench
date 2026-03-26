@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `Account`
+ --> /app/output/claude-opus/rust/test/account_1.rs:7:11
+  |
+7 | predicate Account(p: *mut Account; b: i32) = 
+  |           ^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

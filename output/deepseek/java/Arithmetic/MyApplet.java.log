@@ -1,0 +1,6 @@
+/app/output/deepseek/java/Arithmetic/MyApplet.java(26,18-26): error: No matching heap chunks: MyApplet#MyApplet(this, MyApplet)
+26 |     //@ requires MyApplet();
+   |                  ^^^^^^^^
+/app/output/deepseek/java/Arithmetic/MyApplet.java(26,18-26): note: Consuming assertion
+26 |     //@ requires MyApplet();
+   |                  ^^^^^^^^

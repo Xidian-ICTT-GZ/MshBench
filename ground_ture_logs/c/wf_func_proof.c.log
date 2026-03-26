@@ -1,0 +1,10 @@
+Command: verifast -shared /app/ground_true/c/wf_func_proof.c
+Exit code: 0
+--- STDOUT ---
+0 errors found (32 statements verified)
+Linking...
+Program linked successfully.
+
+--- STDERR ---
+
+Result: PASS

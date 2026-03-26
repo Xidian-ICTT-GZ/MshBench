@@ -1,0 +1,3 @@
+/app/output/deepseek/c/Arithmetic/typedef_cast.c(7,24-25): error: Type mismatch. Actual: short *. Expected: int *.
+7 |     p != 0 &*& integer(p, sizeof(my_short), ?val) &*& v == (my_short)val;
+  |                        ^

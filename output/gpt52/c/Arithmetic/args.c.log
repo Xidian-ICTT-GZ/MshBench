@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Arithmetic/args.c(8,30-32): error: Cannot prove condition. (Cannot prove 0 <= argc.)
+8 |   //@ invariant 0 <= i &*& i <= argc;
+  |                              ^^
+/app/output/gpt52/c/Arithmetic/args.c(8,30-32): note: Consuming expression
+8 |   //@ invariant 0 <= i &*& i <= argc;
+  |                              ^^
+/app/output/gpt52/c/Arithmetic/args.c(3,5-9): note: Verifying function 'main'
+3 | int main(int argc, char **argv)
+  |     ^^^^

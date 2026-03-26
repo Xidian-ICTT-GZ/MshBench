@@ -1,0 +1,3 @@
+/app/output/qwen3/java/Arrays/bankRetrieve.java(22,9-18): error: Parse error: Parse error.
+22 |     //@ invariant 0 <= nelems &*& nelems <= capacity &*&
+   |         ^^^^^^^^^

@@ -1,0 +1,17 @@
+Command: verifast /app/ground_true/java/java/AmortizedQueue.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/AmortizedQueue.java(59,22-23): error: Potential arithmetic overflow. (Cannot prove (length0 + 1) <= 2147483647.)
+59 |     //@ close linkedlist(this, vs);
+   |                      ^
+/app/ground_true/java/java/AmortizedQueue.java(59,14-15): note: Executing statement
+59 |     //@ close linkedlist(this, vs);
+   |              ^
+/app/ground_true/java/java/AmortizedQueue.java(50,21-25): note: Verifying method 'Cons'
+50 |   public LinkedList Cons(int d)
+    //@ requires linkedlist(this, ?vs);
+   |                     ^^^^
+
+--- STDERR ---
+
+Result: FAIL

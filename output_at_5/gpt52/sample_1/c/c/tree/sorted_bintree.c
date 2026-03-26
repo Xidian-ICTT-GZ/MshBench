@@ -1,0 +1,480 @@
+#include "stdlib.h"
+#include "assert.h"
+
+struct tree{
+  int value;
+  struct tree *left;
+  struct tree *right;
+};
+
+/*@
+predicate tree(struct tree *t) =
+  t == 0 ?
+    true
+  :
+    t->value |-> ?v &*& t->left |-> ?l &*& t->right |-> ?r &*& malloc_block_tree(t) &*& tree(l) &*& tree(r);
+@*/
+
+ if (a == max(r)) {} else {}
+                            if ((max(r) < a) == true) {} else {}
+			 }
+  }
+}
+lemma void contains_min(bintree r)
+  requires r!=empty &*& inorder(r)==true;
+  ensures t_contains(r,min(r))==true;
+{
+  switch(r){
+	case empty:
+	case tree(a,b,c):if(b!=empty){
+			  min_le_max(b);
+			  contains_min(b);
+                           if (a == min(r)) {} else {}
+                           if ((min(r) < a) == true) {} else {}
+			 }
+  }
+}
+lemma void max_conj_add(bintree l,int v,int x)
+  requires x < v &*& (max(l)<v||l==empty) &*& inorder(l)==true;
+  ensures max(tree_add(l,x))<v &*& inorder(l)==true;
+{
+  switch(l){
+	case empty:
+	case tree(a,b,c):if(x < a){
+                           if (b == empty) {} else {}
+			  max_conj_add(b,a,x);
+			 }
+			 if(a < x){
+                           if (c == empty) {} else {}
+			  max_conj_add(c,v,x);
+			 }
+                          if ((x < a) == true) {} else { if (x == a) {} else {} }
+                          if (c == empty) {} else {}
+                          if (x == a) {} else {}
+                          if (tree_add(c, x) == empty) {} else {}
+  }
+}
+lemma void min_conj_add(bintree r,int v,int x)
+  requires v < x &*& (v < min(r)||r==empty) &*& inorder(r)==true;
+  ensures v < min(tree_add(r,x)) &*& inorder(r)==true;
+{
+  switch(r){
+	case empty:
+	case tree(a,b,c):if(a < x){
+			  min_conj_add(c,a,x);
+			 }
+			 if(x < a){
+			  min_conj_add(b,v,x);
+			 }
+  }
+}
+lemma void max_conj_rem(bintree l,int v,int x)
+  requires x < v &*& (max(l)<v||l==empty) &*& inorder(l)==true;
+  ensures (max(tree_rem(l,x))<v||tree_rem(l,x)==empty) &*& inorder(l)==true;
+{
+  switch(l){
+	case empty:
+	case tree(a,b,c):if(x < a){
+			  max_conj_rem(b,a,x);
+			 }
+			 if(a < x){
+			  max_conj_rem(c,v,x);
+			 }
+  }
+}
+
+lemma void tree_add_inorder(bintree b, int x)
+    requires inorder(b)==true &*& t_contains(b,x)==false;
+    ensures inorder(tree_add(b,x))==true &*& t_contains(tree_add(b,x),x)==true;
+{
+    switch (b) {
+        case empty:
+        case tree(v,l,r):if(x < v){
+			  max_conj_add(l,v,x);
+			  tree_add_inorder(l,x);
+			 }
+			 if(v < x){
+			  min_conj_add(r,v,x);
+			  tree_add_inorder(r,x);
+		  	 }
+    }
+}
+lemma void min_all(bintree r,int x)
+  requires t_contains(r,x)==true &*& inorder(r)==true;
+  ensures min(r)<=x;
+{
+  switch(r){
+	case empty:
+	case tree(a,b,c):if(b!=empty){
+			   contains_max(b);
+			   min_all(b,max(b));
+			 }
+			 if(t_contains(b,x)){
+			   min_all(b,x);
+			 }
+  }
+}
+lemma void max_all(bintree r,int x)
+  requires inorder(r)==true &*& t_contains(r,x)==true &*& x!=max(r);
+  ensures x < max(r);
+{
+  switch(r){
+	case empty:
+	case tree(a,b,c):if(c!=empty){
+			   contains_min(c);
+			   min_le_max(c);
+			 }
+			 if(t_contains(c,x)){
+			   max_all(c,x);
+			 }
+  }
+}
+lemma void min_conj_rem(bintree r,int v,int x)
+  requires v < x &*& (v < min(r)||r==empty) &*& inorder(r)==true;
+  ensures (v < min(tree_rem(r,x))||tree_rem(r,x)==empty) &*& inorder(r)==true;
+{
+  switch(r){
+	case empty:
+	case tree(a,b,c):if(a < x){
+			  min_conj_rem(c,a,x);
+			 }
+			 if(x < a){
+			  min_conj_rem(b,v,x);
+			 }
+			 if(b!=empty&&c!=empty){
+			  contains_max(b);
+			  min_all(b,max(b));
+			  min_conj_rem(b,v,max(b));
+			 }
+  }
+}
+lemma void contains_rem_max(bintree b)
+  requires inorder(b)==true &*& b!=empty &*& tree_rem(b,max(b))!=empty &*& inorder(tree_rem(b,max(b)))==true;
+  ensures t_contains(b,max(tree_rem(b,max(b))))==true;
+{
+  switch (b) {
+        case empty:
+        case tree(v,l,r):if(l==empty||r!=empty){
+			   if(tree_rem(r,max(r))==empty){
+			     min_le_max(r);
+		  	     contains_max(tree_rem(b,max(b)));
+			   }else{
+			     min_le_max(r);
+			     if(v!=max(tree_rem(b,max(b)))){
+			       max_all(tree_rem(b,max(b)),v);
+			     }
+			     contains_rem_max(r);
+			   }
+			 }else{
+			   contains_max(tree_rem(b,max(b)));
+			 }
+  }
+}
+lemma void tree_rem_inorder(bintree b, int x)
+    requires inorder(b)==true &*& t_contains(b,x)==true;
+    ensures inorder(tree_rem(b,x))==true&*& t_contains(tree_rem(b,x),x)==false;
+{
+    switch (b) {
+        case empty:
+        case tree(v,l,r):if(x < v){
+			  max_conj_rem(l,v,x);
+			  tree_rem_inorder(l,x);
+			 }
+		  	 if(v < x){
+			  min_conj_rem(r,v,x);
+			  tree_rem_inorder(r,x);
+			 }
+			 if(x==v){
+				if(l==empty && r!=empty){
+					if(t_contains(r,x)==false){
+					  contains_min(r);
+					}else{
+					  min_all(r,x);
+					}
+				}if(r==empty&&l!=empty){
+					if(t_contains(l,x)==false){
+					  contains_min(l);
+					}else{
+					  max_all(l,x);
+					}
+				}if(r!=empty&&l!=empty){
+				   if(tree_rem(l,max(l))!=empty){
+				     contains_max(l);
+				     tree_rem_inorder(l,max(l));
+				     contains_rem_max(l);
+				     if(max(l)!=max(tree_rem(l,max(l)))){
+				       max_all(l,max(tree_rem(l,max(l))));
+				       if(t_contains(r,x)==false){
+				         contains_min(r);
+				       }else{
+				         min_all(r,x);
+				       }
+				     }else{
+				       contains_max(tree_rem(l,max(l)));
+				     }
+				   }else{
+				     if(t_contains(r,x)==false){
+				       contains_min(r);
+				     }else{
+				       min_all(r,x);
+				     }
+				   }	
+			    }
+		  	}
+  }
+}
+@*/
+struct tree *init_tree(int x)
+  //@ requires true;
+  //@ ensures tree(result);
+{
+  struct tree *t = malloc(sizeof(struct tree));
+  if(t!=0){
+    t->value=x;
+    t->left=0;
+    t->right=0;
+    //@ close tree(0);
+    //@ close tree(0);
+    //@ close tree(t);
+    return t;
+  }else{
+	abort();
+  }
+}
+
+void free_tree(struct tree *t)
+  //@ requires tree(t);
+  //@ ensures true;
+{
+  if(t==0){
+    //@ open tree(0);
+  }else{
+    //@ open tree(t);
+    struct tree *l=t->left;
+    struct tree *r=t->right;
+    free_tree(l);
+    free_tree(r);
+    free(t);
+  }
+}
+bool contains(struct tree *t,int x)
+  //@ requires tree(t);
+  //@ ensures tree(t);
+{
+  if(t==0){
+    //@ open tree(0);
+    //@ close tree(0);
+    return false;
+  }else{
+    //@ open tree(t);
+    int v=t->value;
+    struct tree *l=t->left;
+    struct tree *r=t->right;
+    if(v==x){
+      //@ close tree(t);
+      return true;
+    }else if(x < v){
+      bool temp1=contains(l,x);
+      //@ close tree(t);
+      return temp1;
+    }else{
+      bool temp2=contains(r,x);
+      //@ close tree(t);
+      return temp2;
+    }
+  }
+}
+void add(struct tree *t, int x)
+  //@ requires tree(t);
+  //@ ensures tree(t);
+ {
+  //@ open tree(t);
+  
+  int v=t->value;
+  struct tree *l=t->left;
+  
+  
+  struct tree *r=t->right;
+  
+  
+  if(x < v){
+    if(l!=0){
+      //@ close tree(t);
+      add(l,x);
+      //@ open tree(t);
+      l = t->left;
+      r = t->right;
+      //@ close tree(t);
+      
+      
+    }else{
+      struct tree *temp=init_tree(x);
+      //@ open tree(t);
+      t->left=temp;
+      //@ close tree(t);
+      
+      
+      
+    }
+  }else{
+    if(v < x){
+      if(r!=0){
+        //@ close tree(t);
+        add(r,x);
+        //@ open tree(t);
+        l = t->left;
+        r = t->right;
+        //@ close tree(t);
+        
+        
+      }else{
+        struct tree *temp=init_tree(x);
+        //@ open tree(t);
+        t->right=temp;
+        //@ close tree(t);
+        
+        
+      }
+    }
+  }
+  //@ close tree(t);
+}
+int maximum(struct tree *t)
+  //@ requires tree(t) &*& t != 0;
+  //@ ensures tree(t);
+{
+  //@ open tree(t);
+  
+  int v=t->value;
+  struct tree *r=t->right;
+  
+  
+  if(r==0){
+    //@ close tree(t);
+    return v;
+  }else{
+    //@ close tree(t);
+    int m= maximum(r);
+    
+    //@ open tree(t);
+    //@ close tree(t);
+    return m;
+  }
+}
+struct tree* remove(struct tree *t, int x)
+  //@ requires tree(t) &*& t != 0;
+  //@ ensures tree(result);
+{
+  //@ open tree(t);
+  
+  int v=t->value;
+  struct tree *l=t->left;
+  
+  
+  struct tree *r=t->right;
+  
+  
+  
+  if(x < v){
+    if(l!=0){
+      //@ close tree(t);
+      struct tree *temp=remove(l,x);
+      //@ open tree(t);
+      t->left=temp;
+      //@ close tree(t);
+      
+      return t;
+    }
+  } else if(v < x){
+    if(r!=0){
+      //@ close tree(t);
+      struct tree *temp=remove(r,x);
+      //@ open tree(t);
+      t->right=temp;
+      //@ close tree(t);
+      
+      return t;
+    }
+  } else {
+    if (l == 0) {
+      if (r == 0) {
+        
+        //@ close tree(t);
+        free_tree(t);
+        
+        return 0;
+      } else {
+        
+        //@ open tree(r);
+        //@ close tree(r);
+        free(t);
+        return r;
+      }
+    } else {
+      if(r==0){
+        
+        //@ open tree(l);
+        //@ close tree(l);
+        free(t);
+        return l;
+      } else {
+        struct tree *temp=0;
+        //@ close tree(t);
+        int m=maximum(l);
+        //@ open tree(t);
+        t->value=m;
+        
+        //@ close tree(t);
+        temp=remove(l,m);
+        //@ open tree(t);
+        t->left=temp;
+        //@ close tree(t);
+        
+        return t;
+      }
+    }
+  }
+  //@ close tree(t);
+}
+int main() 
+  //@ requires true;
+  //@ ensures true;
+{
+  struct tree *t1=0;
+  struct tree *t2=0;
+  struct tree *t3=0;
+  bool a=false;
+  bool b=false;
+  bool c=false;
+  bool d=false;
+  bool e=false;
+  bool f=false;
+
+  t1 = init_tree(3);
+
+  b= contains(t1,2);
+  assert(!b);
+  add(t1,2);
+
+  a= contains(t1,2);
+  assert(a);
+  
+  c= contains(t1,3);
+  assert(c);
+
+  t2=remove(t1,3);
+  d= contains(t2,3);
+  assert(!d);
+  
+  add(t2,3);
+  e= contains(t2,2);
+  assert(e);
+  
+  t3=remove(t2,3);
+  f= contains(t3,3);
+  assert(!f);
+
+  free_tree(t3);
+
+  return 0;
+}

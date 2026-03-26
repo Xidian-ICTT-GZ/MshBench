@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Arrays/cp.c(7,16-17): error: Cannot prove condition. (Cannot prove 0 < argc.)
+7 | //@ requires 0 < argc &*& argv(argv, argc, _);
+  |                ^
+/app/output/claude-opus/c/Arrays/cp.c(7,16-17): note: Consuming expression
+7 | //@ requires 0 < argc &*& argv(argv, argc, _);
+  |                ^
+/app/output/claude-opus/c/Arrays/cp.c(6,5-9): note: Function 'main': Function type implementation check
+6 | int main(int argc, char **argv)
+  |     ^^^^

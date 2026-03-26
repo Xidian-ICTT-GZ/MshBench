@@ -1,0 +1,15 @@
+Command: verifast /app/ground_true/java/java/frontend/switch/Switch.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/switch/Switch.java(12,18-19): dead code
+/app/ground_true/java/java/frontend/switch/Switch.java(13,16-21): dead code
+/app/ground_true/java/java/frontend/switch/Switch.java(14,18-19): dead code
+/app/ground_true/java/java/frontend/switch/Switch.java(15,16-21): dead code
+/app/ground_true/java/java/frontend/switch/Switch.java(16,18-19): dead code
+/app/ground_true/java/java/frontend/switch/Switch.java(17,16-21): dead code
+/app/ground_true/java/java/frontend/switch/Switch.java(20,18-19): dead code
+/app/ground_true/java/java/frontend/switch/Switch.java(21,16-21): dead code
+
+--- STDERR ---
+
+Result: FAIL

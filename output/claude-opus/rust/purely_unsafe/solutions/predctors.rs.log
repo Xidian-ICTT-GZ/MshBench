@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `Node`
+  --> /app/output/claude-opus/rust/purely_unsafe/solutions/predctors.rs:12:11
+   |
+12 | predicate Node<T>(n: *mut Node<T>; next: *mut Node<T>, value: T) =
+   |           ^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

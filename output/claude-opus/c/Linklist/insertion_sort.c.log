@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Linklist/insertion_sort.c(41,7-8): error: Cannot prove compliance with C's effective types rules (Cannot prove has_type(pfirst, pointer_typeid(list_node_type_info)).)
+41 |   if (*pfirst == 0)
+   |       ^
+/app/output/claude-opus/c/Linklist/insertion_sort.c(41,3-5): note: Executing statement
+41 |   if (*pfirst == 0)
+   |   ^^
+/app/output/claude-opus/c/Linklist/insertion_sort.c(37,6-25): note: Verifying function 'insertion_sort_core'
+37 | void insertion_sort_core(struct list_node **pfirst)
+   |      ^^^^^^^^^^^^^^^^^^^

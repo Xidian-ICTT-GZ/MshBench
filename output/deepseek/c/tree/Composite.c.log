@@ -1,0 +1,9 @@
+/app/output/deepseek/c/tree/Composite.c(19,14-18): error: Cannot prove (1 + 1) == 3
+19 |   //@ assert node(mytree, 0, child, 0, 3);
+   |              ^^^^
+/app/output/deepseek/c/tree/Composite.c(19,14-18): note: Consuming assertion
+19 |   //@ assert node(mytree, 0, child, 0, 3);
+   |              ^^^^
+/app/output/deepseek/c/tree/Composite.c(6,5-9): note: Verifying function 'main'
+6 | int main()
+  |     ^^^^

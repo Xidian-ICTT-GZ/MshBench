@@ -1,0 +1,16 @@
+Command: verifast /app/ground_true/java/java/Contrib.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Contrib.java(48,22-24): error: Potential arithmetic overflow. (Cannot prove (value + 1) <= 2147483647.)
+48 |         counter.value++;
+   |                      ^^
+/app/ground_true/java/java/Contrib.java(48,22-24): note: Executing statement
+48 |         counter.value++;
+   |                      ^^
+/app/ground_true/java/java/Contrib.java(42,17-24): note: Verifying method 'runCore'
+42 |     public void runCore() throws InterruptedException /*@ ensures true; @*/
+   |                 ^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

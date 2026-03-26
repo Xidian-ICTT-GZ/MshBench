@@ -1,0 +1,3 @@
+/app/output/deepseek/c/Struct/struct_assignment.c(15,9-12): error: The left-hand side of a points-to assertion must be a field dereference, a global variable, a pointer variable dereference or an array element expression.
+15 |     f.x |-> x &*& f.y |-> y;
+   |         ^^^

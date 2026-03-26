@@ -1,0 +1,25 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/stack_tuerk_1.rs:22:3
+   |
+22 | #[requires(stack(stack, ?count))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/stack_tuerk_1.rs:23:3
+   |
+23 | #[ensures(stack(stack, count) &*& result == count)]
+   |   ^^^^^^^
+
+warning: function cannot return without recursing
+  --> /app/output/gpt52/rust/test/stack_tuerk_1.rs:57:1
+   |
+57 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 2 previous errors; 1 warning emitted
+

@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `tree_ptr`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/precise_platform.rs:4:6
+  |
+4 | pred tree_ptr(t: *mut Tree) = 
+  |      ^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

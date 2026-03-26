@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `nodes`
+  --> /app/output/claude-opus/rust/purely_unsafe/solutions/push_all.rs:12:11
+   |
+12 | predicate nodes(n: *mut Node; count: i32) =
+   |           ^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

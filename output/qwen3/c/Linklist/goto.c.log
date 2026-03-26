@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Linklist/goto.c(9,16-19): error: Parse error: Parse error.
+9 |     || (exists int v, struct node *tail;
+  |                ^^^

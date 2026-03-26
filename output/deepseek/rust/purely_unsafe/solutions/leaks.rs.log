@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `is_Spawnee`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/leaks.rs:9:16
+  |
+9 | predicate_ctor is_Spawnee<T>(f: unsafe fn(arg: T))(arg: T) = true;
+  |                ^^^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

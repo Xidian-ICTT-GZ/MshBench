@@ -1,0 +1,9 @@
+/app/output/deepseek/c/Struct/deposit.c(33,24-26): error: Potential arithmetic underflow. (Cannot prove INT_MIN <= (oldBalance + amount).)
+33 |     myAccount->balance += amount;
+   |                        ^^
+/app/output/deepseek/c/Struct/deposit.c(33,24-26): note: Executing statement
+33 |     myAccount->balance += amount;
+   |                        ^^
+/app/output/deepseek/c/Struct/deposit.c(28,6-21): note: Verifying function 'account_deposit'
+28 | void account_deposit(struct account *myAccount, int amount)
+   |      ^^^^^^^^^^^^^^^

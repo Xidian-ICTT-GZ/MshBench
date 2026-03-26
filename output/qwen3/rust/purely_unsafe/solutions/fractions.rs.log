@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `TreePred`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/fractions.rs:16:6
+   |
+16 | pred TreePred(t: *mut Tree, depth: u8, value: u16) =
+   |      ^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

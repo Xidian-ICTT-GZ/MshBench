@@ -1,0 +1,3 @@
+/app/output/claude-opus/c/Linklist/goto.c(28,5-8): error: Function prototype implementation check: Implementation must declare 'terminates' clause.
+28 | int abs(int x)
+   |     ^^^

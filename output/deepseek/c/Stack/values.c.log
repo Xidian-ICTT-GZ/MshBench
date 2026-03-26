@@ -1,0 +1,9 @@
+/app/output/deepseek/c/Stack/values.c(64,1-2): error: Function leaks heap chunks: node_next(head0, next), node_value(head0, value), malloc_block_node(head0), nodes(next)
+64 | }
+   | ^
+/app/output/deepseek/c/Stack/values.c(64,1-2): note: Leak check.
+64 | }
+   | ^
+/app/output/deepseek/c/Stack/values.c(57,6-19): note: Verifying function 'stack_dispose'
+57 | void stack_dispose(struct stack *stack)
+   |      ^^^^^^^^^^^^^

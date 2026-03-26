@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/Java Card/NewEPurse/EPurseServicesDebit.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Java Card/NewEPurse/EPurseServicesDebit.java(8,8-13): error: Interface IEPurseServicesDebit not found
+8 | public class EPurseServicesDebit implements IEPurseServicesDebit {
+  |        ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

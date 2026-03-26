@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Arrays/array_of_struct.c(17,16-19): error: Parse error: Parse error.
+17 |         forall(int i; 0 <= i && i < n;
+   |                ^^^

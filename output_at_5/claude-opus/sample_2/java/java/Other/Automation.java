@@ -1,0 +1,61 @@
+class Automation {
+  void test1() 
+  //@ requires true;
+  //@ ensures true;
+  {
+  }
+  
+  void test2()
+  //@ requires true;
+  //@ ensures true;
+  {
+  }
+}
+
+interface Cell {
+}
+
+/*@
+predicate CellImpl_inv(CellImpl c; int v) = c.value |-> v;
+@*/
+class CellImpl implements Cell {
+  int value;
+}
+
+class BackupCell extends CellImpl {
+}
+
+class BackupCellWrapper extends CellImpl {
+  boolean b;
+  int myvalue;
+}
+
+/*@
+predicate BackupCellWrapper_inv(BackupCellWrapper c; boolean bVal, int v, int myv) = 
+  c.b |-> bVal &*& c.value |-> v &*& c.myvalue |-> myv &*& CellImpl_inv(c, v);
+@*/
+class Test {
+  void test1(CellImpl c) 
+  //@ requires c != null &*& CellImpl_inv(c, _);
+  //@ ensures CellImpl_inv(c, 5);
+  {
+    // open predicate to allow field mutation
+    //@ open CellImpl_inv(c, _);
+    c.value = 5;
+    //@ close CellImpl_inv(c, 5);
+  }
+  
+  void test2(BackupCellWrapper c) 
+  //@ requires c != null &*& BackupCellWrapper_inv(c, _, _, _);
+  //@ ensures BackupCellWrapper_inv(c, c.b, (c.b ? old(c.value) : 5), (c.b ? 10 : old(c.myvalue)));
+  {
+    //@ open BackupCellWrapper_inv(c, _, _, _);
+    if(! c.b) {
+      c.value = 5;
+      //@ close BackupCellWrapper_inv(c, false, 5, _);
+    } else {
+      c.myvalue = 10;
+      //@ close BackupCellWrapper_inv(c, true, _, 10);
+    }
+  }
+}

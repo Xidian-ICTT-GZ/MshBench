@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/Iterator/Program.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Iterator/Program.java(14,9-17): error: No such type parameter, inductive datatype, class, interface, or function type: Iterator
+14 |         Iterator i = new SingletonIterator(o);
+   |         ^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

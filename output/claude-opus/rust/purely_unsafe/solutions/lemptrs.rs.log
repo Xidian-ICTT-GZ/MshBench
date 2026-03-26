@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `lines_data`
+ --> /app/output/claude-opus/rust/purely_unsafe/solutions/lemptrs.rs:1:11
+  |
+1 | predicate lines_data(p: *const *const str;) =
+  |           ^^^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

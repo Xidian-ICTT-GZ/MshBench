@@ -1,0 +1,16 @@
+Command: verifast /app/ground_true/java/java/ArrayList.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/ArrayList.java(347,46-47): error: Potential arithmetic overflow. (Cannot prove (2 * s) <= 2147483647.)
+347 |             Object[] newArray = new Object[2 * size + 1];
+    |                                              ^
+/app/ground_true/java/java/ArrayList.java(347,31-32): note: Executing statement
+347 |             Object[] newArray = new Object[2 * size + 1];
+    |                               ^
+/app/ground_true/java/java/ArrayList.java(342,13-16): note: Verifying method 'add'
+342 |     boolean add(T e)
+    |             ^^^
+
+--- STDERR ---
+
+Result: FAIL

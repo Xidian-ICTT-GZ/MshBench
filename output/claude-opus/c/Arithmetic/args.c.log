@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Arithmetic/args.c(12,16-26): error: No matching heap chunks: argv_array(argv0, argc, 0)
+12 |   //@ requires argv_array(argv, argc, 0);
+   |                ^^^^^^^^^^
+/app/output/claude-opus/c/Arithmetic/args.c(12,16-26): note: Consuming assertion
+12 |   //@ requires argv_array(argv, argc, 0);
+   |                ^^^^^^^^^^
+/app/output/claude-opus/c/Arithmetic/args.c(11,5-9): note: Function 'main': Function type implementation check
+11 | int main(int argc, char **argv)
+   |     ^^^^

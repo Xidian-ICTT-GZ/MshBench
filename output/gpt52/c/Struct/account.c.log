@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Struct/account.c(23,1-2): error: Function leaks heap chunks: malloc_block_account(myAccount)
+23 | }
+   | ^
+/app/output/gpt52/c/Struct/account.c(23,1-2): note: Leak check.
+23 | }
+   | ^
+/app/output/gpt52/c/Struct/account.c(12,17-31): note: Verifying function 'create_account'
+12 | struct account *create_account()
+   |                 ^^^^^^^^^^^^^^

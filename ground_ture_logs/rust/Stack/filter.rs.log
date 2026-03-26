@@ -1,0 +1,64 @@
+Command: verifast /app/ground_true/rust/Stack/filter.rs
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/rust/Stack/filter.rs(60,1-2): error: Function leaks heap chunks: Node_next(n, next), Node_value(n, value), alloc_block_Node(n), Nodes(next, (dummy - 1))
+60 | }
+   | ^
+/app/ground_true/rust/Stack/filter.rs(60,1-2): note: Leak check.
+60 | }
+   | ^
+/app/ground_true/rust/Stack/filter.rs(36,1-60,2): note: Verifying function 'filter_nodes'
+36 | unsafe fn filter_nodes(n: *mut Node, p: I32Predicate) -> *mut Node
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 | //@ req Nodes(n, _) &*& [_]is_I32Predicate(p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 | //@ ens Nodes(result, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | {
+   | ^
+40 |     if n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^
+41 |         std::ptr::null_mut()
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |     } else {
+   | ^^^^^^^^^^^^
+43 |         //@ open Nodes(n, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 |         let keep = p((*n).value);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |         let next;
+   | ^^^^^^^^^^^^^^^^^
+46 |         if keep {
+   | ^^^^^^^^^^^^^^^^^
+47 |             next = filter_nodes((*n).next, p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 |             //@ open Nodes(next, ?count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |             //@ close Nodes(next, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+50 |             (*n).next = next;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 |             //@ close Nodes(n, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 |             n
+   | ^^^^^^^^^^^^^
+53 |         } else {
+   | ^^^^^^^^^^^^^^^^
+54 |             next = (*n).next;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 |             dealloc(n as *mut u8, Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |             let result = filter_nodes(next, p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+57 |             result
+   | ^^^^^^^^^^^^^^^^^^
+58 |         }
+   | ^^^^^^^^^
+59 |     }
+   | ^^^^^
+60 | }
+   |  ^
+
+--- STDERR ---
+
+Result: FAIL

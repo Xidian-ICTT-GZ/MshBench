@@ -1,0 +1,91 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/fractions_1.rs:39:3
+   |
+39 | #[requires(true)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/fractions_1.rs:40:3
+   |
+40 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/fractions_1.rs:33:3
+   |
+33 | #[requires(true)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/fractions_1.rs:34:3
+   |
+34 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/fractions_1.rs:26:7
+   |
+26 |     #[requires(Tree_ptr(tree, ?v))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/fractions_1.rs:27:7
+   |
+27 |     #[ensures(Tree_ptr(tree, v) &*& result == v + 2)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/fractions_1.rs:20:7
+   |
+20 |     #[requires(Tree_ptr(tree, ?v))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/fractions_1.rs:21:7
+   |
+21 |     #[ensures(Tree_ptr(tree, v) &*& result == v + 1)]
+   |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/fractions_1.rs:15:7
+   |
+15 |     #[ensures(Tree_ptr(result, v))]
+   |       ^^^^^^^
+
+error[E0277]: `*mut Tree` cannot be sent between threads safely
+  --> /app/output/gpt52/rust/test/fractions_1.rs:47:45
+   |
+47 |           let sum_join_handle = thread::spawn(move || {
+   |                                 ------------- ^------
+   |                                 |             |
+   |  _______________________________|_____________within this `{closure@/app/output/gpt52/rust/test/fractions_1.rs:47:45: 47:52}`
+   | |                               |
+   | |                               required by a bound introduced by this call
+48 | |             crate::VeriFast_ghost_command();//@ close Tree_ptr(tree, 22);
+49 | |             Tree::compute_sum_fibs(tree)
+50 | |         });
+   | |_________^ `*mut Tree` cannot be sent between threads safely
+   |
+   = help: within `{closure@/app/output/gpt52/rust/test/fractions_1.rs:47:45: 47:52}`, the trait `std::marker::Send` is not implemented for `*mut Tree`
+note: required because it's used within this closure
+  --> /app/output/gpt52/rust/test/fractions_1.rs:47:45
+   |
+47 |         let sum_join_handle = thread::spawn(move || {
+   |                                             ^^^^^^^
+note: required by a bound in `std::thread::spawn`
+  --> /rustc/c871d09d1cc32a649f4c5177bb819646260ed120/library/std/src/thread/mod.rs:725:0
+
+warning: function cannot return without recursing
+  --> /app/output/gpt52/rust/test/fractions_1.rs:67:1
+   |
+67 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 10 previous errors; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0277`.

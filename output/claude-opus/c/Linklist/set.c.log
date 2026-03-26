@@ -1,0 +1,3 @@
+/app/output/claude-opus/c/Linklist/set.c(29,28-31): error: No such function: set
+29 | //@ ensures result == 0 || set(result);
+   |                            ^^^

@@ -1,0 +1,70 @@
+/*@
+predicate list(struct list_node* n;) =
+  n == 0 ? true : n->value |-> _ &*& n->next |-> ?next &*& list(next);
+@*/
+
+struct list_node {
+  int value;
+  struct list_node* next;
+};
+
+static int compare(struct list_node* n0, struct list_node* n1)
+//@ requires n0->value |-> ?v0 &*& n1->value |-> ?v1;
+//@ ensures n0->value |-> v0 &*& n1->value |-> v1 &*& true;
+{
+  if (n0->value < n1->value) {
+    return -1;
+  } else if (n0->value > n1->value) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+void insertion_sort_core(struct list_node** pfirst)
+//@ requires *pfirst |-> ?first &*& list(first);
+//@ ensures *pfirst |-> ?result &*& list(result);
+{
+  if (*pfirst == 0) {
+    //@ close list(0);
+    return;
+  }
+  //@ open list(first);
+  struct list_node* last_sorted = *pfirst;
+  //@ close list(last_sorted->next);
+  while (last_sorted->next != 0)
+  //@ invariant *pfirst |-> ?sorted_prefix &*& list(sorted_prefix) &*& last_sorted->next |-> ?unsorted &*& list(unsorted);
+  {
+    struct list_node** pn = pfirst;
+    //@ open list(sorted_prefix);
+    int comparison = compare(*pn, last_sorted->next);
+    //@ close list(sorted_prefix);
+    while (pn != &(last_sorted->next) && comparison < 0)
+    //@ invariant *pn |-> ?current &*& list(current);
+    {
+      pn = &((*pn)->next);
+      if (pn != &(last_sorted->next)) {
+        //@ open list(current);
+        comparison = compare(*pn, last_sorted->next);
+        //@ close list(current);
+      } else {
+      }
+    }
+    if (pn != &(last_sorted->next)) {
+      struct list_node* first_unsorted = last_sorted->next;
+      last_sorted->next = first_unsorted->next;
+      first_unsorted->next = *pn;
+      *pn = first_unsorted;
+    } else {
+      last_sorted = last_sorted->next;
+    }
+  }
+}
+
+struct list_node* insertion_sort(struct list_node* l)
+//@ requires list(l);
+//@ ensures list(result);
+{
+  insertion_sort_core(&l);
+  return l;
+}

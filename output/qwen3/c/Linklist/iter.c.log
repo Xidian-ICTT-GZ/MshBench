@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Linklist/iter.c(43,7-15): error: Parse error: Parse error.
+43 |   //@ requires true;
+   |       ^^^^^^^^

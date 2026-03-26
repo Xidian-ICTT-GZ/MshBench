@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/termination/SumFunc.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/termination/SumFunc.java(14,71-79): error: No such method or function: level_le
+14 | //@ predicate Func(Func f, list<Class> level;) = f.valid(?level0) &*& level_le(level0, level) == true;
+   |                                                                       ^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

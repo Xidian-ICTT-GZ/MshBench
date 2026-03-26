@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `ptr_byte`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/tuerk.rs:4:11
+  |
+4 | predicate ptr_byte(p: *mut u8, v: u8) {
+  |           ^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

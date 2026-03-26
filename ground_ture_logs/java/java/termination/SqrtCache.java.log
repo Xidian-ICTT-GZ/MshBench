@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/termination/SqrtCache.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/termination/SqrtCache.java(33,5-9): error: No such type parameter, inductive datatype, class, interface, or function type: Lock
+33 |     Lock sqrtCacheLock;
+   |     ^^^^
+
+--- STDERR ---
+
+Result: FAIL

@@ -1,0 +1,103 @@
+use std::alloc::{Layout, alloc, handle_alloc_error, dealloc};
+
+struct Node {
+    next: *mut Node,
+    value: i32,
+}
+
+struct Stack {
+    head: *mut Node,
+}
+
+impl Stack {
+
+    unsafe fn create() -> *mut Stack
+    //@ req true;
+    //@ ens ptr::non_null(result) &*& StackOwned(result);
+    {
+        let stack = alloc(Layout::new::<Stack>()) as *mut Stack;
+        if stack.is_null() {
+            handle_alloc_error(Layout::new::<Stack>());
+        }
+        (*stack).head = std::ptr::null_mut();
+        //@ close StackOwned(stack);
+        stack
+    }
+    
+    unsafe fn push(stack: *mut Stack, value: i32)
+    //@ req StackOwned(stack);
+    //@ ens StackOwned(stack);
+    {
+        //@ open StackOwned(stack);
+        let n = alloc(Layout::new::<Node>()) as *mut Node;
+        if n.is_null() {
+            handle_alloc_error(Layout::new::<Node>());
+        }
+        (*n).next = (*stack).head;
+        (*n).value = value;
+        (*stack).head = n;
+        //@ close NodeOwned(n, (*stack).head);
+        //@ close StackOwned(stack);
+    }
+    
+    unsafe fn pop(stack: *mut Stack) -> i32
+    //@ req StackOwned(stack);
+    //@ ens StackOwned(stack);
+    {
+        //@ open StackOwned(stack);
+        let head = (*stack).head;
+        //@ open NodeOwned(head, _);
+        let result = (*head).value;
+        (*stack).head = (*head).next;
+        dealloc(head as *mut u8, Layout::new::<Node>());
+        //@ close StackOwned(stack);
+        result
+    }
+
+    unsafe fn dispose(stack: *mut Stack)
+    //@ req StackOwned(stack);
+    //@ ens true;
+    {
+        //@ open StackOwned(stack);
+        dealloc(stack as *mut u8, Layout::new::<Stack>());
+    }
+
+}
+
+/*@
+predicate StackOwned(*mut Stack stack) =
+    alloc::ptr::malloc_block_for::<Stack>(stack) &*&
+    struct_Stack_padding(stack) &*&
+    (*stack).head |-> ?head &*&
+    head == std::ptr::null_mut() ?
+        true
+    :
+        NodeOwned(head, head);
+
+predicate NodeOwned(*mut Node node, *mut Node orig) =
+    node == orig &*&
+    alloc::ptr::malloc_block_for::<Node>(node) &*&
+    struct_Node_padding(node) &*&
+    (*node).next |-> ?next &*&
+    (*node).value |-> ?value &*&
+    next == std::ptr::null_mut() ?
+        true
+    :
+        NodeOwned(next, next);
+@*/
+
+fn main()
+//@ req true;
+//@ ens true;
+{
+    unsafe {
+        let s = Stack::create();
+        Stack::push(s, 10);
+        Stack::push(s, 20);
+        let result1 = Stack::pop(s);
+        
+        let result2 = Stack::pop(s);
+        
+        Stack::dispose(s);
+    }
+}

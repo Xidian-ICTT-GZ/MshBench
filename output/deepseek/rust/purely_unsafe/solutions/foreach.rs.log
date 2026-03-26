@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `node`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/foreach.rs:12:11
+   |
+12 | predicate node<T>(n: *mut Node<T>, v: T, next: *mut Node<T>) {
+   |           ^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

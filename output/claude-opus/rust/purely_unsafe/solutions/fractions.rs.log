@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `tree`
+  --> /app/output/claude-opus/rust/purely_unsafe/solutions/fractions.rs:15:6
+   |
+15 | pred tree(t: *mut Tree) = 
+   |      ^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,317 @@
+error: expected statement after outer attribute
+  --> /app/output/deepseek/rust/test/leaks_1.rs:87:5
+   |
+87 |     #[ensures(true)]
+   |     ^^^^^^^^^^^^^^^^
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/test/leaks_1.rs:81:5
+   |
+81 |     #[requires(full_mutex(mutex))]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/test/leaks_1.rs:91:5
+   |
+91 |     #[requires(true)]
+   |     ^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/test/leaks_1.rs:96:5
+   |
+96 |     #[requires(true)]
+   |     ^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/test/leaks_1.rs:82:5
+   |
+82 |     #[ensures(|guard| mutex_guard_points_to(guard, std::ptr::null()))]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/test/leaks_1.rs:92:5
+   |
+92 |     #[ensures(true)]
+   |     ^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/test/leaks_1.rs:97:5
+   |
+97 |     #[ensures(true)]
+   |     ^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:11:3
+   |
+11 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:14:3
+   |
+14 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:20:3
+   |
+20 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:25:3
+   |
+25 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:30:3
+   |
+30 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:35:3
+   |
+35 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:40:3
+   |
+40 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:45:3
+   |
+45 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:51:7
+   |
+51 |     #[requires(sendable(&Sendable { payload: arg }))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:52:7
+   |
+52 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:64:7
+   |
+64 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:65:7
+   |
+65 |     #[ensures(full_mutex(result))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:81:7
+   |
+81 |     #[requires(full_mutex(mutex))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:82:7
+   |
+82 |     #[ensures(|guard| mutex_guard_points_to(guard, std::ptr::null()))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:91:7
+   |
+91 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:92:7
+   |
+92 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:96:7
+   |
+96 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:97:7
+   |
+97 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:102:7
+    |
+102 |     #[requires(count_pulses_data_points_to(&data, data.counter, data.mutex, data.source) && 
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:104:7
+    |
+104 |     #[ensures(true)]
+    |       ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:111:11
+    |
+111 |         #[invariant(counter_owned(counter, ?cur_val) && full_mutex(mutex))]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:125:7
+    |
+125 |     #[requires(counter_owned(counter, ?v) && full_mutex(mutex))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:126:7
+    |
+126 |     #[ensures(true)]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:142:7
+    |
+142 |     #[requires(print_count_data_points_to(&data, data.counter, data.mutex) && 
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:144:7
+    |
+144 |     #[ensures(true)]
+    |       ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:147:11
+    |
+147 |         #[invariant(counter_owned(counter, ?cur_val) && full_mutex(mutex))]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:158:7
+    |
+158 |     #[requires(counter_owned(counter, ?v) && full_mutex(mutex))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:159:7
+    |
+159 |     #[ensures(true)]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:167:11
+    |
+167 |         #[requires(true)]
+    |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:168:11
+    |
+168 |         #[ensures(counter_owned(?counter, 0) && full_mutex(?mutex))]
+    |           ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/test/leaks_1.rs:179:15
+    |
+179 |             #[invariant(counter_owned(counter, ?cur_val) && full_mutex(mutex))]
+    |               ^^^^^^^^^
+
+error[E0412]: cannot find type `rational` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:15:41
+   |
+15 | fn mutex_points_to(m: *mut Mutex, frac: rational, inner: *const ()) -> bool { 
+   |                                         ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `exists` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:17:5
+   |
+17 |     exists(|inner_ptr: *const ()| inner_ptr == inner)
+   |     ^^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 2 + use std::fs::exists;
+   |
+
+error[E0425]: cannot find function `exists` in this scope
+  --> /app/output/deepseek/rust/test/leaks_1.rs:22:5
+   |
+22 |     exists(|inner_ptr: *const ()| inner_ptr == inner)
+   |     ^^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 2 + use std::fs::exists;
+   |
+
+warning: unused import: `alloc`
+ --> /app/output/deepseek/rust/test/leaks_1.rs:2:18
+  |
+2 | use std::alloc::{alloc, handle_alloc_error, Layout};
+  |                  ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `s`
+  --> /app/output/deepseek/rust/test/leaks_1.rs:12:16
+   |
+12 | fn sendable<T>(s: &Sendable<T>) -> bool { true }
+   |                ^ help: if this is intentional, prefix it with an underscore: `_s`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `v`
+  --> /app/output/deepseek/rust/test/leaks_1.rs:26:31
+   |
+26 | fn u32_points_to(p: *mut u32, v: u32) -> bool { 
+   |                               ^ help: if this is intentional, prefix it with an underscore: `_v`
+
+warning: function cannot return without recursing
+   --> /app/output/deepseek/rust/test/leaks_1.rs:187:1
+    |
+187 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 41 previous errors; 4 warnings emitted
+
+Some errors have detailed explanations: E0412, E0425, E0658.
+For more information about an error, try `rustc --explain E0412`.

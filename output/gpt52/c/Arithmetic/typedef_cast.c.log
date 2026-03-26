@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Arithmetic/typedef_cast.c(9,31-32): error: Potential arithmetic underflow. (Cannot prove INT_MIN <= (x - y).)
+9 |     my_short z = (my_short)(x - y);
+  |                               ^
+/app/output/gpt52/c/Arithmetic/typedef_cast.c(9,16-17): note: Executing statement
+9 |     my_short z = (my_short)(x - y);
+  |                ^
+/app/output/gpt52/c/Arithmetic/typedef_cast.c(5,6-9): note: Verifying function 'foo'
+5 | void foo(int16_t x, my_short y)
+  |      ^^^

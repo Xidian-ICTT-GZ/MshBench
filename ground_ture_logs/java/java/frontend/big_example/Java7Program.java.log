@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/frontend/big_example/Java7Program.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/big_example/Java7Program.java(64,45-48): error: Parse error: Illegal character: ...
+64 |   public static <T> void addAll(List<T> l, T... xs) throws EmptyException /*@ ensures xs.length == 0; @*/
+   |                                             ^^^
+
+--- STDERR ---
+
+Result: FAIL

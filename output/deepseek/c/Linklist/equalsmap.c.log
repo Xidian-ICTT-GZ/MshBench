@@ -1,0 +1,9 @@
+/app/output/deepseek/c/Linklist/equalsmap.c(54,19-29): error: Could not prove is_equalsFuncType(equalsFunc) (Cannot prove is_equalsFuncType(equalsFunc).)
+54 |         bool eq = equalsFunc(map->key, key);
+   |                   ^^^^^^^^^^
+/app/output/deepseek/c/Linklist/equalsmap.c(54,17-18): note: Executing statement
+54 |         bool eq = equalsFunc(map->key, key);
+   |                 ^
+/app/output/deepseek/c/Linklist/equalsmap.c(47,6-22): note: Verifying function 'map_contains_key'
+47 | bool map_contains_key(struct node *map, void *key, equalsFuncType *equalsFunc)
+   |      ^^^^^^^^^^^^^^^^

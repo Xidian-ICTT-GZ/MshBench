@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Struct/counter_with_pred.c(25,1-2): error: Function leaks heap chunks: malloc_block_Counter(c)
+25 | }
+   | ^
+/app/output/claude-opus/c/Struct/counter_with_pred.c(25,1-2): note: Leak check.
+25 | }
+   | ^
+/app/output/claude-opus/c/Struct/counter_with_pred.c(13,17-21): note: Verifying function 'init'
+13 | struct Counter *init(int v)
+   |                 ^^^^

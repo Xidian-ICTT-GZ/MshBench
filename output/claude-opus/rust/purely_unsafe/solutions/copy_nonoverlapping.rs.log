@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `u8_array`
+ --> /app/output/claude-opus/rust/purely_unsafe/solutions/copy_nonoverlapping.rs:3:11
+  |
+3 | predicate u8_array(ptr: *const u8, count: usize; values: seq<u8>) =
+  |           ^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

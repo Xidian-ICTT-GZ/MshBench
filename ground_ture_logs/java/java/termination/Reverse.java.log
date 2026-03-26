@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/termination/Reverse.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/termination/Reverse.java(5,5-13): error: No such method or function: level_le
+5 |     level_le({l.getClass()}, level0) == true &*& level_le(level0, level) == true;
+  |     ^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

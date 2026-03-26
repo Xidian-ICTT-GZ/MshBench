@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Linklist/equalsmap.c(21,17-22): error: No matching heap chunks: nodes(null_pointer)
+21 |     //@ ensures nodes(result);
+   |                 ^^^^^
+/app/output/claude-opus/c/Linklist/equalsmap.c(21,17-22): note: Consuming assertion
+21 |     //@ ensures nodes(result);
+   |                 ^^^^^
+/app/output/claude-opus/c/Linklist/equalsmap.c(19,14-21): note: Verifying function 'map_nil'
+19 | struct node *map_nil()
+   |              ^^^^^^^

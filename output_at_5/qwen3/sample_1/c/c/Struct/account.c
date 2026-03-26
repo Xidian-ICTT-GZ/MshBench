@@ -1,0 +1,40 @@
+#include "stdlib.h"
+
+//@ predicate account(struct account *acc) = acc->balance ? int : 0;
+
+struct account
+{
+    int balance;
+};
+
+//@ requires true; @ ensures true;
+struct account *create_account()
+{
+    struct account *myAccount = malloc(sizeof(struct account));
+    if (myAccount == 0)
+    {
+        abort();
+    }
+    myAccount->balance = 0;
+    return myAccount;
+}
+
+//@ requires account(myAccount); @ ensures account(myAccount);
+void account_set_balance(struct account *myAccount, int newBalance)
+{
+    myAccount->balance = newBalance;
+}
+
+//@ requires account(myAccount); @ ensures true;
+void account_dispose(struct account *myAccount)
+{
+    free(myAccount);
+}
+
+int main()
+{
+    struct account *myAccount = create_account();
+    account_set_balance(myAccount, 5);
+    account_dispose(myAccount);
+    return 0;
+}

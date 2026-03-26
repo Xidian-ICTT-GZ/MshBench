@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Linklist/doubly_linked_list.c(38,14-16): error: No matching heap chunks: [_]node_next(ptr, _)
+38 | 		temp1 = ptr->next;
+   |              ^^
+/app/output/gpt52/c/Linklist/doubly_linked_list.c(38,9-10): note: Executing statement
+38 | 		temp1 = ptr->next;
+   |         ^
+/app/output/gpt52/c/Linklist/doubly_linked_list.c(24,6-13): note: Verifying function 'reverse'
+24 | void reverse(dllist arg)
+   |      ^^^^^^^

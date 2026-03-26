@@ -1,0 +1,10 @@
+error: expected one of `!`, `(`, `+`, `::`, `<`, `where`, or `{`, found `#`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads0.rs:54:1
+   |
+53 | unsafe fn wrapping_fib(n: u16) -> u64
+   |                                      - expected one of 7 possible tokens
+54 | #[requires(n <= 5000)]
+   | ^ unexpected token
+
+error: aborting due to 1 previous error
+

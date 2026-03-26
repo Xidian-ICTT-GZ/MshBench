@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `mutex_u32`
+ --> /app/output/claude-opus/rust/purely_unsafe/solutions/mutexes_native.rs:5:11
+  |
+5 | predicate mutex_u32(m: *mut Mutex<u32>, v: u32) = 
+  |           ^^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

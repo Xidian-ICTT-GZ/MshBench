@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/frontend/inner_class/MemberClass.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/inner_class/MemberClass.java(3,3-8): error: Parse error: Parse error.
+3 |   class InnerClass
+  |   ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

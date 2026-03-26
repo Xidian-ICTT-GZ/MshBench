@@ -1,0 +1,3 @@
+/app/output/deepseek/c/Arithmetic/decreases.c(5,7-11): error: Parse error: Body of open statement must be call expression.
+5 |   //@ open true;
+  |       ^^^^

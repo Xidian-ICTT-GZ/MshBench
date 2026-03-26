@@ -1,0 +1,3 @@
+/app/output/deepseek/c/Arrays/cp.c(8,1-10): error: Predicate family redeclaration does not match original declaration at '/opt/verifast/bin/prelude.h(357,1-10)'.
+8 | predicate chars(char* p, int n;) = true;
+  | ^^^^^^^^^

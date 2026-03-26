@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/Java Card/NewEidCard/NewEidCard.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Java Card/NewEidCard/NewEidCard.java(297,15-25): error: No such type parameter, inductive datatype, class, interface, or function type: MasterFile
+297 |     protected MasterFile masterFile;
+    |               ^^^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

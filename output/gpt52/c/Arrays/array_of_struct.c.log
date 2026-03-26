@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Arrays/array_of_struct.c(26,59-60): error: Potential arithmetic overflow. (Cannot prove dummy2 <= UINTPTR_MAX.)
+26 |     if (*count < 0 || SIZE_MAX / sizeof(struct student) < (size_t)*count)
+   |                                                           ^
+/app/output/gpt52/c/Arrays/array_of_struct.c(26,5-7): note: Executing statement
+26 |     if (*count < 0 || SIZE_MAX / sizeof(struct student) < (size_t)*count)
+   |     ^^
+/app/output/gpt52/c/Arrays/array_of_struct.c(18,17-30): note: Verifying function 'read_students'
+18 | struct student *read_students(int *count)
+   |                 ^^^^^^^^^^^^^

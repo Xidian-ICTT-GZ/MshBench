@@ -1,0 +1,9 @@
+/app/output/deepseek/c/tree/sorted_bintree.c(100,12-14): error: No matching heap chunks: [_]tree_value(t, _)
+100 |   int v = t->value;
+    |            ^^
+/app/output/deepseek/c/tree/sorted_bintree.c(100,9-10): note: Executing statement
+100 |   int v = t->value;
+    |         ^
+/app/output/deepseek/c/tree/sorted_bintree.c(95,6-9): note: Verifying function 'add'
+95 | void add(struct tree *t, int x)
+   |      ^^^

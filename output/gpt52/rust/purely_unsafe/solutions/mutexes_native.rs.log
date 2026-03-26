@@ -1,0 +1,3 @@
+/app/output/gpt52/rust/purely_unsafe/solutions/mutexes_native.rs(12,1-10): error: Parse error: Parse error.
+12 | predicate mutex_u32(m: *mut Mutex<u32>; v: u32);
+   | ^^^^^^^^^

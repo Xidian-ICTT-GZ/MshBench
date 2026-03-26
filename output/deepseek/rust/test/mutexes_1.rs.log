@@ -1,0 +1,210 @@
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/test/mutexes_1.rs:127:3
+    |
+127 | #[ensures(false)]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/test/mutexes_1.rs:115:3
+    |
+115 | #[requires(
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/test/mutexes_1.rs:121:3
+    |
+121 | #[ensures(true)]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/test/mutexes_1.rs:103:3
+    |
+103 | #[requires(count_pulses_data_owned(data))]
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/test/mutexes_1.rs:104:3
+    |
+104 | #[ensures(false)]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:91:3
+   |
+91 | #[requires(true)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:92:3
+   |
+92 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:86:3
+   |
+86 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:80:3
+   |
+80 | #[requires(mutex_guard(guard))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:81:3
+   |
+81 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:74:3
+   |
+74 | #[requires(mutex != std::ptr::null_mut() && mutex_pointer_full(mutex))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:75:3
+   |
+75 | #[ensures(mutex_guard(result) && mutex_pointer_full(mutex))]
+   |   ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:66:3
+   |
+66 | #[ensures(result != std::ptr::null_mut() && mutex_pointer_full(result))]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:53:3
+   |
+53 | #[requires(u32_pointer_full(counter))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:54:3
+   |
+54 | #[ensures(u32_pointer_full(counter))]
+   |   ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:47:3
+   |
+47 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:41:3
+   |
+41 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:38:3
+   |
+38 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:33:3
+   |
+33 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:28:3
+   |
+28 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:25:3
+   |
+25 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:22:3
+   |
+22 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:17:3
+   |
+17 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:12:3
+   |
+12 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+ --> /app/output/deepseek/rust/test/mutexes_1.rs:9:3
+  |
+9 | #[predicate]
+  |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+ --> /app/output/deepseek/rust/test/mutexes_1.rs:6:3
+  |
+6 | #[predicate]
+  |   ^^^^^^^^^
+
+error[E0412]: cannot find type `real` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:10:41
+   |
+10 | fn mutex_pointer_frac(m: *mut Mutex, f: real) -> bool { true }
+   |                                         ^^^^ not found in this scope
+
+error[E0412]: cannot find type `real` in this scope
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:26:37
+   |
+26 | fn u32_pointer_frac(p: *mut u32, f: real) -> bool { true }
+   |                                     ^^^^ not found in this scope
+
+warning: unused import: `alloc`
+ --> /app/output/deepseek/rust/test/mutexes_1.rs:1:26
+  |
+1 | use std::alloc::{Layout, alloc, handle_alloc_error};
+  |                          ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `m`
+ --> /app/output/deepseek/rust/test/mutexes_1.rs:7:18
+  |
+7 | fn mutex_pointer(m: *mut Mutex) -> bool { true }
+  |                  ^ help: if this is intentional, prefix it with an underscore: `_m`
+  |
+  = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `p`
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:23:16
+   |
+23 | fn u32_pointer(p: *mut u32) -> bool { true }
+   |                ^ help: if this is intentional, prefix it with an underscore: `_p`
+
+warning: unused variable: `g`
+  --> /app/output/deepseek/rust/test/mutexes_1.rs:39:16
+   |
+39 | fn mutex_guard(g: MutexGuard) -> bool { true }
+   |                ^ help: if this is intentional, prefix it with an underscore: `_g`
+
+warning: function cannot return without recursing
+   --> /app/output/deepseek/rust/test/mutexes_1.rs:149:1
+    |
+149 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 28 previous errors; 5 warnings emitted
+
+For more information about this error, try `rustc --explain E0412`.

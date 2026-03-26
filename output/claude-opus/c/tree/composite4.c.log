@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/tree/composite4.c(55,18-20): error: No matching heap chunks: [_]node_count(node0, _)
+55 |     result = node->count;
+   |                  ^^
+/app/output/claude-opus/c/tree/composite4.c(55,12-13): note: Executing statement
+55 |     result = node->count;
+   |            ^
+/app/output/claude-opus/c/tree/composite4.c(47,5-22): note: Verifying function 'subtree_get_count'
+47 | int subtree_get_count(struct node *node)
+   |     ^^^^^^^^^^^^^^^^^

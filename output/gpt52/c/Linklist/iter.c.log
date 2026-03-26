@@ -1,0 +1,3 @@
+/app/output/gpt52/c/Linklist/iter.c(261,14-16): error: No such variable, constructor, regular function, predicate, enum element, global variable, or module: it
+261 | //@ requires it->current |-> ?c &*& malloc_block_iter(i);
+    |              ^^

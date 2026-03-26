@@ -1,0 +1,5 @@
+/app/output/gpt52/c/Linklist/goto.c(26,48-27,1): error: Parse error: The number, kind, or order of specification clauses is incorrect. Expected: nonghost_callers_only clause (optional), function type clause (optional), contract (optional), terminates clause (optional).
+26 |     //@ ensures result == x || result == 0 - x;
+   |                                                
+27 | {
+   | ^

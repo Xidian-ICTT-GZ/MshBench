@@ -1,0 +1,141 @@
+error: cannot find attribute `requires` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:135:3
+    |
+135 | #[requires(true)]
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:136:3
+    |
+136 | #[ensures(true)]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:120:7
+    |
+120 |     #[requires(true)]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:121:7
+    |
+121 |     #[ensures(vector(result, x, y))]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:101:3
+    |
+101 | #[requires(true)]
+    |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:102:3
+    |
+102 | #[ensures(true)]
+    |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:93:3
+   |
+93 | #[requires(true)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:94:3
+   |
+94 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:85:3
+   |
+85 | #[requires(true)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:86:3
+   |
+86 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:78:7
+   |
+78 |     #[requires(stack::<T>(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:79:7
+   |
+79 |     #[ensures(nodes::<T>(?h, vs) &*& stack == stack)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:65:7
+   |
+65 |     #[requires(stack::<T>(stack, cons(?v, ?vs0)))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:66:7
+   |
+66 |     #[ensures(stack::<T>(stack, vs0) &*& result == v)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:55:7
+   |
+55 |     #[requires(stack::<T>(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:56:7
+   |
+56 |     #[ensures(stack::<T>(stack, vs) &*& result == (vs == nil))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:43:7
+   |
+43 |     #[requires(stack::<T>(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:44:7
+   |
+44 |     #[ensures(stack::<T>(stack, cons(value, vs)))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:31:7
+   |
+31 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:32:7
+   |
+32 |     #[ensures(stack::<T>(result, nil))]
+   |       ^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/predctors.rs:185:1
+    |
+185 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 20 previous errors; 2 warnings emitted
+

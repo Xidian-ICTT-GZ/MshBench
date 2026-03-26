@@ -1,0 +1,81 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:18:7
+   |
+18 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:19:7
+   |
+19 |     #[ensures(account(result, limit, 0))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:30:7
+   |
+30 |     #[requires(account(my_account, limit, balance))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:31:7
+   |
+31 |     #[ensures(account(my_account, limit, balance) &*& result == balance)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:36:7
+   |
+36 |     #[requires(account(my_account, limit, balance))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:37:7
+   |
+37 |     #[ensures(account(my_account, limit, balance + amount))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:42:7
+   |
+42 |     #[requires(account(my_account, limit, balance))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:43:7
+   |
+43 |     #[ensures(
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:57:7
+   |
+57 |     #[requires(account(my_account, limit, balance))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:58:7
+   |
+58 |     #[ensures(true)]
+   |       ^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/limit.rs:81:1
+   |
+81 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 10 previous errors; 2 warnings emitted
+

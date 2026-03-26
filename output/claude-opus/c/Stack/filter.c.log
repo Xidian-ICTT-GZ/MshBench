@@ -1,0 +1,12 @@
+/app/output/claude-opus/c/Stack/filter.c(111,51-53): error: Cannot prove condition. (Cannot prove is_int_predicate(neq_20) <==> true.)
+111 | //@ requires stack(stack) &*& is_int_predicate(p) == true &*& int_predicate_context(p);
+    |                                                   ^^
+/app/output/claude-opus/c/Stack/filter.c(111,51-53): note: Consuming expression
+111 | //@ requires stack(stack) &*& is_int_predicate(p) == true &*& int_predicate_context(p);
+    |                                                   ^^
+/app/output/claude-opus/c/Stack/filter.c(158,5-17): note: Verifying call
+158 |     stack_filter(s, neq_20);
+    |     ^^^^^^^^^^^^
+/app/output/claude-opus/c/Stack/filter.c(149,5-9): note: Verifying function 'main'
+149 | int main()
+    |     ^^^^

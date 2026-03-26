@@ -1,0 +1,37 @@
+error: expected `{`, found keyword `crate`
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/mutexes.rs:98:5
+   |
+97 |     loop
+   |     ---- while parsing this `loop` expression
+98 |     crate::VeriFast_ghost_command();/*@ invariant shared_counter(counter, mutex); @*/
+   |     ^^^^^ expected `{`
+
+error: expected `{`, found keyword `crate`
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/mutexes.rs:139:9
+    |
+138 |         loop
+    |         ---- while parsing this `loop` expression
+139 |         crate::VeriFast_ghost_command();/*@ invariant shared_counter(counter, mutex); @*/
+    |         ^^^^^ expected `{`
+
+warning: unused import: `alloc`
+ --> /app/output/gpt52/rust/purely_unsafe/solutions/mutexes.rs:1:18
+  |
+1 | use std::alloc::{alloc, handle_alloc_error, Layout};
+  |                  ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/mutexes.rs:153:1
+    |
+153 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 2 previous errors; 2 warnings emitted
+

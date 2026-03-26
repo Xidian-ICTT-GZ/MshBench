@@ -1,0 +1,210 @@
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:88:9
+   |
+88 |         #[invariant(k >= 2 && k <= n)]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:89:9
+   |
+89 |         #[invariant(fib_k_minus_1 <= 18446744073709551615u64)]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:90:9
+   |
+90 |         #[invariant(fib_k <= 18446744073709551615u64)]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:149:3
+    |
+149 | #[requires(value <= 18446744073709551615u64)]
+    |   ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:133:7
+    |
+133 |     #[requires(tree_full(tree))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:134:7
+    |
+134 |     #[ensures(tree_full(tree))]
+    |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:135:7
+    |
+135 |     #[ensures(result <= 18446744073709551615u64)]
+    |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:113:7
+    |
+113 |     #[ensures(result.is_null() || tree_full(result))]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:79:3
+   |
+79 | #[requires(n <= 5000)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:80:3
+   |
+80 | #[ensures(result <= 18446744073709551615u64)]
+   |   ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:88:11
+   |
+88 |         #[invariant(k >= 2 && k <= n)]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:89:11
+   |
+89 |         #[invariant(fib_k_minus_1 <= 18446744073709551615u64)]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:90:11
+   |
+90 |         #[invariant(fib_k <= 18446744073709551615u64)]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:73:3
+   |
+73 | #[requires(join_handle_points_to(&h, tree, 1/2))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:74:3
+   |
+74 | #[ensures(tree_full(tree))]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:57:3
+   |
+57 | #[requires(tree_full(tree))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:58:3
+   |
+58 | #[ensures(tree_full(result))]
+   |   ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:49:3
+   |
+49 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find macro `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:51:5
+   |
+51 |     exists!(s: *mut Sendable<R> |
+   |     ^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:44:3
+   |
+44 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:32:3
+   |
+32 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find macro `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:37:9
+   |
+37 |         exists!(left: *mut Tree, right: *mut Tree, value: u16 |
+   |         ^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:20:3
+   |
+20 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find macro `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:25:9
+   |
+25 |         exists!(left: *mut Tree, right: *mut Tree, value: u16 |
+   |         ^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:15:3
+   |
+15 | #[predicate]
+   |   ^^^^^^^^^
+
+error[E0412]: cannot find type `Perm` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:33:35
+   |
+33 | fn tree_fraction(t: *mut Tree, p: Perm) -> bool {
+   |                                   ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Perm` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:50:79
+   |
+50 | fn join_handle_points_to<R>(h: *mut JoinHandle<Sendable<R>>, t: *mut Tree, p: Perm) -> bool {
+   |                                                                               ^^^^ not found in this scope
+
+warning: unused import: `alloc`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:4:13
+  |
+4 |     alloc::{alloc, handle_alloc_error, Layout},
+  |             ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0369]: binary operation `==` cannot be applied to type `T`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:46:27
+   |
+46 |     unsafe { (*s).payload == payload }
+   |              ------------ ^^ ------- T
+   |              |
+   |              T
+   |
+help: consider restricting type parameter `T` with trait `PartialEq`
+   |
+45 | fn sendable_points_to<T: std::cmp::PartialEq>(s: *mut Sendable<T>, payload: T) -> bool {
+   |                        +++++++++++++++++++++
+
+warning: function cannot return without recursing
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/threads.rs:177:1
+    |
+177 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 28 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0369, E0412, E0658.
+For more information about an error, try `rustc --explain E0369`.

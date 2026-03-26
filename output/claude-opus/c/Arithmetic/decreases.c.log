@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Arithmetic/decreases.c(6,21-23): error: Cannot prove condition. (Cannot prove i <= 10.)
+6 |     //@ invariant i <= 10;
+  |                     ^^
+/app/output/claude-opus/c/Arithmetic/decreases.c(6,21-23): note: Consuming expression
+6 |     //@ invariant i <= 10;
+  |                     ^^
+/app/output/claude-opus/c/Arithmetic/decreases.c(1,6-7): note: Verifying function 'm'
+1 | void m(int i)
+  |      ^

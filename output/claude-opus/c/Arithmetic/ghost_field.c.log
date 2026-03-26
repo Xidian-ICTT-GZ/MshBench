@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Arithmetic/ghost_field.c(15,21-24): error: No matching heap chunks: foo_x(f, _)
+15 |     //@ assert f->x |-> ?v;
+   |                     ^^^
+/app/output/claude-opus/c/Arithmetic/ghost_field.c(15,21-24): note: Consuming assertion
+15 |     //@ assert f->x |-> ?v;
+   |                     ^^^
+/app/output/claude-opus/c/Arithmetic/ghost_field.c(8,5-9): note: Verifying function 'main'
+8 | int main()
+  |     ^^^^

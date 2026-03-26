@@ -1,0 +1,103 @@
+class C {
+    int x;
+    
+    //@ predicate C() = this.x |-> _;
+    
+    C()
+    //@ requires true;
+    //@ ensures C();
+    {
+        //@ close C();
+    }
+
+    
+}
+
+class D extends C {
+    int y;
+
+    //@ predicate D() = this.C() &*& this.y |-> _;
+    
+    D()
+    //@ requires true;
+    //@ ensures D();
+    {
+        super();
+        //@ close D();
+    }
+    
+    
+
+    
+    int getY()
+    //@ requires D();
+    //@ ensures D() &*& result == this.y;
+    {
+        //@ open D();
+        int r = this.y;
+        //@ close D();
+        return r;
+    }
+}
+
+class E extends D {
+    int z;
+    
+    //@ predicate E() = this.D() &*& this.z |-> _;
+    
+    E()
+    //@ requires true;
+    //@ ensures E();
+    {
+        super();
+        //@ close E();
+    }
+    
+    
+
+    
+    int getY()
+    //@ requires E();
+    //@ ensures E() &*& result == this.y;
+    {
+        //@ open E();
+        //@ open D();
+        int r = this.y;
+        //@ close D();
+        //@ close E();
+        return r;
+    }
+}
+
+class Program {
+    static int getY(C c)
+    //@ requires c.C();
+    //@ ensures c.C();
+    {
+        if (c instanceof D) {
+            D d = (D)c;
+            //@ open c.C();
+            //@ close d.D();
+            int r = d.getY();
+            //@ open d.D();
+            //@ close c.C();
+            return r;
+        } else {
+            return 0;
+        }
+    }
+
+    static void test()
+    //@ requires true;
+    //@ ensures true;
+    {
+        E e = new E();
+        //@ open e.E();
+        //@ close e.D();
+        //@ close e.C();
+        getY(e);
+        //@ open e.C();
+        //@ open e.D();
+        //@ close e.E();
+    }
+}

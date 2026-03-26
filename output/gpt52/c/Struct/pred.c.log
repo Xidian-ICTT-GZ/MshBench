@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Struct/pred.c(27,1-2): error: Function leaks heap chunks: malloc_block_account(myAccount)
+27 | }
+   | ^
+/app/output/gpt52/c/Struct/pred.c(27,1-2): note: Leak check.
+27 | }
+   | ^
+/app/output/gpt52/c/Struct/pred.c(13,17-31): note: Verifying function 'create_account'
+13 | struct account *create_account(int limit)
+   |                 ^^^^^^^^^^^^^^

@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/termination/tests/MutualCall2.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/termination/tests/MutualCall2.java(8,20-23): error: Should fail directives are not allowed; use the -allow_should_fail command-line option to allow them.
+8 |         Baz.baz(); //~ should_fail
+  |                    ^^^
+
+--- STDERR ---
+
+Result: FAIL

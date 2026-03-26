@@ -1,0 +1,144 @@
+error: Rust has no ternary operator
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:19:5
+   |
+19 | /     n.is_null() ? true :
+20 | |     exists!(value: i32, next: *mut Node |
+21 | |         node(n, value, next) &&
+22 | |         nodes(next)
+23 | |     )
+   | |_____^
+   |
+help: use an `if-else` expression instead
+   |
+19 ~     if n.is_null() { true } else {
+20 |     exists!(value: i32, next: *mut Node |
+21 |         node(n, value, next) &&
+22 |         nodes(next)
+23 ~     ) }
+   |
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:49:9
+   |
+49 |         #[assert(nodes(n))]
+   |         ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:10:3
+   |
+10 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:17:3
+   |
+17 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:26:3
+   |
+26 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find macro `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:29:5
+   |
+29 |     exists!(head: *mut Node |
+   |     ^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:35:3
+   |
+35 | #[requires(stack(stack))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:36:3
+   |
+36 | #[ensures(result >= 0)]
+   |   ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:37:3
+   |
+37 | #[ensures(stack(stack))]
+   |   ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:39:7
+   |
+39 |     #[invariant(stack(stack))]
+   |       ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:40:7
+   |
+40 |     #[invariant(exists!(head: *mut Node | (*stack).head == head && nodes(head)))]
+   |       ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:41:7
+   |
+41 |     #[invariant(n.is_null() ? true : nodes(n))]
+   |       ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:42:7
+   |
+42 |     #[invariant(i >= 0)]
+   |       ^^^^^^^^^
+
+error: cannot find attribute `assert` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:49:11
+   |
+49 |         #[assert(nodes(n))]
+   |           ^^^^^^
+   |
+   = note: `assert` is in scope, but it is a function-like macro
+
+error: cannot find attribute `assert` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:50:11
+   |
+50 |         #[assert(exists!(value: i32, next: *mut Node | node(n, value, next) && nodes(next)))]
+   |           ^^^^^^
+   |
+   = note: `assert` is in scope, but it is a function-like macro
+
+error[E0308]: mismatched types
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:12:48
+   |
+12 |     struct Node { next: *mut Node, value: i32 }(n) &&
+   |                                                ^^^ expected `bool`, found `*mut Node`
+   |
+   = note:     expected type `bool`
+           found raw pointer `*mut Node`
+
+error[E0308]: mismatched types
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:28:37
+   |
+28 |     struct Stack { head: *mut Node }(s) &&
+   |                                     ^^^ expected `bool`, found `*mut Stack`
+   |
+   = note:     expected type `bool`
+           found raw pointer `*mut Stack`
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/stack_tuerk.rs:62:1
+   |
+62 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 17 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0308, E0658.
+For more information about an error, try `rustc --explain E0308`.

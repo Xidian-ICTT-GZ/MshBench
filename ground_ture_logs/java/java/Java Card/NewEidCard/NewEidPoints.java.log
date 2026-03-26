@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/Java Card/NewEidCard/NewEidPoints.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Java Card/NewEidCard/NewEidPoints.java(3,9-14): error: Interface INewEidPoints not found
+3 | 	public class NewEidPoints implements INewEidPoints {
+  |         ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

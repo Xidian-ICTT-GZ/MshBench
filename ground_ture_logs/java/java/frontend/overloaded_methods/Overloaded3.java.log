@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/frontend/overloaded_methods/Overloaded3.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/overloaded_methods/Overloaded3.java(1,8-13): error: Class Overloaded2 not found
+1 | public class Overloaded3 extends Overloaded2
+  |        ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

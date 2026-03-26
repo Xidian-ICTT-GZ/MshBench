@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/frontend/varargs/Varargs.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/varargs/Varargs.java(5,52-55): error: Parse error: Illegal character: ...
+5 |   public static void addAll(List<Object> l, Object ... xs)
+  |                                                    ^^^
+
+--- STDERR ---
+
+Result: FAIL

@@ -1,0 +1,9 @@
+/app/output/deepseek/c/Linklist/set.c(71,3-4): error: Loop leaks heap chunks: malloc_block_node(curr), node_next(curr, next), node_val(curr, val)
+71 |   }
+   |   ^
+/app/output/deepseek/c/Linklist/set.c(71,3-4): note: Leak check.
+71 |   }
+   |   ^
+/app/output/deepseek/c/Linklist/set.c(54,6-18): note: Verifying function 'set_contains'
+54 | bool set_contains(struct set *set, void *x)
+   |      ^^^^^^^^^^^^

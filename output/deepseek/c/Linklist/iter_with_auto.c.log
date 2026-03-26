@@ -1,0 +1,3 @@
+/app/output/deepseek/c/Linklist/iter_with_auto.c(283,43-46): error: No such function: old
+283 | //@ ensures iter(i, l, ?next) &*& next == old(current)->next &*& result == old(current)->value;
+    |                                           ^^^

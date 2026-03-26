@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Linklist/equalsmap.c(48,1-2): error: Function leaks heap chunks: malloc_block_node(n)
+48 | }
+   | ^
+/app/output/gpt52/c/Linklist/equalsmap.c(48,1-2): note: Leak check.
+48 | }
+   | ^
+/app/output/gpt52/c/Linklist/equalsmap.c(34,14-22): note: Verifying function 'map_cons'
+34 | struct node *map_cons(void *key, void *value, struct node *tail)
+   |              ^^^^^^^^

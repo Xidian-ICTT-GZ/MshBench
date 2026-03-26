@@ -1,0 +1,125 @@
+error: cannot find attribute `requires` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:116:7
+    |
+116 |     #[requires(stack(stack, ?vs))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:117:7
+    |
+117 |     #[ensures(true)]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:100:7
+    |
+100 |     #[requires(stack(stack, ?vs) &*& 0 <= n &*& n <= length(vs))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:101:7
+    |
+101 |     #[ensures(stack(stack, drop(n, vs)))]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:88:7
+   |
+88 |     #[requires(stack(stack, cons(?v, ?vs0)))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:89:7
+   |
+89 |     #[ensures(stack(stack, vs0) &*& result == v)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:76:7
+   |
+76 |     #[requires(stack(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:77:7
+   |
+77 |     #[ensures(stack(stack, cons(value, vs)))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:68:7
+   |
+68 |     #[requires(stack(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:69:7
+   |
+69 |     #[ensures(stack(stack, vs) &*& result == sum_list(vs))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:58:7
+   |
+58 |     #[requires(stack(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:59:7
+   |
+59 |     #[ensures(stack(stack, vs) &*& result == (vs == nil))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:46:7
+   |
+46 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:47:7
+   |
+47 |     #[ensures(stack(result, nil))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:32:3
+   |
+32 | #[requires(node_list(nodes, ?vs))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:33:3
+   |
+33 | #[ensures(node_list(nodes, vs) &*& result == sum_list(vs))]
+   |   ^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `head`
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:61:13
+   |
+61 |         let head = (*stack).head;
+   |             ^^^^ help: if this is intentional, prefix it with an underscore: `_head`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/popn.rs:149:1
+    |
+149 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 16 previous errors; 3 warnings emitted
+

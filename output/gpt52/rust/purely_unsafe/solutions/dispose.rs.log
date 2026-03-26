@@ -1,0 +1,101 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:85:7
+   |
+85 |     #[requires(stack(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:86:7
+   |
+86 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:73:7
+   |
+73 |     #[requires(stack(stack, cons(?v, ?vs0)))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:74:7
+   |
+74 |     #[ensures(stack(stack, vs0) &*& result == v)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:61:7
+   |
+61 |     #[requires(stack(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:62:7
+   |
+62 |     #[ensures(stack(stack, cons(value, vs)))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:51:7
+   |
+51 |     #[requires(stack(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:52:7
+   |
+52 |     #[ensures(stack(stack, vs) &*& result == (vs == nil))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:39:7
+   |
+39 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:40:7
+   |
+40 |     #[ensures(stack(result, nil))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:29:3
+   |
+29 | #[requires(nodes(n, ?vs))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:30:3
+   |
+30 | #[ensures(true)]
+   |   ^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `head`
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:54:13
+   |
+54 |         let head = (*stack).head;
+   |             ^^^^ help: if this is intentional, prefix it with an underscore: `_head`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/dispose.rs:105:1
+    |
+105 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 12 previous errors; 3 warnings emitted
+

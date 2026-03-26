@@ -1,0 +1,37 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/sum_full_1.rs:48:7
+   |
+48 |     #[requires(stack(stack, ?vals))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/sum_full_1.rs:49:7
+   |
+49 |     #[ensures(stack(stack, vals) &*& result == sum_list(vals))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/sum_full_1.rs:30:3
+   |
+30 | #[requires(nodes(node, ?vals))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/sum_full_1.rs:31:3
+   |
+31 | #[ensures(nodes(node, vals) &*& result == sum_list(vals))]
+   |   ^^^^^^^
+
+warning: function cannot return without recursing
+  --> /app/output/gpt52/rust/test/sum_full_1.rs:60:1
+   |
+60 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 4 previous errors; 1 warning emitted
+

@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/Java Card/NewEidCard/DedicatedFile.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Java Card/NewEidCard/DedicatedFile.java(8,8-13): error: Class File not found
+8 | public class DedicatedFile extends File {
+  |        ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

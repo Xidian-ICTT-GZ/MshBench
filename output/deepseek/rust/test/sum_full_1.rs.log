@@ -1,0 +1,31 @@
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `vstd`
+ --> /app/output/deepseek/rust/test/sum_full_1.rs:1:5
+  |
+1 | use vstd::prelude::*;
+  |     ^^^^ use of unresolved module or unlinked crate `vstd`
+  |
+help: you might be missing a crate named `vstd`, add it to your project and import it in your code
+  |
+1 + extern crate vstd;
+  |
+
+error: cannot find macro `verus` in this scope
+ --> /app/output/deepseek/rust/test/sum_full_1.rs:3:1
+  |
+3 | verus! {
+  | ^^^^^
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/test/sum_full_1.rs:76:1
+   |
+76 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 2 previous errors; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0433`.

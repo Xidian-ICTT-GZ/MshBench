@@ -1,0 +1,39 @@
+Command: verifast /app/ground_true/rust/Stack/sum_full_1.rs
+Exit code: 1
+--- STDOUT ---
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/ground_true/rust/Stack/sum_full_1.rs:9:36
+  |
+9 | unsafe fn get_nodes_sum(node: *mut Node) -> i32
+  |                                    ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/ground_true/rust/Stack/sum_full_1.rs:22:6
+   |
+22 | impl Stack {
+   |      ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/ground_true/rust/Stack/sum_full_1.rs:23:31
+   |
+23 | unsafe fn get_sum(stack: *mut Stack) -> i32
+   |                               ^^^^^ not found in this scope
+
+warning: function cannot return without recursing
+  --> /app/ground_true/rust/Stack/sum_full_1.rs:35:1
+   |
+35 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 3 previous errors; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0412`.
+
+--- STDERR ---
+
+Result: FAIL

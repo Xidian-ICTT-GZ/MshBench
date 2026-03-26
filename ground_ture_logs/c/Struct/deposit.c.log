@@ -1,0 +1,10 @@
+Command: verifast -shared /app/ground_true/c/Struct/deposit.c
+Exit code: 0
+--- STDOUT ---
+0 errors found (14 statements verified)
+Linking...
+Program linked successfully.
+
+--- STDERR ---
+
+Result: PASS

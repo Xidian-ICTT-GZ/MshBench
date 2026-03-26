@@ -1,0 +1,32 @@
+Command: verifast /app/ground_true/rust/Tree/threads.rs
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/rust/Tree/threads.rs(23,1-34,2): error: Specify -allow_assume on the command line to enable 'assume' statements.
+23 | unsafe fn spawn<A, R>(f: Spawnee<A, R>, arg: A) -> JoinHandle<Sendable<R>>
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+24 | where A: 'static, R: 'static
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+25 | //@ req [_]is_Spawnee::<A, R>(f, ?pre) &*& pre(arg, ?post);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 | //@ ens JoinHandle(result, post);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+27 | //@ assume_correct
+   | ^^^^^^^^^^^^^^^^^^
+28 | {
+   | ^
+29 |     let package = Sendable { payload: arg };
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+30 |     std::thread::spawn(move || {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 |         let package_moved = package;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+32 |         Sendable { payload: f(package_moved.payload) }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+33 |     })
+   | ^^^^^^
+34 | }
+   |  ^
+
+--- STDERR ---
+
+Result: FAIL

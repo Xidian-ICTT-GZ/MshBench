@@ -1,0 +1,3 @@
+/app/output/claude-opus/rust/test/mutexes_1.rs(13,50-51): error: Parse error: Parse error.
+13 | pred mutex_frac(m: *mut Mutex, c: *mut u32; frac f) =
+   |                                                  ^

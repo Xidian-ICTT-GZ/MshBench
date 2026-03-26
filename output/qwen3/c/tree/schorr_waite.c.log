@@ -1,0 +1,3 @@
+/app/output/qwen3/c/tree/schorr_waite.c(1,20-26): error: No such struct: "node".
+1 | /*@ predicate tree(struct node *root; bool marked) =
+  |                    ^^^^^^

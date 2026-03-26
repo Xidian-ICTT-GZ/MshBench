@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/prodcons/client.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/prodcons/client.java(137,5-21): error: No such type parameter, inductive datatype, class, interface, or function type: JoinableRunnable
+137 |     JoinableRunnable joinable;
+    |     ^^^^^^^^^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

@@ -1,0 +1,9 @@
+/app/output/qwen3/c/Arithmetic/typedefs.c(3,5-9): error: Contract required
+3 | int main()
+  |     ^^^^
+/opt/verifast/bin/prelude.h(1095,64-68): note: Producing assertion
+1095 |     //@ requires module(mainModule, true) &*& 0 <= argc &*& [_]argv(argv, argc, ?arguments);
+     |                                                                ^^^^
+/app/output/qwen3/c/Arithmetic/typedefs.c(3,5-9): note: Function 'main': Function type implementation check
+3 | int main()
+  |     ^^^^

@@ -1,0 +1,479 @@
+error: function body cannot be `= expression;`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:3:63
+  |
+3 |   #[pred] fn node<T>(p: *mut Node<T>, v: T, next: *mut Node<T>) =
+  |  _______________________________________________________________^
+4 | |     p != 0 &*& data_at::<Node<T>>(p, Node { next: next, value: v });
+  | |____________________________________________________________________^
+  |
+help: surround the expression with `{` and `}` instead of `=` and `;`
+  |
+3 ~ #[pred] fn node<T>(p: *mut Node<T>, v: T, next: *mut Node<T>) {
+4 ~     p != 0 &*& data_at::<Node<T>>(p, Node { next: next, value: v }) }
+  |
+
+error: function body cannot be `= expression;`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:6:66
+  |
+6 |   #[pred] fn stack<T>(p: *mut Stack<T>, nodes: list<*mut Node<T>>) =
+  |  __________________________________________________________________^
+7 | |     p != 0 &*& data_at::<Stack<T>>(p, Stack { head: if nodes == nil { std::ptr::null_mut() } else { hd(nodes) } }) &*&
+8 | |     nodes_pred(nodes);
+  | |______________________^
+  |
+help: surround the expression with `{` and `}` instead of `=` and `;`
+  |
+6 ~ #[pred] fn stack<T>(p: *mut Stack<T>, nodes: list<*mut Node<T>>) {
+7 |     p != 0 &*& data_at::<Stack<T>>(p, Stack { head: if nodes == nil { std::ptr::null_mut() } else { hd(nodes) } }) &*&
+8 ~     nodes_pred(nodes) }
+  |
+
+error: function body cannot be `= expression;`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:10:53
+   |
+10 |   #[pred] fn nodes_pred<T>(nodes: list<*mut Node<T>>) =
+   |  _____________________________________________________^
+11 | |     match nodes {
+12 | |         nil => true,
+13 | |         cons(h, t) => node(h, _, _) &*& nodes_pred(t)
+14 | |     };
+   | |______^
+   |
+help: surround the expression with `{` and `}` instead of `=` and `;`
+   |
+10 ~ #[pred] fn nodes_pred<T>(nodes: list<*mut Node<T>>) {
+11 |     match nodes {
+12 |         nil => true,
+13 |         cons(h, t) => node(h, _, _) &*& nodes_pred(t)
+14 ~     } }
+   |
+
+error: function body cannot be `= expression;`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:16:51
+   |
+16 |   #[pred] fn vector(p: *mut Vector, x: i32, y: i32) =
+   |  ___________________________________________________^
+17 | |     p != 0 &*& data_at::<Vector>(p, Vector { x: x, y: y });
+   | |___________________________________________________________^
+   |
+help: surround the expression with `{` and `}` instead of `=` and `;`
+   |
+16 ~ #[pred] fn vector(p: *mut Vector, x: i32, y: i32) {
+17 ~     p != 0 &*& data_at::<Vector>(p, Vector { x: x, y: y }) }
+   |
+
+error: cannot find attribute `pred` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:3:3
+  |
+3 | #[pred] fn node<T>(p: *mut Node<T>, v: T, next: *mut Node<T>) =
+  |   ^^^^
+
+error: cannot find attribute `pred` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:6:3
+  |
+6 | #[pred] fn stack<T>(p: *mut Stack<T>, nodes: list<*mut Node<T>>) =
+  |   ^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:10:3
+   |
+10 | #[pred] fn nodes_pred<T>(nodes: list<*mut Node<T>>) =
+   |   ^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:16:3
+   |
+16 | #[pred] fn vector(p: *mut Vector, x: i32, y: i32) =
+   |   ^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:20:7
+   |
+20 |     #[requires(Layout::new::<Stack<T>>().size() > 0)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:21:7
+   |
+21 |     #[ensures(result != 0 &*& stack(result, nil))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:32:7
+   |
+32 |     #[requires(stack != 0 &*& stack(stack, nodes))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:33:7
+   |
+33 |     #[ensures(stack(stack, cons(n, nodes)) &*& node(n, value, _))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:44:7
+   |
+44 |     #[requires(stack != 0 &*& stack(stack, nodes))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:45:7
+   |
+45 |     #[ensures(result == (nodes == nil))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:54:7
+   |
+54 |     #[requires(stack != 0 &*& stack(stack, cons(h, t)) &*& node(h, v, _))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:55:7
+   |
+55 |     #[ensures(stack(stack, t) &*& result == v)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:67:7
+   |
+67 |     #[requires(stack != 0 &*& stack(stack, nodes) &*& nodes_pred(nodes))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:68:7
+   |
+68 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:91:7
+   |
+91 |     #[requires(limit >= 0 &*& x * x + y * y <= limit * limit)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:92:7
+   |
+92 |     #[ensures(result != 0 &*& vector(result, x, y))]
+   |       ^^^^^^^
+
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:3:28
+  |
+3 | #[pred] fn node<T>(p: *mut Node<T>, v: T, next: *mut Node<T>) =
+  |                            ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:3:54
+  |
+3 | #[pred] fn node<T>(p: *mut Node<T>, v: T, next: *mut Node<T>) =
+  |                                                      ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:6:29
+  |
+6 | #[pred] fn stack<T>(p: *mut Stack<T>, nodes: list<*mut Node<T>>) =
+  |                             ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `list` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:6:46
+  |
+6 | #[pred] fn stack<T>(p: *mut Stack<T>, nodes: list<*mut Node<T>>) =
+  |                                              ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:6:56
+  |
+6 | #[pred] fn stack<T>(p: *mut Stack<T>, nodes: list<*mut Node<T>>) =
+  |                                                        ^^^^ not found in this scope
+
+error[E0412]: cannot find type `list` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:10:33
+   |
+10 | #[pred] fn nodes_pred<T>(nodes: list<*mut Node<T>>) =
+   |                                 ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:10:43
+   |
+10 | #[pred] fn nodes_pred<T>(nodes: list<*mut Node<T>>) =
+   |                                           ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Vector` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:16:27
+   |
+16 | #[pred] fn vector(p: *mut Vector, x: i32, y: i32) =
+   |                           ^^^^^^ not found in this scope
+   |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+   |
+16 - #[pred] fn vector(p: *mut Vector, x: i32, y: i32) =
+16 + #[pred] fn vector(p: *mut std::intrinsics::simd::SimdAlign, x: i32, y: i32) =
+   |
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:19:9
+   |
+19 | impl<T> Stack<T> {
+   |         ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:22:32
+   |
+22 |     unsafe fn create() -> *mut Stack<T> {
+   |                                ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:23:41
+   |
+23 |         let stack = VeriFast_alloc ::  <Stack<T>>(                  );
+   |                                         ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:25:46
+   |
+25 |             handle_alloc_error(Layout::new::<Stack<T>>());
+   |                                              ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:34:32
+   |
+34 |     unsafe fn push(stack: *mut Stack<T>, value: T) {
+   |                                ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:35:37
+   |
+35 |         let n = VeriFast_alloc ::  <Node<T>>(                 );
+   |                                     ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:37:46
+   |
+37 |             handle_alloc_error(Layout::new::<Node<T>>());
+   |                                              ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:46:36
+   |
+46 |     unsafe fn is_empty(stack: *mut Stack<T>) -> bool {
+   |                                    ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:56:31
+   |
+56 |     unsafe fn pop(stack: *mut Stack<T>) -> T {
+   |                               ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:62:48
+   |
+62 |         VF_free(head as *mut u8 as *mut        Node<T>   );
+   |                                                ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:69:35
+   |
+69 |     unsafe fn dispose(stack: *mut Stack<T>) {
+   |                                   ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:70:49
+   |
+70 |         VF_free(stack as *mut u8 as *mut        Stack<T>   );
+   |                                                 ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Vector` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:90:6
+   |
+90 | impl Vector {
+   |      ^^^^^^ not found in this scope
+   |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+   |
+90 - impl Vector {
+90 + impl std::intrinsics::simd::SimdAlign {
+   |
+
+error[E0412]: cannot find type `Vector` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:93:58
+   |
+93 |     unsafe fn create(limit: i32, x: i32, y: i32) -> *mut Vector {
+   |                                                          ^^^^^^ not found in this scope
+   |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+   |
+93 -     unsafe fn create(limit: i32, x: i32, y: i32) -> *mut Vector {
+93 +     unsafe fn create(limit: i32, x: i32, y: i32) -> *mut std::intrinsics::simd::SimdAlign {
+   |
+
+error[E0412]: cannot find type `Vector` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:95:42
+   |
+95 |         let result = VeriFast_alloc ::  <Vector>(                );
+   |                                          ^^^^^^ not found in this scope
+   |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+   |
+95 -         let result = VeriFast_alloc ::  <Vector>(                );
+95 +         let result = VeriFast_alloc ::  <std::intrinsics::simd::SimdAlign>(                );
+   |
+help: you might be missing a type parameter
+   |
+90 | impl<Vector> Vector {
+   |     ++++++++
+
+error[E0412]: cannot find type `Vector` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:97:46
+   |
+97 |             handle_alloc_error(Layout::new::<Vector>());
+   |                                              ^^^^^^ not found in this scope
+   |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+   |
+97 -             handle_alloc_error(Layout::new::<Vector>());
+97 +             handle_alloc_error(Layout::new::<std::intrinsics::simd::SimdAlign>());
+   |
+help: you might be missing a type parameter
+   |
+90 | impl<Vector> Vector {
+   |     ++++++++
+
+error[E0412]: cannot find type `Vector` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:128:58
+    |
+128 |                     VF_free(v1 as *mut u8 as *mut        Vector   );
+    |                                                          ^^^^^^ not found in this scope
+    |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+    |
+128 -                     VF_free(v1 as *mut u8 as *mut        Vector   );
+128 +                     VF_free(v1 as *mut u8 as *mut        std::intrinsics::simd::SimdAlign   );
+    |
+
+error[E0412]: cannot find type `Vector` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:129:58
+    |
+129 |                     VF_free(v2 as *mut u8 as *mut        Vector   );
+    |                                                          ^^^^^^ not found in this scope
+    |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+    |
+129 -                     VF_free(v2 as *mut u8 as *mut        Vector   );
+129 +                     VF_free(v2 as *mut u8 as *mut        std::intrinsics::simd::SimdAlign   );
+    |
+
+error[E0412]: cannot find type `Vector` in this scope
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:141:58
+    |
+141 |                     VF_free(v_ as *mut u8 as *mut        Vector   );
+    |                                                          ^^^^^^ not found in this scope
+    |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+    |
+141 -                     VF_free(v_ as *mut u8 as *mut        Vector   );
+141 +                     VF_free(v_ as *mut u8 as *mut        std::intrinsics::simd::SimdAlign   );
+    |
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:109:17
+    |
+109 |         let s = Stack::create();
+    |                 ^^^^^ use of undeclared type `Stack`
+
+error[E0433]: failed to resolve: use of undeclared type `Vector`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:117:29
+    |
+117 |                     let v = Vector::create(limit, x, y);
+    |                             ^^^^^^ use of undeclared type `Vector`
+    |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+    |
+117 -                     let v = Vector::create(limit, x, y);
+117 +                     let v = std::intrinsics::simd::SimdAlign::create(limit, x, y);
+    |
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:118:21
+    |
+118 |                     Stack::push(s, v);
+    |                     ^^^^^ use of undeclared type `Stack`
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:121:30
+    |
+121 |                     assert!(!Stack::is_empty(s), "Stack underflow");
+    |                              ^^^^^ use of undeclared type `Stack`
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:122:30
+    |
+122 |                     let v1 = Stack::pop(s);
+    |                              ^^^^^ use of undeclared type `Stack`
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:124:30
+    |
+124 |                     assert!(!Stack::is_empty(s), "Stack underflow");
+    |                              ^^^^^ use of undeclared type `Stack`
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:125:30
+    |
+125 |                     let v2 = Stack::pop(s);
+    |                              ^^^^^ use of undeclared type `Stack`
+
+error[E0433]: failed to resolve: use of undeclared type `Vector`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:127:31
+    |
+127 |                     let sum = Vector::create(limit, (*v1).x + (*v2).x, (*v2).y + (*v1).y);
+    |                               ^^^^^^ use of undeclared type `Vector`
+    |
+help: there is an enum variant `std::intrinsics::simd::SimdAlign::Vector`; try using the variant's enum
+    |
+127 -                     let sum = Vector::create(limit, (*v1).x + (*v2).x, (*v2).y + (*v1).y);
+127 +                     let sum = std::intrinsics::simd::SimdAlign::create(limit, (*v1).x + (*v2).x, (*v2).y + (*v1).y);
+    |
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:130:21
+    |
+130 |                     Stack::push(s, sum);
+    |                     ^^^^^ use of undeclared type `Stack`
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:133:30
+    |
+133 |                     assert!(!Stack::is_empty(s), "Stack underflow");
+    |                              ^^^^^ use of undeclared type `Stack`
+
+error[E0433]: failed to resolve: use of undeclared type `Stack`
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:134:30
+    |
+134 |                     let v_ = Stack::pop(s);
+    |                              ^^^^^ use of undeclared type `Stack`
+
+warning: function cannot return without recursing
+   --> /app/output/qwen3/rust/purely_unsafe/solutions/predctors.rs:150:1
+    |
+150 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 58 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0412, E0433.
+For more information about an error, try `rustc --explain E0412`.

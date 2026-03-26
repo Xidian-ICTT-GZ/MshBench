@@ -1,0 +1,13 @@
+Command: verifast /app/ground_true/java/java/verifast/JoinableRunnable.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/verifast/JoinableRunnable.java(12,17-20): error: Cannot prove condition. (Cannot prove false.)
+12 |     public void run() {
+   |                 ^^^
+/app/ground_true/java/java/verifast/JoinableRunnable.java(12,17-20): note: Consuming expression
+12 |     public void run() {
+   |                 ^^^
+
+--- STDERR ---
+
+Result: FAIL

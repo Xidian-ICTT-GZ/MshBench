@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Arithmetic/typedef_cast.c(6,7-10): error: The left-hand side of a points-to assertion must be a field dereference, a global variable, a pointer variable dereference or an array element expression.
+6 |     p |-> ?v &*& 0 <= v && v <= 32767 || -32768 <= v && v < 0; @*/
+  |       ^^^

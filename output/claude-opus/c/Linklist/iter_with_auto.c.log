@@ -1,0 +1,12 @@
+/app/output/claude-opus/c/Linklist/iter_with_auto.c(18,8-10): error: Cannot prove condition. (Cannot prove append(vs1, vs2) = nil.)
+18 |     vs == nil
+   |        ^^
+/app/output/claude-opus/c/Linklist/iter_with_auto.c(18,8-10): note: Consuming assertion
+18 |     vs == nil
+   |        ^^
+/app/output/claude-opus/c/Linklist/iter_with_auto.c(80,5-10): note: Executing statement
+80 |     close nodes(first, last, append(vs1, vs2));
+   |     ^^^^^
+/app/output/claude-opus/c/Linklist/iter_with_auto.c(74,12-24): note: Verifying function 'nodes_append'
+74 | lemma void nodes_append(struct node *first, struct node *middle, struct node *last)
+   |            ^^^^^^^^^^^^

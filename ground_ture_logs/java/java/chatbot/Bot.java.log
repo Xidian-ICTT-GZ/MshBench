@@ -1,0 +1,16 @@
+Command: verifast /app/ground_true/java/java/chatbot/Bot.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/chatbot/Bot.java(37,52-53): error: Potential arithmetic overflow. (Cannot prove (index + 7) <= 2147483647.)
+37 |                 String text = line.substring(index + 7, length);
+   |                                                    ^
+/app/ground_true/java/java/chatbot/Bot.java(37,29-30): note: Executing statement
+37 |                 String text = line.substring(index + 7, length);
+   |                             ^
+/app/ground_true/java/java/chatbot/Bot.java(7,24-28): note: Verifying method 'main'
+7 |     public static void main(String[] args) throws IOException /*@ ensures true; @*/
+  |                        ^^^^
+
+--- STDERR ---
+
+Result: FAIL

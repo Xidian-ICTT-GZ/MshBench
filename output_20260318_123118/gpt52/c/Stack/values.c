@@ -1,0 +1,77 @@
+#include "stdlib.h"
+
+/*@
+
+predicate nodes(struct node *n) =
+    n == 0 ?
+        emp
+    :
+        n->next |-> ?next &*& n->value |-> ?value &*& malloc_block_node(n) &*& nodes(next);
+
+predicate stackp(struct stack *s) =
+    s->head |-> ?h &*& malloc_block_stack(s) &*& nodes(h);
+
+@*/
+
+struct node
+{
+    struct node *next;
+    int value;
+};
+
+struct stack
+{
+    struct node *head;
+};
+
+struct stack *create_stack()
+    //@ requires true;
+    //@ ensures stackp(result);
+{
+    struct stack *stack = malloc(sizeof(struct stack));
+    if (stack == 0)
+    {
+        abort();
+    }
+    stack->head = 0;
+    
+    
+    return stack;
+}
+
+void stack_push(struct stack *stack, int value)
+    //@ requires stackp(stack);
+    //@ ensures stackp(stack);
+{
+    
+    struct node *n = malloc(sizeof(struct node));
+    if (n == 0)
+    {
+        abort();
+    }
+    //@ open stackp(stack);
+    n->next = stack->head;
+    n->value = value;
+    stack->head = n;
+    //@ close nodes(n);
+    //@ close stackp(stack);
+    
+    
+}
+
+void stack_dispose(struct stack *stack)
+    //@ requires stackp(stack);
+    //@ ensures true;
+{
+    //@ open stackp(stack);
+    //@ open nodes(?h);
+    //@ assert h == 0;
+    free(stack);
+}
+
+int main()
+    //@ requires true;
+    //@ ensures true;
+{
+    return 0;
+}

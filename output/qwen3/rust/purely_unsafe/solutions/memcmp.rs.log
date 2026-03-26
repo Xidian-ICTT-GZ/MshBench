@@ -1,0 +1,13 @@
+error: mismatched closing delimiter: `]`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/memcmp.rs:10:10
+   |
+10 | #[ensures(result == 0 ==> forall<i: usize> (0 <= i && i < count ==> *p1.add(i) == *p2.add(i)) &&
+   |  -       ^ unclosed delimiter
+   |  |
+   |  closing delimiter possibly meant for this
+...
+17 | ]
+   | ^ mismatched closing delimiter
+
+error: aborting due to 1 previous error
+

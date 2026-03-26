@@ -1,0 +1,10 @@
+Rust frontend failed
+Details:
+Rust frontend failed to generate VF MIR: Rust MIR exporter executable exited with exit code 101:
+[2m2026-03-04T10:12:46.268290Z[0m [35mTRACE[0m [2mvf_mir_exporter[0m[2m:[0m Calling the Rust Compiler with args: ["/opt/verifast/bin/vf-rust-mir-exporter", "/app/output/claude-opus/rust/purely_unsafe/solutions/generics.rs", "--sysroot=/root/.rustup/toolchains/nightly-2025-11-25-x86_64-unknown-linux-gnu", "-Coverflow_checks=off", "--crate-type=lib", "--error-format=json"]
+[2m2026-03-04T10:12:46.286690Z[0m [35mTRACE[0m [2mvf_mir_exporter[0m[2m:[0m FileLoader::read_file("/app/output/claude-opus/rust/purely_unsafe/solutions/generics.rs")
+
+thread 'rustc' (78691) panicked at src/preprocessor.rs:495:45:
+EOF inside multiline comment starting at 12:1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+

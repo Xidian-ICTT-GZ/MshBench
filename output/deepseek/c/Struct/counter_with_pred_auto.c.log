@@ -1,0 +1,9 @@
+/app/output/deepseek/c/Struct/counter_with_pred_auto.c(34,18-19): error: Potential arithmetic overflow. (Cannot prove (old + 1) <= INT_MAX.)
+34 |   c->value = tmp + 1;
+   |                  ^
+/app/output/deepseek/c/Struct/counter_with_pred_auto.c(34,12-13): note: Executing statement
+34 |   c->value = tmp + 1;
+   |            ^
+/app/output/deepseek/c/Struct/counter_with_pred_auto.c(28,6-15): note: Verifying function 'increment'
+28 | void increment(struct Counter *c)
+   |      ^^^^^^^^^

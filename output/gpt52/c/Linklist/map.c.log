@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Linklist/map.c(83,22-23): error: Could not prove is_mapfunc(f) (Cannot prove is_mapfunc(f).)
+83 |         int fvalue = f(data, list->value);
+   |                      ^
+/app/output/gpt52/c/Linklist/map.c(83,20-21): note: Executing statement
+83 |         int fvalue = f(data, list->value);
+   |                    ^
+/app/output/gpt52/c/Linklist/map.c(71,14-18): note: Verifying function 'fmap'
+71 | struct node *fmap(struct node *list, mapfunc f, void *data)
+   |              ^^^^

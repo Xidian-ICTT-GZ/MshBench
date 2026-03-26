@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/channels_raw/Channel.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/channels_raw/Channel.java(47,13-27): error: No such predicate: is_channel_sep
+47 |             is_channel_sep(?sep, inv, this, ?sepPred, ?unsepPred) &*&
+   |             ^^^^^^^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

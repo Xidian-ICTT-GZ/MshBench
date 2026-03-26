@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Struct/counter_with_pred.c(27,1-2): error: Function leaks heap chunks: malloc_block_Counter(c)
+27 | }
+   | ^
+/app/output/gpt52/c/Struct/counter_with_pred.c(27,1-2): note: Leak check.
+27 | }
+   | ^
+/app/output/gpt52/c/Struct/counter_with_pred.c(15,17-21): note: Verifying function 'init'
+15 | struct Counter *init(int v)
+   |                 ^^^^

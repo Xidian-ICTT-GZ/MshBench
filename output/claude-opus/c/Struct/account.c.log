@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Struct/account.c(25,1-2): error: Function leaks heap chunks: malloc_block_account(myAccount)
+25 | }
+   | ^
+/app/output/claude-opus/c/Struct/account.c(25,1-2): note: Leak check.
+25 | }
+   | ^
+/app/output/claude-opus/c/Struct/account.c(13,17-31): note: Verifying function 'create_account'
+13 | struct account *create_account()
+   |                 ^^^^^^^^^^^^^^

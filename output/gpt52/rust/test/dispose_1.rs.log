@@ -1,0 +1,3 @@
+/app/output/gpt52/rust/test/dispose_1.rs(14,1-10): error: Parse error: Parse error.
+14 | predicate node_block(struct Node *n; struct Node *next, i32 value) =
+   | ^^^^^^^^^

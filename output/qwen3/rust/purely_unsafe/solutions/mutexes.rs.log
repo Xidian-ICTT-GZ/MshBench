@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `mutex_inv`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/mutexes.rs:4:6
+  |
+4 | pred mutex_inv(mutex: *mut Mutex, guard: MutexGuard) =
+  |      ^^^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

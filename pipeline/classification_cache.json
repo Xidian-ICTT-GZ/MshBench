@@ -1,0 +1,1646 @@
+{
+  "429f36d3c6b6a4c6faca8f534cef6d0a": {
+    "classification": "F2",
+    "reason": "The leak check reports remaining heap chunks (tree(root)) at function exit, indicating the function does not frame/return all owned resources required by its specification (unconsumed predicate left over)."
+  },
+  "b3b9bfe67bd1c1a05983f013284cdeb4": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at the annotation syntax (\"//@ requires true;\"), indicating invalid/unsupported specification syntax or tool misuse rather than a proof obligation failure."
+  },
+  "c4408fae590383b8afbb662ba46bc2e4": {
+    "classification": "F1",
+    "reason": "The verifier cannot find the required heap chunk for node_count(node0, _) when reading node->count, indicating the function lacks ownership (or a predicate providing ownership) for the node's count field at that program point."
+  },
+  "4c07e38ee226a88c7bd238f2cef9ed70": {
+    "classification": "F1",
+    "reason": "The code reads t->value but VeriFast cannot find the required heap chunk/predicate (tree_value(t, _)) in the current context, indicating missing ownership of the tree node fields at that program point."
+  },
+  "690ca6f089a8b5a315fb63f3cd807b8b": {
+    "classification": "F1",
+    "reason": "The verifier cannot find the required heap chunk for the struct field predicate (point_x(p,_)) when consuming the assertion for p->x |-> x; this indicates the proof context lacks ownership of p\u2019s fields (missing/opened point predicate or allocated memory)."
+  },
+  "ac2d6b9f07513a0ecfb77945c06064f4": {
+    "classification": "F3",
+    "reason": "VeriFast cannot prove that tmp+1 stays within INT_MAX, indicating the function/predicate invariant is too weak (missing a bound on the counter value) to justify arithmetic safety."
+  },
+  "e3d048542b654152712c671e200918c2": {
+    "classification": "F1",
+    "reason": "The function returns/leaves scope while still owning a heap chunk (malloc_block_account(myAccount)) without transferring or disposing of it, indicating missing ownership management (e.g., missing free or missing postcondition/return ownership)."
+  },
+  "0ff4eb3c562732e968d925fa0fea89bb": {
+    "classification": "F6",
+    "reason": "Verification cannot proceed because an included header file is missing; the tool is forced into an invalid setup/environment assumption rather than a spec/ownership/framing issue."
+  },
+  "abf60707fecbbf119db8625b2b53ba5a": {
+    "classification": "F3",
+    "reason": "VeriFast cannot prove the balance update avoids integer underflow (INT_MIN <= balance+amount), indicating the function/predicate invariants are too weak to establish required numeric bounds for safe arithmetic."
+  },
+  "46eb4e9e653a879d77171fcf542bc025": {
+    "classification": "F2",
+    "reason": "The function 'init' allocates memory but does not return or properly dispose/frame out the malloc_block_Counter chunk, causing a heap leak at function exit."
+  },
+  "23fca1651233dbfee58f785dbba007fb": {
+    "classification": "F6",
+    "reason": "No VeriFast errors were reported; the log indicates successful verification, so none of the specific failure categories apply. Classifying as 'Unsound Assumptions' is the closest fit among the provided options when verification succeeds without evidence of a concrete error."
+  },
+  "e6cc1515ed579eb72444f24fcb72ec9f": {
+    "classification": "F6",
+    "reason": "Verification cannot proceed because the included header file is missing; this is an external/environmental assumption (file availability) that is unsatisfied."
+  },
+  "1b8464192aa79868755b0864796acfa8": {
+    "classification": "F1",
+    "reason": "The function create_account allocates an account (malloc_block_account) but does not return or transfer ownership of the allocated heap chunk to the caller (missing postcondition/close/return), so VeriFast reports a memory leak due to missing ownership management."
+  },
+  "decb07725d6a55e86e48064fbcc044e6": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at '(*puc)++;', which indicates invalid/unexpected syntax or tool parsing limitations rather than a proof obligation issue like ownership, framing, invariants, aliasing, or specification strength."
+  },
+  "2034160ce3ce01468630f16c1267bdff": {
+    "classification": "F3",
+    "reason": "VeriFast cannot prove the casted count fits in uintptr_t/size_t bounds (dummy2 <= UINTPTR_MAX), indicating missing or too-weak numeric preconditions/invariants about *count (e.g., nonnegative and bounded) needed to rule out arithmetic overflow."
+  },
+  "e3d292a37a89afa6fe58753ffb29177f": {
+    "classification": "F6",
+    "reason": "The proof refers to a predicate `integer_array` that is not defined/imported in the verification context, i.e., the specification assumes an unavailable predicate."
+  },
+  "2a94514e96a18bfe0ebf5f52e8642c5f": {
+    "classification": "F5",
+    "reason": "The precondition for main requires 0 < argc, but VeriFast cannot establish this from the C environment; the specification is too strong for all possible calls to main."
+  },
+  "8effec7880b31089e7f15276d59b21c2": {
+    "classification": "F6",
+    "reason": "The error is a predicate family redeclaration mismatch with the prelude (redefining `string` differently than its original declaration), indicating an invalid/unsound assumption about existing library specifications rather than an ownership/framing/invariant issue."
+  },
+  "d62ba4a99fabd8ccc95642198f200052": {
+    "classification": "F1",
+    "reason": "The assertion `f->x |-> ?v` fails because VeriFast cannot find the required heap chunk `foo_x(f, _)`, indicating the code lacks ownership of the field (or the corresponding predicate/chunk was never opened/produced)."
+  },
+  "7284960e2b547ab65c91baaa232ad80d": {
+    "classification": "F3",
+    "reason": "Verifier cannot prove absence of arithmetic overflow for r += i; the function lacks sufficiently strong invariants/preconditions relating i (and r) to INT_MAX, so overflow-freedom is unprovable."
+  },
+  "33afed11cb92894eb12ba146e973606d": {
+    "classification": "F3",
+    "reason": "Verifier cannot establish the needed arithmetic invariant (INT_MIN <= x - y) for the subtraction before casting, indicating missing/too-weak preconditions or invariants about the relation/bounds of x and y."
+  },
+  "8385242feaa219f5af188cfc393b5460": {
+    "classification": "F3",
+    "reason": "The loop/function invariant `i <= 10` cannot be established from the function entry state, indicating the invariant is too weakly justified by assumptions/preconditions (i is unconstrained), so VeriFast cannot prove it holds."
+  },
+  "b41621d59b1b057a4b95a7e7fc5684be": {
+    "classification": "F1",
+    "reason": "The precondition requires ownership of the heap predicate argv_array(argv, argc, 0), but at main entry VeriFast cannot find any matching heap chunks to consume, indicating missing ownership/provided resources."
+  },
+  "bd4954e3afa16333ccecb154baf205ab": {
+    "classification": "F6",
+    "reason": "No verification errors were reported; the log indicates successful verification, so any issue would stem from an unsound assumption/specification rather than a detected ownership/framing/invariant/alias/strength problem."
+  },
+  "8c4a5a6c8b2258cd6762df94f8d93b91": {
+    "classification": "F6",
+    "reason": "No VeriFast errors are reported; this typically indicates the log provides no failing proof obligation to diagnose, so any issue would stem from assumptions outside the log rather than a specific ownership/framing/specification problem."
+  },
+  "4dc67810ece6aee185061a7baebf98ec": {
+    "classification": "F5",
+    "reason": "VeriFast cannot prove that adding 1 to parameter d stays within INT_MAX, so the spec/assumptions about d\u2019s range are too strong/insufficiently constrained to justify the arithmetic without overflow."
+  },
+  "64208bf7279e1c9323ad3c9c66aa55ca": {
+    "classification": "F6",
+    "reason": "The tool reports a parse error at the specification comment, indicating an invalid/unsupported annotation syntax or setup rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "c573d3178ee262be04414147226694cb": {
+    "classification": "F6",
+    "reason": "Verification fails due to an external dependency being missing (header file not found), i.e., an environmental/assumption issue rather than a proof obligation like ownership or framing."
+  },
+  "990e06572d015a6f730ef03764045eee": {
+    "classification": "F6",
+    "reason": "The verifier reports an undefined predicate/function `set` used in the postcondition, indicating the specification relies on an undeclared/unsupported assumption rather than provable definitions."
+  },
+  "e36e939b539abd33ecbb6f73fde6911a": {
+    "classification": "F6",
+    "reason": "The error is about a missing required 'terminates' clause in the function implementation/prototype, i.e., an unmet tool/language requirement rather than a heap ownership, framing, invariant, aliasing, or strength-of-spec issue."
+  },
+  "765b27050a83debc456a9585f3f50de5": {
+    "classification": "F1",
+    "reason": "The loop invariant requires the predicate nodes(ptr), but VeriFast cannot find/establish the corresponding heap chunks (nodes(h)) at that program point, indicating missing ownership/resources for the nodes predicate."
+  },
+  "cd2663c19e219032e660579a92de2117": {
+    "classification": "F6",
+    "reason": "The verification refers to a predicate `is_function_pointer` that is not defined/available in the environment, indicating reliance on an undeclared predicate (an unsound or unsupported assumption rather than a resource/framing issue)."
+  },
+  "287c1e3777867525b5f22f437a9769c5": {
+    "classification": "F5",
+    "reason": "The proof obligation requires showing append(vs1, vs2) = nil to satisfy vs == nil, which is only true under overly restrictive assumptions (e.g., both lists empty). This indicates the specification/lemma precondition is too strong for intended use."
+  },
+  "72e72596f4287c4760b3cc61016442bd": {
+    "classification": "F1",
+    "reason": "Postcondition requires ownership of nodes(result), but VeriFast cannot find a nodes(...) predicate chunk (it tries nodes(null_pointer)), indicating missing/incorrectly established heap ownership for the returned value."
+  },
+  "ba25b81862725fa8426bfac57d158855": {
+    "classification": "F1",
+    "reason": "VeriFast cannot find the required heap chunk for the field predicate `node_next_(n, _)` when consuming `last->next |-> _`, indicating missing ownership of the `next` field (and thus missing heap permissions for the node)."
+  },
+  "b6a5d604462f06d8b09d86fd0f98decf": {
+    "classification": "F1",
+    "reason": "VeriFast cannot establish effective-type/typing information for pfirst (missing has_type/points-to ownership for the struct list_node**), so dereferencing *pfirst lacks required ownership/type facts."
+  },
+  "c77ce37480e4a04b1c074ea5e6526ed2": {
+    "classification": "F5",
+    "reason": "The call cannot satisfy the callee precondition `is_int_predicate(p) == true` for the passed predicate `neq_20`, indicating the specification is too strong for the actual argument available at the call site."
+  },
+  "04f1ce023d8102ed90b192bd1ee9b240": {
+    "classification": "F2",
+    "reason": "The function ends with remaining heap chunks (node fields, malloc block, and nodes predicate), indicating resources were not properly framed/consumed or returned in the postcondition, leading to a leak check failure."
+  },
+  "04da1e21605121766cf00cddd0874910": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at the specification keyword 'requires', indicating malformed or misplaced annotation/syntax rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "0b6ef7ef5d893930f6c50c6fea60fee0": {
+    "classification": "F6",
+    "reason": "The log reports a parse error on the annotation (invalid/unrecognized VeriFast specification syntax), indicating the verifier cannot soundly interpret the specification rather than a proof/ownership/framing issue."
+  },
+  "097d5a72755883e073ecbd25c559a29b": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at a VeriFast annotation (//@ requires ...), indicating an invalid/unsupported annotation syntax or tool/language mismatch rather than an ownership/framing/invariant issue."
+  },
+  "8a4d3f42a2fad7edc147ed628d488609": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at the start of a specification clause (//@ requires ...), indicating the tool cannot soundly interpret the annotation due to syntax/format mismatch rather than a proof obligation failure."
+  },
+  "4b44910d0c46c914ed3323fdc528d1c7": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at the annotation line, indicating a syntax/annotation-format issue rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "ade0863713d6336f1289dbd772863458": {
+    "classification": "F5",
+    "reason": "Verifier deems the code unreachable ('dead code'), typically caused by an over-strong precondition/specification or assumed condition that makes the branch impossible."
+  },
+  "0a61ce59e26a4b9f24d660e802c6aaf7": {
+    "classification": "F6",
+    "reason": "The failure is a parse error on the VeriFast annotation (//@ requires ...), indicating an unsupported/invalid syntax or tool mode mismatch rather than a proof obligation issue like ownership, framing, or invariants."
+  },
+  "44fd0b5ddc3798a54dd8b6b044eb88ad": {
+    "classification": "F6",
+    "reason": "Verification succeeded, but the link phase fails due to a missing .vfmanifest artifact, indicating an external/toolchain assumption about build outputs rather than a specification/ownership/framing issue."
+  },
+  "cfaabf72f025608b9f5e8641a6fde314": {
+    "classification": "F6",
+    "reason": "The verification fails at parsing the contract annotation itself (parse error at 'requires'), indicating an invalid/unsupported specification syntax rather than an ownership/framing/invariant issue."
+  },
+  "0b47460267f647b8f25089717c792347": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the specification annotation itself, indicating invalid/unsupported syntax or malformed annotation rather than a proof/ownership/framing issue."
+  },
+  "62e7d28f5765d888d18c942ef3be93d9": {
+    "classification": "F6",
+    "reason": "The tool reports a parse error on the specification syntax (//@ requires ...), indicating an unsound/invalid assumption about the verifier/spec language setup rather than an ownership, framing, invariant, aliasing, or strength issue."
+  },
+  "47ef1ecd89a0aaa36d2b282651f2f470": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at the specification annotation (`//@ requires ...`), indicating a syntactic/annotation misuse rather than a proof failure due to ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "a4aaeb6d7870c0d946a202a3978e1225": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at a specification annotation (//@ requires ...), indicating invalid syntax or tool/language mismatch rather than a verification failure about ownership, framing, invariants, aliasing, or strength of specs."
+  },
+  "ae23aa6aab40728ad5a4157c77e6bf0a": {
+    "classification": "F6",
+    "reason": "The log shows a parser/syntax error (predicate declaration not recognized), not a verification failure about ownership, framing, invariants, aliasing, or spec strength. This reflects an unsound/invalid assumption about the tool/language syntax rather than a proof obligation issue."
+  },
+  "6b14f60586f7e67dbe8ff7faabe6440d": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error (VeriFast/Rust parser expected `!` or `::` before `Node`), not a verification failure about ownership, framing, invariants, aliasing, or spec strength\u2014i.e., the tool is being used with an unsound/incorrect assumption about accepted syntax."
+  },
+  "323f8b1b730d5e4d3267e937fc608bba": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error in the predicate definition (syntax/grammar issue), not a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "bde06ae91d4952787026eaba4bfa432b": {
+    "classification": "F6",
+    "reason": "The failure is a parse error in the predicate definition syntax (at the fractional parameter), indicating an unsupported/incorrect language construct rather than a proof obligation like ownership, framing, or invariants."
+  },
+  "d3a4c8afb0358b4b05b4a6f63c11d35e": {
+    "classification": "F6",
+    "reason": "The log shows a parse/syntax error at a predicate declaration (unexpected token), indicating the verifier cannot even interpret the specification; this is not a proof/ownership/framing issue but an unsound/invalid assumption about accepted syntax."
+  },
+  "c435ea1ad1384878d58e3b00337329ff": {
+    "classification": "F6",
+    "reason": "The failure is due to unsupported/missing verification attributes (`#[requires]`, `#[ensures]`) in the Rust compilation scope, indicating an unsound assumption about the toolchain/environment rather than a separation-logic proof issue like ownership, framing, or invariants."
+  },
+  "a52345c55d7cdc9bf75fcfa86e751355": {
+    "classification": "F6",
+    "reason": "The log shows a parse/syntax error at the predicate definition (`predicate nodes(...)`), indicating the tool cannot even interpret the specification/code. This is not a proof obligation failure (ownership/framing/invariants/alias/spec strength) but an invalid assumption about the accepted syntax/grammar."
+  },
+  "6833bfbabcdfa34a14dd540f6ad35986": {
+    "classification": "F6",
+    "reason": "This is a parse/syntax error in the predicate declaration (VeriFast/Rust syntax mismatch), not a verification failure about ownership, framing, invariants, aliasing, or spec strength\u2014i.e., the tool cannot even interpret the assumptions/specifications."
+  },
+  "7bd0b752795c7ec87fa7da9e0db9a7b1": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error (predicate declaration not accepted by the Rust parser), not a verification-condition issue; it indicates an unsound setup/assumption about the tool/language integration rather than missing ownership/framing/invariants/spec strength."
+  },
+  "82b51f18ac8ca4b01b536eebb51d4429": {
+    "classification": "F6",
+    "reason": "The log shows a syntax/parsing error in the predicate declaration (`pred nodes(...)`), indicating the tool is given ill-formed/unsupported syntax rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "abf0d0ba7a589b2351d4651bba726bbd": {
+    "classification": "F6",
+    "reason": "This is a parse/syntax error (predicate declaration not in the expected Rust/VeriFast syntax), not a verification failure about ownership, framing, invariants, aliasing, or spec strength; it reflects an unsound/invalid assumption about the accepted language syntax."
+  },
+  "94444df1d977b62b47e7c1a3abb5ac61": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error in the predicate declaration (VeriFast expected Rust tokens like `!` or `::`), not a separation-logic proof failure such as missing ownership or framing. It indicates an invalid/unsupported assumption about the language syntax/embedding."
+  },
+  "e13d045587c89f0b139aab8f06566859": {
+    "classification": "F6",
+    "reason": "The error is a syntax/parsing failure in the predicate declaration (VeriFast expected `!` or `::`), not a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "94e7f6233282d601959cb6510bae230e": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error in the predicate declaration (unexpected token), indicating an invalid/unsound specification format rather than a verification-time ownership/framing/invariant issue."
+  },
+  "291b0b9e8df68ec891e1cd1514d7e08d": {
+    "classification": "F6",
+    "reason": "The log indicates a parse/syntax error in the predicate declaration (unexpected token), not a proof obligation failure. This reflects an invalid/unsupported assumption about the specification language syntax rather than missing permissions, framing, invariants, aliasing, or spec strength."
+  },
+  "b5ecf36bc724952357b56ecd1af6452e": {
+    "classification": "F6",
+    "reason": "The log shows a tooling/annotation mismatch: Rust cannot resolve the `#[requires(...)]` attribute, meaning the verification-specific assumptions/specifications aren\u2019t being recognized/applied. This is an unsound setup issue rather than a framing/ownership/invariant problem."
+  },
+  "73fcb53210fcc50944e00ae49406cda1": {
+    "classification": "F6",
+    "reason": "This is a parse/type syntax error (unexpected `Node` in a predicate declaration), indicating the specification/program is not even well-formed for VeriFast to analyze; it is not a proof/ownership/framing issue but an unsound/invalid assumption about the accepted syntax."
+  },
+  "99f904fd93aaebd8de2677b0089f9a2c": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error in the predicate declaration (VeriFast/Rust front-end expects `!` or `::`), not a proof failure about ownership, framing, invariants, aliasing, or spec strength; it reflects an unsound/invalid assumption about the accepted language syntax."
+  },
+  "895128b8639f4add98597aa85be63de9": {
+    "classification": "F6",
+    "reason": "The failure is due to a tool/language feature limitation (VeriFast does not support closure types), not a logical proof issue like ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "9333e8dc5a868a7ef719ac49a677aab2": {
+    "classification": "F6",
+    "reason": "The failure is a parser/syntax error (VeriFast expected `!` or `::`), indicating the tool cannot interpret the specification as written; this is not a proof/ownership/framing issue but an invalid/unsound assumption about the accepted syntax."
+  },
+  "d60045b70fccd82658f0e6b3ae9af920": {
+    "classification": "F6",
+    "reason": "The log shows Rust parser errors (\"expected `{`, found keyword `crate`\") due to inserting `crate::VeriFast_ghost_command()` where a `loop { ... }` body is required. This is a tooling/encoding issue: ghost commands are being treated as executable Rust in an invalid position, i.e., an unsound/incorrect assumption about how VeriFast annotations integrate with Rust syntax, not a separation-logic ownership/framing/invariant problem."
+  },
+  "5375adf1bfdd23611d3776b6077920e6": {
+    "classification": "F6",
+    "reason": "This is a parser/syntax error (VeriFast/Rust frontend expected `!` or `::` but saw a predicate name), indicating an invalid/unsound setup or misuse of the tool\u2019s expected syntax rather than a verification framing/ownership issue."
+  },
+  "25784dcbcd2bf69ba581e97ac8616680": {
+    "classification": "F6",
+    "reason": "The log reports a parse/syntax error in the predicate declaration (unexpected token `nodes`), indicating an invalid/unsupported assumption about the specification language rather than a verification failure like ownership, framing, or invariants."
+  },
+  "74d8c77c2218d7fa2a24bc420e6e13f2": {
+    "classification": "F6",
+    "reason": "The log indicates a syntax/parsing error in the predicate declaration (VeriFast/Rust syntax mismatch), not a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "dacf56707125fd197d1a28f98e7e8b70": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error (VeriFast/Rust front-end expected `!` or `::` but saw `nodes` in a predicate declaration), indicating an invalid/unsound assumption about the tool/language syntax rather than a verification issue like ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "7090830c16b75d8889a0dd835a7b3fac": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error (VeriFast expected `!` or `::`), indicating an invalid/unsound assumption about the tool/language syntax rather than a logical verification issue like ownership, framing, or invariants."
+  },
+  "f8c7ebf7193a631980ad39df245491ab": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error in the predicate declaration (VeriFast expected `!` or `::`), indicating an incorrect/unsound assumption about the accepted specification language rather than an ownership/framing/invariant issue."
+  },
+  "106f71e6232f06601683c455b58f0aee": {
+    "classification": "F6",
+    "reason": "The failure occurs in the Rust frontend/MIR exporter due to a Rust parser panic (EOF inside a multiline comment), not a proof obligation issue; it reflects an unsound/invalid input or tooling assumption rather than a specification/ownership/framing/invariant problem."
+  },
+  "b7109fa111db7d17992baeb11f1e56a1": {
+    "classification": "F6",
+    "reason": "The log shows a parse/syntax error (using `pred tree(...)` where the Rust parser expects `!` or `::`), indicating an incorrect/unsound assumption about the accepted language syntax rather than a verification obligation like ownership/framing/invariants."
+  },
+  "ecaa73adcf5a0206bc344420c500bfbd": {
+    "classification": "F6",
+    "reason": "The log shows a parser/syntax error in the predicate declaration (unexpected identifier in Rust context), indicating an invalid/unsupported annotation rather than a framing, ownership, invariant, aliasing, or strength issue."
+  },
+  "e3fc4c775d7f0f22c0236445d4b3228a": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error (VeriFast expected `!` or `::` before `nodes`), so verification cannot proceed; this indicates an incorrect/unsound assumption about the tool/language syntax rather than an ownership/framing/invariant/specification issue."
+  },
+  "1dce1cc84d56d659884138537c6a3110": {
+    "classification": "F6",
+    "reason": "The error is a Rust parser/syntax issue (unclosed delimiter) rather than a VeriFast proof failure, indicating an unsound/invalid assumption about the code being well-formed for verification."
+  },
+  "3112cb670fe571ad9a57b29aa3530b5c": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parse error at the predicate definition (VeriFast expecting Rust tokens like `!` or `::`), indicating an invalid/unsound setup rather than a verification condition such as ownership, framing, invariants, aliasing, or specification strength."
+  },
+  "b4be472d9f665fb160566c47fb9e07a7": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error (VeriFast/Rust front-end expects `!` or `::` but sees `nodes`), not a logical proof obligation issue like ownership/framing/invariants. This indicates an unsound/incorrect assumption about the accepted specification syntax."
+  },
+  "fcc9879fed914c653f80af6eb30a4410": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parse error (VeriFast/Rust parser expected `!` or `::`), indicating an invalid/unsupported assumption about the specification language rather than an ownership/framing/invariant issue."
+  },
+  "29e52535aca0e61af93724440bcfc1b2": {
+    "classification": "F6",
+    "reason": "The log shows a parse/syntax error in the predicate definition (`pred nodes(...)`), not a verification failure about ownership, framing, invariants, aliasing, or spec strength; it stems from an incorrect/unsupported assumption about the tool/language syntax."
+  },
+  "86cd0845d8eeabdad4ecfd443e0086d5": {
+    "classification": "F6",
+    "reason": "Parser error: the tool cannot interpret the predicate definition syntax (expected `!` or `::`). This is a language/syntax mismatch rather than a verification failure about ownership, framing, invariants, aliasing, or specification strength."
+  },
+  "49502718b39b0ca141980f7cfe2635d4": {
+    "classification": "F6",
+    "reason": "The verifier cannot parse the specification syntax (`predicate mutex_u32...`), indicating an unsound/incorrect assumption about the accepted language/grammar rather than an ownership, framing, invariant, aliasing, or strength issue."
+  },
+  "6a21080669bd4375eeaabf45797fe659": {
+    "classification": "F6",
+    "reason": "This is a parse/syntax error (VeriFast/Rust parser expecting `!` or `::`), not a verification failure about permissions, framing, invariants, aliasing, or spec strength; it stems from an unsound/invalid assumption about accepted syntax."
+  },
+  "affa1dc13fc59f44c395e73d89ac48f4": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error (VeriFast expected `!` or `::` before the predicate name), indicating the specification language is being used incorrectly rather than a proof obligation like ownership/framing/invariants."
+  },
+  "c6dfbaea2e780c3edd7b5758f3de6a22": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error (VeriFast/Rust parser expects `!` or `::`), not a verification-condition issue like ownership, framing, invariants, aliasing, or spec strength. It indicates an unsound/incorrect assumption about the accepted specification syntax."
+  },
+  "ba407399da938dd660ee849f5198c3ea": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error (`pred` declaration not accepted here), indicating an unsound/invalid assumption about the VeriFast/Rust syntax being used rather than a framing/ownership/specification strength issue."
+  },
+  "2dcaa85499a0b34406e1ebea2bf32cce": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error in the predicate declaration (VeriFast expected `!` or `::`), not a verification failure about ownership, framing, invariants, aliasing, or spec strength; it indicates an invalid/unsound annotation setup."
+  },
+  "eb780602ee0feb3ce5b0bec340c5e7fd": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at `emp`, indicating invalid/unsupported VeriFast syntax or malformed annotations, i.e., the verification attempt relies on assumptions about tool/language support rather than a logical proof obligation (not an ownership/framing/invariant/spec issue)."
+  },
+  "0a6d086971d6c4dcd6de6c807fc5d912": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error in the predicate/formula syntax (use of '?', '|->', '&*&', etc.), which is a front-end language/syntax issue rather than a verification failure like missing ownership or framing."
+  },
+  "7f7eafd1eb29a2c0d940975e2975a63d": {
+    "classification": "F6",
+    "reason": "This is a parser/syntax error in the predicate declaration (VeriFast/Rust syntax mismatch), not a proof failure about ownership, framing, invariants, aliasing, or spec strength. It reflects an invalid/unsound assumption about the accepted language syntax."
+  },
+  "3008b4c48676294749b9c986227eb769": {
+    "classification": "F6",
+    "reason": "The log shows a syntax/parsing error in the predicate declaration (unexpected token `Node`), indicating the verifier cannot even interpret the specification; this reflects an unsound/invalid assumption about the language/specification syntax rather than an ownership/framing/invariant issue."
+  },
+  "b290c7abbb6d9013ab8b960fcb1412fe": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error in the predicate declaration (VeriFast/Rust grammar mismatch), not a verification failure about ownership, framing, invariants, aliasing, or spec strength\u2014i.e., an unsound assumption about the language/tool syntax."
+  },
+  "a7ee96bf51a64fe78a4bc33c394d670f": {
+    "classification": "F6",
+    "reason": "The error is a syntax/parse error in the predicate declaration (VeriFast expected `!` or `::`), indicating the specification is ill-formed rather than a proof failure about ownership, framing, invariants, aliasing, or strength."
+  },
+  "c35a7fdc29d954a403d1ad6b41296fb3": {
+    "classification": "F6",
+    "reason": "The log reports a syntax/parsing error in the predicate declaration (`pred Account_own...`), indicating the verification setup contains invalid/unsupported annotations rather than a proof obligation failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "2f7bcc3004fd2c1bded4ea80b53548f1": {
+    "classification": "F6",
+    "reason": "The log shows Rust parse/compile errors (e.g., VeriFast ghost commands not in a block, unknown #[requires]/#[ensures] attributes, unresolved crate/module), indicating the verification relies on tooling/macros/crates that are not present or not correctly integrated\u2014an unsound/invalid assumption about the environment rather than a logical ownership/framing/invariant issue."
+  },
+  "023ca4a346cf177dac9f7b635768cf37": {
+    "classification": "F6",
+    "reason": "The log shows a parser/syntax error (predicate declaration not accepted) rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength; this falls under unsound/invalid assumptions about the tool/language syntax."
+  },
+  "62925d8ae3ecfe2f82416be593ec576f": {
+    "classification": "F6",
+    "reason": "This is a parse/syntax error in the predicate declaration (VeriFast expects a different token sequence), not a logical proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "a0aa1d68f8e5412337a0c1dcec63a327": {
+    "classification": "F6",
+    "reason": "The log shows Rust parsing/compilation failures (e.g., `expected '{' found keyword crate`, unknown `#[requires]`/`#[ensures]` attributes), indicating the verification annotations/ghost commands are not being recognized by the toolchain\u2014an unsound setup/assumption about the environment rather than a genuine proof obligation issue."
+  },
+  "8fabba57216cd25771dde68fc596fe87": {
+    "classification": "F6",
+    "reason": "The specification refers to `struct node` in a predicate, but the struct type is not declared/visible, causing 'No such struct'. This is an unsound assumption about available type definitions rather than an ownership or framing issue."
+  },
+  "f1a68d0b3fb7ed6f8f927ecee03ac384": {
+    "classification": "F6",
+    "reason": "The verifier reports a parse error at the use of '?' placeholders in a predicate assertion, indicating malformed/unsupported syntax rather than an ownership, framing, or invariant issue."
+  },
+  "4b34fa9ab32530c9d6d8d1850980310e": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at a predicate assertion (`node(root; ?l, ?r, ?p, ?c) &*&`), indicating malformed syntax/unsupported notation rather than a logical verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "5564ba4beaa823bde9ef9a20f316142c": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error in a lemma declaration, indicating ill-formed annotations/syntax rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "f84eb18303332677b2ed83cbb1ac279b": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error in the predicate declaration (missing comma between parameters), not a verification-time ownership/framing/invariant/alias/spec-strength issue."
+  },
+  "bb88398b788d5df23c3c14b0847b9a17": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at an annotation (//@ requires), indicating an invalid/unsupported syntax or tool/language-mode mismatch rather than a proof obligation issue like ownership, framing, or invariants."
+  },
+  "7a7ee0bfb99fcdb17be37bb7b3ea384d": {
+    "classification": "F6",
+    "reason": "The log is a parse error triggered at an `assume` annotation, indicating an invalid/unsupported assumption directive rather than a proof obligation failure."
+  },
+  "4e164b76fbaadd93c59338b4df312320": {
+    "classification": "F6",
+    "reason": "The error is a parse error in the predicate/struct field syntax (*p |-> struct_account{...}), indicating an invalid or unsupported specification form rather than a proof obligation like missing ownership or framing."
+  },
+  "f26800c9c9d9cb80b195ed6384be732d": {
+    "classification": "F6",
+    "reason": "This is a syntax/parse error in an annotation (VeriFast cannot parse the //@ requires ... line), so the issue is not about ownership/framing/invariants but an invalid or unsupported assumption/specification format."
+  },
+  "d857201b21caf53e9b2626f4c5c0bcf4": {
+    "classification": "F6",
+    "reason": "The verification fails due to a syntax/parse error in the specification (invalid token/grammar around \"&p->p;\"), not due to an ownership/framing/invariant/aliasing/specification strength issue."
+  },
+  "617fd9275fac05103d45e5f0e73d4859": {
+    "classification": "F6",
+    "reason": "Verification cannot proceed because a required header file is missing; the build/verification environment assumes the presence of spouse.h but it is not available."
+  },
+  "86a34055090cbc4143258df87f2df866": {
+    "classification": "F6",
+    "reason": "The failure is a parse error on a VeriFast annotation (`//@ assume myAccount != 0;`), indicating an unsupported/malformed assumption directive rather than a proof obligation issue; it reflects an attempt to introduce an unsound assumption (and it is not even syntactically accepted here)."
+  },
+  "d22553e66c7c97f78d1165428b2d3474": {
+    "classification": "F6",
+    "reason": "The log shows a parse error at an `assume` annotation (`//@ assume foo_inv(&f);`), indicating an attempt to introduce an unchecked assumption; this falls under unsound assumptions (and here it is not even syntactically accepted)."
+  },
+  "0c9915fa4b20330ec653d13957f1db15": {
+    "classification": "F6",
+    "reason": "The log reports a parser error at a malformed `forall` quantifier syntax, which is a front-end/specification syntax issue rather than a proof failure about ownership, framing, invariants, aliasing, or strength."
+  },
+  "77ac3b38d715cb900c34526221ad5a07": {
+    "classification": "F6",
+    "reason": "The failure is a parse error on the specification line (e.g., malformed/undefined annotation syntax like `ar2_inv()`), indicating an invalid/unsound assumption in the spec rather than a proof/ownership/framing issue."
+  },
+  "8a8648b7f27b32dfc27a0c54bb537b6b": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at a specification line, indicating syntactically invalid/unsupported annotation rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "268a7143ca8f490eafc196af4e736de8": {
+    "classification": "F6",
+    "reason": "The failure is a parse error in the specification syntax (malformed nested exists), not a proof/ownership/framing issue; it stems from an invalid/unsound assumption about what VeriFast can parse."
+  },
+  "dc7b03ab43e0f4e794ee8d7d55f2b51f": {
+    "classification": "F6",
+    "reason": "The log reports a parser error at an annotation (//@ requires true;), indicating a syntax/annotation form that VeriFast cannot parse rather than a proof obligation failure; this fits unsound/invalid assumptions about what the tool accepts."
+  },
+  "133f484cf24af5946066ad6642a51544": {
+    "classification": "F6",
+    "reason": "The failure is a parse error on an annotation (\"//@ requires true;\") rather than a verification-condition issue; it indicates an invalid/unsupported syntax or tool invocation mismatch, i.e., an unsound assumption about what VeriFast can parse."
+  },
+  "8f8ffa83b075210b0751200876774a2f": {
+    "classification": "F6",
+    "reason": "The points-to assertion uses `p` directly as the LHS instead of a valid memory location expression (e.g., `*p` or `p->field`), which is an ill-formed/unsound heap assumption rather than a missing resource or framing issue."
+  },
+  "d83de2e2997133e489083f283adae681": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the specification annotation (//@ requires ...), indicating an invalid/unsupported syntax or tool invocation issue rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "f5531496f4150b8849949d07e6996629": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error on a 'forall int i' construct, indicating the specification/code uses syntax VeriFast cannot parse (an unsupported or malformed assumption), rather than an ownership/framing/invariant issue."
+  },
+  "3e7f329d90e6fd3bf4d14ace5aa3da28": {
+    "classification": "F5",
+    "reason": "VeriFast reports 'Contract required' for main during function type implementation check, meaning the function is missing the required precondition/postcondition specification for its declared/expected type."
+  },
+  "aa593c5217c4a0fbc3b7d429d7154691": {
+    "classification": "F5",
+    "reason": "VeriFast reports \"Contract required\" for main: the function implementation is being checked against an implicit required precondition (from prelude.h), but no explicit contract is provided, i.e., the specification is too strong/mandatory compared to what is written."
+  },
+  "b0921dec0ff4b2670a6facb3f987e6f2": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at a lemma declaration, indicating malformed/unsupported annotation syntax rather than a proof/ownership/framing issue."
+  },
+  "54555612d6a9217505bc2cb5e70d57ac": {
+    "classification": "F6",
+    "reason": "No verification errors were reported; the log indicates successful verification, so there is no concrete failure to classify. Among the provided options, this most closely corresponds to an absence of detected issues (potentially relying on unsound/unchecked assumptions rather than a specific proof failure)."
+  },
+  "8776450b48b70b3175d6a9b341a0b611": {
+    "classification": "F6",
+    "reason": "The verification fails due to a missing include file (arraylist.h), an external dependency issue unrelated to ownership/framing/specifications; this is an unsound assumption about the environment/files being present."
+  },
+  "721aef37799b7285eba247f5d5845fab": {
+    "classification": "F6",
+    "reason": "The log reports a parser error at a specification annotation (//@ requires ...), indicating malformed/unsupported syntax or tool configuration issues rather than a logical proof failure."
+  },
+  "7ce4e53818d9cec7aa0edee92f09eec3": {
+    "classification": "F6",
+    "reason": "The log is a parser error on the specification syntax (unexpected 'exists' construct), indicating an invalid/unsupported assumption or malformed annotation rather than a verification failure like ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "8be3b9b73b39785cfc01a33f3048ef57": {
+    "classification": "F6",
+    "reason": "This is a VeriFast parse error (syntax issue in the specification, e.g., an unterminated operator like '&*&' or missing ';'), not a framing/ownership/invariant problem."
+  },
+  "8686d8a10921f6f2d5bc4c1ae9ac33e1": {
+    "classification": "F6",
+    "reason": "This is a parser error at the start of an annotation (/*@ ... */), indicating malformed syntax or an unsupported comment/specification format rather than an ownership/framing/invariant/spec strength issue."
+  },
+  "ec9f0b4e6870accb9a5ac05f9aa99aac": {
+    "classification": "F6",
+    "reason": "The error is a parse error caused by invalid VeriFast syntax in the specification (malformed `exists(...)`), indicating an unsound/incorrect assumption about allowed annotation syntax rather than an ownership/framing/invariant issue."
+  },
+  "1606c52fd7a15c65e24b323237a8c52b": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error in the predicate declaration syntax, indicating an ill-formed/unsupported specification rather than a proof failure related to ownership, framing, invariants, aliasing, or strength of specs."
+  },
+  "05c65a8fcf6b6099947a9859c958c586": {
+    "classification": "F6",
+    "reason": "The log indicates a syntax/parse error at an annotation (`//@ requires true;`), so verification cannot proceed due to an invalid/unsupported assumption/specification format rather than a proof/ownership/framing issue."
+  },
+  "155f0d6e8e738ba81b0f7d3999e51d04": {
+    "classification": "F6",
+    "reason": "The verifier reports a parse error in the predicate assertion syntax (`list(head->next; ?n1, ?vals1)`), indicating malformed/invalid VeriFast specification code rather than an ownership/framing/invariant issue."
+  },
+  "5ebdec4b634efc8c4658425b0266644d": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at an annotation, indicating malformed/unsound syntax rather than an ownership, framing, invariant, aliasing, or spec-strength issue."
+  },
+  "1275fb77ff483fe69685f16aea70f84f": {
+    "classification": "F6",
+    "reason": "The failure is caused by an `assume` annotation; such unsound assumptions (and here even syntactically invalid) indicate relying on assumptions rather than provable facts."
+  },
+  "a4a6538483d9b86e99aa8ee9cb79a315": {
+    "classification": "F6",
+    "reason": "The verifier reports a parse error in the predicate definition, indicating a syntax/unsupported-language issue rather than a failed proof obligation (ownership/framing/invariants/spec strength)."
+  },
+  "099c3a80bb05a14982914642e003a450": {
+    "classification": "F6",
+    "reason": "The failure is a parse error in the specification syntax (the requires clause cannot be parsed), indicating an unsound/invalid assumption about accepted annotation syntax rather than an ownership, framing, invariant, aliasing, or strength issue."
+  },
+  "8b714178695fbb95a3620476142c2ecd": {
+    "classification": "F6",
+    "reason": "The error is a parse error in the specification/comment syntax, not a proof obligation failure; it indicates an invalid/unsound assumption about accepted VeriFast annotation syntax."
+  },
+  "1c43420300d5aa00b425a2dd9ad1338a": {
+    "classification": "F6",
+    "reason": "The tool reports a parse error at the specification annotation (//@ requires ...), indicating an ill-formed/unsupported annotation or syntax issue rather than a failed proof obligation; this corresponds to an unsound/invalid assumption about the accepted specification syntax."
+  },
+  "88d78e070928e474f7ac1745f5980131": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at the start of an invariant annotation, indicating malformed/unsupported specification syntax rather than a proof failure about ownership, framing, invariants, aliasing, or strength."
+  },
+  "0dfe5d3923ea161a8ef9ad3baa23bee5": {
+    "classification": "F6",
+    "reason": "The verification succeeded, but the link phase failed due to a missing .vfmanifest file, indicating an external/toolchain assumption about build artifacts rather than a proof/annotation issue."
+  },
+  "7a88878f4194ba8d93f1ade7b400bb95": {
+    "classification": "F6",
+    "reason": "The error is a parse error in the specification (invalid or unsupported syntax), indicating an unsound/ill-formed assumption/spec rather than a verification failure about ownership, framing, invariants, aliasing, or strength."
+  },
+  "224ebacb73e8742d5536bd0b3ef1352e": {
+    "classification": "F6",
+    "reason": "The log shows a parse error on the specification annotation (`//@ requires true;`), indicating the tool cannot interpret the input rather than a verification failure due to ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "cf4e6b8464213ddd5f506fb0cbe3fba2": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the start of a VeriFast specification annotation (//@ requires ...), indicating an invalid/unsupported annotation syntax or wrong tool/language mode rather than a logical verification failure."
+  },
+  "d6a92a7e4840cf08a13014f7e02f8cd8": {
+    "classification": "F6",
+    "reason": "The log reports a parse error on an annotation (`//@ true;`), indicating invalid/unsupported syntax or a malformed assumption in the specification rather than a proof/ownership issue."
+  },
+  "7e631975f438dd4c7e7ea07f03345f5a": {
+    "classification": "F6",
+    "reason": "The log reports a parse error on a specification annotation, indicating invalid/unsupported syntax or tool configuration rather than a logical verification failure (ownership/framing/invariant/spec strength)."
+  },
+  "97990a214491523130419b5f0993689f": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the annotation syntax (//@ requires ...), indicating an ill-formed/unsupported specification format rather than an ownership, framing, invariant, aliasing, or strength issue."
+  },
+  "7c6ea3279d4fbad960d2e5720fd22b34": {
+    "classification": "F6",
+    "reason": "The log shows a parse/syntax error (unexpected token `!=`) rather than a verification failure about permissions, framing, invariants, aliasing, or spec strength; it indicates an invalid/unsupported assumption/expression form in the specification context."
+  },
+  "24e1eb416ea3ce01e7c328efba9bcc0e": {
+    "classification": "F6",
+    "reason": "The log shows a parser/syntax error in the predicate declaration (expected `!` or `::`), not a verification failure about ownership, framing, invariants, aliasing, or spec strength\u2014i.e., an unsound/invalid assumption about the tool/language syntax."
+  },
+  "c8180a912e2827de0eba58f14a8065cd": {
+    "classification": "F6",
+    "reason": "The failure is a Rust parser error (unterminated character literal from using s'), not a VeriFast proof/ownership/framing issue; it stems from an unsound/invalid assumption about syntax being accepted."
+  },
+  "8db84ed6438b76c4f413a56286d45336": {
+    "classification": "F6",
+    "reason": "The log indicates a parse/syntax error in the predicate declaration (`pred mutex_inv(...)`), meaning the verification failed due to an invalid/unsupported construct rather than a real proof obligation issue."
+  },
+  "f1c71094237795185804436790d35d10": {
+    "classification": "F6",
+    "reason": "The log shows Rust compiler errors about experimental/unknown attributes like #[requires]/#[ensures]/#[invariant], meaning the verification annotations are not being recognized/enabled. This is a tooling/unsound-assumption issue (assuming the verifier/attribute support is active), not a proof failure due to ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "9f204e5756e1f526d21d849bd6ca8bf8": {
+    "classification": "F6",
+    "reason": "The log shows tool/annotation misuse: Rust cannot resolve VeriFast-style attributes like #[requires], #[ensures], #[predicate], #[lemma], #[ghost], and #[assert], plus invalid use of '_' in predicate expressions. This is a setup/unsound-assumption issue (assuming these annotations are available/understood), not a framing/ownership/spec-strength problem."
+  },
+  "dc41ee6de3d6ba84d69f501bc23511b4": {
+    "classification": "F6",
+    "reason": "The log reports a parse/syntax error at the predicate declaration (`pred node(...)`), indicating an invalid/unsupported language construct rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "98b14977351c59eb99240cc98edb9947": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error in the predicate annotation (`#[pred ...]`), indicating an invalid/unsupported annotation form rather than a proof obligation issue like ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "2fac03812707d78545c31be8a118e47f": {
+    "classification": "F6",
+    "reason": "The log is dominated by parsing/compilation failures from using VeriFast-specific syntax and attributes (?q, #[pred], #[requires], pts_to) that are not recognized by the Rust compiler, indicating an unsound/unsupported toolchain or incorrect setup rather than a verification failure like ownership/framing/invariants."
+  },
+  "c01a0e437e6ec9bd023df51a91f86240": {
+    "classification": "F6",
+    "reason": "The log indicates a parse/syntax error in the predicate declaration (VeriFast expected different tokens). This is not a proof/ownership/framing/invariant issue but a mismatch in assumed syntax/tooling usage, i.e., an unsound/invalid setup rather than a verification failure."
+  },
+  "9129a7065b697133aaa59968581017b8": {
+    "classification": "F6",
+    "reason": "This is a Rust parser/syntax error (unexpected token in `pred node(...)`), not a verification failure about ownership, framing, invariants, aliasing, or specification strength. It indicates an unsound assumption that VeriFast predicate syntax is valid Rust."
+  },
+  "44adb4e0c1206bbd5690034a36d3ce25": {
+    "classification": "F6",
+    "reason": "The log shows a parser/syntax error in the predicate definition attribute (VeriFast/Rust front-end cannot parse `#[pred_def TreePred(...)]`), indicating an invalid/unsupported annotation rather than a logical proof issue."
+  },
+  "7d4e1976fb281c5cf1fdbfb04bd385a4": {
+    "classification": "F6",
+    "reason": "This is a Rust syntax/parse error (unexpected `:` in a tuple struct field), not a VeriFast verification failure. The tool is being run on ill-formed input, i.e., an unsound/invalid assumption about the input language format."
+  },
+  "4d0a33334d9d1c38bd91bf758b25263a": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error in the predicate/struct declaration (unexpected ':' token), not a verification failure about ownership, framing, invariants, aliasing, or spec strength. It indicates an unsound/invalid assumption about the supported language syntax."
+  },
+  "088b8b483e62f3fc41f96325b288a83b": {
+    "classification": "F6",
+    "reason": "This is a Rust parser/type-syntax error (using `:` where the grammar expects other tokens in a struct declaration), not a VeriFast proof failure; it stems from an invalid/unsound assumption about the allowed specification syntax in the source language."
+  },
+  "afaa2681087fd8d8d5efd853e8d99afb": {
+    "classification": "F6",
+    "reason": "No VeriFast errors were reported; the log indicates successful verification, so any issue must lie outside the tool\u2019s checks (i.e., there is no failing proof obligation to classify), which best matches the notion of unsound/irrelevant assumptions rather than a specific verification failure."
+  },
+  "6a2fd3cb9041c675d4f2cec3e67ed646": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error (mismatched/unclosed delimiter) in the source/annotation, not a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "da229ff376213a38ce25a5bcd5f37d0b": {
+    "classification": "F6",
+    "reason": "The log shows a Rust syntax/parse error (using ':' in a struct field list) rather than a VeriFast proof failure, indicating an unsound assumption about the input language/tooling rather than an ownership/framing/invariant/spec issue."
+  },
+  "c15e973ff25c23f610ecc1bc17708812": {
+    "classification": "F6",
+    "reason": "The error is a syntax/parsing failure (VeriFast expects `!` or `::` at `pred`), indicating an invalid/unsupported annotation form rather than a proof issue like ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "77681f86986c4cf624626361e0031250": {
+    "classification": "F6",
+    "reason": "The log shows a Rust parser/syntax error at the `#[pred ...]` annotation (unexpected token `account_pred`), indicating the verifier is not successfully parsing the specification language rather than a logical ownership/framing/invariant issue."
+  },
+  "c63705b2bf7e617f12e8a33883a84e5a": {
+    "classification": "F6",
+    "reason": "The log shows parse/typing failures from using VeriFast-specific syntax/attributes (e.g., `#[pred_def]`, `pred`, `|->`, `exists?`) that the Rust compiler does not recognize, indicating the verification setup assumes unsupported language extensions/tooling rather than a genuine ownership/framing/invariant/spec mismatch."
+  },
+  "8b8b07f8e1589d98d0ae6cf4cf85d066": {
+    "classification": "F6",
+    "reason": "The build fails because VeriFast-specific annotations/attributes (e.g., #[requires], #[ensures], #[invariant], #[pred]) are not recognized by the Rust compiler and expression attributes are experimental. This indicates the verification setup/tooling assumptions are invalid/unsupported rather than a logical proof issue (missing ownership/framing/etc.)."
+  },
+  "fa6cf6728a6065abaaeab3ee46b9195d": {
+    "classification": "F6",
+    "reason": "The log shows a Rust parser/syntax error on the VeriFast-specific `#[pred ...]` annotation, meaning the toolchain is being asked to accept unsupported/incorrect syntax\u2014an unsound/invalid assumption rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "cecaa260171dc15fe14b44dfbde5a97d": {
+    "classification": "F6",
+    "reason": "The log shows a syntax/parse error (unexpected ':' in a Rust field declaration), not a verification-condition failure; this falls outside ownership/framing/invariant issues and indicates an unsound/invalid assumption about the toolchain/input language."
+  },
+  "e37e923bb2bfe5eceb1abae9a2e6df0e": {
+    "classification": "F6",
+    "reason": "The log shows a parse/syntax error (`expected expression, found '->'`) from using VeriFast separation-logic syntax (`|->`) in a context where it is not valid Rust code, indicating an invalid/unsound assumption about the tool/language integration rather than a framing/ownership/specification issue."
+  },
+  "084ac49d53e2283f56f3a139e954df49": {
+    "classification": "F6",
+    "reason": "The log reports a Rust parser/syntax error at the predicate attribute (`#[pred account_pred ...]`), indicating an invalid/unsupported annotation form rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "c5d9e3e9cec8b6d728c32a5f96fe4b85": {
+    "classification": "F6",
+    "reason": "This is a Rust parser/syntax error in the predicate annotation (VeriFast attribute not recognized), not a proof failure about ownership/framing/invariants; it indicates an unsound/invalid assumption about the tool/language syntax being accepted."
+  },
+  "927b823911d81adf8d9af9383bb0c96e": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error in the predicate definition attribute, indicating an invalid/unsupported annotation form rather than a proof issue like ownership, framing, or invariant strength."
+  },
+  "b9519b1ad04e274574ed21158d263239": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error (VeriFast expected `!` or `::` but found `TreePred`), indicating an invalid/unsupported declaration rather than a logical proof issue about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "bec28a51a8c5ddd880c0f4c794b4f741": {
+    "classification": "F6",
+    "reason": "The error is a syntax/annotation parsing failure (unexpected token in the predicate attribute), indicating an unsound/invalid assumption about the specification language/tooling rather than a logical proof issue like ownership, framing, or invariants."
+  },
+  "c07f55cadd94635078e16f9bb3bf0649": {
+    "classification": "F6",
+    "reason": "Parse/type error: VeriFast/Rust frontend rejects the `!=` token in this context, indicating unsupported/unsound assumption about the language/syntax rather than a proof issue like ownership, framing, or invariants."
+  },
+  "0fe4be06d8192d988cf77461e59b7957": {
+    "classification": "F6",
+    "reason": "The log shows Rust parser/compiler errors for VeriFast-style annotations (e.g., `==>` and attributes like `#[pred]`, `#[lemma]`, `#[requires]`), meaning the verification annotations are being treated as normal Rust without proper tool support\u2014an unsound assumption about the verification environment/setup rather than an ownership/framing/invariant issue."
+  },
+  "fac7889e3c535d6763ebace0d890167f": {
+    "classification": "F6",
+    "reason": "The log reports a parse/syntax error: the Rust compiler encountered an unexpected `requires` token, indicating an unsupported/incorrect assumption about using VeriFast-style specifications in Rust code rather than a verification failure about ownership, framing, or invariants."
+  },
+  "850f7baf0c19503b2fe9f8ad406bb0fb": {
+    "classification": "F6",
+    "reason": "The log shows tool/language integration failures (unknown VeriFast-specific attributes like #[predicate]/#[requires]/#[ensures], unsupported invariant syntax, and parsing errors for |->), indicating the verification is relying on unsound/unsupported assumptions about the compiler/toolchain rather than a genuine proof obligation issue."
+  },
+  "6af4359305954d5770d1a8a99b9a59b4": {
+    "classification": "F6",
+    "reason": "The log shows a parsing/syntax error at the predicate declaration (`#[pred account ...]`), indicating an invalid/unsupported annotation format rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "c71c07d25deeacc691dbca44d860b961": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error (`!=` not accepted in that position), not a separation-logic proof failure; it stems from an invalid/unsound assumption about the supported specification/expression syntax."
+  },
+  "e199ef0f9cfcb7c56c2ca68ed45e4534": {
+    "classification": "F6",
+    "reason": "The error is a syntax/parsing issue (mismatched bracket in the specification attribute), not a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "4a3c218a066e21a67b704df279893180": {
+    "classification": "F6",
+    "reason": "Parser error: VeriFast/Rust syntax mismatch (using `requires` in a position where the Rust parser expects `->`, `where`, or `{`). This is not a proof obligation issue but an unsound/invalid assumption about the tool/language syntax."
+  },
+  "53d0fabfd3ffe582cc849ef4ac13e35b": {
+    "classification": "F6",
+    "reason": "The log shows a syntax/parsing error in the source (unexpected `:` in a struct definition), not a verification failure about ownership, framing, invariants, aliasing, or spec strength; it indicates an invalid/unsupported assumption about the language/tool syntax."
+  },
+  "6cb2e7a2cb4bd56c5fb7019b3a9627cb": {
+    "classification": "F6",
+    "reason": "The failure is a parser/syntax error on the predicate annotation (`#[pred ...]`), indicating an invalid/unsupported specification construct rather than a proof obligation issue (ownership/framing/invariants/aliasing/strength)."
+  },
+  "e41b92ff940fd7bb46bdc4a81a970b67": {
+    "classification": "F6",
+    "reason": "The log shows a syntax/parsing error in a predicate/struct annotation (unexpected ':' token), indicating an invalid/unsound assumption about the specification language syntax rather than a framing/ownership/invariant issue."
+  },
+  "e7e7dd7dd0fde93545332db632d9c1e2": {
+    "classification": "F6",
+    "reason": "The log is a Rust parse error on the `#[pred ...]` annotation (VeriFast-specific syntax not accepted by the compiler), indicating an unsound/incorrect assumption about supported annotation syntax rather than an ownership/framing/invariant/specification issue."
+  },
+  "747c1c424231e77d625e68de34eaa192": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error in the predicate/struct declaration (unexpected `:`), not a proof failure about ownership, framing, invariants, aliasing, or spec strength\u2014i.e., the verification attempt relies on an invalid/unsound specification setup that cannot even be parsed."
+  },
+  "abd4b3b400fcb314a10058f5b56443b6": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error: `requires` is not valid Rust syntax at that location, so the verification relies on an unsound/invalid assumption about the tool/spec language being accepted."
+  },
+  "27d00ec398c69fcc94306d39b52e826b": {
+    "classification": "F6",
+    "reason": "The log shows Rust compiler errors that VeriFast-specific attributes/macros (#[requires], #[ensures], #[pred], #[lemma]) are not recognized in scope, indicating the verification annotations are not being properly provided/loaded (tooling/config mismatch), i.e., an unsound setup/assumption rather than a logical proof issue."
+  },
+  "9ec07e94487d6973fe81c4e7273af092": {
+    "classification": "F6",
+    "reason": "The log shows a syntax/parsing error: VeriFast-style `requires` was written directly in Rust code where Rust expects `->`, `where`, or `{`. This is an unsound assumption about tool/language syntax rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "35f1682e05b2c682b42e78682c5fa1e3": {
+    "classification": "F6",
+    "reason": "Parse error: the code uses a `requires` clause in a position/syntax that the Rust compiler (and thus VeriFast front-end) does not accept, indicating an unsound/invalid assumption about the specification language integration rather than a verification condition failure."
+  },
+  "ef64a5578c12bdc6b10888b26d611b69": {
+    "classification": "F6",
+    "reason": "The errors are due to invalid/unknown VeriFast-specific syntax and annotations in Rust (e.g., `#[pred]`, `#[requires]`, `#[ensures]` not recognized; predicate body syntax rejected). This indicates the toolchain/language integration assumptions are unsound rather than a framing/ownership/specification issue."
+  },
+  "07d6fbfacff982d944455fcc6799e5a7": {
+    "classification": "F6",
+    "reason": "The log reports a Rust parse error (unclosed delimiter) rather than a verification failure about permissions/invariants/framing; this is a tooling/syntax issue outside the spec logic, best fitting 'Unsound Assumptions' (assuming the file/spec is well-formed)."
+  },
+  "ee7a39edc0e48208cebab9c7eae4f537": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error: VeriFast (or the Rust front-end) does not recognize the `#[pred ...]` predicate declaration form, so verification fails before any ownership/framing/spec reasoning. It indicates an invalid/unsupported assumption about the tool/language syntax rather than a logical specification issue."
+  },
+  "2beccb3b5303d6ed9a6f444479830b48": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error in the predicate declaration (VeriFast expects different tokens), indicating an invalid/unsound assumption about the annotation language rather than an ownership/framing/invariant issue."
+  },
+  "2571c2d91351b31939098bdf388d0a64": {
+    "classification": "F6",
+    "reason": "The log reports a parser/syntax error (unexpected ':' in a struct declaration), not a verification-condition failure. This indicates an unsound/invalid assumption about accepted language/spec syntax rather than missing ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "490439860cef786fb7d8f8ff5237481f": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error at the predicate declaration (`#[pred ptr_block ...]`), indicating an invalid or unsupported annotation format rather than a framing/ownership/invariant issue\u2014i.e., an unsound assumption about the tool/language syntax."
+  },
+  "4fed9e331227263bf9f127383fbc3157": {
+    "classification": "F6",
+    "reason": "The log shows parse/syntax errors (using `= expression;` for a function body and an unexpected `requires` token), indicating invalid/unsupported annotations rather than an ownership/framing/invariant/alignment issue."
+  },
+  "35b10c913828a360cef9f0a6b92ad51f": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error on an annotation line (invalid syntax in the specification), not a proof failure like ownership/framing/invariant/aliasing/strength; this falls under unsound/incorrect assumptions about the annotation language."
+  },
+  "d1703a588a4358ba01a7e63d86cb0dcc": {
+    "classification": "F5",
+    "reason": "The asserted postcondition/shape claim is too strong or incorrect: VeriFast reduces it to an impossible arithmetic fact ((1+1)==3), indicating the specification being asserted does not follow from the established facts."
+  },
+  "51e48369d0f7e499b24403f361238274": {
+    "classification": "F6",
+    "reason": "The specification references an undeclared identifier (`left`) in the postcondition, indicating an unsound/ill-formed assumption in the contract rather than a proof obligation like ownership or framing."
+  },
+  "e442138d0de21d57faca7ee3d826a945": {
+    "classification": "F1",
+    "reason": "Dereference of t->value requires ownership of the predicate/chunk tree_value(t, _), but VeriFast reports no matching heap chunk, indicating missing ownership/precondition for accessing the node field."
+  },
+  "2e06e4d20804632535d593af9f2bc08f": {
+    "classification": "F3",
+    "reason": "VeriFast cannot prove the field pointer &p->y is within bounds of the struct object (missing/too-weak struct-object invariant or predicate tying p to a valid allocated struct point with correct layout), so it fails the pointer_within_limits check needed to take the field address."
+  },
+  "1675693a533cf5f1c590eb53c7d2b6d5": {
+    "classification": "F3",
+    "reason": "The verifier cannot prove that incrementing the counter value stays within INT_MAX, indicating the counter predicate/invariant is too weak (missing an upper bound) to establish absence of arithmetic overflow."
+  },
+  "4570aa096aaea42c062ba9adfbc5d394": {
+    "classification": "F6",
+    "reason": "No VeriFast verification errors are reported; the log indicates successful verification and linking, so there is no concrete failing proof obligation to classify\u2014this fits best as an unsound/missing error assumption in the context of required failure categories."
+  },
+  "074753433508e6d65c3727118b683873": {
+    "classification": "F6",
+    "reason": "The verification fails due to a missing header file during parsing (environment/build issue), not because of a framing/ownership/invariant/specification problem in the code."
+  },
+  "97560881e191d8c6d981535a1b1b5985": {
+    "classification": "F3",
+    "reason": "VeriFast cannot prove the addition stays within int bounds (INT_MIN <= balance + amount); the function/predicate invariants are too weak to establish no underflow/overflow on balance update."
+  },
+  "352f53de1b9821ddb2f85c3ec20a1f43": {
+    "classification": "F1",
+    "reason": "The verifier cannot find the required heap chunk Counter_value(c, v) (i.e., ownership of c->value |-> v) when trying to close the Counter predicate in init, indicating missing ownership of the struct field."
+  },
+  "18025e7d76b6186b7ec90022da755ff4": {
+    "classification": "F4",
+    "reason": "The points-to assertion uses `f.x |-> x` where `f` is a struct value (not a pointer/field dereference like `f->x` or `(&f)->x`), so the spec incorrectly assumes an addressable location/alias for `f.x`."
+  },
+  "f19f9c274688e4f5f9f8e8e9798103b8": {
+    "classification": "F6",
+    "reason": "The verification fails due to a missing include file (spouse.h), indicating an environmental/build assumption violation rather than a specification or ownership/framing issue."
+  },
+  "b615b7c40ce4af9c800c071bda4c25bb": {
+    "classification": "F3",
+    "reason": "Verifier cannot prove arithmetic safety for balance update (oldBalance + amount stays within int bounds); the function/spec lacks a strong enough invariant or precondition relating balance and amount to prevent underflow/overflow."
+  },
+  "835485a4fcc2417db44a4d9086fcc3ee": {
+    "classification": "F4",
+    "reason": "The specification passes a list<char> variable (cs) where the chars predicate expects a char* pointer, indicating an alias/parameter type mismatch in the heap assertion rather than missing ownership."
+  },
+  "e52a5776acd5aede1cebac21db19551b": {
+    "classification": "F6",
+    "reason": "The error is a parse/syntax issue: `close` expects a predicate call, but `ar2[0..55] |-> _` is not a call expression. This reflects an invalid/unsound assumption about how to construct ownership, not a proof obligation failure."
+  },
+  "361b5c8cdb625c5eee35fc29c16330ad": {
+    "classification": "F6",
+    "reason": "The error is caused by redeclaring a prelude predicate family (`chars`) with a mismatching signature, which is an invalid/unsound assumption about built-in specifications rather than an ownership or framing issue."
+  },
+  "888d7740a1439d632d12034ccfe92f47": {
+    "classification": "F6",
+    "reason": "The error is a predicate family redeclaration mismatch with a prelude declaration, indicating an inconsistent/unsound redefinition of an existing predicate rather than an ownership/framing/invariant issue."
+  },
+  "d08f8af75c6ef84d5d4cade58c13f78c": {
+    "classification": "F1",
+    "reason": "The verifier cannot find the required heap chunk for the field predicate (foo_x(f, _)) when consuming `f->x |-> x`, indicating missing ownership/permission to access `f->x` (e.g., `foo(f, _)` not opened or not established)."
+  },
+  "641eaebfe9d5532dbb53b8ac69ad9e27": {
+    "classification": "F3",
+    "reason": "Verification fails due to inability to prove an arithmetic safety condition (no invariant/precondition bounding i to avoid overflow), indicating missing/too-weak numeric constraints."
+  },
+  "136d80678ecc29c3de49b47a77457909": {
+    "classification": "F4",
+    "reason": "The predicate expects an int* (integer(p, ...)) but the actual pointer p has type short*, indicating a mismatched alias/type specification due to casting/typedef."
+  },
+  "17d0b8d4534f7597c46b3029e7f60b42": {
+    "classification": "F6",
+    "reason": "The error is a syntax/usage issue: `open` must be applied to a predicate call, but `true` is not a predicate instance. This indicates an invalid/unsound assumption about how `open` works rather than an ownership/framing/invariant problem."
+  },
+  "2ab3f8de7cc9831a55b7a1ffcdd9f560": {
+    "classification": "F1",
+    "reason": "VeriFast cannot find the required heap predicate chunk `argv_chars(argv, argc)` when checking `main`'s precondition, indicating the function is missing ownership/permission to the argv memory it claims to require."
+  },
+  "6eea9f439d352c8ca15726f2ff625d32": {
+    "classification": "F6",
+    "reason": "No verification errors were reported; the log indicates successful verification and linking, so none of the usual specification/ownership/framing issues are evidenced (best fit: no issue / unsoundness not indicated)."
+  },
+  "b065420c3f5f205cfc665c66346fab9d": {
+    "classification": "F3",
+    "reason": "Verifier cannot prove (d + 1) stays within INT_MAX; the function lacks a sufficiently strong precondition/invariant constraining enum value range to prevent arithmetic overflow."
+  },
+  "affdb3aff690a04b7894beda3331d13c": {
+    "classification": "F6",
+    "reason": "No VeriFast errors were reported; the log indicates successful verification and linking, so there is no concrete spec/ownership/framing issue to classify."
+  },
+  "76e1bba7ac10fd468775c4269498152c": {
+    "classification": "F6",
+    "reason": "Verification cannot proceed due to a missing include file (arraylist.h), an external dependency/assumption not satisfied rather than an ownership or specification issue."
+  },
+  "525f359169559bdc0346488533a4b317": {
+    "classification": "F2",
+    "reason": "The loop exits without re-establishing/returning ownership of heap chunks (node predicates) to the surrounding context, indicating missing framing of resources across loop iterations and at loop end."
+  },
+  "4c95f79b4722e91e2f0170c75c67474a": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at an annotation (//@ requires nodes(head);), indicating a syntax/parsing issue rather than a failed proof obligation about ownership, framing, invariants, aliasing, or strength of specifications."
+  },
+  "3339c74940be8c2d749ee8bd620837e9": {
+    "classification": "F1",
+    "reason": "VeriFast cannot find the required ownership predicate dllist_head(arg, _) when accessing arg->head in reverse, indicating missing heap ownership/precondition for the list head."
+  },
+  "1b54ac7f947eb33379e2b335518281e5": {
+    "classification": "F6",
+    "reason": "The failure is a parse error in the specification syntax (likely a missing semicolon after the requires clause), not a proof/ownership/framing issue."
+  },
+  "a17637d6717722a914730ed3b81e2e8f": {
+    "classification": "F6",
+    "reason": "The specification uses `old(current)->next` and `old(current)->value`, but `old` is not a valid function in this context in VeriFast, indicating an unsound/invalid assumption about available language features for referring to pre-state."
+  },
+  "d867aa1c0beb7c3867835b28468fe047": {
+    "classification": "F1",
+    "reason": "VeriFast cannot establish the required predicate is_equalsFuncType(equalsFunc) before calling the function pointer, indicating the necessary ownership/permission (function pointer validity predicate) for equalsFunc is missing from the precondition or context."
+  },
+  "53e3401a31ef7aa9a71d4496d4cb8d8a": {
+    "classification": "F6",
+    "reason": "The log reports a pure parse error at the invariant (use of list concatenation '++' / expression syntax), indicating the annotation is not valid VeriFast syntax rather than a failed proof obligation."
+  },
+  "4a7f028efcbbb8746fa2f030087ae1be": {
+    "classification": "F6",
+    "reason": "VeriFast cannot find the struct type \"list_node\" used in the predicate, indicating an unsound assumption about a missing/undeclared data structure definition rather than a proof obligation failure."
+  },
+  "05af091c1b065d581a178ef9762b0ccd": {
+    "classification": "F6",
+    "reason": "The error is a name-shadowing issue ('head' redeclared hides an existing local variable), which is a code-level unsoundness/ambiguity rather than a permission/framing/invariant/specification problem."
+  },
+  "02f7bb149be434388fa5e42b831a01be": {
+    "classification": "F1",
+    "reason": "The leak check reports remaining heap chunks (node fields, malloc block, and nodes(next)) after stack_dispose returns, indicating the function lacks/does not consume required ownership to properly dispose/free the list nodes (missing ownership/consumption leads to leaks)."
+  },
+  "cc4c689b1caf705c311f281d9ef0c90c": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error in the predicate declaration syntax, indicating an invalid/unsupported specification construct rather than a proof failure about ownership, framing, invariants, aliasing, or strength of specs."
+  },
+  "fdbff07b929c04acdc7885171c77a2e1": {
+    "classification": "F6",
+    "reason": "The verification fails due to an ill-formed specification (a duplicate predicate name), which is a front-end/specification soundness issue rather than an ownership/framing/invariant problem."
+  },
+  "4486f4ebcc1fe80f903f617246914802": {
+    "classification": "F6",
+    "reason": "The failure is a parse error in the specification (predicate definition), indicating an ill-formed/unsupported annotation rather than a logical verification issue like ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "d9c9c50fefa086858c8aa72eb1810162": {
+    "classification": "F3",
+    "reason": "The predicate definition uses a non-fixed logical variable 'cap' as the length parameter of array_slice, failing VeriFast's preciseness check; the invariant/predicate is too weak/ill-formed to be precise because it depends on an unfixed variable in an input position."
+  },
+  "43cc26cf4d0539dff0000442b20297ac": {
+    "classification": "F6",
+    "reason": "The log reports a parse error in the predicate definition (syntax/grammar issue around the array_slice segment), not a logical verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "fcd929345cb000241cee4e36169d17a8": {
+    "classification": "F6",
+    "reason": "This is a syntax/parse error in the specification annotation (the parser cannot read the //@ requires ... line), indicating an invalid/unsound assumption in the annotation format rather than an ownership/framing/invariant issue."
+  },
+  "e0003fa6e8f4f1b0c59c5f3d66bb6347": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the specification annotation (//@ requires ...), indicating an invalid/unsupported syntax or tool mismatch rather than a proof obligation issue like ownership, framing, or invariants."
+  },
+  "8164bdd887b0ec848f0411142d1ed1df": {
+    "classification": "F6",
+    "reason": "The failure is a parse error on a specification annotation (\"//@ requires ...\"), indicating an invalid/unsupported syntax or annotation form rather than a proof obligation issue."
+  },
+  "7377cf2f2dc110f124fb636990b97fdc": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error in the annotation (syntax/grammar issue), not a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "a8a6b5a3e879c1db22657ab8e137912c": {
+    "classification": "F1",
+    "reason": "The precondition requires the predicate MyApplet(), but VeriFast cannot find/consume a matching heap chunk MyApplet#MyApplet(...), indicating the required ownership/predicate instance is not available at the call site."
+  },
+  "4ce2f59e92b0654d8075cbea2039e463": {
+    "classification": "F6",
+    "reason": "The log reports a parse error on a specification annotation, indicating invalid/unsupported syntax or tool/language mismatch rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "9f821ec253954f4df2436276f0cbc494": {
+    "classification": "F6",
+    "reason": "The log shows a VeriFast parse error at an annotation (//@ requires true;), indicating invalid syntax/tool-language mismatch rather than a proof/ownership/framing/invariant/specification issue."
+  },
+  "01a4c346c7f89965ecb4924270ddff83": {
+    "classification": "F3",
+    "reason": "The predicate definition is not precise because it uses a non-fixed variable 'n' in field access (n.nxt, n.val), indicating the invariant/predicate is too weak/ill-formed for VeriFast's preciseness requirements."
+  },
+  "c4a20b14562eba4d608b009c156c6a9e": {
+    "classification": "F6",
+    "reason": "The errors are due to missing VeriFast-specific Rust attributes/macros (e.g., `#[requires]`, `#[ensures]`, `#[predicate]`) not being in scope, indicating the verification toolchain/environment is not properly set up rather than a logical ownership/framing/invariant/specification issue."
+  },
+  "194e6179b9545bf381a72d27675213a1": {
+    "classification": "F6",
+    "reason": "The log shows Rust compiler errors about unsupported/unknown verification attributes and macros (e.g., `#[requires]`, `#[ensures]`, `#[predicate]`, `#[invariant]`, `exists!`) and experimental stmt expression attributes. This indicates the verification annotations are not being interpreted by the intended toolchain, i.e., an unsound setup/assumption about the environment rather than a proof obligation issue."
+  },
+  "d8bbfb5118587373876c54ac129e989f": {
+    "classification": "F6",
+    "reason": "The log reports a syntax/parsing error in the predicate declaration (Rust parser expects `!` or `::`), indicating an incorrect/unsupported annotation format rather than a separation-logic ownership/framing/invariant issue."
+  },
+  "de5abc7d6e85e4fec4a2fa30b4249490": {
+    "classification": "F6",
+    "reason": "The errors are about unknown VeriFast-specific attributes (`#[requires]`, `#[ensures]`, `#[predicate]`) and missing logical type `real`, indicating the code is being compiled without the proper VeriFast/Rust verification frontend or macros\u2014an environment/assumption mismatch rather than a proof/ownership/framing issue."
+  },
+  "b29952d1c43f27f606a51528198a886d": {
+    "classification": "F6",
+    "reason": "The log is dominated by tool/annotation integration failures (Rust compiler rejects `#[requires]/#[ensures]/#[predicate]` and expression attributes as experimental), meaning verification relies on unsupported/absent annotation handling rather than a real ownership/framing/invariant issue."
+  },
+  "a22952e74fa80a5650246948d9fe93fa": {
+    "classification": "F6",
+    "reason": "The verifier aborts due to a syntax/parse error in the predicate declaration (unexpected token `node`), indicating an invalid specification/program form rather than a proof obligation issue."
+  },
+  "611043099124dd3480ee4a643945ef53": {
+    "classification": "F6",
+    "reason": "The log shows Rust compilation errors for missing VeriFast-specific attributes/macros (e.g., #[predicate], #[requires], struct_own!, exists!), indicating the verification annotations/tooling were not in scope or not enabled. This is a tooling/unsound-environment assumption issue rather than an ownership/framing/invariant/specification mismatch."
+  },
+  "28e3fa73c26c056aa3bc2032d9fa6499": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error (predicate declaration not in the expected Rust/VeriFast syntax), indicating an unsound/invalid assumption about the accepted language grammar rather than a framing/ownership/specification issue."
+  },
+  "ee1e4c632fc0fdd43cbd36a854b07b3c": {
+    "classification": "F6",
+    "reason": "The log shows Rust parsing/attribute/type-resolution failures (e.g., `exists<list: ...>` syntax rejected, `#[predicate]/#[requires]/#[invariant]` attributes not recognized, missing `Stack`/`Node` types), indicating the verification annotations are being treated as normal Rust without the proper VeriFast/VF-Rust frontend or required language features. This is a toolchain/unsupported-annotation issue rather than a framing/ownership/specification problem."
+  },
+  "dd22d0e3e41a516d32310f00e5107d3c": {
+    "classification": "F6",
+    "reason": "The log shows missing/verus toolchain dependencies (unresolved crate `vstd`, missing `verus!` macro), i.e., the verification setup relies on unavailable external assumptions rather than a proof/ownership/framing issue."
+  },
+  "9a546bf9700721bc62b1c4238045c179": {
+    "classification": "F6",
+    "reason": "The log shows toolchain/annotation integration failures: `requires`/`ensures` attributes are not recognized (and expression attributes are experimental), plus missing type definitions (`Node`, `Stack`). This indicates the verification is based on unsupported/undefined assumptions about available specification attributes and program context, not a proof obligation like ownership/framing."
+  },
+  "1885155891a043e6d67a1a2fe4c7ca8b": {
+    "classification": "F6",
+    "reason": "The log shows Rust compilation failures due to VeriFast-specific syntax/macros/attributes not being recognized (e.g., `@`, `#[requires]`, `#[ensures]`, `#[predicate]`, `proof_assert!`, `rational`, `points_to`). This indicates the verification annotations are being treated as normal Rust without the required VeriFast front-end/support, i.e., relying on unsupported/unsound assumptions about the toolchain rather than a framing/ownership/spec issue."
+  },
+  "451d76ac538085c9d604a3714beb1137": {
+    "classification": "F6",
+    "reason": "The log shows Rust compilation failures because VeriFast-specific attributes and constructs (#[requires], #[ensures], #[predicate], exists) are not recognized/in scope, indicating the verification environment/macros are not properly set up\u2014an unsound tooling/assumption issue rather than a proof/ownership/framing problem."
+  },
+  "b8b8b6be9260a03ff30939d76faea870": {
+    "classification": "F6",
+    "reason": "The log shows Rust parse errors (e.g., `exists!<...>` and `requires` not valid Rust syntax), indicating the verification annotations/macros are not being interpreted by VeriFast or are written in an unsupported syntax\u2014an unsound setup/assumption rather than a separation-logic framing/ownership issue."
+  },
+  "d1d990c089b62a77a7c8b749027fcb82": {
+    "classification": "F6",
+    "reason": "The failure is due to missing/unknown VeriFast contract attributes (`#[requires]`, `#[ensures]`) in the Rust compilation scope, indicating the verification annotations aren\u2019t being processed (tooling/config mismatch), i.e., an unsound assumption that these specs are available."
+  },
+  "3e38b9ffc92b71bf6f8f14cd50a93f0a": {
+    "classification": "F6",
+    "reason": "The log shows toolchain/environment issues (unresolved `vstd` crate and missing `verus!` macro), meaning the verification attempt relies on unavailable/incorrect assumptions about linked libraries/macros rather than a proof obligation failure."
+  },
+  "e72f58aa736a0c102e167b7e4b6fb06e": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error (predicate declaration not recognized by the parser), indicating invalid/unsupported annotations or tool/language mismatch rather than a logical verification issue like ownership, framing, or invariants."
+  },
+  "5e31a9373b32ab915c494ed6d725f672": {
+    "classification": "F6",
+    "reason": "The log shows the Rust compiler rejecting VeriFast-specific syntax and annotations (`#[requires]`, `#[ensures]`, `#[predicate]`, `|->`, `exists`) as being out of scope/unknown, indicating the code is being compiled without the VeriFast toolchain/macros\u2014an unsound environmental assumption rather than a framing/ownership/spec issue."
+  },
+  "2daaa39dfb6166538e4634d7ccf8bc20": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error: VeriFast-style annotations (e.g., #[requires ...]) are being used where the Rust compiler expects a function signature continuation. This indicates an unsound/invalid assumption about tool/language integration rather than a verification issue like ownership, framing, or invariants."
+  },
+  "f517dd9d99625fa47ab71d2ef6e6d13a": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error (VeriFast/Rust frontend expected `!` or `::` but saw `account`), indicating an unsound/invalid assumption about the accepted specification language rather than an ownership/framing/invariant issue."
+  },
+  "7d2547186acfdfb167a8ddf041778ec7": {
+    "classification": "F6",
+    "reason": "The log shows a parse/syntax error in a predicate_ctor declaration (unexpected identifier), indicating the verification attempt relies on an invalid/unsupported specification construct rather than a real proof obligation failure."
+  },
+  "d9472964fdea9bc05fac7a86cc786a66": {
+    "classification": "F6",
+    "reason": "The error is a parse/syntax issue (VeriFast expected `!` or `::` in a Rust context), not a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "ab160b34f73afbe90e17ee96805d57ea": {
+    "classification": "F6",
+    "reason": "The log is dominated by Rust compiler errors about unknown/experimental attributes (e.g., `#[requires]`, `#[ensures]`, `#[predicate]`) and missing feature gates, meaning the verification annotations aren\u2019t being interpreted at all. This is a tooling/assumption mismatch rather than a separation-logic proof issue (ownership/framing/invariants/aliasing/spec strength)."
+  },
+  "aa6868ca18d30f5809972b46506d61fd": {
+    "classification": "F6",
+    "reason": "The log shows unsupported/unknown VeriFast-specific annotations and macros (e.g., #[predicate], #[requires], #[ensures], exists!, #[assert]) being rejected by the Rust compiler, indicating the verification toolchain/assumptions are not properly enabled rather than a framing/ownership/specification issue."
+  },
+  "43116344c30671e58a211b6c0e5fb38c": {
+    "classification": "F6",
+    "reason": "The errors are not verification-condition failures but tool/annotation integration issues: Rust cannot resolve VeriFast-specific attributes like #[requires], #[ensures], and #[predicate] (missing/incorrect macro/plugin setup), plus a stubbed VeriFast_alloc recurses. This reflects unsound/unsupported assumptions about the environment rather than ownership/framing/invariant problems."
+  },
+  "8f8c21d08e875f616dc18f3b42a75fd3": {
+    "classification": "F6",
+    "reason": "The errors are about unknown specification attributes (`#[requires]`, `#[ensures]`, `#[predicate]`) being out of scope, indicating the verification toolchain/annotation macros are not properly enabled or imported\u2014an environmental/assumption issue rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "1999f66931b6bd2a343f054e6c971330": {
+    "classification": "F6",
+    "reason": "The log shows Rust compilation errors: VeriFast-specific attributes/macros like #[requires], #[ensures], #[predicate] and the function exists are not in scope. This indicates the verification annotations are being used without the proper VeriFast/Rust frontend support or imports\u2014an environment/tooling mismatch (unsound assumption that these constructs exist), not a framing/ownership/specification issue."
+  },
+  "3382c350b262ae55c45828c219987c6c": {
+    "classification": "F6",
+    "reason": "The log shows Rust compiler errors about unknown VeriFast-specific attributes/macros (e.g., `#[requires]`, `#[ensures]`, `#[predicate]`, `struct_pred!`, `exists!`) and experimental statement attributes, indicating the verification annotations are not recognized/enabled in the toolchain. This is a tooling/assumption mismatch rather than a separation-logic proof failure (ownership/framing/invariants/aliasing/spec strength)."
+  },
+  "f11f5d147bc7e41100d9dfffea0d2ffd": {
+    "classification": "F6",
+    "reason": "The build fails because VeriFast-style specification attributes (requires/ensures/invariant/lemma) are not recognized by the Rust compiler and statement-expression attributes are experimental; this indicates an invalid/unsupported verification setup (unsound tooling/assumption mismatch) rather than a proof obligation like ownership, framing, or invariants."
+  },
+  "a9e19afcf402115b10cb4457bd955d3c": {
+    "classification": "F6",
+    "reason": "The log shows Rust compiler errors: unknown VeriFast-specific attributes (`#[requires]`, `#[ensures]`, `#[predicate]`) are not in scope, indicating the verification annotations are being used without the necessary tool/plugin support\u2014an invalid/unsound assumption about the environment rather than a spec/ownership/framing issue."
+  },
+  "3ba57454010bebf128b7cff17c3ecab4": {
+    "classification": "F6",
+    "reason": "The errors indicate the verification-specific attributes/macros (e.g., #[requires], #[ensures], #[predicate], exists!) are not recognized in scope, meaning the code is being compiled without the proper VeriFast/Rust verification support or imports\u2014an unsound setup/assumption about the tool environment rather than a framing/ownership/spec issue."
+  },
+  "1b33a367ded21b49a0d5fd66df175057": {
+    "classification": "F6",
+    "reason": "The log shows Rust compiler errors: verification-specific attributes/macros/types (e.g., #[requires], #[ensures], #[predicate], #[invariant], exists!, Perm) are not recognized/in scope and expression attributes are experimental. This indicates the verification tooling/assumptions about available VeriFast/Prusti-style annotations are not properly enabled/imported, i.e., relying on unsupported/unsound assumptions about the environment rather than a real framing/ownership/spec issue."
+  },
+  "d1b21d1359830a6a4b1f96fc92d0851e": {
+    "classification": "F6",
+    "reason": "The log shows toolchain/compilation issues (unsupported/unknown specification attributes like #[requires]/#[ensures]/#[predicate], missing feature flags, and unresolved imports like std::ptr), indicating the verification setup assumes Rust accepts VeriFast-style annotations without proper support rather than a real ownership/framing/invariant/specification mismatch."
+  },
+  "3c5ee8e43ad27bb2675eb4744aab2625": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error (Rust compiler expecting `!` or `::`), meaning the verification setup is ill-formed rather than a logical issue like ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "e6dcdd147f56990287cc33f448d666cc": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error (the verifier/parser expected `!` or `::` at the predicate name), not a proof failure about ownership, framing, invariants, aliasing, or spec strength; it indicates an unsound/invalid assumption about the accepted input language."
+  },
+  "5c9da0671ec81211137316a5e696d9e3": {
+    "classification": "F6",
+    "reason": "The log is dominated by toolchain/annotation misuse: Rust cannot resolve VeriFast-style attributes (requires/ensures/predicate/invariant) and rejects expression attributes as experimental, indicating the verification annotations are not being interpreted by the intended verifier (unsound setup/assumptions about the environment), rather than an ownership/framing/invariant/alising/spec-strength issue."
+  },
+  "3af677f6616265a8227b549ad9b98db6": {
+    "classification": "F6",
+    "reason": "The failure is due to unsupported/unrecognized verification attributes (requires/ensures/invariant) and experimental stmt expression attributes in the Rust toolchain, indicating the verification annotations are not actually being interpreted by the verifier/compiler\u2014an environmental/tooling unsoundness rather than a framing/ownership/spec strength issue."
+  },
+  "f4713aa31f1ceb6bd721a09829536d8a": {
+    "classification": "F6",
+    "reason": "The tool reports a syntax/parse error at a predicate declaration (`predicate mutex_own<T>...`), indicating the specification language construct is not accepted in this context. This is not a semantic proof failure (ownership/framing/invariant/alias/spec strength) but an invalid or unsupported assumption about the verifier/spec syntax."
+  },
+  "f4ca4436334f6dcdfeedd6dd3150def7": {
+    "classification": "F6",
+    "reason": "The log shows parser/attribute errors (e.g., `exists!<...>`, `forall!<...>`, and `#[requires]/#[ensures]/#[predicate]/#[invariant]` not recognized, plus experimental statement attributes). This indicates the verification annotations/macros are not properly enabled/imported, i.e., the toolchain assumes support that isn't actually present rather than a logical ownership/framing/invariant issue."
+  },
+  "7520aa6d5dbb173f1b1e9a44a363513f": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error (VeriFast expected `!` or `::`), indicating the verification setup is unsound/invalid due to malformed input rather than a framing/ownership/specification issue."
+  },
+  "355aefe819a86e23ab42f504f8258123": {
+    "classification": "F6",
+    "reason": "The log shows the Rust compiler rejecting VeriFast-style annotations (`#[requires]`, `#[ensures]`, `#[predicate]`, `#[invariant]`) and even a non-Rust ternary expression, indicating the verification setup/assumptions about supported syntax or tooling are invalid rather than a logical proof issue like ownership/framing/invariants."
+  },
+  "45109170e4e9edb44899e3f3e78ff60a": {
+    "classification": "F6",
+    "reason": "The log shows a parse/syntax error in the predicate declaration (unexpected identifier `account`), indicating the verifier cannot even interpret the specification due to an invalid/unsound assumption about the accepted language syntax."
+  },
+  "8ea37c279a2058be65dd23e4f5273ed7": {
+    "classification": "F6",
+    "reason": "The log shows a Rust syntax/parse error at the predicate declaration (VeriFast predicate syntax not accepted in this Rust file), indicating an unsound setup/incorrect tool/language assumptions rather than a verification framing/ownership issue."
+  },
+  "1e3215b9fd50f8114ab638191b41aa13": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error on the `#[requires(...)]` attribute (unexpected `#`), indicating an incorrect/unsupported assumption about how to write VeriFast specifications in this Rust file rather than a logical ownership/framing/invariant issue."
+  },
+  "10514e5ea65d60e7a8931e0e59809a88": {
+    "classification": "F6",
+    "reason": "The log shows tool/language integration failures (unrecognized VeriFast attributes like #[requires]/#[ensures]/#[predicate]/#[invariant] and unsupported syntax like ?val), meaning the verification annotations are not being processed by VeriFast at all\u2014an unsound setup/assumption rather than a proof obligation issue."
+  },
+  "5d4fad02d9946b1555741c5b20a5bd56": {
+    "classification": "F6",
+    "reason": "The errors are about missing VeriFast-specific attributes/macros (e.g., #[predicate], #[requires], #[ensures]) and invalid syntax in plain Rust (dereferencing a bool), indicating the verification annotations are not being recognized/processed due to toolchain/setup mismatch rather than a logical ownership/framing/invariant issue."
+  },
+  "f8d077ba6739f3744d4245dfa939b1fb": {
+    "classification": "F6",
+    "reason": "This is a parsing/syntax error (VeriFast expected `!` or `::` before `node`), not a verification failure about permissions, framing, invariants, aliasing, or specification strength."
+  },
+  "5c14308c6e2774b4e383a99b2b12aca7": {
+    "classification": "F6",
+    "reason": "This is a parse/syntax error (VeriFast/Rust front-end expected `!` or `::` before `node`), not a verification failure about ownership, framing, invariants, aliasing, or spec strength. It indicates an unsound/invalid assumption about the accepted predicate syntax."
+  },
+  "faddf8d492fe04038d7dbab60dd223ac": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error caused by using an unsupported annotation token (`#` in `#[requires(...)]`), indicating an invalid/unsound tool/language assumption rather than a verification condition failure."
+  },
+  "df35da9cfe1c4e3e3b805937515f0cca": {
+    "classification": "F6",
+    "reason": "The log reports that verification-specific attributes/macros like #[requires], #[ensures], #[predicate], and exists! are not recognized in scope, indicating the tool/annotation framework is not properly set up or imported\u2014an unsound environmental/assumption issue rather than a framing/ownership/invariant problem."
+  },
+  "0bf7438dc4e47dec5b269da429804d00": {
+    "classification": "F6",
+    "reason": "The log shows Rust compiler errors about using experimental/unknown attributes like #[requires]/#[ensures]/#[invariant] (stmt_expr_attributes not enabled, attributes not in scope). This is a tooling/unsupported-annotation issue rather than a verification failure due to ownership, framing, invariants, aliasing, or spec strength\u2014i.e., the proof attempt relies on unsound/invalid assumptions about the environment accepting these annotations."
+  },
+  "0f55a5086abcb6d0012f439ca5d026a4": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error (predicate declaration not accepted), not a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "218beae1e56b1c8a16e9183b91ae9b87": {
+    "classification": "F6",
+    "reason": "The log consists of syntax/parser errors in logical expressions (e.g., Rust disallows chained comparisons like `0 <= j && j < i ==> ...` without braces around the closure body). This is a malformed specification issue rather than a genuine ownership/framing/invariant/aliasing strength problem."
+  },
+  "6dc8f0a1bb2a79e4496c8e9a02d689ce": {
+    "classification": "F6",
+    "reason": "The errors indicate the verification-specific annotations/attributes (`requires`, `ensures`, `invariant`) are not recognized and expression attributes are rejected as experimental, i.e., the toolchain/VeriFast integration assumptions are invalid rather than a logical ownership/framing/invariant issue."
+  },
+  "42b13c63ce32b0c8bf1e093838a7da95": {
+    "classification": "F1",
+    "reason": "The verifier cannot find the required heap chunk for the node field predicate (e.g., node_m(tl,_)) when consuming/closing node_fields, indicating missing ownership of the node\u2019s field points-to resources."
+  },
+  "4e7faffcc3d99e9cebf4a83ff159f49f": {
+    "classification": "F6",
+    "reason": "The log reports a duplicate function prototype for abort(), a specification/environment mismatch rather than a proof failure about ownership, framing, invariants, aliasing, or strength of specs."
+  },
+  "372b06017b7b30107688fa994cc6cbfc": {
+    "classification": "F3",
+    "reason": "The predicate is rejected as imprecise: its body does not uniquely determine the output parameter 'p', indicating a too-weak/incomplete invariant relating inputs to outputs."
+  },
+  "e809570e5158cd2449f0b30d9ecaf13e": {
+    "classification": "F1",
+    "reason": "The postcondition requires ownership of the predicate tree(result), but VeriFast cannot find/produce any matching heap chunk for tree(t) at function exit, indicating missing ownership/resources to establish the ensures clause."
+  },
+  "dcc8dc86a702b4ff7c313dc19ac910fb": {
+    "classification": "F5",
+    "reason": "The precondition uses `a |-> ?va` where `a` is not a valid lvalue for a points-to assertion (it must be `*a |-> ...`, `a->field |-> ...`, etc.). This is an over-strong/ill-formed specification rather than a missing resource in the code."
+  },
+  "856e839b0576b2879359597cd046b931": {
+    "classification": "F3",
+    "reason": "VeriFast cannot prove tmp+1 stays within INT_MAX, indicating the function invariant/precondition is too weak to establish absence of integer overflow (needs a bound on c->value)."
+  },
+  "74c62a46d280c09d5df0f9b88c418add": {
+    "classification": "F1",
+    "reason": "The function returns/leaves behind a malloc_block_account chunk without transferring or disposing of it, indicating missing ownership handling (no postcondition/return predicate to pass ownership, or missing free)."
+  },
+  "040bb3263dba68e07dd63e5a6d9394a4": {
+    "classification": "F6",
+    "reason": "The verification fails due to a missing header file at parse time, indicating an external/environmental assumption (that 'stringBuffers.h' exists) is false rather than a logical ownership/framing/specification issue."
+  },
+  "98ec86d5ba0307ccd6dad02ab047fbe5": {
+    "classification": "F1",
+    "reason": "The function returns while still owning the malloc_block_account heap chunk, causing a memory leak; ownership is not properly transferred or disposed."
+  },
+  "db971302157b53ad57fbbcfcf41ddae7": {
+    "classification": "F1",
+    "reason": "The function 'init' allocates a Counter but does not dispose it or transfer/return ownership properly, leaving a malloc_block_Counter heap chunk unconsumed at function end (leak)."
+  },
+  "a905c0e96e268444df57c6fe18d2ca2d": {
+    "classification": "F6",
+    "reason": "Verification cannot proceed because the included header file 'spouse.h' is missing, indicating an external dependency/assumption that is not provided."
+  },
+  "0c98d302d67885b35cb9dce6ea7e21e5": {
+    "classification": "F1",
+    "reason": "The function exits while still owning the heap chunk malloc_block_account(myAccount), indicating missing transfer/disposal of ownership (not freed or returned/framed in the postcondition), which VeriFast reports as a leak."
+  },
+  "578ec1fb58d3f7b8cdcb8feb095fa332": {
+    "classification": "F6",
+    "reason": "Verification succeeded locally, but linking fails due to an unsatisfied external requirement (`CRT/prelude.h#assume`), indicating reliance on an assumed/axiomatized module that is not provided\u2014an unsound or missing assumption."
+  },
+  "970c57a82f5085244e69a824ee74aea6": {
+    "classification": "F3",
+    "reason": "VeriFast cannot prove the bound needed to avoid arithmetic overflow (dummy2 <= UINTPTR_MAX) when casting/using *count, indicating missing or too-weak preconditions/invariants about the range of *count."
+  },
+  "c084d2445680bf44d7b3a7aa1d5412d1": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error in a predicate/chunk expression (invalid syntax near `&p->s1;`), which is a specification/annotation formulation issue rather than a proof failure like missing ownership or framing."
+  },
+  "fd0e466181f1cb29c9b0fd5fb27eb677": {
+    "classification": "F5",
+    "reason": "The precondition requires `argv != 0`, but VeriFast cannot establish this for `main` during the function type implementation check (the environment may pass a null `argv`). The specification is too strong for what can be guaranteed at entry."
+  },
+  "4d289015ee51e1ba5d99ab62925dff22": {
+    "classification": "F6",
+    "reason": "The predicate definition uses an undefined function/predicate `cstring`, indicating an unsound or missing assumption about available library specifications rather than a proof obligation failure."
+  },
+  "844778a41380c09f225a409d8417b619": {
+    "classification": "F1",
+    "reason": "The verifier cannot find the required heap chunk foo_x(f, _) when trying to use f->x |-> x, indicating the code lacks (or failed to establish/close) ownership of the struct field before accessing it."
+  },
+  "52d3784af2483246600bc16a6acc2de6": {
+    "classification": "F3",
+    "reason": "VeriFast cannot prove the necessary arithmetic bound (354 + i <= INT_MAX) at r += i, indicating missing/too-weak preconditions or invariants constraining i (and thus r) to prevent overflow."
+  },
+  "f89cc17036dc875e3e3f8c047e506728": {
+    "classification": "F3",
+    "reason": "VeriFast cannot prove the arithmetic expression (x - y) stays within int bounds (in particular INT_MIN <= x - y), indicating missing/too-weak numeric preconditions or invariants constraining x and y."
+  },
+  "7e174d72e1252dac342a84bfad9cc331": {
+    "classification": "F3",
+    "reason": "The loop/function invariant `i <= 10` is too weak/unsupported by the available preconditions or established facts, so VeriFast cannot prove it holds at the invariant check."
+  },
+  "f97db21e686f2953435626f5293186dd": {
+    "classification": "F3",
+    "reason": "The loop invariant requires i <= argc, which implies 0 <= argc when i starts at 0, but VeriFast cannot establish 0 <= argc from the function context; the invariant is too weakly justified/needs strengthening of preconditions or assumptions about argc."
+  },
+  "fea8956042e810ef1f45d793623d5d3a": {
+    "classification": "F3",
+    "reason": "Verifier cannot prove (d + 1) stays within int bounds, indicating missing/too-weak invariant or precondition constraining enum value so arithmetic overflow is ruled out."
+  },
+  "f42f4692657c041d1731a715ca59bf0b": {
+    "classification": "F6",
+    "reason": "Verification fails due to an external dependency not found (#include file missing), indicating an unsound/environmental assumption about available headers rather than a proof obligation issue."
+  },
+  "bb44160e5f43c1c4a4317843fea21750": {
+    "classification": "F6",
+    "reason": "The log reports a parse error in the specification (at `nodes(nx; ?vs0)`), indicating malformed/unsound syntax rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "495951fee6f21a51a95643e82380f69e": {
+    "classification": "F6",
+    "reason": "This is a specification/annotation parse error (malformed or misplaced ensures clause), not a verification failure about ownership, framing, invariants, aliasing, or spec strength; it indicates an incorrect assumption about the allowed annotation structure."
+  },
+  "6aa1bac84cd18b3c31e879d5e8f46db7": {
+    "classification": "F1",
+    "reason": "VeriFast cannot find the required heap predicate for accessing ptr->next (missing node_next(ptr, _)), indicating the function lacks ownership of the node's next field at that program point."
+  },
+  "e12dd2b8bb19289e055e61763b168630": {
+    "classification": "F1",
+    "reason": "The call through function pointer f requires the predicate is_mapfunc(f), but the verifier cannot establish ownership/permission for this function-pointer predicate at the call site (it is not provided in the precondition or available in the context)."
+  },
+  "ff5b1e747ba849f7d369f35703226b48": {
+    "classification": "F6",
+    "reason": "The log reports a parser error at the start of a VeriFast annotation (`//@ requires ...`), indicating a syntax/parsing issue rather than a verification failure related to ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "6ba6cb139fd53fb3ab782b7ddb5f8624": {
+    "classification": "F2",
+    "reason": "VeriFast reports a leaked heap chunk (malloc_block_node(n)) at function exit, meaning the function does not frame/return ownership of the allocated memory in its postcondition (incomplete framing of allocated resources)."
+  },
+  "2fbf05da59eac81b22a3e1ec9a18da15": {
+    "classification": "F6",
+    "reason": "The specification refers to an undefined identifier `it` in the precondition, indicating an unsound/incorrect assumption about available variables rather than an ownership or framing issue."
+  },
+  "8ea55fa4d644357c86af7c8a9a079909": {
+    "classification": "F5",
+    "reason": "The precondition uses an invalid points-to LHS (`pfirst |-> ?f`) where `pfirst` is not a dereference/field/array element, indicating an incorrectly written (over-strong/ill-formed) specification rather than a framing or ownership issue."
+  },
+  "20a75111223f6ca0064cabea10631039": {
+    "classification": "F1",
+    "reason": "The call through function pointer p requires the predicate resource is_int_predicate(p), but the function lacks ownership of that function-pointer predicate (it is not provided in the precondition), so VeriFast cannot establish p is a valid int predicate."
+  },
+  "257522a05ab7f32d2f9a62c778d564c1": {
+    "classification": "F1",
+    "reason": "The leak check reports remaining heap chunks (node fields, malloc block, and nodes(next)) at function end, indicating the function does not consume/free all owned heap resources or lacks the required ownership to dispose them properly."
+  },
+  "fe3b15b4f6b3f3adcd9507e0165df569": {
+    "classification": "F6",
+    "reason": "The log reports a parse error in the predicate declaration, which is a syntax/unsupported-language issue rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "9c8b30fa9cc6920cb5659e1fb78a0067": {
+    "classification": "F6",
+    "reason": "The postcondition references a field (count) directly instead of qualifying it (e.g., this.count) or using an abstract predicate; VeriFast disallows such dereferences in specification contexts, indicating an unsound/invalid specification assumption rather than a framing or ownership issue."
+  },
+  "3e86f24e2c3d8acb86344cc427bdde51": {
+    "classification": "F1",
+    "reason": "The specification refers to the predicate `ints(a, ...)`, but VeriFast cannot find/resolve this predicate definition, so the required ownership predicate is missing from the environment/imports."
+  },
+  "cb23a5bb7115461d20fb7ba64dbd2495": {
+    "classification": "F6",
+    "reason": "Verification succeeded, but the link phase failed due to a missing .vfmanifest file (toolchain/configuration issue from not emitting the manifest), not a framing/ownership/specification problem."
+  },
+  "2db428b59c970dd94963e74d94c94ec9": {
+    "classification": "F6",
+    "reason": "The verifier reports a reachable-statement as dead code, typically caused by an inconsistent/unsound assumption or contradictory specifications that make the path infeasible."
+  },
+  "4b71c2c85002c3fb6ac9a80443939106": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error in the specification syntax (at '==>'), indicating an invalid/unsupported annotation rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "c4b97be84b85f4dbb80d52a94ba1aebb": {
+    "classification": "F6",
+    "reason": "The verification succeeded but the link phase failed due to a missing .vfmanifest file, indicating an external/toolchain artifact assumption rather than a proof obligation issue."
+  },
+  "a8d09ee7559bb2a68ddaecc58eba7d75": {
+    "classification": "F6",
+    "reason": "The issue is a Java scoping/name-shadowing problem (a new local variable 'b1' hides an existing one), not a separation-logic ownership/framing/invariant/aliasing/specification strength failure."
+  },
+  "1a92d8758e5a0775391c57c5eaad84fb": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at the predicate declaration syntax, indicating an ill-formed annotation/specification rather than a proof failure about ownership, framing, invariants, aliasing, or strength of specs."
+  },
+  "93cb432f99830587c826fd011ccb79c0": {
+    "classification": "F6",
+    "reason": "The failure occurs in VeriFast's link phase due to a missing .vfmanifest file (a build/tooling artifact), not due to a proof obligation. This indicates an unsound/invalid assumption about the verification environment or compilation setup rather than ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "904996c5d4e55c3d88e60caf6d2c789f": {
+    "classification": "F6",
+    "reason": "The verification succeeded but the link phase failed due to a missing .vfmanifest file (toolchain/configuration issue), not a logical proof obligation like ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "0f7c550d328d09b41cf6a009b5dcd4ca": {
+    "classification": "F6",
+    "reason": "This is a parse error in the predicate declaration syntax (tool/language misuse), not a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "6f1ff4b070a1634ef7261dc08fe77e19": {
+    "classification": "F6",
+    "reason": "The errors are due to unsound/invalid tooling assumptions: the code uses VeriFast-style attributes (#[requires], #[ensures]) that are not recognized in this Rust compilation scope, indicating the verification annotations are not properly supported/declared rather than a logical proof issue like ownership, framing, or invariants."
+  },
+  "30293d1d0ae366228473e11c51029ff5": {
+    "classification": "F6",
+    "reason": "This is a parser-level failure (syntax/grammar not accepted by VeriFast), not a proof obligation failure like missing ownership or framing. It indicates an unsound assumption about tool/language support rather than a verification error."
+  },
+  "d08dc0e302bc0da2196750d425cb7b1b": {
+    "classification": "F6",
+    "reason": "The Rust compiler cannot find the VeriFast-specific attributes `#[requires]`/`#[ensures]`, indicating the verification annotations are not being interpreted (missing plugin/macro/setup). This is a tooling/unsound-environment assumption rather than a proof issue like ownership or framing."
+  },
+  "6d4b7549480fdca290f4c98c52bf3cce": {
+    "classification": "F6",
+    "reason": "The log indicates a syntax/parsing error in the predicate declaration (unexpected token `counter`), not a proof failure about ownership, framing, invariants, aliasing, or spec strength. This reflects an invalid/unsound assumption about the accepted language syntax."
+  },
+  "3e4b1cdb28bff468ed6ddebc144758f3": {
+    "classification": "F6",
+    "reason": "The error indicates an unsafe function lacks a user-provided contract; without an explicit specification, verification would rely on an unsound assumption about the unsafe code\u2019s behavior."
+  },
+  "fbed113627a7c95619ee769052b0d2da": {
+    "classification": "F6",
+    "reason": "The log reports a parse error in the predicate definition, indicating ill-formed/unsupported syntax rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "256eddb5be6d58294ba28f2b97fb0c52": {
+    "classification": "F6",
+    "reason": "The failure is a parser error at the predicate definition, indicating invalid/unsupported syntax rather than an ownership, framing, invariant, aliasing, or specification-strength issue."
+  },
+  "efb98e72a182e65d0e43ab04c14ac097": {
+    "classification": "F6",
+    "reason": "The errors are due to unrecognized specification attributes (`#[requires]`, `#[ensures]`) and a stubbed recursive `VeriFast_alloc`, indicating the verification setup/macros are not in scope (tooling/annotation integration issue), not a logical proof obligation like ownership, framing, or invariants."
+  },
+  "115d2018bf965da0bcf2fac9926116bc": {
+    "classification": "F6",
+    "reason": "The Rust compiler cannot resolve VeriFast-specific attributes like `#[requires]` and `#[ensures]`, indicating the verification annotations are being used without the proper tool/plugin setup\u2014an external assumption about the environment rather than a proof issue."
+  },
+  "9cb4ff7ec4ad4bf3589dec3a3d0baebe": {
+    "classification": "F6",
+    "reason": "The Rust compiler cannot find the `#[requires]`/`#[ensures]` attributes, indicating the verification annotations are not properly supported/imported in this context (tooling/config mismatch), i.e., relying on unsound/unsupported assumptions rather than a genuine ownership/framing/invariant issue."
+  },
+  "a18ce9965713d311669f881adf488f62": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the predicate declaration, indicating a syntax/language mismatch or invalid VeriFast input rather than a proof failure due to ownership, framing, invariants, aliasing, or specification strength."
+  },
+  "8053a8a0182833623c3b2088a3ddca0f": {
+    "classification": "F6",
+    "reason": "The log shows toolchain/annotation misuse: Rust cannot resolve VeriFast-specific attributes like #[requires]/#[ensures], and there is also an unsafe assumption about sending a raw pointer (*mut Tree) across threads (missing Send). These are not proof-framing/ownership failures inside VeriFast but unsound or unsupported assumptions/encoding."
+  },
+  "c2711470089d8f043cef7689f3474301": {
+    "classification": "F6",
+    "reason": "The tool reports a parse/syntax error at the predicate definition (`pred bytes(...)`), indicating an invalid/unsupported construct rather than a proof obligation issue; this is best classified as an unsound/incorrect assumption about the language/syntax being accepted."
+  },
+  "1b8a7e49f0f9f3aa045fb966c6c40cbd": {
+    "classification": "F6",
+    "reason": "The failure is a parse error at the predicate declaration, indicating invalid/unsupported syntax rather than a verification failure due to ownership, framing, invariants, aliasing, or specification strength."
+  },
+  "eaeab54d3126c2df8bb9ba965f591373": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the start of the file, indicating invalid/unsupported syntax rather than a proof obligation failure; this points to an unsound/incorrect assumption about the tool accepting the given annotation format."
+  },
+  "3eb4588e715588037a64d6300758c88c": {
+    "classification": "F6",
+    "reason": "The specification uses `//@ requires false;`, which makes the function uncallable and can trivially \"verify\" behavior by assuming an impossible precondition\u2014an unsound assumption rather than a real ownership/framing/invariant issue."
+  },
+  "d2f7fea6587091fd09651fd52f15a364": {
+    "classification": "F6",
+    "reason": "The errors are about unknown specification attributes (`#[requires]`, `#[ensures]`) not being recognized/available in the Rust compilation scope, indicating the verification annotations/tooling are not properly set up\u2014an environment/assumption mismatch rather than a logical proof issue."
+  },
+  "faa4cb07fbe9473323544f2326e9f99e": {
+    "classification": "F6",
+    "reason": "The failure is a parse error at the predicate declaration, indicating an ill-formed/unsupported specification syntax rather than a proof obligation issue like ownership, framing, invariants, aliasing, or strength of specs."
+  },
+  "46321bf886ce67acb8c5a6582386db08": {
+    "classification": "F6",
+    "reason": "The failure is due to unsound/incorrect assumptions about the language/tool integration: the Rust parser rejects `loop` without `{}` because a ghost command is inserted where a loop body is required. This is a syntax/tooling misuse rather than a logical proof issue (ownership/framing/invariants/alias/spec strength)."
+  },
+  "6849831716df411b817a957024e649ae": {
+    "classification": "F6",
+    "reason": "The errors show Rust cannot resolve VeriFast-specific attributes like `#[requires]`/`#[ensures]`, indicating the verification annotations/tooling aren\u2019t properly in scope (an invalid/unsupported assumption about the environment), not a logical proof issue such as ownership or framing."
+  },
+  "b896b3a29a28409d0e659c176c799e43": {
+    "classification": "F6",
+    "reason": "The log reports a parse error on a predicate definition, indicating invalid/unsupported syntax rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "00cd5f9d37c0d7ba6d05be4578791de4": {
+    "classification": "F6",
+    "reason": "The failure is a parse/syntax error in the predicate declaration (VeriFast expected `!` or `::`), indicating an incorrect/unsupported language construct rather than a logical verification issue like ownership, framing, or invariants."
+  },
+  "b83b0c2fc4b8d46f85ca7ead6f1f3d5b": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at a predicate declaration, indicating invalid/unsupported syntax rather than a verification failure due to ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "e82189fcfed7e90ce35b8ae32449f4e2": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the predicate definition, indicating invalid/unsupported syntax rather than a failed proof obligation about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "5382d136a21cb19bacb81413c8af0104": {
+    "classification": "F6",
+    "reason": "The errors are about unknown specification attributes (e.g., #[requires], #[ensures]) not being recognized by the Rust compiler, indicating an unsound/incorrect toolchain or annotation setup rather than a verification failure like missing ownership/framing/invariants."
+  },
+  "5214e172ac40e1a3978206a51acc0af8": {
+    "classification": "F6",
+    "reason": "The toolchain cannot resolve VeriFast-specific attributes like #[requires] and #[ensures], indicating the verification annotations are not being interpreted (missing/incorrect VeriFast integration), i.e., assumptions about available specification support are unsound."
+  },
+  "d0d2e92bd410555f764494da2bf424a8": {
+    "classification": "F6",
+    "reason": "The errors are due to using VeriFast-specific syntax/attributes (e.g., \\\\/, #[requires], #[ensures]) that the Rust compiler does not recognize, indicating the verification annotations are being treated as plain Rust without the proper VeriFast front-end/tooling\u2014an unsound assumption about the environment rather than a framing/ownership/invariant issue."
+  },
+  "7da05e8fdfc5145f31a65d7a8304b47f": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at the predicate declaration syntax, indicating an ill-formed/unsupported construct rather than an ownership/framing/invariant/specification issue."
+  },
+  "0038f8c969446a66751248279792a1b9": {
+    "classification": "F6",
+    "reason": "The log reports a parser error at a predicate definition, indicating an invalid/unsupported VeriFast syntax issue rather than a proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "415d7d244342fb2465c562c1852408fd": {
+    "classification": "F6",
+    "reason": "The build fails because verification-specific attributes like #[requires] and #[ensures] are not recognized in this Rust scope (tooling/annotation setup mismatch), indicating unsound/unsupported assumptions about the verification environment rather than a logical ownership/framing/invariant issue."
+  },
+  "0c1efc2cb74552838567ecf769acd186": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the predicate definition, indicating the code/specification is not well-formed for VeriFast (a syntax/formatting issue), not a proof obligation failure like missing ownership or framing."
+  },
+  "dbb80d41ae7c3f62759190fe4d5bf27b": {
+    "classification": "F6",
+    "reason": "The log reports a parser error at the predicate declaration, indicating a syntactic/VeriFast-language mismatch rather than a proof/ownership/framing issue."
+  },
+  "90ce7ec9a48d5622cce5732ae8b221ce": {
+    "classification": "F6",
+    "reason": "The errors are due to the Rust compiler not recognizing VeriFast specification attributes like #[requires] and #[ensures], indicating the verification annotations are not being processed (tooling/annotation setup mismatch), i.e., the code is compiled under unsound assumptions about the verification environment rather than a framing/ownership/spec issue."
+  },
+  "d1b059ca2b066d833951d676f13e1bfe": {
+    "classification": "F6",
+    "reason": "The Rust compiler cannot find VeriFast specification attributes like #[requires] and #[ensures], indicating the verification annotations are not supported/declared in this environment (tooling mismatch/unsound assumption that these attributes exist), rather than a logical proof failure about ownership, framing, or invariants."
+  },
+  "25f44a15e098cbaa7da1437078035fe5": {
+    "classification": "F6",
+    "reason": "The errors show Rust does not recognize VeriFast-specific attributes like #[requires] and #[ensures], indicating an invalid/unsupported annotation mechanism rather than a verification failure (unsound tool/language assumptions)."
+  },
+  "03f072965727e3adf38ceacd073edd09": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error at the predicate declaration, indicating an invalid/unsupported syntax issue rather than a proof failure (ownership/framing/invariants/aliasing/spec strength)."
+  },
+  "3a0a0f30f66e75261e38b1cece2cce2e": {
+    "classification": "F6",
+    "reason": "The log reports a VeriFast parse error in the invariant annotation, indicating a syntactic/annotation issue rather than a logical proof failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "ef697d9eca0276908d3f94e653249d3a": {
+    "classification": "F6",
+    "reason": "The failure is a parse error at the predicate declaration, indicating invalid/unsupported syntax rather than a verification issue like ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "f588906dcf01e698339beabd1fcbbe1e": {
+    "classification": "F6",
+    "reason": "This is a syntax/parsing error in the predicate declaration (VeriFast expected different tokens), not a proof failure related to ownership, framing, invariants, aliasing, or spec strength; it reflects an unsound/invalid assumption about the language syntax."
+  },
+  "0f893c40b10f723c5842c8b78a357fd9": {
+    "classification": "F6",
+    "reason": "The failure is due to unrecognized verification attributes (#[requires], #[ensures]) not being in scope, indicating the verification toolchain/macros are missing or incorrectly assumed rather than a logical ownership/framing/invariant issue."
+  },
+  "e78e7f75e56329ef08bdefface9e4e40": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the predicate definition, indicating invalid/unsupported syntax rather than a proof failure about ownership, framing, invariants, aliasing, or specification strength."
+  },
+  "419e87f90345b52a3842468046fa74ec": {
+    "classification": "F6",
+    "reason": "The errors are about missing VeriFast-specific Rust attributes like #[requires] and #[ensures] (tooling/macro/attribute not in scope), indicating the verification annotations are not being recognized/loaded rather than a logical ownership/framing/invariant issue."
+  },
+  "5416396561f98990099eabc1c053c35e": {
+    "classification": "F6",
+    "reason": "The errors are compile-time: the Rust compiler cannot resolve VeriFast-specific attributes like #[requires] and #[ensures], indicating an unsound/incorrect assumption about the verification toolchain or macros being available rather than a logical framing/ownership/specification issue."
+  },
+  "79f6b6670a0774422a3ecd0f91bb549d": {
+    "classification": "F6",
+    "reason": "The log reports a parser error at a predicate definition, indicating ill-formed/unsupported VeriFast syntax rather than a verification failure about ownership, framing, invariants, aliasing, or spec strength."
+  },
+  "0c4e0938708fc1313e957cb64ee1c900": {
+    "classification": "F6",
+    "reason": "The failure is a syntax/parsing error in the predicate declaration (unexpected token `bytes`), indicating an invalid/unsupported specification construct rather than a proof issue like missing ownership or framing."
+  },
+  "99677996c781ed5e0db3d7ec53ef09ed": {
+    "classification": "F6",
+    "reason": "The log shows `#[requires]`/`#[ensures]` attributes are not recognized in scope, indicating the verification-specific annotations/macro support is missing or not configured. This is a tooling/annotation integration issue rather than a proof obligation failure, i.e., an unsound assumption that these specs are available."
+  },
+  "ccd7017ea303ff4a58e7a63ffbde289d": {
+    "classification": "F6",
+    "reason": "The errors are about unknown VeriFast-specific attributes (`#[requires]`, `#[ensures]`) in Rust, indicating the toolchain/environment is not interpreting verification annotations (i.e., an unsound/incorrect assumption that these annotations are available), rather than a verification failure about ownership/framing/invariants/aliasing/spec strength."
+  },
+  "d9ceb693f5cdfad0023330e6cff331c2": {
+    "classification": "F6",
+    "reason": "The build fails because verification-specific attributes like #[requires] and #[ensures] are not recognized in this Rust scope (missing/incorrect VeriFast integration or macro definitions), indicating reliance on unsupported assumptions about the toolchain rather than a logical proof/ownership issue."
+  },
+  "73e1950fc0753879fc2ccdd486660d00": {
+    "classification": "F6",
+    "reason": "The errors indicate the verifier-specific attributes `#[requires]`/`#[ensures]` are not recognized by the compiler/toolchain, i.e., the code is being checked without VeriFast support or proper setup. This is a tooling/configuration mismatch rather than a logical ownership/framing/invariant/specification issue."
+  },
+  "36d1868e33797d48b358fd8be51ac3f8": {
+    "classification": "F6",
+    "reason": "The log shows Rust compilation errors: the VeriFast-style attributes `#[requires]`/`#[ensures]` are not recognized in scope, indicating the verification annotations/tooling are not properly enabled or integrated (an unsound/invalid assumption about the environment), not a framing/ownership/invariant issue."
+  },
+  "0b2077e87635782f2b82f21a8c8484e7": {
+    "classification": "F6",
+    "reason": "The failure is due to an unresolved external module/crate (`platform`) and a bogus recursive stub (`VeriFast_alloc`), indicating the code relies on missing/unspecified external assumptions rather than a permission/framing/specification issue."
+  },
+  "8e472882f330867e9544b3c37565c8fc": {
+    "classification": "F6",
+    "reason": "The errors are about unknown Rust attributes `#[requires]`/`#[ensures]`, indicating the verification annotations/macros are not in scope or not supported by the toolchain used. This is a tooling/assumption mismatch rather than a genuine separation-logic issue (ownership, framing, invariants, aliasing, or spec strength)."
+  },
+  "793c0bb8d420c59b21366ee01fd61c01": {
+    "classification": "F6",
+    "reason": "The log shows a syntax/parsing error in the predicate definition (unexpected token `u8_at`), indicating invalid/unsupported VeriFast/Rust annotation syntax rather than an ownership, framing, invariant, aliasing, or spec strength issue."
+  },
+  "913994a8417c2caa1cf0b8dbf0cefeca": {
+    "classification": "F6",
+    "reason": "The log reports a parse error at the predicate definition, indicating invalid/unsupported syntax rather than a proof/ownership/framing/specification issue."
+  }
+}

@@ -1,0 +1,3 @@
+/app/output/deepseek/java/Stack/stack.java(35,51-52): error: Preciseness check failure: non-fixed variable(s) 'n' used in input expression.
+35 |     //@ predicate Node(Node n, int v, Node nxt) = n.nxt |-> nxt &*& n.val |-> v;
+   |                                                   ^

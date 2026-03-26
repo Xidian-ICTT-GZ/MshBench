@@ -1,0 +1,95 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:28:7
+   |
+28 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:29:7
+   |
+29 |     #[ensures(stack(result, nil))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:40:7
+   |
+40 |     #[requires(stack(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:41:7
+   |
+41 |     #[ensures(stack(stack, cons(value, vs)))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:52:7
+   |
+52 |     #[requires(stack(stack, cons(?v, ?vs0)))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:53:7
+   |
+53 |     #[ensures(stack(stack, vs0) &*& result == v)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:64:7
+   |
+64 |     #[requires(stack(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:65:7
+   |
+65 |     #[ensures(stack(stack, reverse(vs)))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:94:7
+   |
+94 |     #[requires(stack(stack, ?vs) &*& vs == nil)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:95:7
+   |
+95 |     #[ensures(true)]
+   |       ^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `result1`
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:106:13
+    |
+106 |         let result1 = Stack::pop(s);
+    |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_result1`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `result2`
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:108:13
+    |
+108 |         let result2 = Stack::pop(s);
+    |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_result2`
+
+warning: function cannot return without recursing
+   --> /app/output/gpt52/rust/purely_unsafe/solutions/reverse.rs:115:1
+    |
+115 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 10 previous errors; 4 warnings emitted
+

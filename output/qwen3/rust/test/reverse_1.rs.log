@@ -1,0 +1,8 @@
+error: expected one of `!`, `(`, `)`, `+`, `,`, `::`, or `<`, found `:`
+ --> /app/output/qwen3/rust/test/reverse_1.rs:1:29
+  |
+1 | #[pred] struct node_pred(ptr: *mut Node, next: *mut Node) {
+  |                             ^ expected one of 7 possible tokens
+
+error: aborting due to 1 previous error
+

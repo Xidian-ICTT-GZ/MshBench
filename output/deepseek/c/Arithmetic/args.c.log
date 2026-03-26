@@ -1,0 +1,9 @@
+/app/output/deepseek/c/Arithmetic/args.c(12,28-38): error: No matching heap chunks: argv_chars(argv0, argc)
+12 | //@ requires argc >= 0 &*& argv_chars(argv, argc);
+   |                            ^^^^^^^^^^
+/app/output/deepseek/c/Arithmetic/args.c(12,28-38): note: Consuming assertion
+12 | //@ requires argc >= 0 &*& argv_chars(argv, argc);
+   |                            ^^^^^^^^^^
+/app/output/deepseek/c/Arithmetic/args.c(11,5-9): note: Function 'main': Function type implementation check
+11 | int main(int argc, char **argv)
+   |     ^^^^

@@ -1,0 +1,118 @@
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:12:3
+   |
+12 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find macro `struct_own` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:14:5
+   |
+14 |     struct_own!{n => Node { value, next }}
+   |     ^^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:17:3
+   |
+17 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find macro `exists` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:22:9
+   |
+22 |         exists!(value: i32, next: *mut Node =>
+   |         ^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:27:3
+   |
+27 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find macro `struct_own` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:29:5
+   |
+29 |     struct_own!{s => Stack { head }} * nodes(head)
+   |     ^^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:32:3
+   |
+32 | #[requires(stack_own(stack, head))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:33:3
+   |
+33 | #[ensures(true)]
+   |   ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:36:11
+   |
+36 |         #[invariant(nodes(n))]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `assert` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:39:11
+   |
+39 |         #[assert(node_own(n, _, _))]
+   |           ^^^^^^
+   |
+   = note: `assert` is in scope, but it is a function-like macro
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:45:7
+   |
+45 |     #[requires(stack_own(stack, head))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:46:7
+   |
+46 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `assert` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:48:11
+   |
+48 |         #[assert(stack_own(stack, head))]
+   |           ^^^^^^
+   |
+   = note: `assert` is in scope, but it is a function-like macro
+
+error: cannot find attribute `assert` in this scope
+  --> /app/output/deepseek/rust/test/dispose_1.rs:51:11
+   |
+51 |         #[assert(stack_own(stack, _))]
+   |           ^^^^^^
+   |
+   = note: `assert` is in scope, but it is a function-like macro
+
+warning: unused imports: `Layout` and `dealloc`
+ --> /app/output/deepseek/rust/test/dispose_1.rs:1:18
+  |
+1 | use std::alloc::{dealloc, Layout};
+  |                  ^^^^^^^  ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0614]: type `bool` cannot be dereferenced
+  --> /app/output/deepseek/rust/test/dispose_1.rs:29:38
+   |
+29 |     struct_own!{s => Stack { head }} * nodes(head)
+   |                                      ^^^^^^^^^^^^^ can't be dereferenced
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/test/dispose_1.rs:61:1
+   |
+61 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 15 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0614`.

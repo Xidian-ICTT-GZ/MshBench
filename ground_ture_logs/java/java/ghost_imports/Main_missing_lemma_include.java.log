@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/ghost_imports/Main_missing_lemma_include.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/ghost_imports/Main_missing_lemma_include.java(15,5-8): error: Should fail directives are not allowed; use the -allow_should_fail command-line option to allow them.
+15 |     /*~*/ //@ lemma1();
+   |     ^^^
+
+--- STDERR ---
+
+Result: FAIL

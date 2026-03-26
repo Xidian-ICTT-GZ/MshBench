@@ -1,0 +1,28 @@
+error: expected one of `(`, `[`, or `{`, found `<`
+ --> /app/output/deepseek/rust/test/reverse_1.rs:7:12
+  |
+7 |     exists!<next: *mut Node>; n != std::ptr::null_mut() && struct_Node! { n => Node { next } } && node(next)
+  |            ^ expected one of `(`, `[`, or `{`
+
+error: expected one of `(`, `[`, or `{`, found `<`
+  --> /app/output/deepseek/rust/test/reverse_1.rs:14:45
+   |
+14 |     start != std::ptr::null_mut() && exists!<next: *mut Node>; struct_Node! { start => Node { next } } && lseg(next, end)
+   |                                             ^ expected one of `(`, `[`, or `{`
+
+error: expected one of `(`, `[`, or `{`, found `<`
+  --> /app/output/deepseek/rust/test/reverse_1.rs:21:45
+   |
+21 |     start != std::ptr::null_mut() && exists!<next: *mut Node>; struct_Node! { start => Node { next } } && lseg_rev(next, end, start) && start->next == rev
+   |                                             ^ expected one of `(`, `[`, or `{`
+
+error: expected one of `->`, `where`, or `{`, found `requires`
+  --> /app/output/deepseek/rust/test/reverse_1.rs:26:5
+   |
+25 | fn lseg_rev_append(start: *mut Node, end: *mut Node, rev: *mut Node)
+   |                                                                     - expected one of `->`, `where`, or `{`
+26 |     requires lseg_rev(start, end, rev);
+   |     ^^^^^^^^ unexpected token
+
+error: aborting due to 4 previous errors
+

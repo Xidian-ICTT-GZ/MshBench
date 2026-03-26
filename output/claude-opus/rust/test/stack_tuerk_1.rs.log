@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `nodes`
+ --> /app/output/claude-opus/rust/test/stack_tuerk_1.rs:9:11
+  |
+9 | predicate nodes(n: *mut Node; count: i32) =
+  |           ^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

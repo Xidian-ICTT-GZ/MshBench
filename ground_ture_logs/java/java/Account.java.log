@@ -1,0 +1,16 @@
+Command: verifast /app/ground_true/java/java/Account.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Account.java(28,17-19): error: Potential arithmetic underflow. (Cannot prove -2147483648 <= (b + amount).)
+28 |         balance += amount;
+   |                 ^^
+/app/ground_true/java/java/Account.java(28,17-19): note: Executing statement
+28 |         balance += amount;
+   |                 ^^
+/app/ground_true/java/java/Account.java(23,10-17): note: Verifying method 'deposit'
+23 |     void deposit(int amount)
+   |          ^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

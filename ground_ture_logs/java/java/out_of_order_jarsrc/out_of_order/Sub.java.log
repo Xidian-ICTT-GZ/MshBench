@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/out_of_order_jarsrc/out_of_order/Sub.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/out_of_order_jarsrc/out_of_order/Sub.java(1,8-13): error: Class Super not found
+1 | public class Sub extends Super
+  |        ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

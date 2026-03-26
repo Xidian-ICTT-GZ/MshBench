@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/Iterator/IteratorUtil.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Iterator/IteratorUtil.java(7,34-42): error: No such type parameter, inductive datatype, class, interface, or function type: Iterator
+7 |     public static Object getLast(Iterator iterator)
+  |                                  ^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

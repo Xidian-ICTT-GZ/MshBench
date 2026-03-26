@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Linklist/doubly_linked_list.c(36,16-21): error: No matching heap chunks: nodes(h)
+36 | 	//@ invariant nodes(ptr);
+   |                ^^^^^
+/app/output/claude-opus/c/Linklist/doubly_linked_list.c(36,16-21): note: Consuming assertion
+36 | 	//@ invariant nodes(ptr);
+   |                ^^^^^
+/app/output/claude-opus/c/Linklist/doubly_linked_list.c(25,6-13): note: Verifying function 'reverse'
+25 | void reverse(dllist arg)
+   |      ^^^^^^^

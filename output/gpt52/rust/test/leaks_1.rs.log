@@ -1,0 +1,3 @@
+/app/output/gpt52/rust/test/leaks_1.rs(11,58-59): error: User should provide contract for unsafe functions
+11 | unsafe fn spawn<T: 'static>(f: unsafe fn(arg: T), arg: T) {
+   |                                                          ^

@@ -1,0 +1,57 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/values_1.rs:25:7
+   |
+25 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/values_1.rs:26:7
+   |
+26 |     #[ensures(result != 0 &*& malloc_block_Stack(result) &*& stack(result, nil))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/values_1.rs:41:7
+   |
+41 |     #[requires(stack(stack, ?vs) &*& malloc_block_Stack(stack))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/values_1.rs:42:7
+   |
+42 |     #[ensures(stack(stack, cons(value, vs)) &*& malloc_block_Stack(stack))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/gpt52/rust/test/values_1.rs:58:7
+   |
+58 |     #[requires(malloc_block_Stack(stack) &*& stack(stack, ?vs))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/gpt52/rust/test/values_1.rs:59:7
+   |
+59 |     #[ensures(nodes(?h, vs) &*& (*stack).head |-> h)]
+   |       ^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/gpt52/rust/test/values_1.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/output/gpt52/rust/test/values_1.rs:68:1
+   |
+68 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 6 previous errors; 2 warnings emitted
+

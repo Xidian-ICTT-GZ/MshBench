@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/frontend/exceptions/Exceptions.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/exceptions/Exceptions.java(30,18-19): dead code
+/app/ground_true/java/java/frontend/exceptions/Exceptions.java(47,18-19): dead code
+/app/ground_true/java/java/frontend/exceptions/Exceptions.java(55,18-19): dead code
+
+--- STDERR ---
+
+Result: FAIL

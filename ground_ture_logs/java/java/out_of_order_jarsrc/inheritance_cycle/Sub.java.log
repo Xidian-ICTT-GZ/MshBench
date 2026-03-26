@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/out_of_order_jarsrc/inheritance_cycle/Sub.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/out_of_order_jarsrc/inheritance_cycle/Sub.java(1,32-35): error: Should fail directives are not allowed; use the -allow_should_fail command-line option to allow them.
+1 | public class Sub extends Super //~
+  |                                ^^^
+
+--- STDERR ---
+
+Result: FAIL

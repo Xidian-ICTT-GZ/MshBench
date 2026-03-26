@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Arithmetic/enums.c(10,36-37): error: Parse error: Parse error.
+10 | /*@ lemma enum_large_numbers_values()
+   |                                    ^

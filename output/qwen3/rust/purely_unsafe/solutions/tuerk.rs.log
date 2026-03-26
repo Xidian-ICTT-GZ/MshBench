@@ -1,0 +1,162 @@
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:46:9
+   |
+46 |         #[invariant(i <= count && AllocatedBytes(start, count) && BytesPred(start, i, ?prefix))]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:61:9
+   |
+61 |         #[invariant(i <= count && BytesPred(start, count, ?data) && AllocatedBytes(start, count))]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:61:11
+   |
+61 |         #[invariant(i <= count && BytesPred(start, count, ?data) && AllocatedBytes(start, count))]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:57:7
+   |
+57 |     #[requires(BytesPred(start, count, ?data) && AllocatedBytes(start, count))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:58:7
+   |
+58 |     #[ensures(BytesPred(start, count, ?data) && AllocatedBytes(start, count))]
+   |       ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:46:11
+   |
+46 |         #[invariant(i <= count && AllocatedBytes(start, count) && BytesPred(start, i, ?prefix))]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:42:7
+   |
+42 |     #[requires(AllocatedBytes(start, count))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:43:7
+   |
+43 |     #[ensures(BytesPred(start, count, ?data) && AllocatedBytes(start, count))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:31:7
+   |
+31 |     #[requires(count > 0)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:32:7
+   |
+32 |     #[ensures(result != std::ptr::null_mut() && AllocatedBytes(result, count))]
+   |       ^^^^^^^
+
+error: cannot find attribute `lemmas_for` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:14:3
+   |
+14 | #[lemmas_for(AllocatedBytes)]
+   |   ^^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:15:3
+   |
+15 | #[requires(AllocatedBytes(p, n))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:16:3
+   |
+16 | #[ensures(AllocatedBytes(p, n))]
+   |   ^^^^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:11:3
+   |
+11 | #[pred]
+   |   ^^^^
+
+error: cannot find attribute `lemma` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:6:3
+  |
+6 | #[lemma]
+  |   ^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:7:3
+  |
+7 | #[requires(BytesPred(p, n, data))]
+  |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:8:3
+  |
+8 | #[ensures(BytesPred(p, n, data))]
+  |   ^^^^^^^
+
+error: cannot find attribute `pred` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:3:3
+  |
+3 | #[pred]
+  |   ^^^^
+
+warning: unused variable: `p`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:9:28
+  |
+9 | pub fn bytes_pred_identity(p: *mut u8, n: usize, data: &[u8]) {}
+  |                            ^ help: if this is intentional, prefix it with an underscore: `_p`
+  |
+  = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `n`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:9:40
+  |
+9 | pub fn bytes_pred_identity(p: *mut u8, n: usize, data: &[u8]) {}
+  |                                        ^ help: if this is intentional, prefix it with an underscore: `_n`
+
+warning: unused variable: `data`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:9:50
+  |
+9 | pub fn bytes_pred_identity(p: *mut u8, n: usize, data: &[u8]) {}
+  |                                                  ^^^^ help: if this is intentional, prefix it with an underscore: `_data`
+
+warning: unused variable: `p`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:17:31
+   |
+17 | pub fn allocated_bytes_lemmas(p: *mut u8, n: usize) {}
+   |                               ^ help: if this is intentional, prefix it with an underscore: `_p`
+
+warning: unused variable: `n`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:17:43
+   |
+17 | pub fn allocated_bytes_lemmas(p: *mut u8, n: usize) {}
+   |                                           ^ help: if this is intentional, prefix it with an underscore: `_n`
+
+warning: function cannot return without recursing
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/tuerk.rs:81:1
+   |
+81 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 18 previous errors; 6 warnings emitted
+
+For more information about this error, try `rustc --explain E0658`.

@@ -1,0 +1,3 @@
+/app/output/qwen3/c/Linklist/set.c(24,5-13): error: Parse error: Parse error.
+24 | //@ requires true;
+   |     ^^^^^^^^

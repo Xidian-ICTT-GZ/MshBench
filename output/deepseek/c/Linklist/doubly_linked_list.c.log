@@ -1,0 +1,9 @@
+/app/output/deepseek/c/Linklist/doubly_linked_list.c(40,16-18): error: No matching heap chunks: [_]dllist_head(arg, _)
+40 | 	node ptr = arg->head;
+   |                ^^
+/app/output/deepseek/c/Linklist/doubly_linked_list.c(40,11-12): note: Executing statement
+40 | 	node ptr = arg->head;
+   |           ^
+/app/output/deepseek/c/Linklist/doubly_linked_list.c(35,6-13): note: Verifying function 'reverse'
+35 | void reverse(dllist arg)
+   |      ^^^^^^^

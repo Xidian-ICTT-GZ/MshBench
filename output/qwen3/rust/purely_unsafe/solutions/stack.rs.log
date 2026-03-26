@@ -1,0 +1,13 @@
+error: mismatched closing delimiter: `}`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/stack.rs:47:10
+   |
+46 |     unsafe fn push(stack: *mut Stack, value: i32) {
+   |                                                   - closing delimiter possibly meant for this
+47 |         #[requires(stack != std::ptr::null_mut() &&
+   |          ^ unclosed delimiter
+...
+73 |     }
+   |     ^ mismatched closing delimiter
+
+error: aborting due to 1 previous error
+

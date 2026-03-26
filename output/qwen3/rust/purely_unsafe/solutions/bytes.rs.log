@@ -1,0 +1,105 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:44:3
+   |
+44 | #[requires(bytes(start, count, xs))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:45:3
+   |
+45 | #[requires(count > 0)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:46:3
+   |
+46 | #[ensures(bytes(start, count, xs))]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:33:3
+   |
+33 | #[requires(bytes(start, count, _))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:34:3
+   |
+34 | #[requires(count > 0)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:35:3
+   |
+35 | #[ensures(bytes(start, count, _))]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:22:3
+   |
+22 | #[requires(std::alloc::Layout::from_size_align(count, 1).is_ok())]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:23:3
+   |
+23 | #[ensures(bytes(result, count, _))]
+   |   ^^^^^^^
+
+error: cannot find attribute `lemma` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:6:3
+  |
+6 | #[lemma]
+  |   ^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:7:3
+  |
+7 | #[requires(bytes(p, n, xs))]
+  |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:8:3
+  |
+8 | #[ensures(bytes(p, n, xs))]
+  |   ^^^^^^^
+
+error: cannot find attribute `pred` in this scope
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:3:3
+  |
+3 | #[pred]
+  |   ^^^^
+
+warning: unused variable: `p`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:9:20
+  |
+9 | pub fn bytes_valid(p: *mut u8, n: usize, xs: &[u8]) {}
+  |                    ^ help: if this is intentional, prefix it with an underscore: `_p`
+  |
+  = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `n`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:9:32
+  |
+9 | pub fn bytes_valid(p: *mut u8, n: usize, xs: &[u8]) {}
+  |                                ^ help: if this is intentional, prefix it with an underscore: `_n`
+
+warning: unused variable: `xs`
+ --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:9:42
+  |
+9 | pub fn bytes_valid(p: *mut u8, n: usize, xs: &[u8]) {}
+  |                                          ^^ help: if this is intentional, prefix it with an underscore: `_xs`
+
+warning: function cannot return without recursing
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/bytes.rs:65:1
+   |
+65 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 12 previous errors; 4 warnings emitted
+

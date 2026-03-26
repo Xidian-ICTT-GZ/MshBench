@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/MonitorExample.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/MonitorExample.java(12,1-6): error: Interface CriticalSection not found
+12 | class IncrementorCriticalSection implements CriticalSection {
+   | ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

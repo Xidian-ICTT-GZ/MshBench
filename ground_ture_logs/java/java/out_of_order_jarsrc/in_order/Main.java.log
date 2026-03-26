@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/out_of_order_jarsrc/in_order/Main.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/out_of_order_jarsrc/in_order/Main.java(7,5-10): error: No such type parameter, inductive datatype, class, interface, or function type: Super
+7 |     Super o = new Sub();
+  |     ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

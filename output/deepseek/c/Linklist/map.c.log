@@ -1,0 +1,5 @@
+/app/output/deepseek/c/Linklist/map.c(18,30-19,1): error: Parse error: Parse error.
+18 | //@ requires nodes(next, ?vs)
+   |                              
+19 | //@ ensures nodes(result, cons(value, vs));
+   | ^

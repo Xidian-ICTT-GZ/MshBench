@@ -1,0 +1,5 @@
+/app/output/qwen3/java/Arrays/Bank.java(24,52-25,1): error: Parse error: Parse error.
+24 |     //@ ensures capacity == cap &*& nelems == 0 &*&
+   |                                                    
+25 |     //           store |-> ?arr &*&
+   | ^

@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/frontend/many_files/subpackage3/Multiply3.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/many_files/subpackage3/Multiply3.java(13,64-73): error: No such variable, field, class, interface, package, inductive datatype constructor, or predicate: Number3_3
+13 |     return 1 * Number3_1.getNumber() * Number3_2.getNumber() * Number3_3.getNumber();
+   |                                                                ^^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

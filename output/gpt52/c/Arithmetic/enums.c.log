@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Arithmetic/enums.c(24,13-14): error: Potential arithmetic overflow. (Cannot prove (d + 1) <= INT_MAX.)
+24 |   return (d + 1) % 7;
+   |             ^
+/app/output/gpt52/c/Arithmetic/enums.c(24,3-9): note: Executing return statement
+24 |   return (d + 1) % 7;
+   |   ^^^^^^
+/app/output/gpt52/c/Arithmetic/enums.c(19,10-18): note: Verifying function 'next_day'
+19 | enum day next_day(enum day d)
+   |          ^^^^^^^^

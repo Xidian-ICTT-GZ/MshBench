@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Struct/counter_with_pred_auto.c(33,18-19): error: Potential arithmetic overflow. (Cannot prove (v + 1) <= INT_MAX.)
+33 |   c->value = tmp + 1;
+   |                  ^
+/app/output/claude-opus/c/Struct/counter_with_pred_auto.c(33,12-13): note: Executing statement
+33 |   c->value = tmp + 1;
+   |            ^
+/app/output/claude-opus/c/Struct/counter_with_pred_auto.c(27,6-15): note: Verifying function 'increment'
+27 | void increment(struct Counter *c)
+   |      ^^^^^^^^^

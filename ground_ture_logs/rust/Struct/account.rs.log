@@ -1,0 +1,34 @@
+Command: verifast /app/ground_true/rust/Struct/account.rs
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/rust/Struct/account.rs(47,1-2): error: Function leaks heap chunks: alloc_block_Account(result)
+47 | }
+   | ^
+/app/ground_true/rust/Struct/account.rs(47,1-2): note: Leak check.
+47 | }
+   | ^
+/app/ground_true/rust/Struct/account.rs(38,1-47,2): note: Verifying function 'main'
+38 | fn main()
+   | ^^^^^^^^^^
+39 | //@ req true;
+   | ^^^^^^^^^^^^^^
+40 | //@ ens true;
+   | ^^^^^^^^^^^^^^
+41 | {
+   | ^^
+42 |     unsafe {
+   | ^^^^^^^^^^^^^
+43 |         let my_account = Account::create();
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 |         Account::set_balance(my_account, 5);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |         Account::dispose(my_account);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 |     }
+   | ^^^^^^
+47 | }
+   |  ^
+
+--- STDERR ---
+
+Result: FAIL

@@ -1,0 +1,5 @@
+/app/output/qwen3/java/Arrays/rotate.java(2,64-3,1): error: Parse error: Parse error.
+2 |     //@ predicate array_range(byte[] xs, int start, int end) = 
+  |                                                                
+3 |     //     0 <= start &*& start <= end &*& end <= length(xs);
+  | ^

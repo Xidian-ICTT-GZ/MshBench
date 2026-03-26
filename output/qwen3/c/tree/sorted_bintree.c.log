@@ -1,0 +1,3 @@
+/app/output/qwen3/c/tree/sorted_bintree.c(26,47-48): error: Parse error: Parse error.
+26 | /*@ lemma void bst_implies_tree(struct tree *t; int min, int max)
+   |                                               ^

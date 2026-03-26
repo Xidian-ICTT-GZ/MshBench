@@ -1,0 +1,3 @@
+/app/output/gpt52/rust/purely_unsafe/solutions/xor.rs(5,1-10): error: Parse error: Parse error.
+5 | predicate bytes(*mut u8 p; usize count) =
+  | ^^^^^^^^^

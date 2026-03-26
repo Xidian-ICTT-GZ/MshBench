@@ -1,0 +1,8 @@
+error: expected expression, found `->`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/byref.rs:17:9
+   |
+17 |     *n |-> ?node &*&
+   |         ^^ expected expression
+
+error: aborting due to 1 previous error
+

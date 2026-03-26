@@ -1,0 +1,309 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:50:3
+   |
+50 | #[requires(node_own(n))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:51:3
+   |
+51 | #[requires(p is fn(i32) -> bool)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:52:3
+   |
+52 | #[ensures(node_own(n) || n == null_mut())]
+   |   ^^^^^^^
+
+error: cannot find attribute `ghost` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:56:11
+   |
+56 |         #[ghost] let old_node = node;
+   |           ^^^^^
+
+error: cannot find attribute `ghost` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:57:11
+   |
+57 |         #[ghost] let old_next = (*node).next;
+   |           ^^^^^
+
+error: cannot find attribute `assert` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:60:11
+   |
+60 |         #[assert] node_pred(node, (*node).value, (*node).next);
+   |           ^^^^^^
+   |
+   = note: `assert` is in scope, but it is a function-like macro
+
+error: cannot find attribute `assert` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:66:15
+   |
+66 |             #[assert] node_pred(node, (*node).value, (*next_ptr));
+   |               ^^^^^^
+   |
+   = note: `assert` is in scope, but it is a function-like macro
+
+error: cannot find attribute `assert` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:71:15
+   |
+71 |             #[assert] node_pred(node, (*node).value, next_);
+   |               ^^^^^^
+   |
+   = note: `assert` is in scope, but it is a function-like macro
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:45:3
+   |
+45 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:40:3
+   |
+40 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:35:3
+   |
+35 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `lemma` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:30:3
+   |
+30 | #[lemma]
+   |   ^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:31:3
+   |
+31 | #[requires(list_seg::<Node>(h, m, t))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:32:3
+   |
+32 | #[ensures(list_seg::<Node>(h, m, t))]
+   |   ^^^^^^^
+
+error: cannot find attribute `lemma` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:25:3
+   |
+25 | #[lemma]
+   |   ^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:26:3
+   |
+26 | #[requires(list_pred(h, t))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:27:3
+   |
+27 | #[ensures(list_pred(h, t))]
+   |   ^^^^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:22:3
+   |
+22 | #[pred]
+   |   ^^^^
+
+error: cannot find attribute `lemma` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:17:3
+   |
+17 | #[lemma]
+   |   ^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:18:3
+   |
+18 | #[requires(node_pred(p, v, q))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:19:3
+   |
+19 | #[ensures(node_pred(p, v, q))]
+   |   ^^^^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:14:3
+   |
+14 | #[pred]
+   |   ^^^^
+
+error: cannot find attribute `pred` in this scope
+  --> /app/output/qwen3/rust/test/byref_1.rs:11:3
+   |
+11 | #[pred]
+   |   ^^^^
+
+warning: unused imports: `Layout` and `dealloc`
+ --> /app/output/qwen3/rust/test/byref_1.rs:1:18
+  |
+1 | use std::alloc::{dealloc, Layout};
+  |                  ^^^^^^^  ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: type `list_seg` should have an upper camel case name
+  --> /app/output/qwen3/rust/test/byref_1.rs:12:12
+   |
+12 | pub struct list_seg<T>(*mut T, *mut T, *mut T);
+   |            ^^^^^^^^ help: convert the identifier to upper camel case: `ListSeg`
+   |
+   = note: `#[warn(non_camel_case_types)]` (part of `#[warn(nonstandard_style)]`) on by default
+
+warning: type `node_pred` should have an upper camel case name
+  --> /app/output/qwen3/rust/test/byref_1.rs:15:12
+   |
+15 | pub struct node_pred(*mut Node, i32, *mut Node);
+   |            ^^^^^^^^^ help: convert the identifier to upper camel case: `NodePred`
+
+warning: type `list_pred` should have an upper camel case name
+  --> /app/output/qwen3/rust/test/byref_1.rs:23:12
+   |
+23 | pub struct list_pred(*mut Node, *mut Node);
+   |            ^^^^^^^^^ help: convert the identifier to upper camel case: `ListPred`
+
+warning: unnecessary parentheses around function argument
+  --> /app/output/qwen3/rust/test/byref_1.rs:66:54
+   |
+66 |             #[assert] node_pred(node, (*node).value, (*next_ptr));
+   |                                                      ^         ^
+   |
+   = note: `#[warn(unused_parens)]` (part of `#[warn(unused)]`) on by default
+help: remove these parentheses
+   |
+66 -             #[assert] node_pred(node, (*node).value, (*next_ptr));
+66 +             #[assert] node_pred(node, (*node).value, *next_ptr );
+   |
+
+error: in expressions, `_` can only be used on the left-hand side of an assignment
+  --> /app/output/qwen3/rust/test/byref_1.rs:47:48
+   |
+47 |     h == t || (h != null_mut() && node_pred(h, _, _) && list_seg_own((*h).next, t))
+   |                                                ^ `_` not allowed here
+
+error: in expressions, `_` can only be used on the left-hand side of an assignment
+  --> /app/output/qwen3/rust/test/byref_1.rs:47:51
+   |
+47 |     h == t || (h != null_mut() && node_pred(h, _, _) && list_seg_own((*h).next, t))
+   |                                                   ^ `_` not allowed here
+
+error: in expressions, `_` can only be used on the left-hand side of an assignment
+  --> /app/output/qwen3/rust/test/byref_1.rs:37:37
+   |
+37 |     p != null_mut() && node_pred(p, _, _)
+   |                                     ^ `_` not allowed here
+
+error: in expressions, `_` can only be used on the left-hand side of an assignment
+  --> /app/output/qwen3/rust/test/byref_1.rs:37:40
+   |
+37 |     p != null_mut() && node_pred(p, _, _)
+   |                                        ^ `_` not allowed here
+
+error[E0308]: mismatched types
+  --> /app/output/qwen3/rust/test/byref_1.rs:37:24
+   |
+37 |     p != null_mut() && node_pred(p, _, _)
+   |     ---------------    ^^^^^^^^^^^^^^^^^^ expected `bool`, found `node_pred`
+   |     |
+   |     expected because this is `bool`
+
+error[E0308]: mismatched types
+  --> /app/output/qwen3/rust/test/byref_1.rs:42:24
+   |
+42 |     h == null_mut() || list_pred(h, null_mut())
+   |     ---------------    ^^^^^^^^^^^^^^^^^^^^^^^^ expected `bool`, found `list_pred`
+   |     |
+   |     expected because this is `bool`
+
+error[E0308]: mismatched types
+  --> /app/output/qwen3/rust/test/byref_1.rs:47:35
+   |
+47 |     h == t || (h != null_mut() && node_pred(h, _, _) && list_seg_own((*h).next, t))
+   |                ---------------    ^^^^^^^^^^^^^^^^^^ expected `bool`, found `node_pred`
+   |                |
+   |                expected because this is `bool`
+
+warning: unused variable: `p`
+  --> /app/output/qwen3/rust/test/byref_1.rs:20:28
+   |
+20 | pub fn node_pred_preserves(p: *mut Node, v: i32, q: *mut Node) {}
+   |                            ^ help: if this is intentional, prefix it with an underscore: `_p`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `v`
+  --> /app/output/qwen3/rust/test/byref_1.rs:20:42
+   |
+20 | pub fn node_pred_preserves(p: *mut Node, v: i32, q: *mut Node) {}
+   |                                          ^ help: if this is intentional, prefix it with an underscore: `_v`
+
+warning: unused variable: `q`
+  --> /app/output/qwen3/rust/test/byref_1.rs:20:50
+   |
+20 | pub fn node_pred_preserves(p: *mut Node, v: i32, q: *mut Node) {}
+   |                                                  ^ help: if this is intentional, prefix it with an underscore: `_q`
+
+warning: unused variable: `h`
+  --> /app/output/qwen3/rust/test/byref_1.rs:28:28
+   |
+28 | pub fn list_pred_preserves(h: *mut Node, t: *mut Node) {}
+   |                            ^ help: if this is intentional, prefix it with an underscore: `_h`
+
+warning: unused variable: `t`
+  --> /app/output/qwen3/rust/test/byref_1.rs:28:42
+   |
+28 | pub fn list_pred_preserves(h: *mut Node, t: *mut Node) {}
+   |                                          ^ help: if this is intentional, prefix it with an underscore: `_t`
+
+warning: unused variable: `h`
+  --> /app/output/qwen3/rust/test/byref_1.rs:33:30
+   |
+33 | pub fn list_seg_preserves<T>(h: *mut T, m: *mut T, t: *mut T) {}
+   |                              ^ help: if this is intentional, prefix it with an underscore: `_h`
+
+warning: unused variable: `m`
+  --> /app/output/qwen3/rust/test/byref_1.rs:33:41
+   |
+33 | pub fn list_seg_preserves<T>(h: *mut T, m: *mut T, t: *mut T) {}
+   |                                         ^ help: if this is intentional, prefix it with an underscore: `_m`
+
+warning: unused variable: `t`
+  --> /app/output/qwen3/rust/test/byref_1.rs:33:52
+   |
+33 | pub fn list_seg_preserves<T>(h: *mut T, m: *mut T, t: *mut T) {}
+   |                                                    ^ help: if this is intentional, prefix it with an underscore: `_t`
+
+warning: unused variable: `old_node`
+  --> /app/output/qwen3/rust/test/byref_1.rs:56:22
+   |
+56 |         #[ghost] let old_node = node;
+   |                      ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_old_node`
+
+warning: unused variable: `old_next`
+  --> /app/output/qwen3/rust/test/byref_1.rs:57:22
+   |
+57 |         #[ghost] let old_next = (*node).next;
+   |                      ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_old_next`
+
+warning: function cannot return without recursing
+  --> /app/output/qwen3/rust/test/byref_1.rs:81:1
+   |
+81 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 30 previous errors; 16 warnings emitted
+
+For more information about this error, try `rustc --explain E0308`.

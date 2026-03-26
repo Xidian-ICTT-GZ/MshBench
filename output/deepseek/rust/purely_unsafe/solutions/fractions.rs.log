@@ -1,0 +1,307 @@
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:99:9
+   |
+99 |         #[invariant(k >= 2 && k <= n)]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:100:9
+    |
+100 |         #[invariant(fib_k_minus_1 <= 18446744073709551615)]
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+    = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+    = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:101:9
+    |
+101 |         #[invariant(fib_k <= 18446744073709551615)]
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+    = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+    = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:176:3
+    |
+176 | #[requires(value <= 18446744073709551615)]
+    |   ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:160:7
+    |
+160 |     #[requires(tree_fraction(tree, 1/2))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:161:7
+    |
+161 |     #[ensures(tree_fraction(tree, 1/2))]
+    |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:162:7
+    |
+162 |     #[ensures(result <= 18446744073709551615)]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:145:7
+    |
+145 |     #[requires(tree_fraction(tree, 1/2))]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:146:7
+    |
+146 |     #[ensures(tree_fraction(tree, 1/2))]
+    |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:147:7
+    |
+147 |     #[ensures(result <= 18446744073709551615)]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:124:7
+    |
+124 |     #[requires(depth <= 255)]
+    |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:125:7
+    |
+125 |     #[ensures(tree_full(result))]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:90:3
+   |
+90 | #[requires(n <= 65535)]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:91:3
+   |
+91 | #[ensures(result <= 18446744073709551615)]
+   |   ^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:99:11
+   |
+99 |         #[invariant(k >= 2 && k <= n)]
+   |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:100:11
+    |
+100 |         #[invariant(fib_k_minus_1 <= 18446744073709551615)]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:101:11
+    |
+101 |         #[invariant(fib_k <= 18446744073709551615)]
+    |           ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:84:3
+   |
+84 | #[requires(sendable_owned(h))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:85:3
+   |
+85 | #[ensures(sendable_owned(result))]
+   |   ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:73:7
+   |
+73 |     #[requires(sendable_owned(package))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:74:7
+   |
+74 |     #[ensures(sendable_owned(result))]
+   |       ^^^^^^^
+
+error: cannot find attribute `lemma` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:63:3
+   |
+63 | #[lemma]
+   |   ^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:64:3
+   |
+64 | #[requires(tree_fraction(t, 1))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:65:3
+   |
+65 | #[ensures(tree_full(t))]
+   |   ^^^^^^^
+
+error: cannot find attribute `lemma` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:57:3
+   |
+57 | #[lemma]
+   |   ^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:58:3
+   |
+58 | #[requires(tree_fraction(t, p1))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:59:3
+   |
+59 | #[requires(tree_fraction(t, p2))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:60:3
+   |
+60 | #[ensures(tree_fraction(t, p1 + p2))]
+   |   ^^^^^^^
+
+error: cannot find attribute `lemma` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:52:3
+   |
+52 | #[lemma]
+   |   ^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:53:3
+   |
+53 | #[requires(tree_full(t))]
+   |   ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:54:3
+   |
+54 | #[ensures(tree_fraction(t, 1/2))]
+   |   ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:39:3
+   |
+39 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find macro `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:44:9
+   |
+44 |         exists!(left: *mut Tree, right: *mut Tree, value: u16 |
+   |         ^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:26:3
+   |
+26 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find macro `exists` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:31:9
+   |
+31 |         exists!(left: *mut Tree, right: *mut Tree, value: u16 |
+   |         ^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:21:3
+   |
+21 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:18:3
+   |
+18 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:15:3
+   |
+15 | #[predicate]
+   |   ^^^^^^^^^
+
+error[E0412]: cannot find type `Perm` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:40:35
+   |
+40 | fn tree_fraction(t: *mut Tree, p: Perm) -> bool {
+   |                                   ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Perm` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:61:42
+   |
+61 | fn merge_tree_fraction(t: *mut Tree, p1: Perm, p2: Perm) { }
+   |                                          ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Perm` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:61:52
+   |
+61 | fn merge_tree_fraction(t: *mut Tree, p1: Perm, p2: Perm) { }
+   |                                                    ^^^^ not found in this scope
+
+warning: unused import: `alloc`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:4:13
+  |
+4 |     alloc::{alloc, handle_alloc_error, Layout},
+  |             ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `s`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:16:16
+   |
+16 | fn sendable<T>(s: &Sendable<T>) -> bool { true }
+   |                ^ help: if this is intentional, prefix it with an underscore: `_s`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `s`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:19:22
+   |
+19 | fn sendable_owned<T>(s: Sendable<T>) -> bool { true }
+   |                      ^ help: if this is intentional, prefix it with an underscore: `_s`
+
+warning: unused variable: `t`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:55:24
+   |
+55 | fn split_tree_fraction(t: *mut Tree) { }
+   |                        ^ help: if this is intentional, prefix it with an underscore: `_t`
+
+warning: unused variable: `t`
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:66:26
+   |
+66 | fn tree_fraction_to_full(t: *mut Tree) { }
+   |                          ^ help: if this is intentional, prefix it with an underscore: `_t`
+
+warning: function cannot return without recursing
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/fractions.rs:201:1
+    |
+201 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 41 previous errors; 6 warnings emitted
+
+Some errors have detailed explanations: E0412, E0658.
+For more information about an error, try `rustc --explain E0412`.

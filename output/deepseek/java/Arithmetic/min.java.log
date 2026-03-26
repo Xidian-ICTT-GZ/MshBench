@@ -1,0 +1,3 @@
+/app/output/deepseek/java/Arithmetic/min.java(2,9-17): error: Parse error: Parse error.
+2 |     //@ requires true;
+  |         ^^^^^^^^

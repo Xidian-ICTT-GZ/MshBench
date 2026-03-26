@@ -1,0 +1,96 @@
+#include "stdlib.h"
+#include "spouse.h"
+
+struct person {
+  char* name;
+  struct person* spouse;
+};
+
+/*@
+
+predicate person(struct person* p, struct person* s) =
+  p->spouse |-> s;
+
+predicate persons2(struct person* p1, struct person* s1, struct person* p2, struct person* s2) =
+  person(p1, s1) &*& person(p2, s2);
+
+@*/
+
+struct person *create_person()
+  //@ requires true;
+  //@ ensures person(result, 0);
+{
+  struct person *p = malloc(sizeof(struct person));
+  if(p == 0) abort();
+  p->spouse = 0;
+  
+  return p;
+}
+
+void marry(struct person *this, struct person *other)
+  //@ requires persons2(this, 0, other, 0);
+  //@ ensures persons2(this, other, other, this);
+{
+  
+  
+  this->spouse = other;
+  other->spouse = this;
+  
+  
+}
+
+struct person* person_get_spouse(struct person* this)
+  //@ requires person(this, ?s);
+  //@ ensures person(this, s) &*& result == s;
+{
+  
+  return this->spouse;
+  
+}
+
+void divorce(struct person* this)
+  //@ requires person(this, ?s) &*& person(s, this);
+  //@ ensures person(this, 0) &*& person(s, 0);
+{
+  
+  
+  this->spouse->spouse = 0;
+  this->spouse = 0;
+  
+  
+}
+
+void die(struct person *this)
+  //@ requires person(this, ?s) &*& (s == 0 || person(s, this));
+  //@ ensures s == 0 ? true : person(s, 0);
+{
+  
+  if(this->spouse != 0) {
+    //@ open person(this, s);
+    //@ assert s != 0;
+    //@ open person(s, this);
+    this->spouse->spouse = 0;
+    //@ close person(s, 0);
+    //@ close person(this, s);
+    //@ open person(this, s);
+  }
+  //@ open person(this, s);
+  free(this); 
+}
+
+int main() 
+  //@ requires true;
+  //@ ensures true;
+{
+  struct person* alice = create_person();
+  struct person* bob = create_person();
+  struct person* eve = 0;
+  marry(alice, bob);
+  eve = create_person();
+  divorce(bob);
+  marry(bob, eve);
+  die(alice);
+  die(bob);
+  die(eve);
+  return 0;
+}

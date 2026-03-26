@@ -1,0 +1,3 @@
+/app/output/deepseek/c/Stack/filter.c(62,23-24): error: Declaration hides existing local variable 'head'.
+62 |     struct node *head = stack->head;
+   |                       ^

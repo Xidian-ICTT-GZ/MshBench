@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `account`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/account.rs:8:11
+  |
+8 | predicate account(my_account: *mut Account; balance: i32) {
+  |           ^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `node`
+  --> /app/output/qwen3/rust/test/sum_1.rs:12:6
+   |
+12 | pred node(node: *mut Node, v: i32, next: *mut Node) =
+   |      ^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

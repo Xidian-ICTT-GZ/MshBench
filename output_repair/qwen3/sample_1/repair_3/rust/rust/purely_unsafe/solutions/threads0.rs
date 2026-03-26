@@ -1,0 +1,102 @@
+#![allow(unsafe_op_in_unsafe_fn)]
+use std::{alloc::{alloc, handle_alloc_error, Layout}};
+
+predicate tree_owned(t: *mut Tree) =
+    t == std::ptr::null_mut() ?
+        emp :
+        (t as usize % std::mem::align_of::<Tree>() == 0) *
+        struct_Tree(t, (*t).left, (*t).right, (*t).value) *
+        tree_owned((*t).left) *
+        tree_owned((*t).right);
+
+#[requires(true)]
+#[ensures(result == 1 || (n > 1 && result > 0))]
+unsafe fn wrapping_fib(n: u16) -> u64
+{
+    if n <= 1 {
+        1
+    } else {
+        let mut k: u16 = 2;
+        let mut fib_k_minus_1: u64 = 1;
+        let mut fib_k: u64 = 1;
+        loop {
+            #[invariant(k >= 2 && k <= n && fib_k_minus_1 > 0 && fib_k > 0 &&
+                        sep(tree_owned(std::ptr::null_mut())))]
+            {
+                if k == n { break; }
+                
+                let fib_k_plus_1 = fib_k_minus_1.wrapping_add(fib_k);
+                
+                k += 1;
+                fib_k_minus_1 = fib_k;
+                fib_k = fib_k_plus_1;
+            }
+        }
+        fib_k
+    }
+}
+
+struct Tree {
+    left: *mut Tree,
+    right: *mut Tree,
+    value: u16,
+}
+
+impl Tree {
+
+    #[requires(true)]
+    #[ensures(result == std::ptr::null_mut() || tree_owned(result))]
+    unsafe fn make(depth: u8) -> *mut Tree
+    {
+        if depth == 0 {
+            std::ptr::null_mut()
+        } else {
+            let left = Self::make(depth - 1);
+            let right = Self::make(depth - 1);
+            let value = 5000; 
+            let layout = Layout::new::<Tree>();
+            let t = alloc(layout) as *mut Tree;
+            if t.is_null() {
+                handle_alloc_error(layout);
+            }
+            (*t).left = left;
+            (*t).right = right;
+            (*t).value = value;
+            
+            t
+        }
+    }
+
+    #[requires(tree == std::ptr::null_mut() || tree_owned(tree))]
+    #[ensures(true)]
+    unsafe fn compute_sum_fibs(tree: *mut Tree) -> u64
+    {
+        if tree.is_null() {
+            0
+        } else {
+            let left_sum = Self::compute_sum_fibs((*tree).left);
+            let f = wrapping_fib((*tree).value);
+            let right_sum = Self::compute_sum_fibs((*tree).right);
+            
+            left_sum.wrapping_add(f).wrapping_add(right_sum)
+        }
+    }
+
+}
+
+#[requires(true)]
+#[ensures(true)]
+unsafe fn print_u64(value: u64)
+{
+    println!("{}", value);
+}
+
+fn main()
+{
+    unsafe {
+        let tree = Tree::make(22);
+        let sum = Tree::compute_sum_fibs(tree);
+        
+        print_u64(sum)
+    }
+}

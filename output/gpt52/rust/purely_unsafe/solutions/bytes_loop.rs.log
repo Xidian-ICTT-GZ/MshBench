@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `u8s`
+ --> /app/output/gpt52/rust/purely_unsafe/solutions/bytes_loop.rs:3:6
+  |
+3 | pred u8s(p: *mut u8, count: usize; xs: list<u8>) =
+  |      ^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

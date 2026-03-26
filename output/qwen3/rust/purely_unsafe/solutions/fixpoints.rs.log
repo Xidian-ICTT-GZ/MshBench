@@ -1,0 +1,10 @@
+error: expected one of `!`, `(`, `+`, `::`, `<`, `where`, or `{`, found `requires`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/fixpoints.rs:16:5
+   |
+15 | fn node_pred_inv(n: *mut Node) -> bool
+   |                                       - expected one of 7 possible tokens
+16 |     requires
+   |     ^^^^^^^^ unexpected token
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,3 @@
+/app/output/deepseek/c/Linklist/iter.c(175,93-96): error: Parse error: Parse error.
+175 |   //@ invariant lseg(n, l, ?vs1) &*& i + length(vs1) == length(vs) &*& vs == take(i, vs) ++ vs1;
+    |                                                                                             ^^^

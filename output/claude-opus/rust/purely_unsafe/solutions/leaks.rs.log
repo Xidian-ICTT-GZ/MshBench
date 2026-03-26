@@ -1,0 +1,45 @@
+error: expected `{`, found keyword `crate`
+   --> /app/output/claude-opus/rust/purely_unsafe/solutions/leaks.rs:110:5
+    |
+109 |     loop
+    |     ---- while parsing this `loop` expression
+110 |     crate::VeriFast_ghost_command();//@ inv [1/2]pointer(mutex, _) &*& [1/2]mutex(mutex, mutex_inv(counter));
+    |     ^^^^^ expected `{`
+
+error: expected `{`, found keyword `crate`
+   --> /app/output/claude-opus/rust/purely_unsafe/solutions/leaks.rs:154:5
+    |
+153 |     loop
+    |     ---- while parsing this `loop` expression
+154 |     crate::VeriFast_ghost_command();//@ inv [1/2]pointer(mutex, _) &*& [1/2]mutex(mutex, mutex_inv(counter));
+    |     ^^^^^ expected `{`
+
+error: expected `{`, found keyword `crate`
+   --> /app/output/claude-opus/rust/purely_unsafe/solutions/leaks.rs:195:9
+    |
+194 |         loop
+    |         ---- while parsing this `loop` expression
+195 |         crate::VeriFast_ghost_command();//@ inv counter_shared(counter, mutex);
+    |         ^^^^^ expected `{`
+
+warning: unused import: `alloc`
+ --> /app/output/claude-opus/rust/purely_unsafe/solutions/leaks.rs:2:18
+  |
+2 | use std::alloc::{alloc, handle_alloc_error, Layout};
+  |                  ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/output/claude-opus/rust/purely_unsafe/solutions/leaks.rs:205:1
+    |
+205 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 3 previous errors; 2 warnings emitted
+

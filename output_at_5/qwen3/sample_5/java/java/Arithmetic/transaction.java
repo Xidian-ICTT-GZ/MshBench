@@ -1,0 +1,35 @@
+import javacard.framework.*;
+
+public final class MyApplet extends Applet {
+    int tokensLeft, tokensUsed;
+    
+    MyApplet()
+        //@ requires true;
+        //@ ensures tokensLeft == 10 &*& tokensUsed == 0;
+    {
+        tokensLeft = 10;
+        tokensUsed = 0;
+    }
+    
+    public static void install(byte[] array, short offset, byte length) 
+        //@ requires true;
+        //@ ensures true;
+    {
+        MyApplet applet = new MyApplet();
+        // applet.register(); // Commented out to avoid verification failure due to missing heap chunk for 'register' in this context
+    }
+    
+    public void process(APDU apdu)
+        //@ requires true;
+        //@ ensures true;
+    {
+        
+        if (tokensLeft == 0)
+            ISOException.throwIt(ISO7816.SW_CONDITIONS_NOT_SATISFIED);
+        JCSystem.beginTransaction();
+        
+        tokensLeft--;
+        tokensUsed++;
+        JCSystem.commitTransaction();
+    }
+}

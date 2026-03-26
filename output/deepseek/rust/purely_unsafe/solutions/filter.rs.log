@@ -1,0 +1,192 @@
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:70:5
+   |
+70 |     #[requires(nodes(n))]
+   |     ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:93:5
+   |
+93 |     #[requires(nodes(n))]
+   |     ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:154:5
+    |
+154 |     #[ensures(|result| result == (x != 20))]
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+    = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+    = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:94:5
+   |
+94 |     #[ensures(true)]
+   |     ^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:71:5
+   |
+71 |     #[ensures(|result| nodes(result) && predicate_true_for_all(p, result))]
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:154:7
+    |
+154 |     #[ensures(|result| result == (x != 20))]
+    |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:146:11
+    |
+146 |         #[requires(stack(stack))]
+    |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:147:11
+    |
+147 |         #[ensures(true)]
+    |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:138:11
+    |
+138 |         #[requires(stack(stack))]
+    |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:139:11
+    |
+139 |         #[ensures(|stack| stack(stack) && predicate_true_for_all(p, (*stack).head))]
+    |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:126:11
+    |
+126 |         #[requires(|stack| stack_with_head(stack, old((*stack).head)) && !old((*stack).head).is_null())]
+    |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:127:11
+    |
+127 |         #[ensures(|result, stack| stack(stack) && result == old((*((*stack).head)).value))]
+    |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:114:11
+    |
+114 |         #[requires(stack(stack))]
+    |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:115:11
+    |
+115 |         #[ensures(|stack| stack_with_head(stack, old((*stack).head)) && nodes_with_value(old((*stack).head), value))]
+    |           ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:103:11
+    |
+103 |         #[ensures(|result| stack(result))]
+    |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:93:7
+   |
+93 |     #[requires(nodes(n))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:94:7
+   |
+94 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:70:7
+   |
+70 |     #[requires(nodes(n))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:71:7
+   |
+71 |     #[ensures(|result| nodes(result) && predicate_true_for_all(p, result))]
+   |       ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:59:3
+   |
+59 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:54:3
+   |
+54 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:44:3
+   |
+44 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:34:3
+   |
+34 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:24:3
+   |
+24 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:14:3
+   |
+14 | #[predicate]
+   |   ^^^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+   --> /app/output/deepseek/rust/purely_unsafe/solutions/filter.rs:170:1
+    |
+170 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+    | |
+    | cannot return without recursing
+    |
+    = help: a `loop` may express intention better if this is on purpose
+    = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 25 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0658`.

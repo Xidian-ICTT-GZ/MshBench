@@ -1,0 +1,3 @@
+/app/output/claude-opus/rust/purely_unsafe/solutions/bytes.rs(5,16-17): error: Parse error: Parse error.
+5 |     count == 0 ? emp : *start |-> _ &*& array_(start + 1, count - 1);
+  |                ^

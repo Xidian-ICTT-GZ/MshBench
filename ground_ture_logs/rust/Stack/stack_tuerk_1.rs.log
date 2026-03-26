@@ -1,0 +1,27 @@
+Command: verifast /app/ground_true/rust/Stack/stack_tuerk_1.rs
+Exit code: 1
+--- STDOUT ---
+error[E0412]: cannot find type `Stack` in this scope
+ --> /app/ground_true/rust/Stack/stack_tuerk_1.rs:1:39
+  |
+1 | ... *mut Stack) -> i32
+  |          ^^^^^ not found in this scope
+
+warning: function cannot return without recursing
+  --> /app/ground_true/rust/Stack/stack_tuerk_1.rs:28:1
+   |
+28 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 1 previous error; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0412`.
+
+--- STDERR ---
+
+Result: FAIL

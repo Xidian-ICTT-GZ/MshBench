@@ -1,0 +1,143 @@
+class Person {
+
+    private Person spouse;
+    
+    /*@
+    predicate person(Person p) = true;
+    @*/
+    
+    protected Person getSpouse0()
+        //@ requires true;
+        //@ ensures result == null || person(result);
+        //@ ensures person(this);
+    {
+        
+        Person result = spouse;
+        
+        return result;
+    }
+    
+    protected void setSpouse0(Person other)
+        //@ requires other == null || person(other);
+        //@ ensures person(this);
+    {
+        
+        spouse = other;
+        
+        
+    }
+    
+    protected void clearSpouse0()
+        //@ ensures person(this);
+    {
+        
+        
+        spouse = null;
+        
+    }
+    
+    protected void setSpouse(Person other)
+        //@ requires other == null || person(other);
+        //@ ensures person(this);
+    {
+        
+        setSpouse0(other);
+        
+    }
+    
+    protected void clearSpouse()
+        //@ ensures person(this);
+    {
+        
+        clearSpouse0();
+        
+    }
+    
+    
+
+    
+    protected  void ticketLemma()
+        //@ ensures true;
+    {
+        
+        
+        
+    }
+    
+    public  void symmetryLemma()
+        //@ requires person(this);
+        //@ ensures person(this);
+    {
+        
+        Person spouse = getSpouse0();
+        if (spouse != null) {
+            spouse.ticketLemma();
+        }
+        
+    }
+
+    protected Person()
+        //@ ensures person(this);
+    {
+        
+    }
+    
+    
+
+    
+    public static Person create()
+        //@ ensures person(result);
+    {
+        Person p = new Person();
+        
+        return p;
+    }
+    
+    public Person getSpouse()
+        //@ requires person(this);
+        //@ ensures result == null || person(result);
+        //@ ensures person(this);
+    {
+        
+        return getSpouse0();
+        
+    }
+    
+    void marry(Person other)
+        //@ requires person(this) && person(other) && this != other;
+        //@ ensures person(this) && person(other);
+    {
+        
+        setSpouse0(other);
+        other.setSpouse(this);
+        
+    }
+    
+    void divorce()
+        //@ requires person(this);
+        //@ ensures person(this);
+    {
+        
+        Person spouse = getSpouse0();
+        if (spouse != null) {
+            spouse.clearSpouse();
+        }
+        clearSpouse0();
+        
+    }
+
+}
+
+class Program {
+
+    public static void main(String[] args)
+        //@ requires true;
+        //@ ensures true;
+    {
+        Person a = Person.create();
+        Person b = Person.create();
+        a.marry(b);
+        b.divorce();
+    }
+
+}

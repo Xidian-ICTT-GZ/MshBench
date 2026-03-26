@@ -1,0 +1,205 @@
+error: expected one of `!`, `.`, `::`, `;`, `?`, `{`, `}`, or an operator, found `:`
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:29:16
+   |
+29 |     exists<list: *mut Node> (*stack).head == list && list_inv(list)
+   |                ^ expected one of 8 possible tokens
+
+error: expected one of `!`, `.`, `::`, `;`, `?`, `{`, `}`, or an operator, found `:`
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:37:20
+   |
+37 |         exists<next: *mut Node> (*n).next == next && list_node(n) && list_inv(next)
+   |                    ^ expected one of 8 possible tokens
+
+error: expected one of `!`, `.`, `::`, `;`, `?`, `{`, `}`, or an operator, found `:`
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:43:16
+   |
+43 |     exists<next: *mut Node> (*n).next == next && true
+   |                ^ expected one of 8 possible tokens
+
+error: expected one of `!`, `.`, `::`, `;`, `?`, `{`, `}`, or an operator, found `:`
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:51:20
+   |
+51 |         exists<next: *mut Node> (*start).next == next && list_node(start) && 
+   |                    ^ expected one of 8 possible tokens
+
+error[E0658]: attributes on expressions are experimental
+ --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:8:5
+  |
+8 |     #[invariant(stack_inv(stack))]
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+  = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+  = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+ --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:9:5
+  |
+9 |     #[invariant(n == (*stack).head || list_segment((*stack).head, n, i))]
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+  = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+  = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:10:5
+   |
+10 |     #[invariant(i >= 0)]
+   |     ^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:46:3
+   |
+46 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:41:3
+   |
+41 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:32:3
+   |
+32 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:27:3
+   |
+27 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+ --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:8:7
+  |
+8 |     #[invariant(stack_inv(stack))]
+  |       ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+ --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:9:7
+  |
+9 |     #[invariant(n == (*stack).head || list_segment((*stack).head, n, i))]
+  |       ^^^^^^^^^
+
+error: cannot find attribute `invariant` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:10:7
+   |
+10 |     #[invariant(i >= 0)]
+   |       ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:15:11
+   |
+15 |         #[requires(!n.is_null())]
+   |           ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:16:11
+   |
+16 |         #[requires(list_node(n))]
+   |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:17:11
+   |
+17 |         #[ensures(list_node(old(n)))]
+   |           ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:18:11
+   |
+18 |         #[ensures(result == (*old(n)).next)]
+   |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:2:7
+  |
+2 |     #[requires(stack != std::ptr::null_mut())]
+  |       ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:3:7
+  |
+3 |     #[requires(stack_inv(stack))]
+  |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+ --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:4:7
+  |
+4 |     #[ensures(result >= 0)]
+  |       ^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+ --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:5:7
+  |
+5 |     #[ensures(stack_inv(stack))]
+  |       ^^^^^^^
+
+error[E0412]: cannot find type `Stack` in this scope
+ --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:1:39
+  |
+1 | unsafe fn stack_get_count(stack: *mut Stack) -> i32 {
+  |                                       ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:28:26
+   |
+28 | fn stack_inv(stack: *mut Stack) -> bool {
+   |                          ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:33:21
+   |
+33 | fn list_inv(n: *mut Node) -> bool {
+   |                     ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:42:22
+   |
+42 | fn list_node(n: *mut Node) -> bool {
+   |                      ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:47:29
+   |
+47 | fn list_segment(start: *mut Node, end: *mut Node, len: i32) -> bool {
+   |                             ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Node` in this scope
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:47:45
+   |
+47 | fn list_segment(start: *mut Node, end: *mut Node, len: i32) -> bool {
+   |                                             ^^^^ not found in this scope
+
+warning: type annotations needed
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:34:10
+   |
+34 |     if n.is_null() {
+   |          ^^^^^^^
+   |
+   = warning: this is accepted in the current edition (Rust 2015) but is a hard error in Rust 2018!
+   = note: for more information, see issue #46906 <https://github.com/rust-lang/rust/issues/46906>
+   = note: `#[warn(tyvar_behind_raw_pointer)]` (part of `#[warn(rust_2018_compatibility)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/test/stack_tuerk_1.rs:57:1
+   |
+57 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 28 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0412, E0658.
+For more information about an error, try `rustc --explain E0412`.

@@ -1,0 +1,34 @@
+Command: verifast /app/ground_true/rust/Stack/dispose.rs
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/rust/Stack/dispose.rs(39,1-2): error: Function leaks heap chunks: alloc_block_Node(n), Node_value(n, value), Node_next(n, next)
+39 | }
+   | ^
+/app/ground_true/rust/Stack/dispose.rs(39,1-2): note: Leak check.
+39 | }
+   | ^
+/app/ground_true/rust/Stack/dispose.rs(30,1-39,2): note: Verifying function 'dispose_nodes'
+30 | unsafe fn dispose_nodes(n: *mut Node)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 | //@ req Nodes(n, _);
+   | ^^^^^^^^^^^^^^^^^^^^
+32 | //@ ens true;
+   | ^^^^^^^^^^^^^
+33 | {
+   | ^
+34 |     //@ open Nodes(n, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^
+35 |     if !n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^
+36 |         dispose_nodes((*n).next);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |         dealloc(n as *mut u8, Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |     }
+   | ^^^^^
+39 | }
+   |  ^
+
+--- STDERR ---
+
+Result: FAIL

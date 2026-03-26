@@ -1,0 +1,12 @@
+int main() 
+  
+  
+{
+  char c = 'A';
+  
+  return 0;
+}
+/*@
+  @*/ 
+//@ requires true;
+//@ ensures true;

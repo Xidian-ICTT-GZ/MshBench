@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `counter`
+ --> /app/output/gpt52/rust/test/mutexes_1.rs:3:6
+  |
+3 | pred counter(p: *mut u32; v: u32) = *p |-> v;
+  |      ^^^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

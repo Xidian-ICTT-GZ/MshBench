@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/Arrays/array_of_struct.c(28,59-60): error: Potential arithmetic overflow. (Cannot prove dummy2 <= UINTPTR_MAX.)
+28 |     if (*count < 0 || SIZE_MAX / sizeof(struct student) < (size_t)*count)
+   |                                                           ^
+/app/output/claude-opus/c/Arrays/array_of_struct.c(28,5-7): note: Executing statement
+28 |     if (*count < 0 || SIZE_MAX / sizeof(struct student) < (size_t)*count)
+   |     ^^
+/app/output/claude-opus/c/Arrays/array_of_struct.c(21,17-30): note: Verifying function 'read_students'
+21 | struct student *read_students(int *count)
+   |                 ^^^^^^^^^^^^^

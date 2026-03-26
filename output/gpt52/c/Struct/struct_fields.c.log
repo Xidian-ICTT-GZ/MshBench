@@ -1,0 +1,4 @@
+0 errors found (93 statements verified)
+Linking...
+Module '/app/output/gpt52/c/Struct/struct_fields.vfmanifest': unsatisfied requirement 'CRT/prelude.h#assume'.
+1 link errors

@@ -1,0 +1,33 @@
+#include "stdlib.h"
+
+struct myStruct {
+  int i;
+  short s;
+  char c;
+};
+
+/*@ predicate myStruct(struct myStruct *p; int i, short s, char c) =
+      p->i |-> i &*& p->s |-> s &*& p->c |-> c;
+@*/
+
+void m(int i, short s, char c)
+  //@ requires -2147483648 <= i &*& i <= 2147483293 &*& -32768 <= 354 + i &*& 354 + i <= 32767;
+  //@ ensures true;
+  
+  
+{
+  short r = 354;
+  r += i;
+  int j = s;
+  r = (short) i;
+  struct myStruct* ms = malloc(sizeof(struct myStruct));
+  if(ms == 0) abort();
+  //@ close myStruct(ms, _, _, _);
+  //@ open myStruct(ms, _, _, _);
+  ms->c = 0;
+  ms->i = i;
+  ms->s = ms->c;
+  //@ close myStruct(ms, _, _, _);
+  //@ open myStruct(ms, _, _, _);
+  free(ms);
+}

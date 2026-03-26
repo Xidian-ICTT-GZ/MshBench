@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Arithmetic/short.c(15,5-7): error: Potential arithmetic overflow. (Cannot prove (354 + i) <= INT_MAX.)
+15 |   r += i;
+   |     ^^
+/app/output/gpt52/c/Arithmetic/short.c(15,5-7): note: Executing statement
+15 |   r += i;
+   |     ^^
+/app/output/gpt52/c/Arithmetic/short.c(10,6-7): note: Verifying function 'm'
+10 | void m(int i, short s, char c)
+   |      ^

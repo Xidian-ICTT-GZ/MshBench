@@ -1,0 +1,9 @@
+/app/output/claude-opus/c/tree/sorted_bintree.c(71,14-16): error: No matching heap chunks: [_]tree_value(t, _)
+71 |     int v = t->value;
+   |              ^^
+/app/output/claude-opus/c/tree/sorted_bintree.c(71,11-12): note: Executing statement
+71 |     int v = t->value;
+   |           ^
+/app/output/claude-opus/c/tree/sorted_bintree.c(59,6-14): note: Verifying function 'contains'
+59 | bool contains(struct tree *t, int x)
+   |      ^^^^^^^^

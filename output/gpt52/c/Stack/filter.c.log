@@ -1,0 +1,9 @@
+/app/output/gpt52/c/Stack/filter.c(98,21-22): error: Could not prove is_int_predicate(p) (Cannot prove is_int_predicate(p).)
+98 |         bool keep = p(n->value);
+   |                     ^
+/app/output/gpt52/c/Stack/filter.c(98,19-20): note: Executing statement
+98 |         bool keep = p(n->value);
+   |                   ^
+/app/output/gpt52/c/Stack/filter.c(84,14-26): note: Verifying function 'nodes_filter'
+84 | struct node *nodes_filter(struct node *n, int_predicate *p)
+   |              ^^^^^^^^^^^^

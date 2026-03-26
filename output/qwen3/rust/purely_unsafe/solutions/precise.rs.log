@@ -1,0 +1,54 @@
+error: function body cannot be `= expression;`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/precise.rs:16:64
+   |
+16 |   pub fn tree_pred(t: *mut Tree, depth: u8, sum: u64, prod: u64) =
+   |  ________________________________________________________________^
+17 | |     t == std::ptr::null_mut() && depth == 0 && sum == 0 && prod == 1
+18 | |     || t != std::ptr::null_mut() && depth > 0 &&
+19 | |        exists!(l: *mut Tree, r: *mut Tree, v: u16, s_l: u64, p_l: u64, s_r: u64, p_r: u64,
+...  |
+25 | |                sum == s_l.wrapping_add(f).wrapping_add(s_r) &
+26 | |                prod == p_l.wrapping_mul(f).wrapping_mul(p_r));
+   | |______________________________________________________________^
+   |
+help: surround the expression with `{` and `}` instead of `=` and `;`
+   |
+16 ~ pub fn tree_pred(t: *mut Tree, depth: u8, sum: u64, prod: u64) {
+17 |     t == std::ptr::null_mut() && depth == 0 && sum == 0 && prod == 1
+...
+25 |                sum == s_l.wrapping_add(f).wrapping_add(s_r) &
+26 ~                prod == p_l.wrapping_mul(f).wrapping_mul(p_r)) }
+   |
+
+error: function body cannot be `= expression;`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/precise.rs:29:43
+   |
+29 |   pub fn tree_heap(t: *mut Tree, depth: u8) =
+   |  ___________________________________________^
+30 | |     t == std::ptr::null_mut() && depth == 0
+31 | |     || t != std::ptr::null_mut() && depth > 0 &&
+32 | |        exists!(l: *mut Tree, r: *mut Tree, v: u16 |
+33 | |                (*t).left |-> l &*& (*t).right |-> r &*& (*t).value |-> v &
+34 | |                tree_heap(l, depth - 1) &
+35 | |                tree_heap(r, depth - 1));
+   | |________________________________________^
+   |
+help: surround the expression with `{` and `}` instead of `=` and `;`
+   |
+29 ~ pub fn tree_heap(t: *mut Tree, depth: u8) {
+30 |     t == std::ptr::null_mut() && depth == 0
+...
+34 |                tree_heap(l, depth - 1) &
+35 ~                tree_heap(r, depth - 1)) }
+   |
+
+error: expected one of `->`, `where`, or `{`, found `requires`
+  --> /app/output/qwen3/rust/purely_unsafe/solutions/precise.rs:39:5
+   |
+38 | pub fn tree_pred_split(t: *mut Tree, depth: u8, sum: u64, prod: u64)
+   |                                                                     - expected one of `->`, `where`, or `{`
+39 |     requires tree_pred(t, depth, sum, prod),
+   |     ^^^^^^^^ unexpected token
+
+error: aborting due to 3 previous errors
+

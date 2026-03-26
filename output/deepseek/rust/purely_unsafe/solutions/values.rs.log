@@ -1,0 +1,82 @@
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:12:3
+   |
+12 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:17:3
+   |
+17 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:28:3
+   |
+28 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:37:7
+   |
+37 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:38:7
+   |
+38 |     #[ensures(stack_own(result))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:49:7
+   |
+49 |     #[requires(stack_own(stack))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:50:7
+   |
+50 |     #[ensures(stack_own(stack))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:61:7
+   |
+61 |     #[requires(stack_own(stack))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:62:7
+   |
+62 |     #[ensures(true)]
+   |       ^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0614]: type `bool` cannot be dereferenced
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:24:32
+   |
+24 |         node_own(n, v, next) *&* nodes(next)
+   |                                ^^^^^^^^^^^^^ can't be dereferenced
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/values.rs:72:1
+   |
+72 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 10 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0614`.

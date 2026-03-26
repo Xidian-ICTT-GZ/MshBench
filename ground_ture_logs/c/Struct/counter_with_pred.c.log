@@ -1,0 +1,10 @@
+Command: verifast -shared /app/ground_true/c/Struct/counter_with_pred.c
+Exit code: 0
+--- STDOUT ---
+0 errors found (30 statements verified)
+Linking...
+Program linked successfully.
+
+--- STDERR ---
+
+Result: PASS

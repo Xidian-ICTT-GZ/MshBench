@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/Java Card/NewEidCard/File.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Java Card/NewEidCard/File.java(31,23-31): error: No such predicate: valid_id
+31 | 	    //@ requires [?f]valid_id(this);
+   |                       ^^^^^^^^
+
+--- STDERR ---
+
+Result: FAIL

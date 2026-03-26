@@ -1,0 +1,14 @@
+/app/output/deepseek/c/Arithmetic/ghost_field.c(10,10-13): error: No matching heap chunks: foo_x(f, _)
+10 |     f->x |-> x;
+   |          ^^^
+/app/output/deepseek/c/Arithmetic/ghost_field.c(10,10-13): note: Consuming assertion
+10 |     f->x |-> x;
+   |          ^^^
+/app/output/deepseek/c/Arithmetic/ghost_field.c(20,5-21,1): note: Executing statement
+20 |     //@ close foo(f, _);
+   |     ^^^^^^^^^^^^^^^^^^^^
+21 |     f->x = 5;
+   | ^
+/app/output/deepseek/c/Arithmetic/ghost_field.c(13,5-9): note: Verifying function 'main'
+13 | int main()
+   |     ^^^^

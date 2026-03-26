@@ -1,0 +1,12 @@
+/app/output/gpt52/c/tree/schorr_waite.c(14,8-11): error: No matching heap chunks: node_m(tl, _)
+14 |   n->m |-> m &*& n->c |-> c &*& n->l |-> l &*& n->r |-> r;
+   |        ^^^
+/app/output/gpt52/c/tree/schorr_waite.c(14,8-11): note: Consuming assertion
+14 |   n->m |-> m &*& n->c |-> c &*& n->l |-> l &*& n->r |-> r;
+   |        ^^^
+/app/output/gpt52/c/tree/schorr_waite.c(66,23-28): note: Executing statement
+66 |       //@ if (t != 0) close node_fields(t, ?tm2, ?tc2, ?tl2, ?tr2);
+   |                       ^^^^^
+/app/output/gpt52/c/tree/schorr_waite.c(18,6-18): note: Verifying function 'schorr_waite'
+18 | void schorr_waite(struct node *root)
+   |      ^^^^^^^^^^^^

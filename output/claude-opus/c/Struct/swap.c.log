@@ -1,0 +1,14 @@
+/app/output/claude-opus/c/Struct/swap.c(6,10-13): error: No matching heap chunks: point_x(p, _)
+6 |     p->x |-> x &*& p->y |-> y;
+  |          ^^^
+/app/output/claude-opus/c/Struct/swap.c(6,10-13): note: Consuming assertion
+6 |     p->x |-> x &*& p->y |-> y;
+  |          ^^^
+/app/output/claude-opus/c/Struct/swap.c(42,5-43,1): note: Executing statement
+42 |     //@ close point(p, _, _);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+43 |     //@ open point(p, _, _);
+   | ^
+/app/output/claude-opus/c/Struct/swap.c(33,5-9): note: Verifying function 'main'
+33 | int main()
+   |     ^^^^

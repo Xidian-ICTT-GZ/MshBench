@@ -1,0 +1,4 @@
+model,language,files,success_files,pass_rate,avg_attempts,early_stop_files,avg_pass@1,avg_pass@5
+claude-opus,c,39,5,0.1282,4.67,5,0.0256,0.1282
+claude-opus,java,66,0,0.0000,5.00,0,0.0000,0.0000
+claude-opus,rust,49,0,0.0000,5.00,0,0.0000,0.0000

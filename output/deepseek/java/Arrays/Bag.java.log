@@ -1,0 +1,3 @@
+/app/output/deepseek/java/Arrays/Bag.java(5,103-106): error: Preciseness check failure: non-fixed variable(s) 'cap' used in input expression.
+5 |     //@ predicate Bag(int cap) = store |-> ?s &*& s != null &*& s.length == cap &*& array_slice(s, 0, cap, _) &*& nelems |-> 0;
+  |                                                                                                       ^^^

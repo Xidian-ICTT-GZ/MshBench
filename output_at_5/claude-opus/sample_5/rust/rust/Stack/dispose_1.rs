@@ -1,0 +1,37 @@
+use std::alloc::{dealloc, Layout};
+
+struct Node {
+    value: i32,
+    next: *mut Node,
+}
+
+struct Stack {
+    head: *mut Node,
+}
+
+//@ predicate nodes(*mut Node n) = n == std::ptr::null_mut() ? true : malloc_block(n, std::mem::size_of::<Node>()) &*& *n |-> Node { value: _, next: ?next } &*& nodes(next);
+
+unsafe fn dispose_nodes(n: *mut Node)
+    //@ req nodes(n);
+    //@ ensures true;
+{
+    if !n.is_null() {
+        //@ open nodes(n);
+        dispose_nodes((*n).next);
+        dealloc(n as *mut u8, Layout::new::<Node>());
+    }
+}
+
+impl Stack {
+    unsafe fn dispose(stack: *mut Stack)
+        //@ req malloc_block(stack, std::mem::size_of::<Stack>()) &*& nodes((*stack).head);
+        //@ ensures true;
+    {
+        dispose_nodes((*stack).head);
+        dealloc(stack as *mut u8, Layout::new::<Stack>());
+    }
+}
+
+fn main() {
+    println!("Dispose functions compile successfully!");
+}

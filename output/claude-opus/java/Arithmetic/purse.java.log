@@ -1,0 +1,3 @@
+/app/output/claude-opus/java/Arithmetic/purse.java(8,9-17): error: Parse error: Parse error.
+8 |     //@ requires p != null &*& p.balance |-> ?v &*& v + amount >= -32768 &*& v + amount <= 32767;
+  |         ^^^^^^^^

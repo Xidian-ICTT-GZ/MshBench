@@ -1,0 +1,19 @@
+Command: verifast /app/ground_true/java/java/frontend/big_example/Java7Program_desugared.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/frontend/big_example/Java7Program_desugared.java(151,50-51): error: Potential arithmetic underflow. (Cannot prove -2147483648 <= (result + result0).)
+151 |     Integer res = Integer.valueOf(acc.intValue() + x.intValue());
+    |                                                  ^
+/opt/verifast/bin/rt/java.lang.javaspec(262,28-30): note: Producing assertion
+262 |         //@ ensures result == Integer_intValue(this);
+    |                            ^^
+/app/ground_true/java/java/frontend/big_example/Java7Program_desugared.java(151,54-62): note: Verifying call
+151 |     Integer res = Integer.valueOf(acc.intValue() + x.intValue());
+    |                                                      ^^^^^^^^
+/app/ground_true/java/java/frontend/big_example/Java7Program_desugared.java(146,18-22): note: Verifying method 'fold'
+146 |   public Integer fold(Integer acc, Integer x)
+    |                  ^^^^
+
+--- STDERR ---
+
+Result: FAIL

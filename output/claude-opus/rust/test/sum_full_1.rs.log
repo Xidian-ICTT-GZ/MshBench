@@ -1,0 +1,8 @@
+error: expected one of `!` or `::`, found `nodes`
+ --> /app/output/claude-opus/rust/test/sum_full_1.rs:1:6
+  |
+1 | pred nodes(node: *mut Node; sum: i32) =
+  |      ^^^^^ expected one of `!` or `::`
+
+error: aborting due to 1 previous error
+

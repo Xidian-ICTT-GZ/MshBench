@@ -1,0 +1,9 @@
+/app/output/gpt52/c/tree/sorted_bintree.c(24,13-17): error: No matching heap chunks: tree(t)
+24 | //@ ensures tree(result);
+   |             ^^^^
+/app/output/gpt52/c/tree/sorted_bintree.c(24,13-17): note: Consuming assertion
+24 | //@ ensures tree(result);
+   |             ^^^^
+/app/output/gpt52/c/tree/sorted_bintree.c(21,14-23): note: Verifying function 'init_tree'
+21 | struct tree *init_tree(int x)
+   |              ^^^^^^^^^

@@ -1,0 +1,14 @@
+/app/output/deepseek/c/Struct/counter_with_pred.c(5,12-15): error: No matching heap chunks: Counter_value(c, v)
+5 |   c->value |-> v
+  |            ^^^
+/app/output/deepseek/c/Struct/counter_with_pred.c(5,12-15): note: Consuming assertion
+5 |   c->value |-> v
+  |            ^^^
+/app/output/deepseek/c/Struct/counter_with_pred.c(23,3-24,1): note: Executing statement
+23 |   //@ close Counter(c, v);
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^
+24 |   c->value = v;
+   | ^
+/app/output/deepseek/c/Struct/counter_with_pred.c(14,17-21): note: Verifying function 'init'
+14 | struct Counter *init(int v)
+   |                 ^^^^

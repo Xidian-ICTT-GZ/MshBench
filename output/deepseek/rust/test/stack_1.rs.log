@@ -1,0 +1,87 @@
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:64:7
+   |
+64 |     #[requires(stack(stack))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:65:7
+   |
+65 |     #[ensures(true)]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:53:7
+   |
+53 |     #[requires(stack(stack) && !(*stack).head.is_null())]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:54:7
+   |
+54 |     #[ensures(stack(stack))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:42:7
+   |
+42 |     #[requires(stack(stack))]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:43:7
+   |
+43 |     #[ensures(stack(stack))]
+   |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:31:7
+   |
+31 |     #[requires(true)]
+   |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:32:7
+   |
+32 |     #[ensures(stack(result))]
+   |       ^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:25:3
+   |
+25 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:16:3
+   |
+16 | #[predicate]
+   |   ^^^^^^^^^
+
+error: cannot find attribute `predicate` in this scope
+  --> /app/output/deepseek/rust/test/stack_1.rs:11:3
+   |
+11 | #[predicate]
+   |   ^^^^^^^^^
+
+warning: unused imports: `alloc` and `dealloc`
+ --> /app/output/deepseek/rust/test/stack_1.rs:1:18
+  |
+1 | use std::alloc::{alloc, dealloc, handle_alloc_error, Layout};
+  |                  ^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/test/stack_1.rs:82:1
+   |
+82 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 11 previous errors; 2 warnings emitted
+

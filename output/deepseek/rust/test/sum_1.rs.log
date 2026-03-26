@@ -1,0 +1,119 @@
+error[E0658]: attributes on expressions are experimental
+  --> /app/output/deepseek/rust/test/sum_1.rs:11:9
+   |
+11 |         #[requires(!nodes.is_null())]
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: see issue #15701 <https://github.com/rust-lang/rust/issues/15701> for more information
+   = help: add `#![feature(stmt_expr_attributes)]` to the crate attributes to enable
+   = note: this compiler was built on 2025-11-24; consider upgrading it if it is out of date
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/sum_1.rs:23:11
+   |
+23 |         #[requires(!stack.is_null())]
+   |           ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/sum_1.rs:24:11
+   |
+24 |         #[requires((*stack).head.is_null() ==> true)]
+   |           ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/sum_1.rs:25:11
+   |
+25 |         #[requires(!(*stack).head.is_null() ==> true)]
+   |           ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/sum_1.rs:11:11
+   |
+11 |         #[requires(!nodes.is_null())]
+   |           ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/sum_1.rs:12:11
+   |
+12 |         #[requires((*nodes).next.is_null() ==> true)]
+   |           ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+  --> /app/output/deepseek/rust/test/sum_1.rs:13:11
+   |
+13 |         #[requires(!(*nodes).next.is_null() ==> true)]
+   |           ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+  --> /app/output/deepseek/rust/test/sum_1.rs:14:11
+   |
+14 |         #[ensures(result == old(result))]
+   |           ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/test/sum_1.rs:2:7
+  |
+2 |     #[requires(nodes.is_null() ==> true)]
+  |       ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/test/sum_1.rs:3:7
+  |
+3 |     #[requires(!nodes.is_null() ==> 
+  |       ^^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/test/sum_1.rs:5:7
+  |
+5 |     #[requires(!nodes.is_null() ==> 
+  |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+ --> /app/output/deepseek/rust/test/sum_1.rs:7:7
+  |
+7 |     #[ensures(result == old(result))]
+  |       ^^^^^^^
+
+error[E0412]: cannot find type `Node` in this scope
+ --> /app/output/deepseek/rust/test/sum_1.rs:1:37
+  |
+1 | unsafe fn get_nodes_sum(nodes: *mut Node) -> i32 {
+  |                                     ^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/deepseek/rust/test/sum_1.rs:21:6
+   |
+21 | impl Stack {
+   |      ^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Stack` in this scope
+  --> /app/output/deepseek/rust/test/sum_1.rs:22:35
+   |
+22 |     unsafe fn get_sum(stack: *mut Stack) -> i32 {
+   |                                   ^^^^^ not found in this scope
+
+warning: type annotations needed
+  --> /app/output/deepseek/rust/test/sum_1.rs:10:15
+   |
+10 |     if !nodes.is_null() {
+   |               ^^^^^^^
+   |
+   = warning: this is accepted in the current edition (Rust 2015) but is a hard error in Rust 2018!
+   = note: for more information, see issue #46906 <https://github.com/rust-lang/rust/issues/46906>
+   = note: `#[warn(tyvar_behind_raw_pointer)]` (part of `#[warn(rust_2018_compatibility)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/test/sum_1.rs:33:1
+   |
+33 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 15 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0412, E0658.
+For more information about an error, try `rustc --explain E0412`.

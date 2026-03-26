@@ -1,0 +1,9 @@
+/app/output/deepseek/c/Struct/swap.c(28,17-18): error: Pointer may be out of bounds (Cannot prove pointer_within_limits(field_ptr(p, point_type_info, point_y_offset)).)
+28 |     swap(&p->x, &p->y);
+   |                 ^
+/app/output/deepseek/c/Struct/swap.c(28,5-9): note: Executing statement
+28 |     swap(&p->x, &p->y);
+   |     ^^^^
+/app/output/deepseek/c/Struct/swap.c(24,6-18): note: Verifying function 'point_mirror'
+24 | void point_mirror(struct point *p)
+   |      ^^^^^^^^^^^^

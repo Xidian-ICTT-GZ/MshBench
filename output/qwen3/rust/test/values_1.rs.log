@@ -1,0 +1,9 @@
+error[E0762]: unterminated character literal
+  --> /app/output/qwen3/rust/test/values_1.rs:61:37
+   |
+61 |         #[ensures node(stack) |-> ?s' &&
+   |                                     ^^^^
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0762`.

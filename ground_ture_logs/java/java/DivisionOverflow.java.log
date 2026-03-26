@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/DivisionOverflow.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/DivisionOverflow.java(6,28-31): error: Should fail directives are not allowed; use the -allow_should_fail command-line option to allow them.
+6 |     int tmp = nom / denom; //~ should_fail
+  |                            ^^^
+
+--- STDERR ---
+
+Result: FAIL

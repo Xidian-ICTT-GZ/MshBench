@@ -1,0 +1,14 @@
+/app/output/gpt52/c/Arithmetic/ghost_field.c(9,14-17): error: No matching heap chunks: foo_x(f, _)
+9 |         f->x |-> x;
+  |              ^^^
+/app/output/gpt52/c/Arithmetic/ghost_field.c(9,14-17): note: Consuming assertion
+9 |         f->x |-> x;
+  |              ^^^
+/app/output/gpt52/c/Arithmetic/ghost_field.c(21,5-22,1): note: Executing statement
+21 |     //@ close foo(f, _);
+   |     ^^^^^^^^^^^^^^^^^^^^
+22 |     f->x = 5;
+   | ^
+/app/output/gpt52/c/Arithmetic/ghost_field.c(12,5-9): note: Verifying function 'main'
+12 | int main()
+   |     ^^^^

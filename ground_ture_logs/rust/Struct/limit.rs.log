@@ -1,0 +1,26 @@
+Command: verifast /app/ground_true/rust/Struct/limit.rs
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/rust/Struct/limit.rs(36,9-40): error: Potential arithmetic underflow. (Cannot prove -2147483648 <= (theBalance + amount).)
+36 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/ground_true/rust/Struct/limit.rs(36,9-40): note: Executing statement
+36 |         (*my_account).balance += amount;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/app/ground_true/rust/Struct/limit.rs(32,5-37,6): note: Verifying function 'Account::deposit'
+32 |     unsafe fn deposit(my_account: *mut Account, amount: i32)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+33 |     //@ req (*my_account).balance |-> ?theBalance;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+34 |     //@ ens (*my_account).balance |-> theBalance + amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+35 |     {
+   | ^^^^^^
+36 |         (*my_account).balance += amount;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |     }
+   |      ^
+
+--- STDERR ---
+
+Result: FAIL

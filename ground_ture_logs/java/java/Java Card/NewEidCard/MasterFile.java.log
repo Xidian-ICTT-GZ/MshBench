@@ -1,0 +1,10 @@
+Command: verifast /app/ground_true/java/java/Java Card/NewEidCard/MasterFile.java
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/java/java/Java Card/NewEidCard/MasterFile.java(3,26-31): error: Class DedicatedFile not found
+3 | public /*VF*ADDED*/final class MasterFile extends DedicatedFile {
+  |                          ^^^^^
+
+--- STDERR ---
+
+Result: FAIL

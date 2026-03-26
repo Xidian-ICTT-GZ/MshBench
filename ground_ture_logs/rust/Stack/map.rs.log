@@ -1,0 +1,38 @@
+Command: verifast /app/ground_true/rust/Stack/map.rs
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/rust/Stack/map.rs(47,1-2): error: Function leaks heap chunks: Nodes(next, (count - 1)), alloc_block_Node(n), Node_value(n, value), Node_next(n, next)
+47 | }
+   | ^
+/app/ground_true/rust/Stack/map.rs(47,1-2): note: Leak check.
+47 | }
+   | ^
+/app/ground_true/rust/Stack/map.rs(36,1-47,2): note: Verifying function 'map_nodes'
+36 | unsafe fn map_nodes(n: *mut Node, f: I32Func, data: *mut u8)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 | //@ req Nodes(n, ?count) &*& [_]is_I32Func(f, ?data_pred) &*& data_pred(data);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 | //@ ens Nodes(n, count) &*& data_pred(data);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | {
+   | ^
+40 |     //@ open Nodes(n, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^
+41 |     if !n.is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^
+42 |         let y = f(data, (*n).value);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 |         (*n).value = y;
+   | ^^^^^^^^^^^^^^^^^^^^^^^
+44 |         map_nodes((*n).next, f, data);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |     }
+   | ^^^^^
+46 |     //@ close Nodes(n, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 | }
+   |  ^
+
+--- STDERR ---
+
+Result: FAIL

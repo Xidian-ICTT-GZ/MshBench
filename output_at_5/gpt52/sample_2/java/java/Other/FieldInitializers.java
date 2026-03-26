@@ -1,0 +1,47 @@
+class C {
+  static int id(int x)
+    
+    
+  //@ requires true;
+  //@ ensures true;
+  {
+    return x;
+  }
+}
+
+class A {
+  int a = 1, b = 2;
+  
+  A() 
+   
+   
+  //@ requires true;
+  //@ ensures true;
+  {
+   
+  }
+  
+  int getA() 
+    
+    
+  //@ requires true;
+  //@ ensures true;
+  {
+    return this.a;
+  }
+}
+
+class B extends A {
+
+  int c = getA(), d = this.c + C.id(10);
+  
+  B() 
+    
+    
+  //@ requires true;
+  //@ ensures true;
+  {
+    super();
+  }
+  
+}

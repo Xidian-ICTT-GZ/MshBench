@@ -1,0 +1,59 @@
+interface Counter {
+    //@ public invariant true;
+
+    public int get();
+    //@ requires true;
+    //@ ensures true;
+
+    public void set(int value);
+    //@ requires true;
+    //@ ensures true;
+}
+
+class MyCounter implements Counter {
+    int count;
+    /*@
+    predicate mycounter_inv() = this->count |-> ?cnt;
+    @*/
+
+    MyCounter()
+    //@ requires true;
+    //@ ensures mycounter_inv();
+    {
+        count = 0;
+    }
+
+    public int get()
+    //@ requires mycounter_inv();
+    //@ ensures mycounter_inv() &*& result == count;
+    {
+        return count;
+    }
+
+    public void set(int value)
+    //@ requires mycounter_inv();
+    //@ ensures mycounter_inv() &*& count == value;
+    {
+        count = value;
+    }
+}
+
+class Program {
+    public static void test(Counter c)
+    //@ requires true;
+    //@ ensures true;
+    {
+        int value = c.get();
+
+        assert 0 <= value;
+    }
+
+    public static void main(String[] args)
+    //@ requires true;
+    //@ ensures true;
+    {
+        Counter c = new MyCounter();
+        c.set(42);
+        test(c);
+    }
+}

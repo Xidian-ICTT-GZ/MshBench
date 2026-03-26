@@ -1,0 +1,45 @@
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/lemptrs.rs:8:7
+  |
+8 |     #[requires(!p.is_null() ==> *p |-> _)]
+  |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/lemptrs.rs:9:7
+  |
+9 |     #[ensures(true)]
+  |       ^^^^^^^
+
+error: cannot find attribute `requires` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/lemptrs.rs:2:7
+  |
+2 |     #[requires(true)]
+  |       ^^^^^^^^
+
+error: cannot find attribute `ensures` in this scope
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/lemptrs.rs:3:7
+  |
+3 |     #[ensures(result.is_null() ? true : *result |-> _)]
+  |       ^^^^^^^
+
+warning: unused variable: `p`
+ --> /app/output/deepseek/rust/purely_unsafe/solutions/lemptrs.rs:7:23
+  |
+7 | unsafe fn write_lines(p: *const *const str) {
+  |                       ^ help: if this is intentional, prefix it with an underscore: `_p`
+  |
+  = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: function cannot return without recursing
+  --> /app/output/deepseek/rust/purely_unsafe/solutions/lemptrs.rs:22:1
+   |
+22 | fn VeriFast_alloc<T>() -> *mut T { VeriFast_alloc() }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   ---------------- recursive call site
+   | |
+   | cannot return without recursing
+   |
+   = help: a `loop` may express intention better if this is on purpose
+   = note: `#[warn(unconditional_recursion)]` on by default
+
+error: aborting due to 4 previous errors; 2 warnings emitted
+

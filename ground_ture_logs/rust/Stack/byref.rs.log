@@ -1,0 +1,58 @@
+Command: verifast /app/ground_true/rust/Stack/byref.rs
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/rust/Stack/byref.rs(57,1-2): error: Function leaks heap chunks: Nodes(next, (dummy - 1)), alloc_block_Node(node), Node_value(node, value), Node_next(node, next), points_to<*Node>(n, node)
+57 | }
+   | ^
+/app/ground_true/rust/Stack/byref.rs(57,1-2): note: Leak check.
+57 | }
+   | ^
+/app/ground_true/rust/Stack/byref.rs(36,1-57,2): note: Verifying function 'filter_nodes'
+36 | unsafe fn filter_nodes(n: *mut *mut Node, p: I32Predicate)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 | //@ req *n |-> ?node &*& Nodes(node, _) &*& [_]is_I32Predicate(p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 | //@ ens *n |-> ?node0 &*& Nodes(node0, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | {
+   | ^
+40 |     if !(*n).is_null() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+41 |         //@ open Nodes(node, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |         let keep = p((**n).value);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 |         if keep {
+   | ^^^^^^^^^^^^^^^^^
+44 |             //@ open Node_next(node, _);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |             filter_nodes(&raw mut (**n).next, p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 |             //@ close Node_next(node, ?next);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+47 |             //@ open Nodes(next, ?count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 |             //@ close Nodes(next, count);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+49 |             //@ close Nodes(node, count + 1);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+50 |         } else {
+   | ^^^^^^^^^^^^^^^^
+51 |             let next_ = (**n).next;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 |             dealloc(*n as *mut u8, Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+53 |             *n = next_;
+   | ^^^^^^^^^^^^^^^^^^^^^^^
+54 |             filter_nodes(n, p);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+55 |         }
+   | ^^^^^^^^^
+56 |     }
+   | ^^^^^
+57 | }
+   |  ^
+
+--- STDERR ---
+
+Result: FAIL

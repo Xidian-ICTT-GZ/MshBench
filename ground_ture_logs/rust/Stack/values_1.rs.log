@@ -1,0 +1,44 @@
+Command: verifast /app/ground_true/rust/Stack/values_1.rs
+Exit code: 1
+--- STDOUT ---
+/app/ground_true/rust/Stack/values_1.rs(52,1-2): error: Function leaks heap chunks: Nodes(head0, values), alloc_block_Stack(stack), Stack_head(stack, head0)
+52 | }
+   | ^
+/app/ground_true/rust/Stack/values_1.rs(52,1-2): note: Leak check.
+52 | }
+   | ^
+/app/ground_true/rust/Stack/values_1.rs(38,1-52,2): note: Verifying function 'Stack::push'
+38 | unsafe fn push(stack: *mut Stack, value: i32)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | //@ req Stack(stack, ?values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 | //@ ens Stack(stack, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+41 | {
+   | ^
+42 | //@ open Stack(stack, values);
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 | let n = alloc(Layout::new::<Node>()) as *mut Node;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 | if n.is_null() {
+   | ^^^^^^^^^^^^^^^^
+45 | handle_alloc_error(Layout::new::<Node>());
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 | }
+   | ^
+47 | (*n).next = (*stack).head;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+48 | (*n).value = value;
+   | ^^^^^^^^^^^^^^^^^^^
+49 | (*stack).head = n;
+   | ^^^^^^^^^^^^^^^^^^
+50 | //@ close Nodes(n, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 | //@ close Stack(stack, i32s_cons(value, values));
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+52 | }
+   |  ^
+
+--- STDERR ---
+
+Result: FAIL
