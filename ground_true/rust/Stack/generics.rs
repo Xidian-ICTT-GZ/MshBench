@@ -44,8 +44,8 @@ impl<T> Stack<T> {
     }
     
     unsafe fn push(stack: *mut Stack<T>, value: T)
-    //@ req Stack(stack, ?values);
-    //@ ens Stack(stack, cons(value, values));
+    //@ req thread_token(?t) &*& Stack(stack, ?values) &*& <T>.own(t, value);
+    //@ ens thread_token(t) &*& Stack(stack, cons(value, values));
     {
         //@ open Stack(stack, values);
         let n = alloc(Layout::new::<Node<T>>()) as *mut Node<T>;
@@ -73,8 +73,8 @@ impl<T> Stack<T> {
     }
     
     unsafe fn pop(stack: *mut Stack<T>) -> T
-    //@ req Stack(stack, ?values) &*& values != nil;
-    //@ ens Stack(stack, tail(values)) &*& result == head(values);
+    //@ req thread_token(?t) &*& Stack(stack, ?values) &*& values != nil;
+    //@ ens thread_token(t) &*& Stack(stack, tail(values)) &*& result == head(values) &*& <T>.own(t, result);
     {
         //@ open Stack(stack, values);
         let head = (*stack).head;
@@ -148,8 +148,9 @@ impl Point {
 }
 
 fn main()
-//@ req true;
-//@ ens true;
+//@ req thread_token(currentThread);
+//@ ens thread_token(currentThread);
+//@ on_unwind_ens thread_token(currentThread);
 {
     unsafe {
         let s = Stack::create();

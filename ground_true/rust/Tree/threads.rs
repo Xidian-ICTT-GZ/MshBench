@@ -78,10 +78,11 @@ pred Tree(t: *mut Tree, depth: u8) =
     if t == 0 {
         depth == 0
     } else {
+        0 < depth &*&
+        alloc_block(t as *u8, Layout::new::<Tree>()) &*&
         (*t).left |-> ?left &*& Tree(left, depth - 1) &*&
         (*t).right |-> ?right &*& Tree(right, depth - 1) &*&
-        (*t).value |-> ?value &*&
-        alloc_block_Tree(t)
+        (*t).value |-> ?value
     };
 
 @*/
@@ -93,7 +94,7 @@ impl Tree {
     //@ ens Tree(result, depth);
     {
         if depth == 0 {
-            //@ close Tree(0, 0);
+            //@ close Tree(0, depth);
             std::ptr::null_mut()
         } else {
             let left = Self::make(depth - 1);
@@ -138,7 +139,7 @@ unsafe fn print_u64(value: u64)
 }
 
 /*@
-pred_ctor compute_sum_fibs_post(tree: *mut Tree, depth: i32)(result: u64) = Tree(tree, depth);
+pred_ctor compute_sum_fibs_post(tree: *mut Tree, depth: u8)(result: u64) = Tree(tree, depth);
 pred compute_sum_fibs_pre(tree: *mut Tree, post: pred(u64)) =
     Tree(tree, ?depth) &*& post == compute_sum_fibs_post(tree, depth);
 @*/
@@ -167,9 +168,9 @@ fn main()
         let root_fib = wrapping_fib((*tree).value);
 
         let left_sum = join(left_join_handle);
-        //@ open compute_sum_fibs_post(left, 21)(_);
+        //@ open post(left_sum);
         let right_sum = join(right_join_handle);
-        //@ open compute_sum_fibs_post(right, 21)(_);
+        //@ open post(right_sum);
         let sum = left_sum.wrapping_add(root_fib).wrapping_add(right_sum);
         
         //@ close Tree(tree, 22);

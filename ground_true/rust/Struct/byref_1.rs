@@ -10,7 +10,7 @@ type I32Predicate = fn(i32) -> bool;
 
 unsafe fn filter_nodes(n: *mut *mut Node, p: I32Predicate)
     //@ req *n |-> ?node &*& Nodes(node, _) &*& [_]is_I32Predicate(p);
-    //@ ens *n |-> ?node0 &*& Nodes(node0, _);
+    //@ ens *n |-> ?node0 &*& Nodes(node0, _) &*& [_]is_I32Predicate(p);
 {
     if !(*n).is_null() {
         let node = *n;
@@ -19,7 +19,7 @@ unsafe fn filter_nodes(n: *mut *mut Node, p: I32Predicate)
         if keep {
             let next_ptr = &mut (*node).next;
             filter_nodes(next_ptr, p);
-            //@ close Nodes(node, ?count);
+            //@ close Nodes(node, _);
         } else {
             let next_ = (*node).next;
             dealloc(node as *mut u8, Layout::new::<Node>());

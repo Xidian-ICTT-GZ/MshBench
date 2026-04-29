@@ -19,11 +19,11 @@ pred Nodes(node: *mut Node, count: i32) =
     } else {
         0 < count &*&
         (*node).next |-> ?next &*& (*node).value |-> ?value &*&
-        alloc_block_Node(node) &*& Nodes(next, count - 1)
+        alloc_block(node as *mut u8, Layout::new::<Node>()) &*& Nodes(next, count - 1)
     };
 
 pred Stack(stack: *mut Stack, count: i32) =
-    (*stack).head |-> ?head &*& alloc_block_Stack(stack) &*& 0 <= count &*& Nodes(head, count);
+    (*stack).head |-> ?head &*& alloc_block(stack as *mut u8, Layout::new::<Stack>()) &*& 0 <= count &*& Nodes(head, count);
 
 @*/
 
@@ -116,7 +116,7 @@ impl Stack {
     {
         let mut i = 0;
         loop {
-            //@ inv Stack(stack, count - i) &*& i <= n;
+            //@ inv Stack(stack, count - i) &*& 0 <= i &*& i <= n &*& 0 <= n &*& n <= count &*& (i < n ==> 0 < count - i);
             if i == n {
                 break;
             }

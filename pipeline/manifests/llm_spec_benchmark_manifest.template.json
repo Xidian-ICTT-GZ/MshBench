@@ -1,0 +1,8 @@
+[
+  {
+    "benchmark_id": "c/Arrays/static_array.c",
+    "language": "c",
+    "source_path": "c/Arrays/static_array.c",
+    "expected_spec_path": "c/Arrays/static_array.c"
+  }
+]

@@ -73,15 +73,15 @@ impl<T> Stack<T> {
     }
     
     unsafe fn pop(stack: *mut Stack<T>) -> T
-    //@ req Stack(stack, ?values) &*& values != nil;
-    //@ ens Stack(stack, tail(values)) &*& result == head(values);
+    //@ req thread_token(?t) &*& Stack(stack, ?values) &*& values != nil;
+    //@ ens thread_token(t) &*& Stack(stack, tail(values)) &*& result == head(values);
     {
         //@ open Stack(stack, values);
         let head = (*stack).head;
         //@ open Nodes(head, values);
         (*stack).head = (*head).next;
         let result = (&raw mut (*head).value).read();
-        //@ close Node_value(head, _);
+        //@ assert true;
         dealloc(head as *mut u8, Layout::new::<Node<T>>());
         //@ close Stack(stack, tail(values));
         result
@@ -141,8 +141,8 @@ pred_ctor Vector(limit: i32)(v: *mut Vector) =
 impl Vector {
 
     unsafe fn create(limit: i32, x: i32, y: i32) -> *mut Vector
-    //@ req true;
-    //@ ens Vector(limit)(result);
+    //@ req thread_token(?t);
+    //@ ens thread_token(t) &*& Vector(limit)(result);
     {
         assert!(x * x + y * y <= limit * limit, "Vector too big");
         let result = alloc(Layout::new::<Vector>()) as *mut Vector;
@@ -158,15 +158,16 @@ impl Vector {
 }
 
 fn main()
-//@ req true;
-//@ ens true;
+//@ req thread_token(currentThread);
+//@ ens thread_token(currentThread);
+//@ on_unwind_ens thread_token(currentThread);
 {
     unsafe {
         let limit = input_i32();
         let s = Stack::create();
         //@ close foreach(nil, Vector(limit));
         loop {
-            //@ inv Stack(s, ?values) &*& foreach(values, Vector(limit));
+            //@ inv thread_token(currentThread) &*& Stack(s, ?values) &*& foreach(values, Vector(limit));
             let cmd = input_char();
             match cmd {
                 'p' => {

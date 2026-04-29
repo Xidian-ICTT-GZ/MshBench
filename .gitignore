@@ -1,3 +1,25 @@
-pipeline/api_config.py
-config.py
+ground_ture_logs/
+# Ignore system and environment files
+.DS_Store
 .env
+.idea/
+.venv/
+
+# Ignore all output and log folders (use wildcard)
+output*/
+output_log/
+output_repair/
+ground_ture_logs/
+
+# Ignore readme if not needed
+readme
+
+# 保留以下内容
+!benchmark/
+!ground_true/
+!pipeline/
+!Dockerfile
+!prompt/
+
+# Never ignore .gitignore itself
+!.gitignore

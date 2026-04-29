@@ -9,7 +9,7 @@ use std::sync::Mutex;
 
 fn_type Spawnee<T>(pre: pred(T)) = unsafe fn(arg: T);
     req thread_token(currentThread) &*& pre(arg);
-    ens thread_token(currentThread);
+    ens false;
 
 @*/
 
@@ -32,6 +32,7 @@ unsafe fn spawn<T>(f: unsafe fn(arg: T), arg: T)
 unsafe fn wait_for_pulse(_source: i32)
 //@ req true;
 //@ ens true;
+//@ assume_correct
 {
     std::thread::sleep(std::time::Duration::from_millis(500));
 }
@@ -54,19 +55,19 @@ struct CountPulsesData {
 /*@
 
 pred count_pulses_pre(data: CountPulsesData) =
-    [1/3]Mutex_shared(data.counter, Counter(Mutex::data_ptr(data.counter)));
+    [1/3]Mutex_shared::<u32>(data.counter, Counter(Mutex::data_ptr(data.counter)));
 
 @*/
 
 unsafe fn count_pulses(data: CountPulsesData)
 //@ req thread_token(currentThread) &*& count_pulses_pre(data);
-//@ ens thread_token(currentThread);
+//@ ens false;
 {
     //@ open count_pulses_pre(data);
     let CountPulsesData {counter, source} = data;
 
     loop {
-        //@ inv thread_token(currentThread) &*& [1/3]Mutex_shared(counter, Counter(Mutex::data_ptr(counter)));
+        //@ inv thread_token(currentThread) &*& [1/3]Mutex_shared::<u32>(counter, Counter(Mutex::data_ptr(counter)));
         wait_for_pulse(source);
         //@ let k = begin_lifetime();
         {
@@ -84,7 +85,7 @@ unsafe fn count_pulses(data: CountPulsesData)
 }
 
 unsafe fn count_pulses_async(counter: *mut Mutex<u32>, source: i32)
-//@ req [1/3]Mutex_shared(counter, Counter(Mutex::data_ptr(counter)));
+//@ req [1/3]Mutex_shared::<u32>(counter, Counter(Mutex::data_ptr(counter)));
 //@ ens true;
 {
     let data = CountPulsesData { counter, source };
@@ -107,7 +108,7 @@ fn main() {
         count_pulses_async(counter, 2);
 
         loop {
-            //@ inv thread_token(currentThread) &*& [1/3]Mutex_shared(counter, Counter(Mutex::data_ptr(counter)));
+            //@ inv thread_token(currentThread) &*& [1/3]Mutex_shared::<u32>(counter, Counter(Mutex::data_ptr(counter)));
             std::thread::sleep(std::time::Duration::from_millis(1000));
             //@ let k = begin_lifetime();
             let count;

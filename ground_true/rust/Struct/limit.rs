@@ -30,14 +30,14 @@ impl Account {
     }
 
     unsafe fn deposit(my_account: *mut Account, amount: i32)
-    //@ req (*my_account).balance |-> ?theBalance;
+    //@ req (*my_account).balance |-> ?theBalance &*& -2147483648 <= theBalance + amount &*& theBalance + amount <= 2147483647;
     //@ ens (*my_account).balance |-> theBalance + amount;
     {
         (*my_account).balance += amount;
     }
 
     unsafe fn withdraw(my_account: *mut Account, amount: i32) -> i32
-    //@ req (*my_account).limit |-> ?limit &*& (*my_account).balance |-> ?balance &*& 0 <= amount;
+    //@ req (*my_account).limit |-> ?limit &*& (*my_account).balance |-> ?balance &*& 0 <= amount &*& amount <= 2147483647 &*& -2147483648 <= balance &*& balance <= 2147483647 &*& -2147483648 <= limit &*& limit <= 0 &*& -2147483648 <= balance - amount &*& balance >= limit &*& -2147483648 <= balance - limit &*& balance - limit <= 2147483647;
     /*@
     ens (*my_account).limit |-> limit &*& (*my_account).balance |-> balance - result &*&
         result == if balance - amount < limit { balance - limit } else { amount };

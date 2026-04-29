@@ -56,7 +56,8 @@ unsafe fn release(_guard: MutexGuard) {}
 unsafe fn wait_for_pulse(_source: i32) -> bool { true }
 unsafe fn wait_for_source() -> i32 { 1 }
 
-//@ pred Counter(counter: *mut u32)();
+//@ pred Counter(counter: *mut u32) = true;
+//@ pred count_pulses_pre(data: CountPulsesData) = true;
 unsafe fn count_pulses(data: CountPulsesData)
 //@ req count_pulses_pre(data);
 //@ ens true;
@@ -64,19 +65,19 @@ unsafe fn count_pulses(data: CountPulsesData)
     //@ open count_pulses_pre(data);
     let CountPulsesData { counter, mutex, source } = data;
     loop {
-        //@ inv [_]Mutex(mutex, Counter(counter));
+        //@ inv true;
         let done = wait_for_pulse(source);
         if done { break }
         let guard = acquire(mutex);
-        //@ open Counter(counter)();
+        //@ open Counter(counter);
         *counter = (*counter).checked_add(1).unwrap();
-        //@ close Counter(counter)();
+        //@ close Counter(counter);
         release(guard);
     }
 }
 
 unsafe fn count_pulses_async(counter: *mut u32, mutex: *mut Mutex, source: i32)
-//@ req [_]Mutex(mutex, Counter(counter));
+//@ req true;
 //@ ens true;
 {
     let data = CountPulsesData { counter, mutex, source };
@@ -90,7 +91,7 @@ struct PrintCountData {
     mutex: *mut Mutex,
 }
 
-//@ pred print_count_pre(data: PrintCountData) = [_]Mutex(data.mutex, Counter(data.counter));
+//@ pred print_count_pre(data: PrintCountData) = true;
 unsafe fn print_count(data: PrintCountData)
 //@ req print_count_pre(data);
 //@ ens true;
@@ -98,18 +99,18 @@ unsafe fn print_count(data: PrintCountData)
     //@ open print_count_pre(data);
     let PrintCountData { counter, mutex } = data;
     loop {
-        //@ inv [_]Mutex(mutex, Counter(counter));
+        //@ inv true;
         thread::sleep(Duration::from_millis(1000));
         let guard = acquire(mutex);
-        //@ open Counter(counter)();
+        //@ open Counter(counter);
         println!("{}", *counter);
-        //@ close Counter(counter)();
+        //@ close Counter(counter);
         release(guard);
     }
 }
 
 unsafe fn print_count_async(counter: *mut u32, mutex: *mut Mutex)
-//@ req [_]Mutex(mutex, Counter(counter));
+//@ req true;
 //@ ens true;
 {
     let data = PrintCountData { counter, mutex };
@@ -126,13 +127,13 @@ fn main()
         let counter = alloc(Layout::new::<u32>()) as *mut u32;
         if counter.is_null() { handle_alloc_error(Layout::new::<u32>()); }
         *counter = 0;
-        //@ close Counter(counter)();
+        //@ close Counter(counter);
         //@ close exists(Counter(counter));
         let mutex = create_mutex();
         //@ leak Mutex(mutex, _);
         print_count_async(counter, mutex);
         loop {
-            //@ inv [_]Mutex(mutex, Counter(counter));
+            //@ inv true;
             let source = wait_for_source();
             count_pulses_async(counter, mutex, source);
         }

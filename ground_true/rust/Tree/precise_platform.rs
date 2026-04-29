@@ -57,7 +57,7 @@ type FoldFunction = unsafe fn(acc: i32, x: i32) -> i32;
 impl Tree {
 
     unsafe fn make(depth: i32) -> *mut Tree
-    //@ req true;
+    //@ req 0 <= depth;
     //@ ens Tree(result, depth);
     {
         if depth == 0 {
@@ -89,7 +89,7 @@ impl Tree {
     }
 
     unsafe fn fold(tree: *mut Tree, f: FoldFunction, mut acc: i32) -> i32
-    //@ req [?frac]Tree(tree, ?depth) &*& [_]is_FoldFunction(f);
+    //@ req [?frac]Tree(tree, ?depth) &*& 0 <= depth &*& [_]is_FoldFunction(f);
     //@ ens [frac]Tree(tree, depth);
     {
         if tree.is_null() {

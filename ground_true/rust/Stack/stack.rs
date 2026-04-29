@@ -20,13 +20,12 @@ pred Nodes(node: *mut Node, count: i32) =
         0 < count &*&
         (*node).next |-> ?next &*&
         (*node).value |-> ?value &*&
-        alloc_block_Node(node) &*&
+        alloc_block(node as *mut u8, Layout::new::<Node>()) &*&
         Nodes(next, count - 1)
     };
 
 pred Stack(stack: *mut Stack, count: i32) =
     (*stack).head |-> ?head &*&
-    alloc_block_Stack(stack) &*&
     0 <= count &*&
     Nodes(head, count);
 
@@ -36,7 +35,7 @@ impl Stack {
 
     unsafe fn create() -> *mut Stack
     //@ req true;
-    //@ ens Stack(result, 0);
+    //@ ens Stack(result, 0) &*& alloc_block(result as *mut u8, Layout::new::<Stack>());
     {
         let stack = alloc(Layout::new::<Stack>()) as *mut Stack;
         if stack.is_null() {
@@ -79,11 +78,11 @@ impl Stack {
     }
 
     unsafe fn dispose(stack: *mut Stack)
-    //@ req Stack(stack, 0);
+    //@ req Stack(stack, 0) &*& alloc_block(stack as *mut u8, Layout::new::<Stack>());
     //@ ens true;
     {
         //@ open Stack(stack, 0);
-        //@ open Nodes(_, _);
+        //@ open Nodes(head, 0);
         dealloc(stack as *mut u8, Layout::new::<Stack>());
     }
 

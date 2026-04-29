@@ -37,7 +37,7 @@ impl Account {
     }
 
     unsafe fn deposit(my_account: *mut Account, amount: i32)
-    //@ req Account_balance(my_account, ?theBalance);
+    //@ req Account_balance(my_account, ?theBalance) &*& -2147483648 <= theBalance + amount &*& theBalance + amount <= 2147483647;
     //@ ens Account_balance(my_account, theBalance + amount);
     //@ on_unwind_ens false;
     {

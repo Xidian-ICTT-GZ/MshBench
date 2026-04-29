@@ -10,6 +10,7 @@ struct Account {
 /*@
 
 pred Account_pred(my_account: *mut Account, theLimit: i32, theBalance: i32) =
+    theLimit <= 0 &*&
     (*my_account).limit |-> theLimit &*& (*my_account).balance |-> theBalance &*&
     alloc_block_Account(my_account);
 
@@ -42,7 +43,7 @@ impl Account {
     }
 
     unsafe fn deposit(my_account: *mut Account, amount: i32)
-    //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount;
+    //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount &*& balance <= 2147483647 - amount;
     //@ ens Account_pred(my_account, limit, balance + amount);
     {
         //@ open Account_pred(my_account, limit, balance);
@@ -51,7 +52,7 @@ impl Account {
     }
 
     unsafe fn withdraw(my_account: *mut Account, amount: i32) -> i32
-    //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount;
+    //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount &*& -2147483648 <= balance - amount;
     /*@
     ens Account_pred(my_account, limit, balance - result) &*&
         result == if balance - amount < limit { balance - limit } else { amount };

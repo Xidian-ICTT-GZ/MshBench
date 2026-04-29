@@ -19,19 +19,19 @@ pred Nodes(node: *mut Node, count: i32) =
     } else {
         0 < count &*&
         (*node).next |-> ?next &*& (*node).value |-> ?value &*&
-        alloc_block_Node(node) &*& Nodes(next, count - 1)
+        alloc_block(node as *mut u8, Layout::new::<Node>()) &*& Nodes(next, count - 1)
     };
 
 pred Stack(stack: *mut Stack, count: i32) =
-    (*stack).head |-> ?head &*& alloc_block_Stack(stack) &*& 0 <= count &*& Nodes(head, count);
+    (*stack).head |-> ?head &*& alloc_block(stack as *mut u8, Layout::new::<Stack>()) &*& 0 <= count &*& Nodes(head, count);
 
 @*/
 
 unsafe fn dispose_nodes(n: *mut Node)
-//@ req Nodes(n, _);
+//@ req Nodes(n, ?count);
 //@ ens true;
 {
-    //@ open Nodes(n, _);
+    //@ open Nodes(n, count);
     if !n.is_null() {
         dispose_nodes((*n).next);
         dealloc(n as *mut u8, Layout::new::<Node>());
@@ -98,10 +98,10 @@ impl Stack {
     }
     
     unsafe fn dispose(stack: *mut Stack)
-    //@ req Stack(stack, _);
+    //@ req Stack(stack, ?count);
     //@ ens true;
     {
-        //@ open Stack(stack, _);
+        //@ open Stack(stack, count);
         dispose_nodes((*stack).head);
         dealloc(stack as *mut u8, Layout::new::<Stack>());
     }

@@ -164,7 +164,7 @@ unsafe fn print_u64(value: u64)
     println!("{}", value);
 }
 
-//@ pred_ctor inspect_tree_post(tree: *mut Tree, depth: i32)(result: u64) = [1/2]Tree(tree, depth);
+//@ pred_ctor inspect_tree_post(tree: *mut Tree, depth: u8)(result: u64) = [1/2]Tree(tree, depth);
 //@ pred inspect_tree_pre(tree: *mut Tree, post: pred(u64)) = [1/2]Tree(tree, ?depth) &*& post == inspect_tree_post(tree, depth);
 
 fn main()

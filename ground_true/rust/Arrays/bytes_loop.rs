@@ -45,20 +45,9 @@ unsafe fn alloc(count: usize) -> *mut u8
 
 /*@
 
-lem_auto bytes_count_nonneg()
-    req bytes(?start, ?count);
-    ens bytes(start, count) &*& 0 <= count;
-{
-    open bytes(start, count);
-    if count != 0 {
-        bytes_count_nonneg();
-    }
-    close bytes(start, count);
-}
-
-lem bytes_add_byte(start: *mut u8)
-    req bytes(start, ?count) &*& *(start + count) |-> ?_;
-    ens bytes(start, count + 1);
+lemma void bytes_add_byte(start: *mut u8)
+    requires bytes(start, ?count) &*& *(start + count) |-> ?_;
+    ensures bytes(start, count + 1);
 {
     open bytes(start, count);
     if count == 0 {
@@ -78,7 +67,7 @@ unsafe fn read_bytes(start: *mut u8, count: usize)
     //@ close bytes(start, 0);
     let mut i = 0;
     loop {
-        //@ inv bytes(start, i) &*& bytes_(start + i, count - i);
+        //@ inv bytes(start, i) &*& bytes_(start + i, count - i) &*& 0 <= i &*& i <= count;
         if i == count { break; }
         let b = read_byte();
         //@ open bytes_(start + i, count - i);
@@ -96,7 +85,7 @@ unsafe fn write_bytes(start: *mut u8, count: usize)
     //@ close bytes(start, 0);
     let mut i = 0;
     loop {
-        //@ inv bytes(start, i) &*& bytes(start + i, count - i);
+        //@ inv bytes(start, i) &*& bytes(start + i, count - i) &*& 0 <= i &*& i <= count;
         if i == count { break; }
         //@ open bytes(start + i, count - i);
         let b = *start.add(i);

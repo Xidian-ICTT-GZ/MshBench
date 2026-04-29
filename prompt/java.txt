@@ -1,51 +1,162 @@
 You are an expert VeriFast Java annotator.
 
-Task:
-Given one Java source file, add only VeriFast annotations so that verification is as likely as possible to pass.
+Task:  
+Given one Java source file, add only VeriFast-Java annotations so that verification is as likely as possible to pass.
 
 Output format (strict):
 - Output exactly one complete Java source file.
-- Output only code (no Markdown, no explanations).
-- Keep every original Java statement and token unchanged.
-- Do not rename classes, methods, fields, variables, files, packages, or imports.
-- Do not add/remove classes or methods.
-- You may only add or edit VeriFast annotations and ghost declarations.
+- Output only code (no Markdown, no explanations, no extra text).
+- Keep every original Java token and statement unchanged (same text, same order).
+- Do not rename classes, interfaces, enums, methods, fields, variables, packages, or imports.
+- Do not add or remove classes, interfaces, enums, or methods.
+- Do not modify any existing Java code (no changed expressions, no added/removed statements).
+- You may only add or edit VeriFast annotations and ghost declarations (inside comments).
+ - Preserve the original source body verbatim, including formatting and blank-line placement, unless adding a comment annotation requires an extra line.
+ - If an annotation would force you to rewrite runtime Java code, do not rewrite the code; use a weaker annotation instead.
 
-VeriFast Java syntax requirements:
-- Method contracts and inline proof commands use line comments:
+Java-specific model and VeriFast support (must respect):
+- Java has references and garbage collection:
+  - No manual `free`, no pointer arithmetic, no address-of (`&`) operator.
+  - You NEVER specify deallocation; focus on safe field and array access and ownership.
+- Objects are created with `new` and accessed via `.`; arrays use `[]` and have `length`.
+- VeriFast for Java reasons about:
+  - `null`-checks and reference validity (no null dereference).
+  - Field and array element permissions and ownership.
+  - Class invariants/model predicates over `this` and other objects.
+- VeriFast Java uses Java-like syntax in annotations:
+  - Use `result` (not `\result`) in postconditions to refer to the return value.
+  - Use Java boolean operators `&&`, `||`, `!` inside expressions.
+  - Use `&*&` only as separating conjunction between heap resources, not as a boolean operator.
+
+VeriFast Java annotation syntax (very strict):
+- Method contracts must be placed IMMEDIATELY AFTER the method signature, before the opening brace '{'.
+  CORRECT placement:
+    public void foo(int x)
+      //@ requires true;
+      //@ ensures true;
+    {
+      ...
+    }
+  INCORRECT placement:
+    //@ requires true;
+    //@ ensures true;
+    public void foo(int x) {
+      ...
+    }
+- Method contracts and inline proof commands must use line comments, each on its own line in method or class bodies:
   //@ requires ...;
   //@ ensures ...;
   //@ invariant ...;
   //@ open P(...);
   //@ close P(...);
   //@ assert ...;
-- Predicate/fixpoint declarations must be inside block annotation comments:
+- Class-level predicates, fixpoints, and other ghost declarations must be in block comments:
   /*@
   predicate P(...) = ...;
   @*/
-- Use `result` in postconditions for return values.
-- Use `&*&` for separating conjunction.
-- Do NOT use JML/OpenJML syntax.
+- Every VeriFast command must end with a semicolon `;`.
+- Every line annotation must start exactly with `//@` (no spaces before `//`).
+- Every block annotation must start with `/*@` and end with `@*/` (no stray `*/`).
+- Use `&*&` to separate heap chunks (e.g., `P(this) &*& Q(this)`), never `&&` for separation.
+- Do NOT use JML/OpenJML syntax (no `/*@ requires ... @*/` JML style, no `\result`, no `\forall`).
+- Do NOT use C-specific VeriFast syntax (no `\result`, no pointer types, no `malloc`).
 
-High-priority reliability rules:
-1. Preserve Java compilability first.
-2. Keep annotations minimal and conservative; prefer weak but valid contracts over strong incorrect ones.
-3. If a method mutates fields, open the object predicate before mutation and close it on every return path.
-4. Keep loop invariants short and only include necessary bounds/ownership facts.
-5. Reuse existing predicate names/arity if already present; do not create conflicting duplicates.
-6. Avoid speculative arithmetic/functional claims that are hard to prove.
+Java-appropriate default contract style:
+- When in doubt, use the weakest safe contract:
+  //@ requires true;
+  //@ ensures true;
+- But avoid degenerate outputs where almost all methods use only trivial true/true contracts.
+- Only add stronger heap-related contracts (object predicates, array element permissions) when a method:
+  - Reads or writes instance fields (`this.f`).
+  - Reads or writes static fields.
+  - Reads or writes array elements (`a[i]`).
+- Even in those cases, keep the contracts as simple as possible.
 
-Common failure patterns to avoid:
-- Putting `predicate` declarations in `//@` lines.
-- Adding syntax not supported by VeriFast Java.
-- Changing class or member names.
-- Leaving predicates open on some branches.
-- Introducing comments or prose outside code.
+Required working method (step-by-step):
 
-When uncertain, use this safe fallback style:
-- requires true;
-- ensures true;
-- plus only the minimum ownership predicate needed for field dereference/write.
+1. Preserve original Java code exactly.
+   - Do not change any Java code: packages, imports, class headers, fields, method signatures, method bodies.
+   - Only insert or edit VeriFast comments.
+  - Copy the file mentally first, then add annotations around the unchanged body.
+  - Never reorder declarations, normalize whitespace, or "clean up" code style.
+  - When in doubt, leave runtime code untouched and weaken the specification.
+
+2. Add minimal method contracts, leveraging Java semantics:
+   - For methods that only use local variables and parameters, and do not access fields or arrays:
+     - Use:
+       //@ requires true;
+       //@ ensures true;
+   - For methods that dereference references (e.g., `this.f`, `x.f`, `a[i]`):
+     - At minimum, ensure references are allowed to be anything:
+       //@ requires true;
+       //@ ensures true;
+     - If you are confident that a parameter must be non-null (e.g., the code directly uses `x.f` without a null check), you may state:
+       //@ requires x != null;
+       //@ ensures true;
+     - Avoid more complex heap properties unless clearly necessary and easy.
+
+3. Define Java predicates for ownership only when needed:
+   - Predicates typically describe object invariants or ownership of fields:
+     /*@
+     predicate MyInv(MyClass this) = true;
+     @*/
+   - For simple ownership tracking, you can define:
+     /*@
+     predicate Owns(MyClass this) = this != null;
+     @*/
+   - Keep predicate bodies minimal (e.g., `true` or simple field chunks) to avoid complex proofs:
+     /*@
+     predicate Owns(MyClass this) =
+       this != null;
+     @*/
+   - Put predicates inside the class they describe (class scope, not top-level file scope).
+
+4. Using object predicates with Java methods:
+   - If you use a predicate `Inv` to represent a class invariant for `this`:
+     - Method contract can be:
+       //@ requires Inv(this);
+       //@ ensures Inv(this);
+   - If the method mutates fields and needs to open the invariant:
+     - At the beginning (when needed):
+       //@ open Inv(this);
+     - After finishing field updates, before every `return`:
+       //@ close Inv(this);
+   - Ensure that on all return paths, `Inv(this)` is closed again, reflecting Java’s class invariant style.
+
+5. Arrays and Java-specific details:
+   - For Java arrays `T[] a`, VeriFast can reason about array length and indices.
+   - If you need a loop invariant for an index `i`:
+     - Use:
+       //@ invariant 0 <= i && i <= a.length;
+   - Do not attempt to assert content-based properties (like sorting) unless trivial.
+   - Do not assert Java-specific behavior (like `a.length` never changes) unless necessary; VeriFast already knows that.
+
+6. Loops (for, while, do-while):
+   - If the loop does not touch heap (no field or array access), you can use:
+     //@ invariant true;
+   - If the loop does use arrays or fields and verification fails without bounds:
+     - Use a simple bound invariant:
+       //@ invariant 0 <= i && i <= a.length;
+   - Do not add complex invariants about Java semantics (e.g., “list length is preserved”) unless trivial.
+
+7. Avoid Java- and VeriFast-specific pitfalls:
+   - Do not mix Java and C contracts: always use `result`, not `\result`.
+   - Do not declare Java generics in predicate signatures using `<T>`; if you must, keep predicate parameters simple and concrete types.
+   - Do not use method overloading for predicates (same name with different argument types) — use distinct predicate names.
+   - Do not refer to Java locals outside their scope in annotations.
+   - Do not leave any predicate (`open P(...)`) unclosed on a path that returns.
+
+8. When uncertain, stay extremely conservative:
+  - You may use true/true only for methods that are clearly heap-irrelevant.
+  - For files with object fields/arrays/loops, include at least some non-trivial contracts or invariants.
+  - Avoid outputs that contain only trivial contracts and no useful predicates/invariants.
+  - Do not trade source fidelity for a stronger proof; preserve the original body first.
+
+Final output rules:
+- Output exactly one complete Java source file.
+- It must compile as standard Java (annotations are comments).
+- It must be directly usable by VeriFast Java.
+- Do not wrap output in Markdown or add any explanation.
 
 Java source code:
 <<<CODE

@@ -42,7 +42,7 @@ impl Account {
     }
 
     unsafe fn deposit(my_account: *mut Account, amount: i32)
-    //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount;
+    //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount &*& balance + amount <= 2147483647;
     //@ ens Account_pred(my_account, limit, balance + amount);
     {
         //@ open Account_pred(my_account, limit, balance);
@@ -51,7 +51,7 @@ impl Account {
     }
 
     unsafe fn withdraw(my_account: *mut Account, amount: i32) -> i32
-    //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount;
+    //@ req Account_pred(my_account, ?limit, ?balance) &*& 0 <= amount &*& -2147483648 <= balance - amount &*& -2147483648 <= balance - limit &*& balance - limit <= 2147483647;
     /*@
     ens Account_pred(my_account, limit, balance - result) &*&
         result == if balance - amount < limit { balance - limit } else { amount };

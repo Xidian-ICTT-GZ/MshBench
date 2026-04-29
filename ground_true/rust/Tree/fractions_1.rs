@@ -4,7 +4,7 @@ use std::thread;
 pred_ctor inspect_tree_post(tree: *mut Tree, depth: i32)(result: u64) =
 [1/2]Tree(tree, depth);
 pred inspect_tree_pre(tree: *mut Tree, post: pred(u64)) =
-[1/2]Tree(tree, ?depth) &*& post == inspect_tree_post(tree, depth);
+exists i32 depth; [1/2]Tree(tree, depth) &*& post == inspect_tree_post(tree, depth);
 @*/
 
 struct Tree {
@@ -37,26 +37,26 @@ fn main()
         let tree = Tree::make(22);
         /*@ produce_fn_ptr_chunk Spawnee<*mut Tree, u64>(Tree::compute_sum_fibs)
         (inspect_tree_pre)(arg) {
-            open inspect_tree_pre(arg, _);
+            open inspect_tree_pre(arg, ?post);
             assert [1/2]Tree(arg, ?depth);
             let result = call();
-            close inspect_tree_post(arg, depth)(result);
+            close post(result);
         }
         @*/
-        //@ close inspect_tree_pre(tree, _);
+        //@ close inspect_tree_pre(tree, inspect_tree_post(tree, 22));
 
         // Rust 线程版 spawn
         let sum_join_handle = thread::spawn(move || Tree::compute_sum_fibs(tree));
 
         /*@ produce_fn_ptr_chunk Spawnee<*mut Tree, u64>(Tree::compute_product_fibs)
         (inspect_tree_pre)(arg) {
-            open inspect_tree_pre(arg, _);
+            open inspect_tree_pre(arg, ?post);
             assert [1/2]Tree(arg, ?depth);
             let result = call();
-            close inspect_tree_post(arg, depth)(result);
+            close post(result);
         }
         @*/
-        //@ close inspect_tree_pre(tree, _);
+        //@ close inspect_tree_pre(tree, inspect_tree_post(tree, 22));
 
         let product_join_handle = thread::spawn(move || Tree::compute_product_fibs(tree));
 

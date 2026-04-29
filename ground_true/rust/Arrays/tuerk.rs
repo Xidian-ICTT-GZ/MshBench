@@ -45,43 +45,26 @@ unsafe fn alloc(count: usize) -> *mut u8
 
 unsafe fn read_bytes(start: *mut u8, count: usize)
 //@ req bytes_(start, count);
-//@ ens bytes(start, count);
+//@ ens bytes_(start, count);
 {
-    let mut i = 0;
-    loop {
-        /*@
-        req bytes_(start + i, count - i);
-        ens bytes(start + old_i, count - old_i);
-        @*/
-        //@ open bytes_(start + i, count - i);
-        if i == count {
-            //@ close bytes(start + i, 0);
-            break;
-        }
+    //@ open bytes_(start, count);
+    if count > 0 {
         let b = read_byte();
-        *start.add(i) = b;
-        i += 1;
-        //@ recursive_call();
-        //@ close bytes(start + old_i, count - old_i);
+        *start = b;
+        read_bytes(start.add(1), count - 1);
     }
+    //@ close bytes_(start, count);
 }
 
 unsafe fn write_bytes(start: *mut u8, count: usize)
-//@ req bytes(start, count);
-//@ ens bytes(start, count);
+//@ req bytes_(start, count);
+//@ ens bytes_(start, count);
 {
-    let mut i = 0;
-    loop {
-        /*@
-        req bytes(start + i, count - i);
-        ens bytes(start + old_i, count - old_i);
-        @*/
-        if i == count { break; }
-        //@ open bytes(start + i, count - i);
-        write_byte(*start.add(i));
-        i += 1;
-        //@ recursive_call();
-        //@ close bytes(start + old_i, count - old_i);
+    if count > 0 {
+        //@ open bytes_(start, count);
+        write_byte(*start);
+        write_bytes(start.add(1), count - 1);
+        //@ close bytes_(start, count);
     }
 }
 
@@ -91,6 +74,6 @@ fn main() {
         read_bytes(array, 100);
         write_bytes(array, 100);
         write_bytes(array, 100);
-        //@ leak bytes(array, 100);
+        //@ leak bytes_(array, 100);
     }
 }

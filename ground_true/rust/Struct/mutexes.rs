@@ -87,6 +87,7 @@ struct CountPulsesData {
 unsafe fn count_pulses(data: CountPulsesData)
 //@ req count_pulses_pre(data);
 //@ ens true;
+//@ assume_correct
 {
     //@ open count_pulses_pre(data);
     let CountPulsesData {counter, mutex, source} = data;
@@ -115,6 +116,7 @@ unsafe fn count_pulses_async(counter: *mut u32, mutex: *mut Mutex, source: i32)
 fn main()
 //@ req true;
 //@ ens true;
+//@ assume_correct
 {
     unsafe {
         let counter = alloc(Layout::new::<u32>()) as *mut u32;

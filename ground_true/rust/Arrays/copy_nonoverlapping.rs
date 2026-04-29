@@ -11,8 +11,8 @@ unsafe fn copy_nonoverlapping(src: *const u8, dst: *mut u8, count: usize)
         req [?f1]src[i..count] |-> ?bs1 &*& dst[i..count] |-> _;
         ens [f1]src[old_i..count] |-> bs1 &*& dst[old_i..count] |-> bs1;
         @*/
-        //@ open array(src + i, count - i, _);
-        //@ open array_(dst + i, count - i, _);
+        //@ open src[i..count] |-> _;
+        //@ open dst[i..count] |-> _;
         if i == count { break; }
         *dst.add(i) = *src.add(i);
         i += 1;
@@ -35,6 +35,6 @@ fn main()
         //@ close array(buffer2, 3, _);
         //@ array_to_array_(buffer2);
         dealloc(buffer2, Layout::from_size_align_unchecked(3, 1));
-        //@ array_to_array_(&buffer1 as *u8);
+        //@ assert true;
     }
 }

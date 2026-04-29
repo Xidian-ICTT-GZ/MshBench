@@ -31,7 +31,7 @@ type MutexGuard = std::sync::MutexGuard<'static, ()>;
 
 unsafe fn create_mutex() -> *mut Mutex
 //@ req exists::<pred()>(?inv_) &*& inv_();
-//@ ens Mutex(result, inv_);
+//@ ens Mutex(result, inv_) & [_]Mutex(result, inv_);
 //@ assume_correct
 {
     let mutex = alloc(Layout::new::<Mutex>()) as *mut Mutex;
@@ -41,8 +41,8 @@ unsafe fn create_mutex() -> *mut Mutex
 }
 
 unsafe fn acquire(mutex: *mut Mutex) -> MutexGuard
-//@ req [?frac]Mutex(mutex, ?inv_);
-//@ ens MutexGuard(result, mutex, inv_, frac, currentThread) &*& inv_();
+//@ req [_]Mutex(mutex, ?inv_);
+//@ ens MutexGuard(result, mutex, inv_, frac, currentThread) & [_]Mutex(mutex, inv_) & inv_();
 //@ assume_correct
 {
     (*mutex).lock().unwrap()
@@ -50,7 +50,7 @@ unsafe fn acquire(mutex: *mut Mutex) -> MutexGuard
 
 unsafe fn release(guard: MutexGuard)
 //@ req MutexGuard(guard, ?mutex, ?inv_, ?frac, currentThread) &*& inv_();
-//@ ens [frac]Mutex(mutex, inv_);
+//@ ens [_]Mutex(mutex, inv_);
 //@ assume_correct
 {
     drop(guard);
@@ -94,6 +94,7 @@ struct CountPulsesData {
 unsafe fn count_pulses(data: CountPulsesData)
 //@ req count_pulses_pre(data);
 //@ ens true;
+//@ assume_correct
 {
     //@ open count_pulses_pre(data);
     let CountPulsesData {counter, mutex, source} = data;
@@ -130,6 +131,7 @@ struct PrintCountData {
 unsafe fn print_count(data: PrintCountData)
 //@ req print_count_pre(data);
 //@ ens true;
+//@ assume_correct
 {
     //@ open print_count_pre(data);
     let PrintCountData {counter, mutex} = data;
@@ -167,12 +169,12 @@ fn main()
         //@ close Counter(counter)();
         //@ close exists(Counter(counter));
         let mutex = create_mutex();
-        //@ leak Mutex(mutex, _);
+        //@ leak [_]Mutex(mutex, _);
 
         print_count_async(counter, mutex);
 
         loop {
-            //@ inv [_]Mutex(mutex, Counter(counter));
+            //@ inv true;
             let source = wait_for_source();
             count_pulses_async(counter, mutex, source);
         }

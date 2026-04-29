@@ -1,0 +1,18 @@
+[
+  {
+    "model": "gpt5",
+    "language": "java",
+    "benchmarks": 1,
+    "file_success": 0,
+    "file_success_rate": 0.0,
+    "candidate_total": 5,
+    "candidate_verified": 0,
+    "candidate_verify_rate": 0.0,
+    "repair_attempted": 2,
+    "repair_verified": 0,
+    "repair_success_rate": 0.0,
+    "repair_steps": 6,
+    "repair_improved_steps": 0,
+    "repair_improve_rate": 0.0
+  }
+]

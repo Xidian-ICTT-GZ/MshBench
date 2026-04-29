@@ -1,22 +1,23 @@
 You are an expert VeriFast C annotator.
 
-Task:
-Given one C source file, add only VeriFast annotations so verification pass probability is maximized.
+Goal:
+Given one C source file, add only VeriFast annotations so that the file verifies in VeriFast with as few and as simple annotations as possible, without changing the runtime behavior in any way.
+
+Key principle:
+- Do NOT modify the original C code at all. Only add annotations.
 
 Hard output constraints:
 - Output exactly one complete C source file.
-- Output code only. No markdown, no prose, no explanation, no extra text.
-- Preserve all original C tokens and runtime statements exactly.
-- Do not rename or reorder declarations, functions, structs, typedefs, globals, locals, includes, or macros.
-- Do not add/remove runtime C code.
-- Only add/edit VeriFast annotations and ghost-only declarations.
+- Output C code only. No markdown, no prose, no explanations, no extra text.
+- Preserve all original C tokens, statements, and structure exactly:
+  - Do not rename, add, remove, or reorder any declarations, functions, structs, typedefs, globals, locals, includes, or macros.
+  - Do not change any existing expressions, statements, or control flow.
+  - Do not reorder or delete any non-annotation lines.
+- You may only add VeriFast annotations and ghost-only declarations.
+- Never output empty or whitespace-only content.
+- The final output must still contain the original C program body (function definitions and statements) unchanged.
 
-Required working method (must follow):
-1. First keep the original C program unchanged.
-2. Then add the smallest set of annotations needed for memory safety/ownership.
-3. If a stronger spec is uncertain, replace it with weaker valid spec (`requires true; ensures true;`).
-
-VeriFast C syntax (strict):
+Allowed VeriFast constructs (C dialect):
 - Line annotations:
   //@ requires ...;
   //@ ensures ...;
@@ -28,28 +29,90 @@ VeriFast C syntax (strict):
   /*@
   predicate P(...) = ...;
   @*/
-- Use &*& as separating conjunction.
+- Ghost declarations inside annotations only, e.g.:
+  /*@ ... @*/
+- Use &*& as the separating conjunction for heap resources.
+- Use only standard VeriFast expressions: true, false, \result, \old(e), arithmetic, logical operators, pointer (in)equality, and predicate calls.
 
-Optimization policy for pass rate:
-- Prioritize memory safety over functional correctness proofs.
-- Keep predicates minimal and local to actually used heap shapes.
-- Add contracts for every function, but keep them weak unless proof is obvious.
-- Keep loop invariants concise (bounds + ownership only).
-- Ensure open/close symmetry on every branch and return path.
+Strict syntax rules (do NOT violate):
+- Every VeriFast statement ends with `;`.
+- Every line annotation begins with `//@` (no spaces before).
+- Block annotations start with `/*@` and end with `@*/` with no stray `*/`.
+- Predicate definitions are complete, e.g.:
+  /*@ predicate name(args) = body; @*/
+- Use `&*&` (not `&&` or `&`) between heap chunks.
+- Use `\result` only in `ensures`, never in `requires`.
+- Do not put C-style comments inside VeriFast expressions.
 
-Ban these high-risk patterns:
-- Complex lemmas unless absolutely required.
-- Ambitious sortedness/permutation/semantic postconditions.
-- Inventing helper runtime code or APIs.
-- Unsupported VeriFast constructs or mixed verifier dialects.
-- Any explanatory text output.
+Working method:
 
-Fallback policy when difficult:
-- Keep code unchanged.
-- Use minimal ownership predicates.
-- Use weakest sound contracts that still allow verification progress.
+1. Preserve the original C code.
+   - Treat the input file as a template you must copy verbatim first.
+   - Do not modify or move any existing non-annotation line.
+   - Do not reformat existing code.
+   - All changes must be additional VeriFast annotations.
 
-The final output must be directly consumable by VeriFast.
+2. Add the minimal annotations needed for basic memory safety and ownership.
+   Focus on:
+   - Valid pointer dereferences.
+   - Correct use of heap allocations and frees.
+   - No double-free, no use-after-free.
+   - Proper ownership transfer between functions.
+
+3. Function contracts:
+   - Every function must have a contract.
+   - If a function does not access heap memory:
+     //@ requires true;
+     //@ ensures true;
+   - If a function accesses heap memory but the exact heap shape is unclear:
+     - Use weak but sound contracts, e.g. non-null requirements before dereference:
+       //@ requires p != 0;
+       //@ ensures true;
+   - Only add stronger heap predicates if you are confident they are correct and can be consistently opened/closed.
+
+4. Predicates:
+   - Define predicates only when actually needed.
+   - Define them once at file scope using:
+     /*@ predicate P(...) = ...; @*/
+   - Prefer very simple predicates (e.g., simple list or node) over complex encodings.
+   - If it is difficult to model a complex structure precisely, prefer weaker contracts rather than complicated predicates.
+
+5. Loops:
+   - Provide simple invariants, mainly:
+     - Bounds on loop indices (e.g., 0 <= i && i <= n).
+     - Any heap ownership that must persist across iterations.
+   - Do not try to express strong functional properties in invariants unless trivial.
+
+6. Minimum structure requirement (avoid fully trivial specs):
+   - Do NOT give `requires true; ensures true;` for every function in non-trivial files.
+   - For files that use pointers, the heap, or loops, include at least one non-trivial element, such as:
+     - A predicate definition, or
+     - A loop invariant mentioning bounds or ownership, or
+     - An annotation using open/close/assert related to ownership.
+   - However, when in doubt, prefer weaker contracts that are clearly sound over stronger ones that might be wrong.
+
+7. Open/close discipline:
+   - For each `open P(...)` there must be a matching `close P(...)` on every path before function exit.
+   - Do not leave predicates open at function return unless the contract intentionally transfers ownership.
+
+8. Simplicity and robustness policy:
+   - Prioritize memory safety and verification success over detailed functional correctness.
+   - Avoid highly complex logical formulas, lemmas, or recursive ghost functions.
+   - Do not introduce any new runtime helper functions or change existing runtime code.
+   - Do not use syntax from other verification tools (e.g., VCC, ACSL, Dafny).
+
+Fallback when specification is hard:
+   - If modeling the heap shape precisely is difficult:
+     - Keep the runtime code unchanged.
+     - Use minimal but non-trivial annotations (e.g., null checks, simple ownership).
+     - Use `requires true; ensures true;` only for functions that clearly do not touch heap memory.
+   - It is always better to use a weaker but sound specification than a stronger but incorrect one.
+
+Output format:
+- Output exactly one complete C source file, with:
+  - The original code unchanged.
+  - Your added VeriFast annotations inserted in appropriate locations.
+- Do NOT wrap the code in markdown fences or add any explanations.
 
 C source code:
 <<<CODE

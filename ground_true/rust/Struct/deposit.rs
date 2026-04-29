@@ -10,7 +10,7 @@ impl Account {
 
     unsafe fn create() -> *mut Account
     //@ req true;
-    //@ ens Account_balance(result, 0) &*& alloc_block_Account(result);
+    //@ ens Account_balance(result, 0);
     {
         let my_account = alloc(Layout::new::<Account>()) as *mut Account;
         if my_account.is_null() {
@@ -35,14 +35,14 @@ impl Account {
     }
 
     unsafe fn deposit(my_account: *mut Account, amount: i32)
-    //@ req Account_balance(my_account, ?theBalance);
+    //@ req Account_balance(my_account, ?theBalance) &*& -2147483648 <= theBalance + amount && theBalance + amount <= 2147483647;
     //@ ens Account_balance(my_account, theBalance + amount);
     {
         (*my_account).balance += amount;
     }
 
     unsafe fn dispose(my_account: *mut Account)
-    //@ req Account_balance(my_account, _) &*& alloc_block_Account(my_account);
+    //@ req Account_balance(my_account, _);
     //@ ens true;
     {
         dealloc(my_account as *mut u8, Layout::new::<Account>());

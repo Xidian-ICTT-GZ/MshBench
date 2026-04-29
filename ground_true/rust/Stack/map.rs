@@ -37,7 +37,7 @@ unsafe fn map_nodes(n: *mut Node, f: I32Func, data: *mut u8)
 //@ req Nodes(n, ?count) &*& [_]is_I32Func(f, ?data_pred) &*& data_pred(data);
 //@ ens Nodes(n, count) &*& data_pred(data);
 {
-    //@ open Nodes(n, _);
+    //@ open Nodes(n, count);
     if !n.is_null() {
         let y = f(data, (*n).value);
         (*n).value = y;
@@ -107,7 +107,7 @@ impl Stack {
     //@ req Stack(stack, ?count) &*& [_]is_I32Func(f, ?data_pred) &*& data_pred(data);
     //@ ens Stack(stack, count) &*& data_pred(data);
     {
-        //@ open Stack(stack, _);
+        //@ open Stack(stack, count);
         map_nodes((*stack).head, f, data);
         //@ close Stack(stack, count);
     }
@@ -123,7 +123,7 @@ impl Stack {
 
 }
 
-//@ pred plus_a_data(data: *mut u8) = *(data as *i32) |-> ?_;
+//@ pred plus_a_data(data: *mut u8) = *(data as *mut i32) |-> ?_;
 
 unsafe fn plus_a(data: *mut u8, x: i32) -> i32
 //@ req plus_a_data(data);
@@ -160,9 +160,9 @@ fn main()
             call();
         }
         @*/
-        //@ close plus_a_data(&a as *mut u8);
+        //@ close plus_a_data(&mut a as *mut u8);
         Stack::map(s, plus_a, &raw mut a as *mut u8);
-        //@ open plus_a_data(&a as *mut u8);
+        //@ open plus_a_data(&mut a as *mut u8);
         Stack::dispose(s);
     }
 }

@@ -1,0 +1,2 @@
+model,language,benchmarks,file_success,file_success_rate,candidate_total,candidate_verified,candidate_verify_rate,repair_attempted,repair_verified,repair_success_rate,repair_steps,repair_improved_steps,repair_improve_rate
+gpt5,c,2,1,0.5,10,5,0.5,4,0,0.0,12,1,0.08333333333333333

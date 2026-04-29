@@ -10,7 +10,7 @@ fn_type Spawnee<A, R>(pre: pred(A, pred(R))) = unsafe fn(arg: A) -> R;
     req pre(arg, ?post);
     ens post(result);
 
-pred JoinHandle<R>(h: JoinHandle<Sendable<R>>, post: pred(R));
+pred ThreadJoinHandle<R>(h: JoinHandle<Sendable<R>>, post: pred(R));
 
 @*/
 
@@ -22,7 +22,7 @@ unsafe impl<T> Send for Sendable<T> {}
 unsafe fn spawn<A, R>(f: Spawnee<A, R>, arg: A) -> JoinHandle<Sendable<R>>
 where A: 'static, R: 'static
 //@ req [_]is_Spawnee::<A, R>(f, ?pre) &*& pre(arg, ?post);
-//@ ens JoinHandle(result, post);
+//@ ens ThreadJoinHandle(result, post);
 //@ assume_correct
 {
     let package = Sendable { payload: arg };
@@ -33,7 +33,7 @@ where A: 'static, R: 'static
 }
 
 unsafe fn join<R>(h: JoinHandle<Sendable<R>>) -> R
-//@ req JoinHandle(h, ?post);
+//@ req ThreadJoinHandle(h, ?post);
 //@ ens post(result);
 //@ assume_correct
 {
@@ -74,9 +74,10 @@ struct Tree {
 /*@
 
 pred Tree(t: *mut Tree, depth: u8) =
-    if t == 0 {
-        depth == 0
+    if depth == 0 {
+        t == 0
     } else {
+        t != 0 &*&
         (*t).left |-> ?left &*& Tree(left, depth - 1) &*&
         (*t).right |-> ?right &*& Tree(right, depth - 1) &*&
         (*t).value |-> ?value &*&
@@ -153,7 +154,7 @@ unsafe fn print_u64(value: u64)
 }
 
 /*@
-pred_ctor inspect_tree_post(tree: *mut Tree, depth: i32)(result: u64) =
+pred_ctor inspect_tree_post(tree: *mut Tree, depth: u8)(result: u64) =
     [1/2]Tree(tree, depth);
 pred inspect_tree_pre(tree: *mut Tree, post: pred(u64)) =
     [1/2]Tree(tree, ?depth) &*& post == inspect_tree_post(tree, depth);

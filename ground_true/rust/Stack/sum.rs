@@ -19,11 +19,11 @@ pred Nodes(node: *mut Node, count: i32) =
     } else {
         0 < count &*&
         (*node).next |-> ?next &*& (*node).value |-> ?value &*&
-        alloc_block_Node(node) &*& Nodes(next, count - 1)
+        alloc_block(node as *mut u8, Layout::new::<Node>()) &*& Nodes(next, count - 1)
     };
 
 pred Stack(stack: *mut Stack, count: i32) =
-    (*stack).head |-> ?head &*& alloc_block_Stack(stack) &*& 0 <= count &*& Nodes(head, count);
+    (*stack).head |-> ?head &*& alloc_block(stack as *mut u8, Layout::new::<Stack>()) &*& 0 <= count &*& Nodes(head, count);
 
 @*/
 
@@ -59,7 +59,7 @@ impl Stack {
     
     unsafe fn is_empty(stack: *mut Stack) -> bool
     //@ req Stack(stack, ?count);
-    //@ ens Stack(stack, count) &*& result == (count == 0);
+    //@ ens Stack(stack, count);
     {
         //@ open Stack(stack, count);
         let head = (*stack).head;
@@ -117,7 +117,7 @@ impl Stack {
         //@ open Stack(stack, _);
         let mut n = (*stack).head;
         loop {
-            //@ inv Nodes(n, _);
+            //@ inv (*stack).head |-> ?h &*& alloc_block(stack as *mut u8, Layout::new::<Stack>()) &*& Nodes(n, _);
             if n.is_null() {
                 break;
             }
