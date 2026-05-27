@@ -14,40 +14,40 @@ This project investigates the ability of large language models (LLMs) to generat
 
 ```
 ├── pipeline/                  # Core experiment pipeline
-│   ├── configs/               # Experiment and model configuration (JSON)
-│   ├── run_spec_experiment.py           # Main experiment entry point
-│   ├── run_generation_stage.py          # Generation stage (LLM + VeriFast)
-│   ├── run_repair_stage.py              # 3-round verifier-guided repair
-│   ├── run_pass_at_5.py                 # Standalone pass@k + evaluation
-│   ├── experiment_utils.py              # Shared utilities (call_llm, run_verifast, ...)
-│   ├── llm_spec_config.py               # Configuration loader
-│   ├── llm_spec_prompts.py              # Prompt template management
-│   ├── error_taxonomy.py                # Failure classification taxonomy
-│   ├── build_benchmark_metadata.py      # Benchmark metadata builder
-│   ├── build_spec_free_dataset.py       # Spec-free dataset builder
-│   ├── stat_ground_true_dataset.py      # Ground truth dataset statistics
-│   ├── summarize_experiment_results.py  # Result summarization
-│   └── summarize_extended_metrics.py    # Extended metric computation
-├── analysis/                  # Standalone analysis & utility scripts
-│   ├── compute_rq3_residuals.py         # RQ3: Residual error analysis
-│   ├── compute_rq4_costs.py             # RQ4: Token/time cost analysis
-│   ├── generate_specs.py                # Spec generation utilities
-│   ├── analyze_sar_tcr_vsr.py           # SAR/TCR/VSR analysis
-│   ├── batch_semantic_consistency.py    # Semantic consistency checks
-│   ├── llm_spec_runner.py               # LLM spec generation runner
-│   ├── repair_ground_true_rust_specs_gpt5.py  # Rust spec repair
-│   └── run_llm_spec_pipeline.py         # Legacy pipeline wrapper
-├── benchmark/                 # Benchmark source files (c/, java/, rust/)
-├── data/                      # Benchmark metadata and dataset
-├── ground_true/               # Ground truth specifications
-├── prompt/                    # Language-specific prompt templates
+│   ├── configs/
+│   ├── run_spec_experiment.py
+│   ├── run_generation_stage.py
+│   ├── run_repair_stage.py
+│   ├── run_pass_at_5.py
+│   ├── experiment_utils.py
+│   ├── llm_spec_config.py
+│   ├── llm_spec_prompts.py
+│   ├── error_taxonomy.py
+│   ├── build_benchmark_metadata.py
+│   ├── build_spec_free_dataset.py
+│   ├── stat_ground_true_dataset.py
+│   ├── summarize_experiment_results.py
+│   └── summarize_extended_metrics.py
+├── analysis/                  # Standalone scripts
+│   ├── compute_rq3_residuals.py
+│   ├── compute_rq4_costs.py
+│   ├── generate_specs.py
+│   ├── analyze_sar_tcr_vsr.py
+│   ├── batch_semantic_consistency.py
+│   ├── llm_spec_runner.py
+│   ├── repair_ground_true_rust_specs_gpt5.py
+│   └── run_llm_spec_pipeline.py
+├── benchmark/
+├── data/
+├── ground_true/
+├── prompt/
 │   ├── c.txt
 │   ├── java.txt
 │   └── rust.txt
-├── output_*/                  # Experiment run outputs
-├── paper/                     # Analysis outputs (CSV tables, summaries)
-├── Dockerfile                 # Docker build (Ubuntu 22.04 + VeriFast + Rust)
-└── README.md                  # This file
+├── output_*/
+├── paper/
+├── Dockerfile
+└── README.md
 ```
 
 ## Quick Start
