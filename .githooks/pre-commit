@@ -1,0 +1,24 @@
+#!/bin/bash
+# Git pre-commit hook: auto-replace @VERSION@ in tracked files with latest git tag
+# Install: ln -sf ../../.githooks/pre-commit .git/hooks/pre-commit
+
+set -e
+
+# Get the latest tag; fallback to "0.0.0" if no tag exists
+LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
+
+# Files that contain @VERSION@ placeholders
+FILES=$(git grep -l '@VERSION@' 2>/dev/null || true)
+
+if [ -z "$FILES" ]; then
+    exit 0
+fi
+
+for f in $FILES; do
+    if [ -f "$f" ]; then
+        # Replace @VERSION@ with the actual tag on non-staged changes,
+        # then re-stage the file so the substitution is included in the commit.
+        sed -i '' "s/@VERSION@/$LATEST_TAG/g" "$f"
+        git add "$f"
+    fi
+done
