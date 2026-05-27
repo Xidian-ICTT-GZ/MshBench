@@ -6,9 +6,9 @@ A structured, reproducible experiment pipeline for **LLM-based generation and re
 
 This project investigates the ability of large language models (LLMs) to generate VeriFast-compatible formal specifications and applies **verifier-guided repair** to fix verification failures. It supports full experiment pipelines with configurable models, repair rounds, and pass@k evaluation.
 
-**Supported languages:** C, Java, Rust  
-**Verification backend:** [VeriFast](https://github.com/verifast/verifast)  
-**Supported models:** gpt-5.5, deepseek-v4-flash, qwen3, claude-opus, and more
+**Supported languages:** C, Java, Rust
+**Verification backend:** [VeriFast](https://github.com/verifast/verifast)
+**Supported models:** Configurable via JSON (see config example below)  
 
 ## Project Structure
 
@@ -82,8 +82,8 @@ All model definitions live in a single JSON config file (default: `pipeline/conf
 ```
 
 Each model entry specifies:
-- `api_url_env` / `api_key_env` — environment variable names for API credentials
-- `model_name` — the model identifier sent to the API
+- `api_url_env` / `api_key_env` - environment variable names for API credentials
+- `model_name` - the model identifier sent to the API
 - Decoding parameters (temperature, top_p, max_tokens, seed, etc.)
 
 Set API credentials via environment variables (e.g., in `.env` at project root):
@@ -165,38 +165,9 @@ Aggregated experimental results are stored in `results/`:
 
 | Directory | Content |
 |-----------|---------|
-| `results/deepseek-v4-flash/` | Pipeline experiment results |
-| `results/gpt-5.5/` | Pipeline experiment results |
+| `results/<model>/` | Per-model pipeline experiment results (overall, language, structure metrics, failure distribution, repair rounds, costs) |
 | `results/benchmark_stats/` | Ground truth dataset composition statistics |
 | `results/passk_summary.*` | pass@k evaluation summary |
-
-### `results/deepseek-v4-flash/`
-
-| File | Description |
-|------|-------------|
-| `overall_metrics.csv` | Overall pass/file/repair rates |
-| `language_metrics.csv` | Per-language breakdown |
-| `structure_metrics.csv` | Per-structure breakdown |
-| `failure_distribution.csv` | Failure categories (initial + repair) |
-| `repair_rounds.csv` | Repair success by round (1-3) |
-| `residual_errors.csv` | Residual errors after repair |
-| `repair_costs.csv` | Token/time cost summary |
-| `summary.csv` | Basic summary |
-
-### `results/gpt-5.5/`
-
-Same file structure as `deepseek-v4-flash/`.
-
-### `results/benchmark_stats/`
-
-| File | Description |
-|------|-------------|
-| `stats_by_language_structure.csv` | Benchmark composition (LoC, Spec/Code ratio by language & structure) |
-| `stats_overall.json` | Aggregate statistics over all benchmarks |
-
-### `results/passk_summary.*`
-
-pass@1 and pass@5 evaluation metrics across multiple models and languages.
 
 > Raw per-candidate results (`initial_results.csv`, `repair_results.csv`) are stored in `output_*/` directories and excluded from version control via `.gitignore`.
 
@@ -213,43 +184,6 @@ docker run -it --rm \
   veric-rt
 ```
 
-## Directory Layout Reference
-
-### `pipeline/` (Core Experiment)
-
-These modules form the main experiment pipeline and import from each other:
-
-| Module | Role |
-|--------|------|
-| `run_spec_experiment.py` | Entry point: orchestrates metadata, generation, repair, summarization |
-| `run_generation_stage.py` | LLM generation + VeriFast verification per candidate |
-| `run_repair_stage.py` | Iterative verifier-guided repair (3 rounds) |
-| `run_pass_at_5.py` | Standalone pass@k generation + evaluation (early stop on success) |
-| `llm_spec_config.py` | Loads JSON config, defines `ExperimentConfig`, `ModelConfig` |
-| `llm_spec_prompts.py` | Builds generation and repair prompts |
-| `experiment_utils.py` | Shared: file I/O, code splitting, timeouts |
-| `error_taxonomy.py` | `classify_failure()` — classifies VeriFast output into error categories |
-| `build_benchmark_metadata.py` | Scans benchmark directory, builds metadata CSV |
-| `build_spec_free_dataset.py` | Creates spec-free dataset from metadata |
-| `stat_ground_true_dataset.py` | Stats on ground truth (LOC, spec/code ratio) |
-| `summarize_experiment_results.py` | Summarizes initial + repair results into tables |
-| `summarize_extended_metrics.py` | Computes extended metrics (SAR, TCR, VSR, etc.) |
-
-### `analysis/` (Standalone Scripts)
-
-These scripts are standalone (no intra-package imports), run separately for post-hoc analysis:
-
-| Script | Purpose |
-|--------|---------|
-| `compute_rq3_residuals.py` | RQ3: classify residual errors after repair → CSV tables |
-| `compute_rq4_costs.py` | RQ4: token/time cost analysis → CSV tables |
-| `generate_specs.py` | Generate specs directly via LLM API |
-| `analyze_sar_tcr_vsr.py` | SAR/TCR/VSR metric computation |
-| `batch_semantic_consistency.py` | Semantic consistency verification |
-| `llm_spec_runner.py` | Standalone LLM spec generation runner |
-| `repair_ground_true_rust_specs_gpt5.py` | Repair Rust ground truth specs |
-| `run_llm_spec_pipeline.py` | Legacy wrapper around `llm_spec_runner` |
-
 ## Key Output Files
 
 Each experiment run creates an `output_*/` directory containing:
@@ -265,6 +199,6 @@ Analysis scripts write CSV tables to the `paper/` directory.
 ## Requirements
 
 - Python 3.10+
-- Required packages: `requests`, `numpy` (see imports in individual scripts)
+- Required packages: `requests`, `numpy`
 - VeriFast v26.01+
 - Rust nightly (for Rust benchmarks)
