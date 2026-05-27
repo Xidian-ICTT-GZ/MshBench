@@ -14,6 +14,9 @@ ground_ture_logs/
 # Ignore readme if not needed
 readme
 
+# Ignore regenerable derived data (can be rebuilt from benchmark/)
+data/benchmark/
+
 # 保留以下内容
 !benchmark/
 !ground_true/
