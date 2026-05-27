@@ -1,0 +1,2 @@
+model,benchmarks,file_success,file_success_rate,candidate_total,candidate_verified,candidate_verify_rate,repair_attempted,repair_verified,repair_success_rate
+claude-opus-4-5-20251101,60,22,0.36666666666666664,300,52,0.17333333333333334,691,38,0.05499276410998553

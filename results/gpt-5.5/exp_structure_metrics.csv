@@ -1,0 +1,13 @@
+model,language,structure,benchmarks,file_success,file_success_rate,candidate_total,candidate_verified,candidate_verify_rate
+gpt-5.5,c,Arithmetic,10,8,0.8,50,8,0.16
+gpt-5.5,c,Arrays,4,1,0.25,20,0,0.0
+gpt-5.5,c,Linklist,9,2,0.2222222222222222,45,0,0.0
+gpt-5.5,c,Stack,2,1,0.5,10,0,0.0
+gpt-5.5,c,Struct,10,5,0.5,50,1,0.02
+gpt-5.5,c,Tree,4,1,0.25,20,0,0.0
+gpt-5.5,java,Arithmetic,7,6,0.8571428571428571,35,10,0.2857142857142857
+gpt-5.5,java,Arrays,17,13,0.7647058823529411,85,10,0.11764705882352941
+gpt-5.5,java,Linklist,4,4,1.0,20,3,0.15
+gpt-5.5,java,Other,28,28,1.0,140,70,0.5
+gpt-5.5,java,Stack,2,2,1.0,10,1,0.1
+gpt-5.5,java,Tree,2,1,0.5,10,0,0.0

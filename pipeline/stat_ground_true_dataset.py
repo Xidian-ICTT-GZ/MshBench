@@ -10,7 +10,7 @@ from statistics import median
 from typing import Dict, Iterable, List, Tuple
 
 LANG_EXTENSIONS = {
-    "c": {".c", ".h"},
+    "c": {".c"},
     "java": {".java"},
     "rust": {".rs"},
 }

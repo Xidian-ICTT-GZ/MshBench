@@ -1,0 +1,4 @@
+model,language,repair_calls,tokens_in_total,tokens_out_total,latency_sec_total,tokens_in_avg,tokens_out_avg,latency_sec_avg
+deepseek-v4-flash,c,476,182346.0,758381.0,59602.4259,383.0798,1593.2374,125.2152
+deepseek-v4-flash,java,157,54920.0,94063.0,26028.8487,349.8089,599.1274,165.7888
+deepseek-v4-flash,rust,735,97059.0,413023.0,111911.2705,132.0531,561.9361,152.2602

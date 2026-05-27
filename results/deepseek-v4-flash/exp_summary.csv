@@ -1,0 +1,4 @@
+model,language,benchmarks,file_success,file_success_rate,candidate_total,candidate_verified,candidate_verify_rate,repair_attempted,repair_verified,repair_success_rate
+deepseek-v4-flash,c,39,15,0.38461538461538464,195,29,0.14871794871794872,476,22,0.046218487394957986
+deepseek-v4-flash,java,60,54,0.9,300,219,0.73,157,51,0.3248407643312102
+deepseek-v4-flash,rust,49,0,0.0,245,0,0.0,735,0,0.0

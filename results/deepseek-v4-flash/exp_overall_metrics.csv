@@ -1,0 +1,2 @@
+model,benchmarks,file_success,file_success_rate,candidate_total,candidate_verified,candidate_verify_rate,repair_attempted,repair_verified,repair_success_rate
+deepseek-v4-flash,148,69,0.46621621621621623,740,248,0.33513513513513515,1368,73,0.0533625730994152

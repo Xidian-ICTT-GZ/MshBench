@@ -1,0 +1,7 @@
+model,language,structure,benchmarks,file_success,file_success_rate,candidate_total,candidate_verified,candidate_verify_rate
+claude-opus-4-5-20251101,java,Arithmetic,7,5,0.7142857142857143,35,15,0.42857142857142855
+claude-opus-4-5-20251101,java,Arrays,17,5,0.29411764705882354,85,11,0.12941176470588237
+claude-opus-4-5-20251101,java,Linklist,4,2,0.5,20,0,0.0
+claude-opus-4-5-20251101,java,Other,28,10,0.35714285714285715,140,26,0.18571428571428572
+claude-opus-4-5-20251101,java,Stack,2,0,0.0,10,0,0.0
+claude-opus-4-5-20251101,java,Tree,2,0,0.0,10,0,0.0

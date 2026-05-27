@@ -1,0 +1,4 @@
+model,language,repair_round,attempts,successes,success_rate
+claude-opus-4-5-20251101,java,1,248,25,0.10080645161290322
+claude-opus-4-5-20251101,java,2,223,3,0.013452914798206279
+claude-opus-4-5-20251101,java,3,220,10,0.045454545454545456

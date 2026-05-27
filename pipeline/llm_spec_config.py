@@ -14,8 +14,8 @@ DEFAULT_CONFIG_PATH = PACKAGE_ROOT / "configs" / "experiment.json"
 class ModelConfig:
     name: str
     model_name: str
-    api_url_env: str = "OPENAI_API_URL"
-    api_key_env: str = "OPENAI_API_KEY"
+    api_url_env: str = "DEEPSEEK_API_URL"
+    api_key_env: str = "DEEPSEEK_API_KEY"
     temperature: float = 0.0
     top_p: float = 1.0
     max_tokens: int = 4096
@@ -29,9 +29,9 @@ class ModelConfig:
 class ExperimentConfig:
     expected_total: int = 116
     benchmark_root: str = "benchmark"
-    output_root: str = "pipeline/results"
-    log_root: str = "pipeline/logs"
-    manifest_path: str = "pipeline/manifests/llm_spec_benchmark_manifest.json"
+    output_root: str = "."
+    log_root: str = "."
+    manifest_path: str = ""
     pass_k: int = 5
     max_rounds: int = 5
     verifast_args: Dict[str, List[str]] = field(default_factory=dict)
@@ -50,8 +50,8 @@ def _to_model_config(name: str, raw: Dict[str, Any]) -> ModelConfig:
     return ModelConfig(
         name=name,
         model_name=raw.get("model_name", name),
-        api_url_env=raw.get("api_url_env", "OPENAI_API_URL"),
-        api_key_env=raw.get("api_key_env", "OPENAI_API_KEY"),
+        api_url_env=raw.get("api_url_env", "DEEPSEEK_API_URL"),
+        api_key_env=raw.get("api_key_env", "DEEPSEEK_API_KEY"),
         temperature=float(raw.get("temperature", 0.0)),
         top_p=float(raw.get("top_p", 1.0)),
         max_tokens=int(raw.get("max_tokens", 4096)),

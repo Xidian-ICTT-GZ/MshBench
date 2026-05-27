@@ -37,7 +37,7 @@ def load_env_file(env_file: Path):
 
 
 ENV = load_env_file(ENV_FILE)
-API_URL = ENV.get("API_URL", "https://api.linyinet.asia/v1/chat/completions")
+API_URL = ENV.get("API_URL", "")
 API_KEY = ENV.get("API_KEY", "")
 
 
@@ -81,32 +81,35 @@ REQUEST_TIMEOUT = env_float("REQUEST_TIMEOUT", 180.0)
 DEFAULT_WORKERS = env_int("WORKERS", 4)
 DEFAULT_TIMESTAMP_SUBDIR = env_bool("TIMESTAMP_SUBDIR", False)
 
-MODELS = {
-    "claude-opus": "claude-opus-4-5-20251101",
-    "qwen3": "qwen3-max",
-    "deepseek": "deepseek-v3.2",
-    "gpt52": "gpt-5.2",
-}
+DEFAULT_CONFIG = ROOT_DIR / "pipeline" / "configs" / "llm_spec_experiment.json"
 
 
-def parse_selected_models(models_arg: str):
+def load_model_config(config_path: Path) -> dict:
+    data = json.loads(config_path.read_text(encoding="utf-8"))
+    models = data.get("models", {})
+    if not models:
+        raise RuntimeError(f"No models found in config: {config_path}")
+    return models
+
+
+def parse_selected_models(models_arg: str, config_path: Path):
+    models = load_model_config(config_path)
+
     if not models_arg or not models_arg.strip():
-        return dict(MODELS)
+        return {k: v for k, v in models.items()}
 
     keys = [k.strip() for k in models_arg.split(",") if k.strip()]
     if not keys:
-        return dict(MODELS)
+        return {k: v for k, v in models.items()}
 
-    unknown = [k for k in keys if k not in MODELS]
+    unknown = [k for k in keys if k not in models]
     if unknown:
         raise RuntimeError(
-            f"Unknown model key(s): {unknown}. Available: {list(MODELS.keys())}"
+            f"Unknown model key(s): {unknown}. Available: {list(models.keys())}"
         )
 
-    selected = {}
-    for k in keys:
-        selected[k] = MODELS[k]
-    return selected
+    return {k: models[k] for k in keys}
+
 
 REQ_LOCK = threading.Lock()
 LAST_API_TS = 0.0
@@ -138,6 +141,8 @@ def resolve_output_base(path_text: str) -> Path:
 
 
 def validate_api_key() -> None:
+    if not API_URL:
+        raise RuntimeError("Missing API_URL in .env at repo root")
     if not API_KEY:
         raise RuntimeError("Missing API_KEY in .env at repo root")
     try:
@@ -227,10 +232,10 @@ def write_summary_outputs(report_file: Path, out_root: Path):
     report_items = json.loads(report_file.read_text(encoding="utf-8"))
     rows = build_summary_rows(report_items)
 
-    summary_json = out_root / "passk_summary_by_model_language.json"
-    summary_csv = out_root / "passk_summary_by_model_language.csv"
-    summary_md = out_root / "passk_summary_by_model_language.md"
-    summary_tex = out_root / "passk_summary_by_model_language.tex"
+    summary_json = out_root / "passk_summary.json"
+    summary_csv = out_root / "passk_summary.csv"
+    summary_md = out_root / "passk_summary.md"
+    summary_tex = out_root / "passk_summary.tex"
 
     summary_json.write_text(json.dumps(rows, indent=2), encoding="utf-8")
 
@@ -679,10 +684,16 @@ def main():
         help="run preflight checks only, do not call models",
     )
     parser.add_argument(
+        "--config",
+        type=str,
+        default=str(DEFAULT_CONFIG),
+        help="Path to experiment config JSON with model definitions",
+    )
+    parser.add_argument(
         "--models",
         type=str,
-        default=",".join(MODELS.keys()),
-        help="comma-separated model keys to run, e.g. claude-opus or qwen3,gpt52",
+        default="",
+        help="Comma-separated model keys from config (default: all models in config)",
     )
     args = parser.parse_args()
 
@@ -711,7 +722,8 @@ def main():
         preflight_checks(args.benchmark_dir, args.prompt_dir)
         return
 
-    selected_models = parse_selected_models(args.models)
+    config_path = Path(args.config).resolve()
+    selected_models = parse_selected_models(args.models, config_path)
     print("selected models:", list(selected_models.keys()))
 
     out_base = resolve_output_base(args.output_dir)

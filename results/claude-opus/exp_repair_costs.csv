@@ -1,0 +1,2 @@
+model,language,repair_calls,tokens_in_total,tokens_out_total,latency_sec_total,tokens_in_avg,tokens_out_avg,latency_sec_avg
+claude-opus-4-5-20251101,java,691,4524515.0,509801.0,11669.2947,6547.7786,737.7728,16.8875

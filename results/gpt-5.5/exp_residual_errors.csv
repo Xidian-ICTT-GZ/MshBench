@@ -1,0 +1,5 @@
+model,language,failure_stage,failure_category,count,percent
+gpt-5.5,c,parse,syntax_error,9,0.42857142857142855
+gpt-5.5,c,verify,open_close_assert_leak_error,8,0.38095238095238093
+gpt-5.5,c,verify,other_semantic_error,4,0.19047619047619047
+gpt-5.5,java,verify,other_semantic_error,6,1.0

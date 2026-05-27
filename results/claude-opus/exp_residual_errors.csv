@@ -1,0 +1,5 @@
+model,language,failure_stage,failure_category,count,percent
+claude-opus-4-5-20251101,java,parse,syntax_error,34,0.8947368421052632
+claude-opus-4-5-20251101,java,verify,other_semantic_error,2,0.05263157894736842
+claude-opus-4-5-20251101,java,verify,wrong_postcondition,1,0.02631578947368421
+claude-opus-4-5-20251101,java,verify,wrong_precondition,1,0.02631578947368421

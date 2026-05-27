@@ -1,0 +1,13 @@
+source,model,language,failure_stage,failure_category,count,percent
+initial,claude-opus-4-5-20251101,java,parse,syntax_error,207,0.69
+initial,claude-opus-4-5-20251101,java,success,success,52,0.17333333333333334
+initial,claude-opus-4-5-20251101,java,verify,other_semantic_error,20,0.06666666666666667
+initial,claude-opus-4-5-20251101,java,verify,wrong_postcondition,5,0.016666666666666666
+initial,claude-opus-4-5-20251101,java,verify,wrong_precondition,16,0.05333333333333334
+repair,claude-opus-4-5-20251101,java,parse,syntax_error,623,0.9015918958031838
+repair,claude-opus-4-5-20251101,java,success,success,38,0.05499276410998553
+repair,claude-opus-4-5-20251101,java,verify,loop_invariant_error,3,0.004341534008683068
+repair,claude-opus-4-5-20251101,java,verify,open_close_assert_leak_error,2,0.002894356005788712
+repair,claude-opus-4-5-20251101,java,verify,other_semantic_error,11,0.015918958031837915
+repair,claude-opus-4-5-20251101,java,verify,wrong_postcondition,2,0.002894356005788712
+repair,claude-opus-4-5-20251101,java,verify,wrong_precondition,12,0.017366136034732273

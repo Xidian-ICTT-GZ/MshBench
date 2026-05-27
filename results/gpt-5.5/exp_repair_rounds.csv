@@ -1,0 +1,7 @@
+model,language,repair_round,attempts,successes,success_rate
+gpt-5.5,c,1,186,35,0.1881720430107527
+gpt-5.5,c,2,151,27,0.17880794701986755
+gpt-5.5,c,3,124,6,0.04838709677419355
+gpt-5.5,java,1,206,176,0.8543689320388349
+gpt-5.5,java,2,30,0,0.0
+gpt-5.5,java,3,30,0,0.0
