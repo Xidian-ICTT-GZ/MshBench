@@ -1,4 +1,0 @@
-python3 run_pass5_repair_parallel.py \
-/app/benchmark \
-/app/output_repair \
-/app/prompt

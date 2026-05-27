@@ -1,1 +1,0 @@
-predicate lines_data(p: *const *const str) = pointer(p, _);
