@@ -1,8 +1,0 @@
-Command: verifast /app/ground_true/rust/Struct/account_unwind.rs
-Exit code: 0
---- STDOUT ---
-0 errors found (60 statements verified) (target: x86_64-unknown-linux-gnu (LP64))
-
---- STDERR ---
-
-Result: PASS
